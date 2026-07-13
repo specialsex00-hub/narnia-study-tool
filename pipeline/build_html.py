@@ -1,0 +1,694 @@
+#!/usr/bin/env python3
+"""Assemble the final narnia_study_tool.html from data.json + grammar.json."""
+import json
+import sys
+
+def main():
+    data = json.load(open('data.json', encoding='utf-8'))
+    grammar = json.load(open('grammar.json', encoding='utf-8'))
+    vocab_json = json.dumps(data['vocab'], ensure_ascii=False)
+    underline_json = json.dumps(data['underline'], ensure_ascii=False)
+    quiz_json = json.dumps(data['quiz'], ensure_ascii=False)
+    grammar_json = json.dumps(grammar, ensure_ascii=False)
+
+    html = TEMPLATE.replace('__VOCAB_JSON__', vocab_json) \
+                    .replace('__UNDERLINE_JSON__', underline_json) \
+                    .replace('__QUIZ_JSON__', quiz_json) \
+                    .replace('__GRAMMAR_JSON__', grammar_json)
+
+    outpath = sys.argv[1] if len(sys.argv) > 1 else 'narnia_study_tool.html'
+    with open(outpath, 'w', encoding='utf-8') as f:
+        f.write(html)
+    print(f'wrote {outpath} ({len(html)} bytes)')
+
+
+TEMPLATE = r"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ナルニア国物語 期末試験対策ツール</title>
+<style>
+  :root{
+    --bg:#faf8f4;
+    --card:#ffffff;
+    --ink:#2b2b28;
+    --sub:#6b6b64;
+    --line:#e4e0d6;
+    --accent:#8a5a3b;
+    --accent-bg:#f3e6d8;
+    --good:#3b6d11;
+    --good-bg:#eaf3de;
+    --bad:#a32d2d;
+    --bad-bg:#fcebeb;
+    --mark:#fde68a;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.7;}
+  .wrap{max-width:760px; margin:0 auto; padding:24px 16px 60px;}
+  h1{font-size:20px; font-weight:600; margin:0 0 4px;}
+  .lead{color:var(--sub); font-size:13px; margin:0 0 20px;}
+  .tabs{display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--line); flex-wrap:wrap;}
+  .tab{padding:10px 14px; font-size:14px; cursor:pointer; color:var(--sub); border-bottom:2px solid transparent; user-select:none;}
+  .tab.active{color:var(--accent); border-bottom-color:var(--accent); font-weight:600;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:16px;}
+  .statrow{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:13px; flex:1; min-width:100px;}
+  .stat b{display:block; font-size:20px; font-weight:600; margin-top:2px;}
+  mark{background:var(--mark); color:#3a2c00; padding:0 2px; border-radius:2px;}
+  u{text-decoration-color:var(--accent); text-decoration-thickness:2px;}
+  .en{font-size:16px; margin-bottom:14px;}
+  .jp{font-size:15px; color:var(--sub); border-top:1px dashed var(--line); padding-top:12px; margin-top:12px;}
+  .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+  button{font-family:inherit; font-size:14px; padding:9px 16px; border-radius:8px; border:1px solid var(--line); background:var(--card); cursor:pointer; color:var(--ink);}
+  button:hover{background:var(--accent-bg);}
+  button.primary{background:var(--accent); color:#fff; border-color:var(--accent);}
+  button.primary:hover{opacity:0.9;}
+  button.good{background:var(--good-bg); color:var(--good); border-color:var(--good);}
+  button.bad{background:var(--bad-bg); color:var(--bad); border-color:var(--bad);}
+  .term{font-size:22px; font-weight:600; margin-bottom:6px;}
+  .flipcard{cursor:pointer; text-align:center; padding:34px 20px;}
+  .flipcard .hint{color:var(--sub); font-size:13px; margin-top:10px;}
+  .gloss-big{font-size:21px; font-weight:700; color:var(--accent); margin:4px 0 4px;}
+  .srsbadge{display:inline-block; font-size:11px; color:var(--sub); margin-top:6px;}
+  .context-toggle{margin-top:12px;}
+  .context-box{margin-top:14px; text-align:left; border-top:1px dashed var(--line); padding-top:12px;}
+  .progress{font-size:13px; color:var(--sub); margin-bottom:10px;}
+  textarea{width:100%; min-height:70px; font-family:inherit; font-size:15px; padding:10px; border-radius:8px; border:1px solid var(--line); resize:vertical;}
+  .choice{display:block; width:100%; text-align:left; margin-bottom:8px; padding:12px 14px;}
+  .choice.correct{background:var(--good-bg); border-color:var(--good); color:var(--good);}
+  .choice.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
+  .choice:disabled{cursor:default; opacity:1;}
+  .filterrow{display:flex; gap:8px; margin-bottom:14px; align-items:center; flex-wrap:wrap;}
+  select{font-family:inherit; font-size:13px; padding:6px 10px; border-radius:8px; border:1px solid var(--line); background:var(--card);}
+  .badge{display:inline-block; font-size:12px; padding:2px 8px; border-radius:20px; background:var(--accent-bg); color:var(--accent); margin-left:8px;}
+  .point-badge{display:inline-block; font-size:12px; padding:3px 10px; border-radius:20px; background:var(--accent-bg); color:var(--accent); margin-bottom:12px; font-weight:600;}
+  .explain{background:var(--accent-bg); border-radius:8px; padding:12px 14px; font-size:13px; margin-top:14px; color:var(--ink); line-height:1.6;}
+  .reveal{margin-top:14px;}
+  .empty{text-align:center; color:var(--sub); padding:30px 10px;}
+  .wronglist{margin-top:10px;}
+  .wrongitem{padding:10px 0; border-top:1px dashed var(--line); font-size:14px;}
+  .subhead{font-size:15px; font-weight:600; margin:0 0 10px;}
+  .reviewSection{margin-bottom:20px;}
+  .reviewSection:last-child{margin-bottom:0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ナルニア国物語 期末試験対策ツール</h1>
+  <p class="lead">授業でマーカーが引かれた語句・表現と、一緒に訳読・読解の練習ができます。間隔反復と苦手問題の自動復習つき。</p>
+
+  <div class="statrow" id="statrow"></div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="vocab">単語・熟語</div>
+    <div class="tab" data-tab="underline">下線部訳</div>
+    <div class="tab" data-tab="quiz">読解クイズ</div>
+    <div class="tab" data-tab="grammar">文法問題</div>
+    <div class="tab" data-tab="review">復習<span class="badge" id="reviewBadge" style="display:none"></span></div>
+  </div>
+
+  <div class="panel active" id="panel-vocab">
+    <div class="filterrow">
+      <select id="vocabChapter"></select>
+      <select id="vocabFilter">
+        <option value="all">すべて表示</option>
+        <option value="due">復習が必要な語のみ</option>
+      </select>
+      <span class="progress" id="vocabProgress"></span>
+    </div>
+    <div id="vocabArea"></div>
+  </div>
+
+  <div class="panel" id="panel-underline">
+    <div class="filterrow">
+      <select id="underlineChapter"></select>
+    </div>
+    <div id="underlineArea"></div>
+  </div>
+
+  <div class="panel" id="panel-quiz">
+    <div class="filterrow">
+      <select id="quizChapter"></select>
+    </div>
+    <div id="quizArea"></div>
+  </div>
+
+  <div class="panel" id="panel-grammar">
+    <div id="grammarArea"></div>
+  </div>
+
+  <div class="panel" id="panel-review">
+    <div id="reviewArea"></div>
+  </div>
+</div>
+
+<script>
+const VOCAB = __VOCAB_JSON__;
+const UNDERLINE = __UNDERLINE_JSON__;
+const QUIZ = __QUIZ_JSON__;
+const GRAMMAR = __GRAMMAR_JSON__;
+</script>
+<script>
+(function(){
+
+const STORAGE_KEY = 'narnia-progress';
+const CHAPTER_COUNT = Math.max(...VOCAB.map(v=>v.chapter), ...QUIZ.map(q=>q.chapter));
+
+function defaultData(){
+  return {
+    version: 2,
+    vocab: {},            // idx -> {box, due}
+    underlineDone: {},    // idx -> true
+    underlineWrong: {},   // idx -> true
+    quizWrong: {},        // idx -> true
+    quizScore: {correct:0, total:0},
+    grammarWrong: {},     // idx -> true
+    grammarScore: {correct:0, total:0},
+  };
+}
+
+const store = {
+  data: defaultData(),
+  async load(){
+    try{
+      const r = await window.storage.get(STORAGE_KEY);
+      if(r && r.value){
+        const parsed = JSON.parse(r.value);
+        if(parsed && parsed.version === 2) this.data = parsed;
+      }
+    }catch(e){}
+  },
+  async save(){
+    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(this.data)); }catch(e){}
+  }
+};
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function chapterSelectHtml(id, includeAllLabel){
+  let opts = `<option value="all">${includeAllLabel}</option>`;
+  for(let c=1;c<=CHAPTER_COUNT;c++) opts += `<option value="${c}">第${c}章</option>`;
+  return opts;
+}
+
+// ---------- Leitner spaced repetition (vocab) ----------
+const BOX_INTERVAL_DAYS = [0, 0, 1, 2, 4, 7, 14];
+const MS_DAY = 86400000;
+
+function vocabState(idx){
+  return store.data.vocab[idx] || {box:0, due:0};
+}
+function isDue(state){
+  return !state.due || state.due <= Date.now();
+}
+function markVocab(idx, correct){
+  const cur = vocabState(idx);
+  let box = cur.box || 0;
+  box = correct ? Math.min(box+1, BOX_INTERVAL_DAYS.length-1) : 0;
+  const due = correct ? Date.now() + BOX_INTERVAL_DAYS[box]*MS_DAY : Date.now();
+  store.data.vocab[idx] = {box, due};
+  store.save();
+  updateStats();
+}
+
+function updateStats(){
+  const learned = Object.values(store.data.vocab).filter(s=>s.box>0).length;
+  const dueCount = VOCAB.reduce((n,_,i)=> n + (isDue(vocabState(i)) ? 1 : 0), 0);
+  const underDone = Object.keys(store.data.underlineDone).length;
+  const qs = store.data.quizScore;
+  const gs = store.data.grammarScore;
+  const wrongTotal = Object.keys(store.data.quizWrong).length + Object.keys(store.data.underlineWrong).length + Object.keys(store.data.grammarWrong).length;
+  document.getElementById('statrow').innerHTML = `
+    <div class="stat">習得した語彙<b>${learned} / ${VOCAB.length}</b></div>
+    <div class="stat">復習が必要な語<b>${dueCount}</b></div>
+    <div class="stat">下線部訳 練習済み<b>${underDone} / ${UNDERLINE.length}</b></div>
+    <div class="stat">クイズ正答率<b>${qs.total? Math.round(qs.correct/qs.total*100):0}%</b></div>
+    <div class="stat">文法問題正答率<b>${gs.total? Math.round(gs.correct/gs.total*100):0}%</b></div>
+  `;
+  const badge = document.getElementById('reviewBadge');
+  if(wrongTotal > 0){ badge.style.display='inline-block'; badge.textContent = wrongTotal; }
+  else{ badge.style.display='none'; }
+}
+
+// ================= VOCAB TAB =================
+let vocabOrder = [];
+let vocabIdx = 0;
+let vocabFlipped = false;
+let vocabShowContext = false;
+let vocabChapter = 'all';
+let vocabFilterMode = 'all';
+
+function vocabPool(){
+  let idxs = VOCAB.map((_,i)=>i);
+  if(vocabChapter !== 'all'){
+    idxs = idxs.filter(i => VOCAB[i].chapter === Number(vocabChapter));
+  }
+  if(vocabFilterMode === 'due'){
+    idxs = idxs.filter(i => isDue(vocabState(i)));
+  }
+  return idxs;
+}
+
+function buildVocabOrder(){
+  const pool = vocabPool();
+  const due = pool.filter(i=>isDue(vocabState(i)));
+  const notDue = pool.filter(i=>!isDue(vocabState(i)));
+  const grouped = {};
+  due.forEach(i=>{ const b=vocabState(i).box; (grouped[b]=grouped[b]||[]).push(i); });
+  let dueOrdered = [];
+  Object.keys(grouped).sort((a,b)=>a-b).forEach(b=>{ dueOrdered = dueOrdered.concat(shuffle(grouped[b])); });
+  notDue.sort((a,b)=> (vocabState(a).due||0) - (vocabState(b).due||0));
+  vocabOrder = dueOrdered.concat(notDue);
+  vocabIdx = 0;
+}
+
+function renderVocab(){
+  const area = document.getElementById('vocabArea');
+  document.getElementById('vocabProgress').textContent = vocabOrder.length ? `${Math.min(vocabIdx+1,vocabOrder.length)} / ${vocabOrder.length}` : '';
+  if(vocabOrder.length===0){
+    area.innerHTML = `<div class="card empty">この条件のカードはありません。すべて覚えました！</div>`;
+    return;
+  }
+  if(vocabIdx>=vocabOrder.length) vocabIdx = 0;
+  const gi = vocabOrder[vocabIdx];
+  const item = VOCAB[gi];
+  const st = vocabState(gi);
+  const boxLabel = st.box>0 ? `習熟度 ${st.box} / ${BOX_INTERVAL_DAYS.length-1}` : '未学習';
+  area.innerHTML = `
+    <div class="card flipcard" id="flipTarget">
+      ${!vocabFlipped ? `
+        <div class="term">${item.term}</div>
+        <div class="hint">タップして意味を確認</div>
+        <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
+      ` : `
+        <div style="text-align:left">
+          <div class="term" style="margin-bottom:2px">${item.term}</div>
+          <div class="gloss-big">${item.gloss || ''}</div>
+          <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
+          <div class="context-toggle"><button id="toggleContext">${vocabShowContext ? '例文を隠す' : '例文を見る'}</button></div>
+          ${vocabShowContext ? `
+            <div class="context-box">
+              <div class="en">${item.enHtml}</div>
+              <div class="jp">${item.jp}</div>
+            </div>
+          ` : ''}
+        </div>
+      `}
+    </div>
+    <div class="btnrow">
+      <button id="prevVocab">前へ</button>
+      <button class="bad" id="markUnknown">まだ</button>
+      <button class="good" id="markKnown">覚えた</button>
+      <button class="primary" id="nextVocab">次へ</button>
+    </div>
+  `;
+  document.getElementById('flipTarget').onclick = ()=>{ vocabFlipped=!vocabFlipped; renderVocab(); };
+  const tc = document.getElementById('toggleContext');
+  if(tc) tc.onclick = (e)=>{ e.stopPropagation(); vocabShowContext=!vocabShowContext; renderVocab(); };
+  document.getElementById('nextVocab').onclick = (e)=>{ e.stopPropagation(); vocabIdx++; vocabFlipped=false; vocabShowContext=false; renderVocab(); };
+  document.getElementById('prevVocab').onclick = (e)=>{ e.stopPropagation(); vocabIdx=Math.max(0,vocabIdx-1); vocabFlipped=false; vocabShowContext=false; renderVocab(); };
+  document.getElementById('markKnown').onclick = (e)=>{ e.stopPropagation(); markVocab(gi, true); vocabIdx++; vocabFlipped=false; vocabShowContext=false; renderVocab(); };
+  document.getElementById('markUnknown').onclick = (e)=>{ e.stopPropagation(); markVocab(gi, false); vocabIdx++; vocabFlipped=false; vocabShowContext=false; renderVocab(); };
+}
+
+document.getElementById('vocabChapter').innerHTML = chapterSelectHtml('vocabChapter', 'すべての章');
+document.getElementById('vocabChapter').onchange = (e)=>{ vocabChapter = e.target.value; vocabFlipped=false; vocabShowContext=false; buildVocabOrder(); renderVocab(); };
+document.getElementById('vocabFilter').onchange = (e)=>{ vocabFilterMode = e.target.value; vocabFlipped=false; vocabShowContext=false; buildVocabOrder(); renderVocab(); };
+
+// ================= UNDERLINE TAB =================
+let underlineOrder = [];
+let underlineIdx = 0;
+let underlineChapter = 'all';
+
+function buildUnderlineOrder(){
+  let idxs = UNDERLINE.map((_,i)=>i);
+  if(underlineChapter !== 'all'){
+    idxs = idxs.filter(i => UNDERLINE[i].chapter === Number(underlineChapter));
+  }
+  underlineOrder = shuffle(idxs);
+  underlineIdx = 0;
+}
+
+function renderUnderline(){
+  const area = document.getElementById('underlineArea');
+  if(underlineOrder.length===0){
+    area.innerHTML = `<div class="card empty">この条件の下線部はありません。</div>`;
+    return;
+  }
+  if(underlineIdx >= underlineOrder.length) underlineIdx = 0;
+  const gi = underlineOrder[underlineIdx];
+  const item = UNDERLINE[gi];
+  area.innerHTML = `
+    <div class="progress">${underlineIdx+1} / ${underlineOrder.length}（第${item.chapter}章）：下線部を日本語に訳してみましょう。</div>
+    <div class="card">
+      <div class="en">${item.enHtml}</div>
+      <textarea id="ansBox" placeholder="下線部の日本語訳を入力"></textarea>
+      <div class="btnrow">
+        <button class="primary" id="showAns">答えを見る</button>
+      </div>
+      <div class="reveal" id="revealArea" style="display:none">
+        <div class="jp"><b style="color:var(--ink)">全体の日本語訳：</b><br>${item.jp}</div>
+        <div class="btnrow">
+          <button class="good" id="selfGood">できた</button>
+          <button class="bad" id="selfBad">もう一度復習</button>
+          <button id="nextUnderline">次の問題</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('showAns').onclick = ()=>{
+    document.getElementById('revealArea').style.display = 'block';
+  };
+  document.getElementById('selfGood').onclick = ()=>{
+    store.data.underlineDone[gi] = true;
+    delete store.data.underlineWrong[gi];
+    store.save(); updateStats();
+    underlineIdx++; renderUnderline();
+  };
+  document.getElementById('selfBad').onclick = ()=>{
+    store.data.underlineWrong[gi] = true;
+    store.save(); updateStats();
+    underlineIdx++; renderUnderline();
+  };
+  const nb = document.getElementById('nextUnderline');
+  if(nb) nb.onclick = ()=>{ underlineIdx++; renderUnderline(); };
+}
+
+document.getElementById('underlineChapter').innerHTML = chapterSelectHtml('underlineChapter', 'すべての章');
+document.getElementById('underlineChapter').onchange = (e)=>{ underlineChapter = e.target.value; buildUnderlineOrder(); renderUnderline(); };
+
+// ================= QUIZ TAB =================
+let quizOrder = [];
+let quizIdx = 0;
+let quizAnswered = false;
+let quizChapter = 'all';
+
+function buildQuizOrder(){
+  let idxs = QUIZ.map((_,i)=>i);
+  if(quizChapter !== 'all'){
+    idxs = idxs.filter(i => QUIZ[i].chapter === Number(quizChapter));
+  }
+  quizOrder = shuffle(idxs).slice(0, 30);
+  quizIdx = 0;
+}
+
+function buildChoices(correctIdx){
+  const pool = QUIZ.filter((_,i)=>i!==correctIdx).map(q=>q.jp);
+  const decoys = shuffle(pool).slice(0,3);
+  const options = shuffle([QUIZ[correctIdx].jp, ...decoys]);
+  return options;
+}
+
+function renderQuiz(){
+  const area = document.getElementById('quizArea');
+  if(quizOrder.length===0){
+    area.innerHTML = `<div class="card empty">この条件の問題はありません。</div>`;
+    return;
+  }
+  if(quizIdx >= quizOrder.length){
+    area.innerHTML = `<div class="card empty">クイズ終了です。お疲れ様でした。<div class="btnrow" style="justify-content:center"><button class="primary" id="restartQuiz">もう一度</button></div></div>`;
+    document.getElementById('restartQuiz').onclick = ()=>{ buildQuizOrder(); renderQuiz(); };
+    return;
+  }
+  const qi = quizOrder[quizIdx];
+  const item = QUIZ[qi];
+  const options = buildChoices(qi);
+  quizAnswered = false;
+  area.innerHTML = `
+    <div class="progress">${quizIdx+1} / ${quizOrder.length}（第${item.chapter}章）：正しい日本語訳を選んでください</div>
+    <div class="card">
+      <div class="en">${item.en}</div>
+      <div id="choiceArea"></div>
+    </div>
+  `;
+  const choiceArea = document.getElementById('choiceArea');
+  options.forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'choice';
+    b.textContent = opt;
+    b.onclick = ()=>{
+      if(quizAnswered) return;
+      quizAnswered = true;
+      const correct = opt === item.jp;
+      store.data.quizScore.total++;
+      if(correct){ store.data.quizScore.correct++; delete store.data.quizWrong[qi]; }
+      else{ store.data.quizWrong[qi] = true; }
+      store.save(); updateStats();
+      Array.from(choiceArea.children).forEach(c=>{
+        c.disabled = true;
+        if(c.textContent === item.jp) c.classList.add('correct');
+        else if(c===b) c.classList.add('wrong');
+      });
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'primary';
+      nextBtn.textContent = '次へ';
+      nextBtn.style.marginTop = '14px';
+      nextBtn.onclick = ()=>{ quizIdx++; renderQuiz(); };
+      choiceArea.appendChild(nextBtn);
+    };
+    choiceArea.appendChild(b);
+  });
+}
+
+document.getElementById('quizChapter').innerHTML = chapterSelectHtml('quizChapter', 'すべての章（ランダム30問）');
+document.getElementById('quizChapter').onchange = (e)=>{ quizChapter = e.target.value; buildQuizOrder(); renderQuiz(); };
+
+// ================= GRAMMAR TAB =================
+let grammarOrder = [];
+let grammarIdx = 0;
+let grammarAnswered = false;
+
+function buildGrammarOrder(){
+  grammarOrder = shuffle(GRAMMAR.map((_,i)=>i));
+  grammarIdx = 0;
+}
+
+function renderGrammar(){
+  const area = document.getElementById('grammarArea');
+  if(grammarIdx >= grammarOrder.length){
+    area.innerHTML = `<div class="card empty">文法問題は以上です。お疲れ様でした。<div class="btnrow" style="justify-content:center"><button class="primary" id="restartGrammar">もう一度</button></div></div>`;
+    document.getElementById('restartGrammar').onclick = ()=>{ buildGrammarOrder(); renderGrammar(); };
+    return;
+  }
+  const gi = grammarOrder[grammarIdx];
+  const item = GRAMMAR[gi];
+  grammarAnswered = false;
+  area.innerHTML = `
+    <div class="progress">${grammarIdx+1} / ${grammarOrder.length}</div>
+    <div class="card">
+      <div class="point-badge">${item.point}</div>
+      <div class="en">${item.en}</div>
+      <div id="gChoiceArea"></div>
+      <div id="gExplain" style="display:none" class="explain"></div>
+    </div>
+  `;
+  const choiceArea = document.getElementById('gChoiceArea');
+  const options = shuffle(item.choices);
+  options.forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'choice';
+    b.textContent = opt;
+    b.onclick = ()=>{
+      if(grammarAnswered) return;
+      grammarAnswered = true;
+      const correct = opt === item.answer;
+      store.data.grammarScore.total++;
+      if(correct){ store.data.grammarScore.correct++; delete store.data.grammarWrong[gi]; }
+      else{ store.data.grammarWrong[gi] = true; }
+      store.save(); updateStats();
+      Array.from(choiceArea.children).forEach(c=>{
+        c.disabled = true;
+        if(c.textContent === item.answer) c.classList.add('correct');
+        else if(c===b) c.classList.add('wrong');
+      });
+      const ex = document.getElementById('gExplain');
+      ex.style.display = 'block';
+      ex.textContent = item.explain;
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'primary';
+      nextBtn.textContent = '次へ';
+      nextBtn.style.marginTop = '14px';
+      nextBtn.onclick = ()=>{ grammarIdx++; renderGrammar(); };
+      choiceArea.appendChild(nextBtn);
+    };
+    choiceArea.appendChild(b);
+  });
+}
+
+// ================= REVIEW TAB =================
+function renderReview(){
+  const area = document.getElementById('reviewArea');
+  const qWrong = Object.keys(store.data.quizWrong).map(Number).filter(i=>QUIZ[i]);
+  const uWrong = Object.keys(store.data.underlineWrong).map(Number).filter(i=>UNDERLINE[i]);
+  const gWrong = Object.keys(store.data.grammarWrong).map(Number).filter(i=>GRAMMAR[i]);
+
+  if(qWrong.length===0 && uWrong.length===0 && gWrong.length===0){
+    area.innerHTML = `<div class="card empty">苦手問題はありません。素晴らしい！<br>クイズ・下線部訳・文法問題で間違えると、ここに自動で表示されます。</div>`;
+    return;
+  }
+
+  area.innerHTML = `
+    <div class="reviewSection">
+      <div class="subhead">読解クイズの苦手問題（${qWrong.length}件）</div>
+      <div id="reviewQuizArea"></div>
+    </div>
+    <div class="reviewSection">
+      <div class="subhead">下線部訳の苦手問題（${uWrong.length}件）</div>
+      <div id="reviewUnderlineArea"></div>
+    </div>
+    <div class="reviewSection">
+      <div class="subhead">文法問題の苦手問題（${gWrong.length}件）</div>
+      <div id="reviewGrammarArea"></div>
+    </div>
+  `;
+  renderReviewQuiz(qWrong);
+  renderReviewUnderline(uWrong);
+  renderReviewGrammar(gWrong);
+}
+
+function renderReviewQuiz(list){
+  const area = document.getElementById('reviewQuizArea');
+  if(list.length===0){ area.innerHTML = `<div class="card empty" style="padding:16px">なし</div>`; return; }
+  const qi = list[0];
+  const item = QUIZ[qi];
+  const options = buildChoices(qi);
+  let answered = false;
+  area.innerHTML = `<div class="card"><div class="en">${item.en}</div><div id="rqChoiceArea"></div></div>`;
+  const choiceArea = document.getElementById('rqChoiceArea');
+  options.forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'choice';
+    b.textContent = opt;
+    b.onclick = ()=>{
+      if(answered) return;
+      answered = true;
+      const correct = opt === item.jp;
+      if(correct){ delete store.data.quizWrong[qi]; }
+      store.save(); updateStats();
+      Array.from(choiceArea.children).forEach(c=>{
+        c.disabled = true;
+        if(c.textContent === item.jp) c.classList.add('correct');
+        else if(c===b) c.classList.add('wrong');
+      });
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'primary';
+      nextBtn.textContent = '次へ';
+      nextBtn.style.marginTop = '14px';
+      nextBtn.onclick = ()=>{ renderReview(); };
+      choiceArea.appendChild(nextBtn);
+    };
+    choiceArea.appendChild(b);
+  });
+}
+
+function renderReviewUnderline(list){
+  const area = document.getElementById('reviewUnderlineArea');
+  if(list.length===0){ area.innerHTML = `<div class="card empty" style="padding:16px">なし</div>`; return; }
+  const gi = list[0];
+  const item = UNDERLINE[gi];
+  area.innerHTML = `
+    <div class="card">
+      <div class="en">${item.enHtml}</div>
+      <div class="btnrow"><button class="primary" id="rUShowAns">答えを見る</button></div>
+      <div class="reveal" id="rURevealArea" style="display:none">
+        <div class="jp">${item.jp}</div>
+        <div class="btnrow">
+          <button class="good" id="rUGood">できた</button>
+          <button class="bad" id="rUBad">もう一度復習</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('rUShowAns').onclick = ()=>{ document.getElementById('rURevealArea').style.display='block'; };
+  document.getElementById('rUGood').onclick = ()=>{
+    delete store.data.underlineWrong[gi];
+    store.data.underlineDone[gi] = true;
+    store.save(); updateStats(); renderReview();
+  };
+  document.getElementById('rUBad').onclick = ()=>{ renderReview(); };
+}
+
+function renderReviewGrammar(list){
+  const area = document.getElementById('reviewGrammarArea');
+  if(list.length===0){ area.innerHTML = `<div class="card empty" style="padding:16px">なし</div>`; return; }
+  const gi = list[0];
+  const item = GRAMMAR[gi];
+  let answered = false;
+  area.innerHTML = `
+    <div class="card">
+      <div class="point-badge">${item.point}</div>
+      <div class="en">${item.en}</div>
+      <div id="rgChoiceArea"></div>
+      <div id="rgExplain" style="display:none" class="explain"></div>
+    </div>
+  `;
+  const choiceArea = document.getElementById('rgChoiceArea');
+  const options = shuffle(item.choices);
+  options.forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'choice';
+    b.textContent = opt;
+    b.onclick = ()=>{
+      if(answered) return;
+      answered = true;
+      const correct = opt === item.answer;
+      if(correct){ delete store.data.grammarWrong[gi]; }
+      store.save(); updateStats();
+      Array.from(choiceArea.children).forEach(c=>{
+        c.disabled = true;
+        if(c.textContent === item.answer) c.classList.add('correct');
+        else if(c===b) c.classList.add('wrong');
+      });
+      const ex = document.getElementById('rgExplain');
+      ex.style.display = 'block';
+      ex.textContent = item.explain;
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'primary';
+      nextBtn.textContent = '次へ';
+      nextBtn.style.marginTop = '14px';
+      nextBtn.onclick = ()=>{ renderReview(); };
+      choiceArea.appendChild(nextBtn);
+    };
+    choiceArea.appendChild(b);
+  });
+}
+
+// ================= TABS =================
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.onclick = ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+    if(tab.dataset.tab === 'review') renderReview();
+  };
+});
+
+(async function init(){
+  await store.load();
+  updateStats();
+  buildVocabOrder(); renderVocab();
+  buildUnderlineOrder(); renderUnderline();
+  buildQuizOrder(); renderQuiz();
+  buildGrammarOrder(); renderGrammar();
+})();
+
+})();
+</script>
+</body>
+</html>
+"""
+
+if __name__ == '__main__':
+    main()
