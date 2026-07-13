@@ -90,13 +90,18 @@ TEMPLATE = r"""<!DOCTYPE html>
   button.good{background:var(--good-bg); color:var(--good); border-color:var(--good);}
   button.bad{background:var(--bad-bg); color:var(--bad); border-color:var(--bad);}
   .term{font-size:22px; font-weight:600; margin-bottom:6px;}
-  .flipcard{cursor:pointer; text-align:center; padding:34px 20px; transition:transform 0.16s ease;}
-  .flipcard.squish{transform:scaleX(0.05) skewY(1deg);}
-  .flipcard .hint{color:var(--sub); font-size:13px; margin-top:10px;}
-  .gloss-big{font-size:21px; font-weight:700; color:var(--accent); margin:4px 0 4px; animation:popScale 0.3s ease;}
+  .flip-outer{cursor:pointer; padding:0; overflow:hidden;}
+  .flip-3d{perspective:1400px;}
+  .flip-inner{display:grid; transition:transform 0.6s cubic-bezier(.5,.05,.15,1); transform-style:preserve-3d;}
+  .flip-inner.flipped{transform:rotateY(180deg);}
+  .flip-face{grid-area:1/1; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:34px 20px; text-align:center;}
+  .flip-face.back{transform:rotateY(180deg); text-align:left; padding:26px 24px;}
+  .flip-face .hint{color:var(--sub); font-size:13px; margin-top:10px;}
+  .gloss-big{font-size:21px; font-weight:700; color:var(--accent); margin:4px 0 4px;}
   .srsbadge{display:inline-block; font-size:11px; color:var(--sub); margin-top:6px;}
   .context-toggle{margin-top:12px;}
   .context-box{margin-top:14px; text-align:left; border-top:1px dashed var(--line); padding-top:12px;}
+  .context-box.hidden{display:none;}
   .progress{font-size:13px; color:var(--sub); margin-bottom:10px;}
   textarea{width:100%; min-height:70px; font-family:inherit; font-size:15px; padding:10px; border-radius:8px; border:1px solid var(--line); resize:vertical;}
   .choice{display:block; width:100%; text-align:left; margin-bottom:8px; padding:12px 14px;}
@@ -122,18 +127,16 @@ TEMPLATE = r"""<!DOCTYPE html>
   .vlistTerm{font-weight:600; min-width:120px;}
   .vlistGloss{color:var(--sub); text-align:right; flex:1;}
   .vlistChap{font-size:11px; color:var(--sub); background:var(--accent-bg); border-radius:10px; padding:1px 7px; align-self:center;}
-  /* match game */
+  /* match game (Quizlet-style: all tiles visible, click two to pair them off) */
   .matchTop{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:13px; color:var(--sub); flex-wrap:wrap; gap:8px;}
-  .matchGrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(96px,1fr)); gap:10px;}
-  .matchCard{perspective:700px; height:88px; cursor:pointer;}
-  .matchCardInner{position:relative; width:100%; height:100%; transition:transform 0.4s; transform-style:preserve-3d;}
-  .matchCard.flip .matchCardInner{transform:rotateY(180deg);}
-  .matchCard.wrongflash .matchCardInner{animation:shakeX 0.4s;}
-  .matchFace{position:absolute; inset:0; backface-visibility:hidden; border-radius:10px; display:flex; align-items:center; justify-content:center; padding:6px; text-align:center; font-size:12.5px; border:1px solid var(--line); background:var(--card); line-height:1.3;}
-  .matchFace.back{transform:rotateY(180deg); background:var(--accent-bg); font-weight:600;}
-  .matchCard.matched .matchFace.back{background:var(--good-bg); border-color:var(--good); color:var(--good);}
-  .matchCard.matched{opacity:0.55;}
-  .matchFace.front{font-size:20px; color:var(--line); background:var(--bg);}
+  .matchGrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(110px,1fr)); gap:10px;}
+  .matchTile{min-height:64px; padding:12px 10px; border-radius:10px; border:1px solid var(--line); background:var(--card);
+    display:flex; align-items:center; justify-content:center; text-align:center; font-size:13px; line-height:1.35;
+    cursor:pointer; user-select:none; transition:transform 0.18s ease, background 0.15s, border-color 0.15s, opacity 0.3s, color 0.15s;}
+  .matchTile:hover{background:var(--accent-bg);}
+  .matchTile.selected{background:var(--accent); color:#fff; border-color:var(--accent); transform:scale(1.05);}
+  .matchTile.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad); animation:shakeX 0.4s;}
+  .matchTile.clearing{opacity:0; transform:scale(0.4); pointer-events:none;}
   .confetti{position:relative; height:50px; width:220px; margin:0 auto 6px;}
   .confetti span{position:absolute; top:-6px; width:8px; height:8px; border-radius:2px; animation:confettiFall 1.1s ease-in forwards;}
   /* summary tab */
@@ -415,6 +418,10 @@ document.getElementById('vocabSubtabs').querySelectorAll('.subtab').forEach(t=>{
 });
 
 function renderVocabCard(){
+  // Full rebuild: only called when the card itself changes (new term / filter
+  // change). Flipping and the context-toggle mutate the existing DOM nodes
+  // afterwards (see below) so their CSS transitions actually get to animate --
+  // replacing the whole subtree on every interaction skips the transition.
   const area = document.getElementById('vocabArea');
   document.getElementById('vocabProgress').textContent = vocabOrder.length ? `${Math.min(vocabIdx+1,vocabOrder.length)} / ${vocabOrder.length}` : '';
   if(vocabOrder.length===0){
@@ -427,25 +434,24 @@ function renderVocabCard(){
   const st = vocabState(gi);
   const boxLabel = st.box>0 ? `習熟度 ${st.box} / ${BOX_INTERVAL_DAYS.length-1}` : '未学習';
   area.innerHTML = `
-    <div class="card flipcard" id="flipTarget">
-      ${!vocabFlipped ? `
-        <div class="term">${item.term}</div>
-        <div class="hint">タップして意味を確認</div>
-        <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
-      ` : `
-        <div style="text-align:left">
+    <div class="card flip-outer flip-3d" id="flipOuter">
+      <div class="flip-inner" id="flipInner">
+        <div class="flip-face front">
+          <div class="term">${item.term}</div>
+          <div class="hint">タップして意味を確認</div>
+          <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
+        </div>
+        <div class="flip-face back">
           <div class="term" style="margin-bottom:2px">${item.term}</div>
           <div class="gloss-big">${item.gloss || ''}</div>
           <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
-          <div class="context-toggle"><button id="toggleContext">${vocabShowContext ? '例文を隠す' : '例文を見る'}</button></div>
-          ${vocabShowContext ? `
-            <div class="context-box">
-              <div class="en">${item.enHtml}</div>
-              <div class="jp">${item.jp}</div>
-            </div>
-          ` : ''}
+          <div class="context-toggle"><button id="toggleContext">例文を見る</button></div>
+          <div class="context-box hidden" id="ctxBox">
+            <div class="en">${item.enHtml}</div>
+            <div class="jp">${item.jp}</div>
+          </div>
         </div>
-      `}
+      </div>
     </div>
     <div class="btnrow">
       <button id="prevVocab">前へ</button>
@@ -454,22 +460,26 @@ function renderVocabCard(){
       <button class="primary" id="nextVocab">次へ</button>
     </div>
   `;
-  const doFlip = ()=>{
-    const el = document.getElementById('flipTarget');
-    el.classList.add('squish');
-    setTimeout(()=>{ vocabFlipped=!vocabFlipped; renderVocabCard(); }, 150);
+  vocabFlipped = false;
+  vocabShowContext = false;
+  document.getElementById('flipOuter').onclick = ()=>{
+    vocabFlipped = !vocabFlipped;
+    document.getElementById('flipInner').classList.toggle('flipped', vocabFlipped);
   };
-  document.getElementById('flipTarget').onclick = doFlip;
-  const tc = document.getElementById('toggleContext');
-  if(tc) tc.onclick = (e)=>{ e.stopPropagation(); vocabShowContext=!vocabShowContext; renderVocabCard(); };
+  document.getElementById('toggleContext').onclick = (e)=>{
+    e.stopPropagation();
+    vocabShowContext = !vocabShowContext;
+    const box = document.getElementById('ctxBox');
+    box.classList.toggle('hidden', !vocabShowContext);
+    e.currentTarget.textContent = vocabShowContext ? '例文を隠す' : '例文を見る';
+  };
   const advance = (correct)=>{
     if(correct!==null) markVocab(gi, correct);
-    vocabIdx++; vocabFlipped=false; vocabShowContext=false;
-    const el = document.getElementById('flipTarget');
-    if(el){ el.classList.add('squish'); setTimeout(renderVocabCard, 140); } else { renderVocabCard(); }
+    vocabIdx++;
+    renderVocabCard();
   };
   document.getElementById('nextVocab').onclick = (e)=>{ e.stopPropagation(); advance(null); };
-  document.getElementById('prevVocab').onclick = (e)=>{ e.stopPropagation(); vocabIdx=Math.max(0,vocabIdx-1); vocabFlipped=false; vocabShowContext=false; renderVocabCard(); };
+  document.getElementById('prevVocab').onclick = (e)=>{ e.stopPropagation(); vocabIdx=Math.max(0,vocabIdx-1); renderVocabCard(); };
   document.getElementById('markKnown').onclick = (e)=>{ e.stopPropagation(); advance(true); };
   document.getElementById('markUnknown').onclick = (e)=>{ e.stopPropagation(); advance(false); };
 }
@@ -500,10 +510,11 @@ function renderVocabList(){
   input.setSelectionRange(input.value.length, input.value.length);
 }
 
-// ---- vocab match game ----
-let matchCards = [];       // {uid, vocabIdx, side, text}
-let matchFlippedIds = [];
-let matchMatchedIds = new Set();
+// ---- vocab match game (Quizlet Match: every tile is visible from the start;
+// tap two tiles that form a term/meaning pair and they clear off the board) ----
+let matchCards = [];       // {uid, vocabIdx, side, text, cleared, clearing}
+let matchSelected = [];    // up to 2 uids currently selected
+let matchWrongIds = [];    // uids currently flashing red
 let matchMoves = 0;
 let matchLocked = false;
 let matchStartTs = 0;
@@ -515,12 +526,12 @@ function buildMatchGame(){
   const chosen = shuffle(pool).slice(0, n);
   const cards = [];
   chosen.forEach((vi, i)=>{
-    cards.push({uid:'t'+i, vocabIdx:vi, side:'term', text:VOCAB[vi].term});
-    cards.push({uid:'g'+i, vocabIdx:vi, side:'gloss', text:VOCAB[vi].gloss});
+    cards.push({uid:'t'+i, vocabIdx:vi, side:'term', text:VOCAB[vi].term, cleared:false, clearing:false});
+    cards.push({uid:'g'+i, vocabIdx:vi, side:'gloss', text:VOCAB[vi].gloss, cleared:false, clearing:false});
   });
   matchCards = shuffle(cards);
-  matchFlippedIds = [];
-  matchMatchedIds = new Set();
+  matchSelected = [];
+  matchWrongIds = [];
   matchMoves = 0;
   matchLocked = false;
   matchStartTs = Date.now();
@@ -539,67 +550,73 @@ function renderVocabMatch(){
     area.innerHTML = `<div class="card empty">この条件では6語未満しかないため、マッチゲームを作成できません。章の範囲を広げてみてください。</div>`;
     return;
   }
-  const allMatched = matchMatchedIds.size === matchCards.length;
+  const allCleared = matchCards.every(c=>c.cleared);
   area.innerHTML = `
     <div class="card">
       <div class="matchTop">
-        <span>ペアになる「英語」と「意味」をタップして選んでください</span>
+        <span>ペアになる「英語」と「意味」のタイルを2枚タップして選んでください</span>
         <span>手数: ${matchMoves}　経過時間: <span id="matchTimer">0秒</span></span>
       </div>
-      ${allMatched ? `<div class="empty" id="matchDone">🎉 全ペア達成！ お見事です。<div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div></div>` : ''}
+      ${allCleared ? `<div class="empty" id="matchDone">🎉 全ペア達成！ お見事です。<div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div></div>` : ''}
       <div class="matchGrid" id="matchGrid"></div>
     </div>
   `;
   const grid = document.getElementById('matchGrid');
   matchCards.forEach(c=>{
-    const isFlipped = matchFlippedIds.includes(c.uid) || matchMatchedIds.has(c.uid);
-    const isMatched = matchMatchedIds.has(c.uid);
-    const wrap = document.createElement('div');
-    wrap.className = 'matchCard' + (isFlipped ? ' flip' : '') + (isMatched ? ' matched' : '');
-    wrap.dataset.uid = c.uid;
-    wrap.innerHTML = `
-      <div class="matchCardInner">
-        <div class="matchFace front">❄</div>
-        <div class="matchFace back">${escapeHtml(c.text)}</div>
-      </div>
-    `;
-    wrap.onclick = ()=> onMatchCardClick(c.uid);
-    grid.appendChild(wrap);
+    if(c.cleared) return;
+    const tile = document.createElement('div');
+    tile.className = 'matchTile'
+      + (matchSelected.includes(c.uid) ? ' selected' : '')
+      + (matchWrongIds.includes(c.uid) ? ' wrong' : '')
+      + (c.clearing ? ' clearing' : '');
+    tile.dataset.uid = c.uid;
+    tile.textContent = c.text;
+    tile.onclick = ()=> onMatchTileClick(c.uid);
+    grid.appendChild(tile);
   });
-  if(allMatched){
+  if(allCleared){
     fireConfetti(document.getElementById('matchDone'));
     document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); renderVocabMatch(); };
   }
 }
 
-function onMatchCardClick(uid){
+function onMatchTileClick(uid){
   if(matchLocked) return;
-  if(matchMatchedIds.has(uid)) return;
-  if(matchFlippedIds.includes(uid)) return;
-  if(matchFlippedIds.length>=2) return;
-  matchFlippedIds.push(uid);
+  const card = matchCards.find(c=>c.uid===uid);
+  if(!card || card.cleared) return;
+  if(matchSelected.includes(uid)){
+    matchSelected = matchSelected.filter(id=>id!==uid);
+    renderVocabMatch();
+    return;
+  }
+  if(matchSelected.length>=2) return;
+  matchSelected.push(uid);
   renderVocabMatch();
-  if(matchFlippedIds.length===2){
+  if(matchSelected.length===2){
     matchLocked = true;
     matchMoves++;
-    const [a,b] = matchFlippedIds.map(id=>matchCards.find(c=>c.uid===id));
+    const [a,b] = matchSelected.map(id=>matchCards.find(c=>c.uid===id));
     const isMatch = a.vocabIdx===b.vocabIdx && a.side!==b.side;
     if(isMatch){
-      matchMatchedIds.add(a.uid); matchMatchedIds.add(b.uid);
-      matchFlippedIds = [];
-      matchLocked = false;
-      renderVocabMatch();
+      setTimeout(()=>{
+        a.clearing = true; b.clearing = true;
+        renderVocabMatch();
+        setTimeout(()=>{
+          a.cleared = true; b.cleared = true;
+          matchSelected = [];
+          matchLocked = false;
+          renderVocabMatch();
+        }, 260);
+      }, 220);
     } else {
+      matchWrongIds = [a.uid, b.uid];
+      renderVocabMatch();
       setTimeout(()=>{
-        document.querySelectorAll('.matchCard').forEach(el=>{
-          if(matchFlippedIds.includes(el.dataset.uid)) el.classList.add('wrongflash');
-        });
-      }, 50);
-      setTimeout(()=>{
-        matchFlippedIds = [];
+        matchWrongIds = [];
+        matchSelected = [];
         matchLocked = false;
         renderVocabMatch();
-      }, 650);
+      }, 550);
     }
   }
 }
@@ -923,6 +940,10 @@ const CHAR_ICON = {
   lucy:    {bg:'#c9793f', mark:`<circle cx="63" cy="16" r="4" fill="#fff7e6"/><circle cx="55" cy="20" r="3" fill="#fff7e6"/><circle cx="71" cy="20" r="3" fill="#fff7e6"/><circle cx="63" cy="24" r="3" fill="#fff7e6"/>`},
   tumnus_icon: {bg:'#7a5c3e', mark:`<path d="M50 20 Q46 8 54 6" stroke="#f3e6d8" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M76 20 Q80 8 72 6" stroke="#f3e6d8" stroke-width="3" fill="none" stroke-linecap="round"/>`},
   witch_icon: {bg:'#7891a8', mark:`<polygon points="63,6 70,20 56,20" fill="#dbe8f0"/><circle cx="63" cy="6" r="3" fill="#dbe8f0"/>`},
+  professor: {bg:'#5c4a3a', mark:`<circle cx="55" cy="14" r="6" fill="none" stroke="#f3e6d8" stroke-width="2"/><circle cx="71" cy="14" r="6" fill="none" stroke="#f3e6d8" stroke-width="2"/><line x1="61" y1="14" x2="65" y2="14" stroke="#f3e6d8" stroke-width="2"/>`},
+  macready:  {bg:'#8a6d5a', mark:`<circle cx="64" cy="14" r="5" fill="none" stroke="#f3e6d8" stroke-width="2.5"/><rect x="68" y="12" width="7" height="3.5" fill="#f3e6d8"/>`},
+  dwarf_icon: {bg:'#5f6b5a', mark:`<polygon points="63,3 74,22 52,22" fill="#f3e6d8"/><circle cx="63" cy="3" r="2.5" fill="#c9793f"/>`},
+  servants:  {bg:'#a89a8a', mark:`<circle cx="52" cy="14" r="4" fill="#f3e6d8"/><circle cx="64" cy="10" r="4" fill="#f3e6d8"/><circle cx="76" cy="14" r="4" fill="#f3e6d8"/>`},
 };
 
 function avatarSvg(key, initial){
