@@ -222,16 +222,33 @@ function defaultData(){
 const store = {
   data: defaultData(),
   async load(){
+    // Prefer window.storage when the page is hosted inside an environment
+    // that provides it; otherwise (a normal browser / GitHub Pages) fall
+    // back to localStorage, which is what actually persists on a plain
+    // deployed site.
     try{
-      const r = await window.storage.get(STORAGE_KEY);
-      if(r && r.value){
-        const parsed = JSON.parse(r.value);
+      if(window.storage && window.storage.get){
+        const r = await window.storage.get(STORAGE_KEY);
+        if(r && r.value){
+          const parsed = JSON.parse(r.value);
+          if(parsed && parsed.version === 3){ this.data = parsed; return; }
+        }
+      }
+    }catch(e){}
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){
+        const parsed = JSON.parse(raw);
         if(parsed && parsed.version === 3) this.data = parsed;
       }
     }catch(e){}
   },
   async save(){
-    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(this.data)); }catch(e){}
+    const json = JSON.stringify(this.data);
+    try{
+      if(window.storage && window.storage.set){ await window.storage.set(STORAGE_KEY, json); }
+    }catch(e){}
+    try{ localStorage.setItem(STORAGE_KEY, json); }catch(e){}
   }
 };
 
