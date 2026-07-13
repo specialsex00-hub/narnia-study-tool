@@ -17,7 +17,8 @@ python3 extract_from_docx.py "/path/to/英語(Writing&Reading).docx" .
 # 2. 語彙547語分の簡潔な日本語訳（gloss）をマージ
 python3 merge_glosses.py data.json
 
-# 3. data.json + grammar.json から最終HTMLを組み立てる
+# 3. data.json + grammar.json + comprehension.json + summary_data.json
+#    から最終HTMLを組み立てる
 python3 build_html.py ../narnia_study_tool.html
 ```
 
@@ -30,8 +31,15 @@ python3 build_html.py ../narnia_study_tool.html
   新しい章を追加した場合、`merge_glosses.py` 実行時に未対応語が
   警告表示されるので、そのぶんを追記する。
 - `merge_glosses.py` — `data.json` の各語彙エントリに `gloss` フィールドを追加する。
-- `grammar.json` — 文法問題モード用に手作業で作成した30問（本文中の
-  実際の文を使用）。教材更新時に流用・追加可能。
+- `grammar.json` — 文法4択問題30問（本文中の実際の文を使用）。各問題に
+  `chapter` フィールドを持たせており、「まとめ」タブの章別文法ポイント
+  表示にも使われる。教材更新時に流用・追加可能。
+- `comprehension.json` — 内容理解4択クイズ22問（訳ではなく、本文の
+  出来事・事実を問う設問）。読解クイズタブの「内容理解」サブタブで使用。
+- `summary_data.json` — 「まとめ」タブ用の章あらすじ・登場人物データ。
+  章バナーやキャラクターアバターのSVGはハードコードせずbuild_html.py内の
+  `BANNER_SVG` / `CHAR_ICON` に定義されており、`summary_data.json` 側は
+  どのSVGキーを使うか（`svg` フィールド）を指定するだけ。
 - `build_html.py` — 上記データをテンプレートに埋め込み、最終的な
   `narnia_study_tool.html` を書き出す。CSS/HTML/JS本体もこのファイル内に
   直接記述されている（単一ファイルで完結させる方針を踏襲）。
@@ -39,22 +47,27 @@ python3 build_html.py ../narnia_study_tool.html
 ## データ保存形式（window.storage）
 
 進捗は `narnia-progress` というキーに1つのJSONとしてまとめて保存される。
-`version: 2` のスキーマ：
+`version: 3` のスキーマ：
 
 ```
 {
-  version: 2,
+  version: 3,
   vocab: { [語彙配列のindex]: {box: 0-6, due: <ms timestamp>} },  // Leitner式間隔反復
   underlineDone: { [下線配列のindex]: true },
-  underlineWrong: { [下線配列のindex]: true },  // 復習タブ用
-  quizWrong: { [クイズ配列のindex]: true },      // 復習タブ用
+  underlineWrong: { [下線配列のindex]: true },        // 復習タブ用
+  quizWrong: { [クイズ配列のindex]: true },            // 復習タブ用
   quizScore: {correct, total},
-  grammarWrong: { [文法配列のindex]: true },     // 復習タブ用
+  grammarWrong: { [文法配列のindex]: true },           // 復習タブ用
   grammarScore: {correct, total},
+  comprehensionWrong: { [内容理解配列のindex]: true }, // 復習タブ用
+  comprehensionScore: {correct, total},
 }
 ```
 
-進捗はVOCAB/UNDERLINE/QUIZ/GRAMMAR配列の **index** をキーにしている。
-つまりこのパイプラインを再実行してデータの並び・件数が変わると、
+進捗はVOCAB/UNDERLINE/QUIZ/GRAMMAR/COMPREHENSION配列の **index** をキーに
+している。つまりこのパイプラインを再実行してデータの並び・件数が変わると、
 既存の学習進捗との対応関係がずれる（実質リセットに近い扱いになる）。
 教材が大きく変わらない限りは頻繁に再実行しない想定。
+
+なお、単語マッチゲーム（神経衰弱）は進捗を保存しない一発勝負のミニゲーム
+として実装しており、SRS（間隔反復）には影響しない。
