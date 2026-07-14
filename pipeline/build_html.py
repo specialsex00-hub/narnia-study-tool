@@ -135,11 +135,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   .matchGrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(110px,1fr)); gap:10px;}
   .matchTile{min-height:64px; padding:12px 10px; border-radius:10px; border:1px solid var(--line); background:var(--card);
     display:flex; align-items:center; justify-content:center; text-align:center; font-size:13px; line-height:1.35;
-    cursor:pointer; user-select:none; transition:transform 0.18s ease, background 0.15s, border-color 0.15s, opacity 0.3s, color 0.15s;}
+    cursor:pointer; user-select:none; transition:background 0.25s ease, border-color 0.25s ease, color 0.25s ease, opacity 0.5s ease;}
   .matchTile:hover{background:var(--accent-bg);}
-  .matchTile.selected{background:var(--accent); color:#fff; border-color:var(--accent); transform:scale(1.05);}
-  .matchTile.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad); animation:shakeX 0.4s;}
-  .matchTile.clearing{opacity:0; transform:scale(0.4); pointer-events:none;}
+  .matchTile.selected{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .matchTile.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
+  .matchTile.clearing{opacity:0; transition:opacity 0.5s ease;}
   .matchTile.cleared{opacity:0; pointer-events:none; cursor:default; border-color:transparent; background:transparent;}
   .confetti{position:relative; height:50px; width:220px; margin:0 auto 6px;}
   .confetti span{position:absolute; top:-6px; width:8px; height:8px; border-radius:2px; animation:confettiFall 1.1s ease-in forwards;}
@@ -624,7 +624,7 @@ function onMatchTileClick(uid){
           matchSelected = [];
           matchLocked = false;
           renderVocabMatch();
-        }, 260);
+        }, 500);
       }, 220);
     } else {
       matchWrongIds = [a.uid, b.uid];
