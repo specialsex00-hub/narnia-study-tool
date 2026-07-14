@@ -9,6 +9,7 @@ def main():
     grammar = json.load(open('grammar.json', encoding='utf-8'))
     comprehension = json.load(open('comprehension.json', encoding='utf-8'))
     summary = json.load(open('summary_data.json', encoding='utf-8'))
+    kotest = json.load(open('kotest.json', encoding='utf-8'))
 
     vocab_json = json.dumps(data['vocab'], ensure_ascii=False)
     underline_json = json.dumps(data['underline'], ensure_ascii=False)
@@ -16,13 +17,15 @@ def main():
     grammar_json = json.dumps(grammar, ensure_ascii=False)
     comprehension_json = json.dumps(comprehension, ensure_ascii=False)
     summary_json = json.dumps(summary, ensure_ascii=False)
+    kotest_json = json.dumps(kotest, ensure_ascii=False)
 
     html = TEMPLATE.replace('__VOCAB_JSON__', vocab_json) \
                     .replace('__UNDERLINE_JSON__', underline_json) \
                     .replace('__QUIZ_JSON__', quiz_json) \
                     .replace('__GRAMMAR_JSON__', grammar_json) \
                     .replace('__COMPREHENSION_JSON__', comprehension_json) \
-                    .replace('__SUMMARY_JSON__', summary_json)
+                    .replace('__SUMMARY_JSON__', summary_json) \
+                    .replace('__KOTEST_JSON__', kotest_json)
 
     outpath = sys.argv[1] if len(sys.argv) > 1 else 'narnia_study_tool.html'
     with open(outpath, 'w', encoding='utf-8') as f:
@@ -173,6 +176,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div class="tab" data-tab="underline">下線部訳</div>
     <div class="tab" data-tab="quiz">読解クイズ</div>
     <div class="tab" data-tab="grammar">文法問題</div>
+    <div class="tab" data-tab="kotest">小テスト対策</div>
     <div class="tab" data-tab="summary">まとめ</div>
     <div class="tab" data-tab="review">復習<span class="badge" id="reviewBadge" style="display:none"></span></div>
   </div>
@@ -188,6 +192,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       <select id="vocabFilter">
         <option value="all">すべて表示</option>
         <option value="due">復習が必要な語のみ</option>
+        <option value="exam">小テストの語のみ</option>
       </select>
       <span class="progress" id="vocabProgress"></span>
     </div>
@@ -216,6 +221,11 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div id="grammarArea"></div>
   </div>
 
+  <div class="panel" id="panel-kotest">
+    <p class="lead" style="margin-top:0">授業の小テストで実際に出た穴埋め問題です。期末試験に出やすい重要表現なので優先的に押さえましょう。</p>
+    <div id="kotestArea"></div>
+  </div>
+
   <div class="panel" id="panel-summary">
     <div id="summaryArea"></div>
   </div>
@@ -232,6 +242,7 @@ const QUIZ = __QUIZ_JSON__;
 const GRAMMAR = __GRAMMAR_JSON__;
 const COMPREHENSION = __COMPREHENSION_JSON__;
 const SUMMARY = __SUMMARY_JSON__;
+const KOTEST = __KOTEST_JSON__;
 </script>
 <script>
 (function(){
@@ -241,7 +252,7 @@ const CHAPTER_COUNT = Math.max(...VOCAB.map(v=>v.chapter), ...QUIZ.map(q=>q.chap
 
 function defaultData(){
   return {
-    version: 3,
+    version: 4,
     vocab: {},               // idx -> {box, due}
     underlineDone: {},       // idx -> true
     underlineWrong: {},      // idx -> true
@@ -251,6 +262,8 @@ function defaultData(){
     grammarScore: {correct:0, total:0},
     comprehensionWrong: {},  // idx -> true
     comprehensionScore: {correct:0, total:0},
+    kotestWrong: {},         // idx -> true
+    kotestScore: {correct:0, total:0},
   };
 }
 
@@ -266,7 +279,7 @@ const store = {
         const r = await window.storage.get(STORAGE_KEY);
         if(r && r.value){
           const parsed = JSON.parse(r.value);
-          if(parsed && parsed.version === 3){ this.data = parsed; return; }
+          if(parsed && parsed.version === 4){ this.data = parsed; return; }
         }
       }
     }catch(e){}
@@ -274,7 +287,7 @@ const store = {
       const raw = localStorage.getItem(STORAGE_KEY);
       if(raw){
         const parsed = JSON.parse(raw);
-        if(parsed && parsed.version === 3) this.data = parsed;
+        if(parsed && parsed.version === 4) this.data = parsed;
       }
     }catch(e){}
   },
@@ -348,13 +361,15 @@ function updateStats(){
   const qs = store.data.quizScore;
   const gs = store.data.grammarScore;
   const cs = store.data.comprehensionScore;
-  const wrongTotal = Object.keys(store.data.quizWrong).length + Object.keys(store.data.underlineWrong).length + Object.keys(store.data.grammarWrong).length + Object.keys(store.data.comprehensionWrong).length;
+  const ks = store.data.kotestScore;
+  const wrongTotal = Object.keys(store.data.quizWrong).length + Object.keys(store.data.underlineWrong).length + Object.keys(store.data.grammarWrong).length + Object.keys(store.data.comprehensionWrong).length + Object.keys(store.data.kotestWrong).length;
   document.getElementById('statrow').innerHTML = `
     <div class="stat">習得した語彙<b>${learned} / ${VOCAB.length}</b></div>
     <div class="stat">復習が必要な語<b>${dueCount}</b></div>
     <div class="stat">下線部訳 練習済み<b>${underDone} / ${UNDERLINE.length}</b></div>
     <div class="stat">クイズ正答率<b>${qs.total? Math.round(qs.correct/qs.total*100):0}%</b></div>
     <div class="stat">文法問題正答率<b>${gs.total? Math.round(gs.correct/gs.total*100):0}%</b></div>
+    <div class="stat">小テスト正答率<b>${ks.total? Math.round(ks.correct/ks.total*100):0}%</b></div>
   `;
   const badge = document.getElementById('reviewBadge');
   if(wrongTotal > 0){ badge.style.display='inline-block'; badge.textContent = wrongTotal; }
@@ -382,6 +397,8 @@ function vocabPoolWithDueFilter(){
   let idxs = vocabPool();
   if(vocabFilterMode === 'due'){
     idxs = idxs.filter(i => isDue(vocabState(i)));
+  } else if(vocabFilterMode === 'exam'){
+    idxs = idxs.filter(i => VOCAB[i].exam);
   }
   return idxs;
 }
@@ -439,12 +456,12 @@ function renderVocabCard(){
         <div class="flip-face front">
           <div class="term">${item.term}</div>
           <div class="hint">タップして意味を確認</div>
-          <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
+          <div class="srsbadge">第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
         </div>
         <div class="flip-face back">
           <div class="term" style="margin-bottom:2px">${item.term}</div>
           <div class="gloss-big">${item.gloss || ''}</div>
-          <div class="srsbadge">第${item.chapter}章・${boxLabel}</div>
+          <div class="srsbadge">第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
           <div class="context-toggle"><button id="toggleContext">例文を見る</button></div>
           <div class="context-box hidden" id="ctxBox">
             <div class="en">${item.enHtml}</div>
@@ -488,14 +505,14 @@ function renderVocabCard(){
 let vocabListSearch = '';
 function renderVocabList(){
   const area = document.getElementById('vocabArea');
-  let idxs = vocabPool();
+  let idxs = vocabPoolWithDueFilter();
   if(vocabListSearch.trim()){
     const q = vocabListSearch.trim().toLowerCase();
     idxs = idxs.filter(i => VOCAB[i].term.toLowerCase().includes(q) || (VOCAB[i].gloss||'').includes(q));
   }
   const rows = idxs.map(i=>{
     const item = VOCAB[i];
-    return `<div class="vlistRow"><span class="vlistTerm">${item.term}</span><span class="vlistGloss">${item.gloss||''}</span><span class="vlistChap">第${item.chapter}章</span></div>`;
+    return `<div class="vlistRow"><span class="vlistTerm">${item.term}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</span><span class="vlistGloss">${item.gloss||''}</span><span class="vlistChap">第${item.chapter}章</span></div>`;
   }).join('');
   area.innerHTML = `
     <div class="card">
@@ -521,7 +538,7 @@ let matchStartTs = 0;
 let matchTimerHandle = null;
 
 function buildMatchGame(){
-  const pool = vocabPool().filter(i => VOCAB[i].gloss);
+  const pool = vocabPoolWithDueFilter().filter(i => VOCAB[i].gloss);
   const n = Math.min(6, pool.length);
   const chosen = shuffle(pool).slice(0, n);
   const cards = [];
@@ -932,6 +949,74 @@ function renderGrammar(){
   });
 }
 
+// ================= KOTEST TAB (weekly pop-quiz fill-in-the-blank) =================
+let kotestOrder = [];
+let kotestIdx = 0;
+let kotestAnswered = false;
+
+function buildKotestOrder(){
+  kotestOrder = shuffle(KOTEST.map((_,i)=>i));
+  kotestIdx = 0;
+}
+
+function kotestChoices(item){
+  const ans = item.answer;
+  const isShort = ans.split(' ').length === 1 && ans.length <= 6;
+  const sameBucket = [...new Set(KOTEST.map(x=>x.answer))].filter(a=>{
+    const aShort = a.split(' ').length === 1 && a.length <= 6;
+    return aShort === isShort && a.toLowerCase() !== ans.toLowerCase();
+  });
+  const decoys = shuffle(sameBucket).slice(0,3);
+  return shuffle([ans, ...decoys]);
+}
+
+function renderKotest(){
+  const area = document.getElementById('kotestArea');
+  if(kotestIdx >= kotestOrder.length){
+    area.innerHTML = `<div class="card empty" id="kotestDoneCard">小テスト対策は以上です。お疲れ様でした。<div class="btnrow" style="justify-content:center"><button class="primary" id="restartKotest">もう一度</button></div></div>`;
+    fireConfetti(document.getElementById('kotestDoneCard'));
+    document.getElementById('restartKotest').onclick = ()=>{ buildKotestOrder(); renderKotest(); };
+    return;
+  }
+  const ki = kotestOrder[kotestIdx];
+  const item = KOTEST[ki];
+  kotestAnswered = false;
+  area.innerHTML = `
+    <div class="progress">${kotestIdx+1} / ${kotestOrder.length}：空欄に入る語句を選んでください</div>
+    <div class="card">
+      <div class="en" style="font-size:17px">${item.en}</div>
+      <div id="kChoiceArea"></div>
+    </div>
+  `;
+  const choiceArea = document.getElementById('kChoiceArea');
+  kotestChoices(item).forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'choice';
+    b.textContent = opt;
+    b.onclick = ()=>{
+      if(kotestAnswered) return;
+      kotestAnswered = true;
+      const correct = opt === item.answer;
+      store.data.kotestScore.total++;
+      if(correct){ store.data.kotestScore.correct++; delete store.data.kotestWrong[ki]; }
+      else{ store.data.kotestWrong[ki] = true; }
+      store.save(); updateStats();
+      Array.from(choiceArea.children).forEach(c=>{
+        c.disabled = true;
+        if(c.textContent === item.answer) c.classList.add('correct');
+        else if(c===b) c.classList.add('wrong');
+      });
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'primary';
+      nextBtn.textContent = '次へ';
+      nextBtn.style.marginTop = '14px';
+      nextBtn.onclick = ()=>{ kotestIdx++; renderKotest(); };
+      choiceArea.appendChild(nextBtn);
+    };
+    choiceArea.appendChild(b);
+  });
+}
+
 // ================= SUMMARY TAB =================
 const CHAR_ICON = {
   peter:   {bg:'#8a5a3b', mark:`<polygon points="62,10 65,17 72,18 66,23 68,30 62,26 56,30 58,23 52,18 59,17" fill="#f3e6d8"/>`},
@@ -1067,13 +1152,18 @@ function renderReview(){
   const uWrong = Object.keys(store.data.underlineWrong).map(Number).filter(i=>UNDERLINE[i]);
   const gWrong = Object.keys(store.data.grammarWrong).map(Number).filter(i=>GRAMMAR[i]);
   const cWrong = Object.keys(store.data.comprehensionWrong).map(Number).filter(i=>COMPREHENSION[i]);
+  const kWrong = Object.keys(store.data.kotestWrong).map(Number).filter(i=>KOTEST[i]);
 
-  if(qWrong.length===0 && uWrong.length===0 && gWrong.length===0 && cWrong.length===0){
-    area.innerHTML = `<div class="card empty">苦手問題はありません。素晴らしい！<br>クイズ・下線部訳・文法問題・内容理解で間違えると、ここに自動で表示されます。</div>`;
+  if(qWrong.length===0 && uWrong.length===0 && gWrong.length===0 && cWrong.length===0 && kWrong.length===0){
+    area.innerHTML = `<div class="card empty">苦手問題はありません。素晴らしい！<br>クイズ・下線部訳・文法問題・内容理解・小テスト対策で間違えると、ここに自動で表示されます。</div>`;
     return;
   }
 
   area.innerHTML = `
+    <div class="reviewSection">
+      <div class="subhead">小テスト対策の苦手問題（${kWrong.length}件）</div>
+      <div id="reviewKotestArea"></div>
+    </div>
     <div class="reviewSection">
       <div class="subhead">読解クイズ（日本語訳）の苦手問題（${qWrong.length}件）</div>
       <div id="reviewQuizArea"></div>
@@ -1091,10 +1181,45 @@ function renderReview(){
       <div id="reviewGrammarArea"></div>
     </div>
   `;
+  renderReviewKotest(kWrong);
   renderReviewQuiz(qWrong);
   renderReviewComp(cWrong);
   renderReviewUnderline(uWrong);
   renderReviewGrammar(gWrong);
+}
+
+function renderReviewKotest(list){
+  const area = document.getElementById('reviewKotestArea');
+  if(list.length===0){ area.innerHTML = `<div class="card empty" style="padding:16px">なし</div>`; return; }
+  const ki = list[0];
+  const item = KOTEST[ki];
+  let answered = false;
+  area.innerHTML = `<div class="card"><div class="en" style="font-size:17px">${item.en}</div><div id="rkChoiceArea"></div></div>`;
+  const choiceArea = document.getElementById('rkChoiceArea');
+  kotestChoices(item).forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'choice';
+    b.textContent = opt;
+    b.onclick = ()=>{
+      if(answered) return;
+      answered = true;
+      const correct = opt === item.answer;
+      if(correct){ delete store.data.kotestWrong[ki]; }
+      store.save(); updateStats();
+      Array.from(choiceArea.children).forEach(c=>{
+        c.disabled = true;
+        if(c.textContent === item.answer) c.classList.add('correct');
+        else if(c===b) c.classList.add('wrong');
+      });
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'primary';
+      nextBtn.textContent = '次へ';
+      nextBtn.style.marginTop = '14px';
+      nextBtn.onclick = ()=>{ renderReview(); };
+      choiceArea.appendChild(nextBtn);
+    };
+    choiceArea.appendChild(b);
+  });
 }
 
 function renderReviewQuiz(list){
@@ -1266,6 +1391,7 @@ document.querySelectorAll('.tab').forEach(tab=>{
   buildUnderlineOrder(); renderUnderline();
   buildQuizOrder(); buildCompOrder(); renderQuiz();
   buildGrammarOrder(); renderGrammar();
+  buildKotestOrder(); renderKotest();
 })();
 
 })();

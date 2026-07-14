@@ -12,7 +12,8 @@
    "enHtml": "This story is about something that happened to them when they were <mark>sent away</mark> from London during the war because of the <mark>air-raids</mark>. ",
    "jp": "この物語は、戦争中の空襲を避けるため、彼らがロンドンから避難させられた際に起こった出来事について描かれています。",
    "chapter": 1,
-   "gloss": "空襲"
+   "gloss": "空襲",
+   "exam": true
   },
   {
    "term": "in the heart of the country",
@@ -82,7 +83,8 @@
    "enHtml": "but on the first evening when he came out to meet them at the front door he was so <mark>odd-looking</mark> that Lucy (who was the youngest) was a little afraid of him, and Edmund (who was the next youngest) wanted to laugh and had to <mark>keep on</mark> <mark>pretending</mark> he was <mark>blowing his nose</mark> to <mark>hide</mark> it.",
    "jp": "しかし、初日の夕方、彼が玄関に出て彼らを出迎えたとき、その風貌はあまりにも風変わりだったため、ルーシー（一番年下の娘）は少し彼を怖がり、エドマンド（その次年下の息子）は笑いをこらえきれず、それを隠すために鼻をかんでいるふりをし続けなければならなかった。",
    "chapter": 1,
-   "gloss": "鼻をかむこと"
+   "gloss": "鼻をかむこと",
+   "exam": true
   },
   {
    "term": "hide",
@@ -103,7 +105,8 @@
    "enHtml": "As soon as they had said goodnight to the Professor and <mark>gone upstairs</mark> on the first night, the boys came into the girls' room and they <mark>all talked it over</mark>.",
    "jp": "初日の夜、教授に「おやすみ」を言って二階へ上がるとすぐに、男の子たちは女の子たちの部屋に入ってきて、みんなで話し合った。",
    "chapter": 1,
-   "gloss": "みんなでよく話し合った"
+   "gloss": "みんなでよく話し合った",
+   "exam": true
   },
   {
    "term": "chap",
@@ -194,7 +197,8 @@
    "enHtml": "\"It's an <mark>owl</mark>,\" said Peter. ",
    "jp": "「フクロウだよ」とピーターが言った。",
    "chapter": 1,
-   "gloss": "フクロウ"
+   "gloss": "フクロウ",
+   "exam": true
   },
   {
    "term": "shall",
@@ -264,7 +268,8 @@
    "enHtml": "But when the next morning came there was a <mark>steady</mark> rain falling, so <mark>thick</mark> that when you looked out of the window you could see <mark>neither</mark> the mountains <mark>nor</mark> the woods <mark>nor</mark> even the <mark>stream</mark> in the garden.",
    "jp": "しかし、翌朝になると、しとしとと雨が降り続いていた。雨は激しく、窓の外を見ても、山も森も、庭の小川さえも見えなかった。",
    "chapter": 1,
-   "gloss": "絶え間ない"
+   "gloss": "絶え間ない",
+   "exam": true
   },
   {
    "term": "thick",
@@ -320,14 +325,16 @@
    "enHtml": " And in the <mark>meantime</mark> we're <mark>pretty well off</mark>. There's a <mark>wireless</mark> and lots of books.\"",
    "jp": "それまでの間、ここなら十分楽しめるわよ。無線機もあるし、本もたくさんあるし」",
    "chapter": 1,
-   "gloss": "その間"
+   "gloss": "その間",
+   "exam": true
   },
   {
    "term": "pretty well off",
    "enHtml": " And in the <mark>meantime</mark> we're <mark>pretty well off</mark>. There's a <mark>wireless</mark> and lots of books.\"",
    "jp": "それまでの間、ここなら十分楽しめるわよ。無線機もあるし、本もたくさんあるし」",
    "chapter": 1,
-   "gloss": "かなり恵まれている"
+   "gloss": "かなり恵まれている",
+   "exam": true
   },
   {
    "term": "wireless",
@@ -369,7 +376,8 @@
    "enHtml": "and after that was a room all <mark>hung with</mark> green, with a harp in one corner; ",
    "jp": "その先には、壁一面が緑色で覆われ、片隅にハープが置かれた部屋があった。",
    "chapter": 1,
-   "gloss": "（壁などが）〜で覆われた"
+   "gloss": "（壁などが）〜で覆われた",
+   "exam": true
   },
   {
    "term": "led out",
@@ -446,7 +454,8 @@
    "enHtml": " She stayed <mark>behind</mark> because she thought it would be <mark>worthwhile</mark> trying the door of the wardrobe, even though she felt almost sure that it would be locked.",
    "jp": "彼女は、戸棚のドアを開けてみる価値はあるだろうと思ったので、そこに残った。鍵がかかっていることはほぼ間違いないと分かってはいたが。",
    "chapter": 1,
-   "gloss": "する価値がある"
+   "gloss": "する価値がある",
+   "exam": true
   },
   {
    "term": "mothballs",
@@ -523,7 +532,8 @@
    "enHtml": "It was almost quite dark in there and she kept her arms <mark>stretched</mark> out in front of her so as not to <mark>bump</mark> her face into the back of the wardrobe.",
    "jp": "中はほとんど真っ暗で、彼女は顔をクローゼットの奥にぶつけないように、両腕を前に伸ばしたまま進んだ。",
    "chapter": 1,
-   "gloss": "ぶつける"
+   "gloss": "ぶつける",
+   "exam": true
   },
   {
    "term": "woodwork",
@@ -572,7 +582,8 @@
    "enHtml": "But <mark>instead</mark> of feeling the hard, smooth wood of the floor of the wardrobe, she felt something soft and <mark>powdery</mark> and <mark>extremely</mark> cold. ",
    "jp": "しかし、クローゼットの床の硬くて滑らかな木肌ではなく、柔らかく粉っぽくて、とても冷たいものが触れた。",
    "chapter": 1,
-   "gloss": "その代わりに"
+   "gloss": "その代わりに",
+   "exam": true
   },
   {
    "term": "powdery",
@@ -593,7 +604,8 @@
    "enHtml": "\"This is very <mark>queer</mark>,\" she said, and went on a step or two further.",
    "jp": "「なんだか変ね」と彼女は言い、さらに一歩、二歩と進んだ。",
    "chapter": 1,
-   "gloss": "奇妙な"
+   "gloss": "奇妙な",
+   "exam": true
   },
   {
    "term": "rubbing",
@@ -649,7 +661,8 @@
    "enHtml": " Lucy felt a little <mark>frightened</mark>, but she felt very <mark>inquisitive</mark> and excited as well.",
    "jp": "ルーシーは少し怖さを感じたが、同時に強い好奇心と興奮も覚えた。",
    "chapter": 1,
-   "gloss": "詮索好きな"
+   "gloss": "詮索好きな",
+   "exam": true
   },
   {
    "term": "trunks",
@@ -670,7 +683,8 @@
    "enHtml": " She looked back <u>over</u> her shoulder and there, between the dark tree-<mark>trunks</mark>, she could still see the open <mark>doorway</mark> of the wardrobe and even catch a <mark><u>glimpse</u></mark> of the empty <u>room</u> from which she had <u>set out</u>. ",
    "jp": "彼女は肩越しに振り返ると、暗い木の幹の間に、まだ開いたままのワードローブの扉が見え、自分が旅立った空っぽの部屋さえちらりと見えた。",
    "chapter": 1,
-   "gloss": "ちらっと見えること"
+   "gloss": "ちらっと見えること",
+   "exam": true
   },
   {
    "term": "silly",
@@ -789,7 +803,8 @@
    "enHtml": "He had a red <mark>woollen</mark> mutfler round his neck, and his skin was <mark>rather</mark> <mark>reddish</mark> too. ",
    "jp": "首には赤いウールのマフラーを巻いており、肌もやや赤みを帯びていた。",
    "chapter": 1,
-   "gloss": "いくぶん、かなり"
+   "gloss": "いくぶん、かなり",
+   "exam": true
   },
   {
    "term": "reddish",
@@ -852,7 +867,8 @@
    "enHtml": "<mark><u>What with</u></mark> the parcels <mark>and</mark> the snow it <mark>looked</mark> just <mark>as</mark> <mark>if</mark> he had been doing his Christmas shopping. ",
    "jp": "包みやら雪やらで、まるでクリスマスの買い物を終えたばかりのように見えた。",
    "chapter": 1,
-   "gloss": "〜やら〜やらで"
+   "gloss": "〜やら〜やらで",
+   "exam": true
   },
   {
    "term": "looked",
@@ -866,14 +882,16 @@
    "enHtml": "And when he saw Lucy, he <mark>gave</mark> such <mark>a</mark> <mark><u>start</u></mark><u> of surprise</u> that he dropped all his parcels.",
    "jp": "そしてルーシーを見たとき、彼は驚きのあまり飛び上がり(ギョッとした)、包みをすべて落としてしまった。",
    "chapter": 1,
-   "gloss": "与えた（giveの過去形）"
+   "gloss": "与えた（giveの過去形）",
+   "exam": true
   },
   {
    "term": "start",
    "enHtml": "And when he saw Lucy, he <mark>gave</mark> such <mark>a</mark> <mark><u>start</u></mark><u> of surprise</u> that he dropped all his parcels.",
    "jp": "そしてルーシーを見たとき、彼は驚きのあまり飛び上がり(ギョッとした)、包みをすべて落としてしまった。",
    "chapter": 1,
-   "gloss": "はっと驚くこと"
+   "gloss": "はっと驚くこと",
+   "exam": true
   },
   {
    "term": "gracious",
@@ -901,7 +919,8 @@
    "enHtml": "When it had finished, it made her a little <mark>bow</mark>.",
    "jp": "作業が終わると、ファウンは彼女に軽くお辞儀をした。",
    "chapter": 2,
-   "gloss": "お辞儀"
+   "gloss": "お辞儀",
+   "exam": true
   },
   {
    "term": "inquisitive",
@@ -1013,7 +1032,8 @@
    "enHtml": "\"I - I got in <mark>through</mark> the wardrobe in the spare room,\" said Lucy.",
    "jp": "「私……私は、客間のワードローブを通って入ってきたの」とルーシーは言った。",
    "chapter": 2,
-   "gloss": "〜を通って"
+   "gloss": "〜を通って",
+   "exam": true
   },
   {
    "term": "melancholy",
@@ -1083,14 +1103,16 @@
    "enHtml": "Daughter of Eve from the far land of Spare Oom where <mark>eternal</mark> summer <mark>reigns</mark> around the bright city of WarDrobe, <mark>how would it be if</mark> you came and had tea with me?\"",
    "jp": "「輝く都ワードローブの周りに永遠の夏が支配する、遥かなるスパー・オームの国から来たイヴの娘よ、私と一緒に紅茶を飲みに来ないか？」",
    "chapter": 2,
-   "gloss": "支配する（三単現）"
+   "gloss": "支配する（三単現）",
+   "exam": true
   },
   {
    "term": "how would it be if",
    "enHtml": "Daughter of Eve from the far land of Spare Oom where <mark>eternal</mark> summer <mark>reigns</mark> around the bright city of WarDrobe, <mark>how would it be if</mark> you came and had tea with me?\"",
    "jp": "「輝く都ワードローブの周りに永遠の夏が支配する、遥かなるスパー・オームの国から来たイヴの娘よ、私と一緒に紅茶を飲みに来ないか？」",
    "chapter": 2,
-   "gloss": "〜したらどうだろう"
+   "gloss": "〜したらどうだろう",
+   "exam": true
   },
   {
    "term": "whether",
@@ -1412,7 +1434,8 @@
    "enHtml": "\"<mark>Now</mark>, Daughter of Eve!\" said the Faun.",
    "jp": "「さあ、イヴの娘よ！」とファウンは言った。",
    "chapter": 2,
-   "gloss": "さあ（呼びかけ）"
+   "gloss": "さあ（呼びかけ）",
+   "exam": true
   },
   {
    "term": "wonderful",
@@ -1503,7 +1526,8 @@
    "enHtml": "about long <mark>hunting</mark> <mark>parties</mark> <mark><u>after</u></mark> the <mark>milk-white</mark> <mark>stag</mark> who could give you <mark>wishes</mark> if you caught him; ",
    "jp": "捕まえることができれば願いを叶えてくれるという乳白色の鹿を追う長い狩りのことについて；",
    "chapter": 2,
-   "gloss": "〜を追って"
+   "gloss": "〜を追って",
+   "exam": true
   },
   {
    "term": "milk-white",
@@ -1622,7 +1646,8 @@
    "enHtml": "and then the streams would <mark>run</mark> <mark>with</mark> wine instead of water and the <mark>whole</mark> forest would <mark>give itself up to</mark> <mark>jollification</mark> for weeks <mark><u>on end</u></mark>.",
    "jp": "そうなると小川は水ではなくワインが流れ、森全体が何週間も祝宴に明け暮れることについても語った。",
    "chapter": 2,
-   "gloss": "お祭り騒ぎ"
+   "gloss": "お祭り騒ぎ",
+   "exam": true
   },
   {
    "term": "on end",
@@ -1692,7 +1717,8 @@
    "enHtml": " It must have been hours later when she <mark>shook</mark> <mark>herself</mark> and said:",
    "jp": "何時間も経った頃だろうか、彼女は我に返ってこう言った。",
    "chapter": 2,
-   "gloss": "我に返った（shake oneselfの過去形）"
+   "gloss": "我に返った（shake oneselfの過去形）",
+   "exam": true
   },
   {
    "term": "herself",
@@ -1811,7 +1837,8 @@
    "enHtml": "\"Mr Tumnus! <mark>Whatever is the matter</mark>?\" <mark><u>for</u></mark> the Faun's brown eyes had <mark>filled with tears</mark> and then the <mark>tears</mark> began <mark>trickling down</mark> its <mark>cheeks</mark>, and soon they were <mark>running off</mark> the end of its nose; ",
    "jp": "「タムナスさん！一体どうしたの？」ファウンの茶色の瞳が涙で潤み、やがて涙が頬を伝い始め、すぐに鼻の先からこぼれ落ちた。",
    "chapter": 2,
-   "gloss": "なぜなら（接続詞、becauseの意味）"
+   "gloss": "なぜなら（接続詞、becauseの意味）",
+   "exam": true
   },
   {
    "term": "filled with tears",
@@ -1937,7 +1964,8 @@
    "enHtml": " He <mark>merely</mark> took the handkerchief and kept on using it, <mark>wringing</mark> it <mark>out</mark> with both hands <mark>whenever</mark> it got too wet to be any more use, so that <mark><u>presently</u></mark> Lucy was standing in a <mark>damp</mark> <mark>patch</mark>.",
    "jp": "ただハンカチを受け取ると、それを使い続け、濡れすぎて使えなくなると両手で絞るのを繰り返したため、まもなくルーシーの足元には水たまりができてしまった。",
    "chapter": 2,
-   "gloss": "まもなく"
+   "gloss": "まもなく",
+   "exam": true
   },
   {
    "term": "damp",
@@ -1979,7 +2007,8 @@
    "enHtml": "\"Do stop. Stop it <mark>at once</mark>! You ought to <mark>be ashamed of yourself,</mark> a great big Faun like you.",
    "jp": "「やめて。今すぐやめて！あなたのような大きなファウンが、そんなことをして恥ずかしくないの？」",
    "chapter": 2,
-   "gloss": "恥を知りなさい"
+   "gloss": "恥を知りなさい",
+   "exam": true
   },
   {
    "term": "on earth",
@@ -2049,7 +2078,8 @@
    "enHtml": "\"<mark>Why</mark>, it is she who has got all Narnia <mark><u>under her thumb</u></mark>. ",
    "jp": "「ああ、ナルニア全土を支配下においているあの女さ。",
    "chapter": 2,
-   "gloss": "完全に支配して"
+   "gloss": "完全に支配して",
+   "exam": true
   },
   {
    "term": "think of that",
@@ -2133,7 +2163,8 @@
    "enHtml": "Would you believe that I'm the sort of Faun to meet a <mark>poor innocent</mark> child in the wood, one that had never <mark>done me any harm</mark>, and <mark>pretend to be</mark> <mark>friendly with</mark><u> it,</u> and <mark>invite</mark><u> it </u>home <mark>to</mark> my cave, <mark><u>all for the sake of</u></mark> <mark>lulling</mark><mark><u> it </u></mark><mark>asleep</mark> and then <mark>handing it over to</mark> the White Witch?\"",
    "jp": "俺が、森で出会った無邪気な子供――俺に何の害も与えたことのない子供――に親しげに近づき、洞窟へ誘い込み、油断させて眠らせてから白の魔女に引き渡すようなファウンだなんて、信じられるか？」",
    "chapter": 2,
-   "gloss": "すべて〜のために"
+   "gloss": "すべて〜のために",
+   "exam": true
   },
   {
    "term": "lulling",
@@ -2224,7 +2255,8 @@
    "enHtml": "\"I <mark>had orders from</mark> the White Witch that <mark>if ever</mark> I saw a Son of Adam or a Daughter of Eve in the wood, I <mark><u>was to</u></mark> catch them and hand them over to her.",
    "jp": "「白の魔女から命令を受けていたんだ。もし森の中でアダムの息子やイブの娘を見かけたら、捕まえて彼女に引き渡せと。",
    "chapter": 2,
-   "gloss": "〜から命令を受けていた"
+   "gloss": "〜から命令を受けていた",
+   "exam": true
   },
   {
    "term": "if ever",
@@ -2322,7 +2354,8 @@
    "enHtml": "and she'll <mark>wave her wand over</mark> my beautiful <mark>cloven hoofs</mark> and <mark>turn them into horrid</mark> <mark>solid hoofs</mark> like a <mark>wretched</mark> horse's. ",
    "jp": "そして、私の美しい二股の蹄の上に杖を振りかざし、それをみじめな馬みたいな、一つづきの醜い蹄に変えてしまう。",
    "chapter": 2,
-   "gloss": "みじめな"
+   "gloss": "みじめな",
+   "exam": true
   },
   {
    "term": "extra",
@@ -2364,7 +2397,8 @@
    "enHtml": "and I <mark>shall be only</mark> a <mark>statue</mark> of a Faun in her <mark>horrible</mark> house until the four <mark>thrones</mark> at Cair Paravel <mark>are filled</mark> –",
    "jp": "そうしたら、私は彼女の恐ろしい屋敷で、ただの一頭のファウンの像になってしまう。カイア・パラヴェルの四つの玉座が埋まるまで――",
    "chapter": 2,
-   "gloss": "王座"
+   "gloss": "王座",
+   "exam": true
   },
   {
    "term": "are filled",
@@ -2630,7 +2664,8 @@
    "enHtml": "\"And I <mark>do hope</mark> you won't <mark>get into</mark> <mark>dreadful</mark> <mark>trouble</mark> <mark><u>on my account</u></mark>.\"",
    "jp": "「それに、私のせいであなたが大変な目に遭わないことを願ってるわ」",
    "chapter": 2,
-   "gloss": "私のせいで"
+   "gloss": "私のせいで",
+   "exam": true
   },
   {
    "term": "Farewell",
@@ -2910,7 +2945,8 @@
    "enHtml": "She <mark>rushed ahead of</mark> them, <mark><u>flung</u></mark><mark> open</mark> the door of the wardrobe and cried, ",
    "jp": "彼女はみんなより先に駆け寄り、ワードローブの扉を勢いよく開けて叫んだ。",
    "chapter": 3,
-   "gloss": "勢いよく開けた（flingの過去形）"
+   "gloss": "勢いよく開けた（flingの過去形）",
+   "exam": true
   },
   {
    "term": "open",
@@ -2994,7 +3030,8 @@
    "enHtml": "Peter went in and <mark>rapped</mark> his <mark><u>knuckles</u></mark> on it to make sure that it was <mark>solid</mark>.",
    "jp": "ピーターは中に入って、その裏板が本物か確かめるために指の関節でコンコンと叩いてみた。",
    "chapter": 3,
-   "gloss": "指の関節"
+   "gloss": "指の関節",
+   "exam": true
   },
   {
    "term": "solid",
@@ -3015,7 +3052,8 @@
    "enHtml": "\"you have really <mark><u>taken us in</u></mark>, I must <mark><u>admit</u></mark>. ",
    "jp": "「正直言って、君にはすっかり騙されたよ。",
    "chapter": 3,
-   "gloss": "私たちをだました（take inの現在完了）"
+   "gloss": "私たちをだました（take inの現在完了）",
+   "exam": true
   },
   {
    "term": "admit",
@@ -3064,14 +3102,16 @@
    "enHtml": "Lucy grew very red in the face and tried to say something, though she hardly knew what she was trying to say, and <mark>burst into tears</mark>.",
    "jp": "ルーシーは顔を真っ赤にして、何か言おうとしたが、何を言おうとしているのか自分でもよくわからず、ついには泣き出してしまった。",
    "chapter": 3,
-   "gloss": "泣き出した"
+   "gloss": "泣き出した",
+   "exam": true
   },
   {
    "term": "made it up with",
    "enHtml": "She could have <mark>made it up with</mark> the others quite easily <mark>at any moment</mark> if she <mark>could have</mark> <mark>brought herself to</mark> say that the whole thing was only a story made up for fun. ",
    "jp": "もし「あれはただの冗談で考えた話だった」と口にできれば、いつでも簡単にみんなと仲直りできたはずだった。",
    "chapter": 3,
-   "gloss": "〜と仲直りできた"
+   "gloss": "〜と仲直りできた",
+   "exam": true
   },
   {
    "term": "at any moment",
@@ -3106,7 +3146,8 @@
    "enHtml": "The two elder ones did this without meaning to do it, but Edmund could be <mark>spiteful</mark>, and on this <mark>occasion</mark> he was spiteful. ",
    "jp": "年上の二人の子供たちは、悪気なくそうしていたのだが、エドマンドは意地悪なところがあり、この時はまさに意地悪だった。",
    "chapter": 3,
-   "gloss": "意地悪な"
+   "gloss": "意地悪な",
+   "exam": true
   },
   {
    "term": "occasion",
@@ -3169,7 +3210,8 @@
    "enHtml": "\"the door must have swung open <mark>of its own accord</mark>.\"",
    "jp": "「ドアは勝手に開いてしまったに違いない。」",
    "chapter": 3,
-   "gloss": "ひとりでに"
+   "gloss": "ひとりでに",
+   "exam": true
   },
   {
    "term": "robin",
@@ -3204,14 +3246,16 @@
    "enHtml": "\"Stop!\" said the Lady, and the dwart <mark><u>pulled</u></mark> the reindeer <mark><u>up</u></mark> so sharply that they almost sat down.",
    "jp": "「止まれ！」と貴婦人が言うと、小人はトナカイを急激に引き止めたため、トナカイたちはほとんど座り込んでしまいそうになった。",
    "chapter": 3,
-   "gloss": "引いた"
+   "gloss": "引いた",
+   "exam": true
   },
   {
    "term": "recovered themselves",
    "enHtml": "Then they <mark><u>recovered themselves</u></mark> and stood champing their bits and blowing. ",
    "jp": "やがてトナカイたちは体勢を立て直し、口銜を噛みしめながら息を荒くして立ち尽くした。",
    "chapter": 3,
-   "gloss": "落ち着きを取り戻した"
+   "gloss": "落ち着きを取り戻した",
+   "exam": true
   },
   {
    "term": "pray",
@@ -3225,7 +3269,8 @@
    "enHtml": "\"Is that how you <mark><u>address</u></mark> a queen?\" she asked, looking sterner than ever.",
    "jp": "「それが女王への挨拶の仕方か？」と、彼女はこれまで以上に厳しい表情で尋ねた。",
    "chapter": 3,
-   "gloss": "話しかけ方"
+   "gloss": "話しかけ方",
+   "exam": true
   },
   {
    "term": "overgrown",
@@ -3302,7 +3347,8 @@
    "enHtml": "\"Answer me, <mark>once and for all</mark>, or I shall <mark>lose my patience</mark>. Are you human?\"",
    "jp": "「はっきり答えて。さもないと、私の忍耐も尽きてしまうわ。あなたは人間なのか？」",
    "chapter": 4,
-   "gloss": "我慢の限界だ"
+   "gloss": "我慢の限界だ",
+   "exam": true
   },
   {
    "term": "pray",
@@ -3323,7 +3369,8 @@
    "enHtml": "\"And how, <mark>pray</mark>, did you come to <mark>enter</mark> my <mark><u>dominions</u></mark>?\"",
    "jp": "「では、一体どうやって私の領土に入ってきたの？」",
    "chapter": 4,
-   "gloss": "領地"
+   "gloss": "領地",
+   "exam": true
   },
   {
    "term": "found myself",
@@ -3337,7 +3384,8 @@
    "enHtml": "<u>This </u>may <mark>wreck</mark> all. But he is only one, and he is easily <mark><u>dealt with</u></mark>.\" ",
    "jp": "これで全てが台無しになるかもしれない。だが、彼はたった一人だし、簡単に始末がつくわ」",
    "chapter": 4,
-   "gloss": "台無しにする"
+   "gloss": "台無しにする",
+   "exam": true
   },
   {
    "term": "dealt with",
@@ -3358,7 +3406,8 @@
    "enHtml": "As she spoke these words she <mark>rose</mark> from her seat and <mark><u>looked Edmund full in the face</u></mark>,<u> </u><mark><u>her eyes flaming;</u></mark>",
    "jp": "そう言いながら、女王は席から立ち上がり、燃えるような眼差しでエドマンドの顔をまっすぐに見つめた。",
    "chapter": 4,
-   "gloss": "エドマンドの顔を真正面から見つめた"
+   "gloss": "エドマンドの顔を真正面から見つめた",
+   "exam": true
   },
   {
    "term": "her eyes flaming",
@@ -3449,7 +3498,8 @@
    "enHtml": "Edmund did not like this <mark><u>arrangement</u></mark> at all but he <mark><u>dared not disobey</u></mark>; ",
    "jp": "エドマンドはこの提案が全く気に入らなかったが、逆らう勇気はなかった。",
    "chapter": 4,
-   "gloss": "あえて逆らわなかった"
+   "gloss": "あえて逆らわなかった",
+   "exam": true
   },
   {
    "term": "stepped onto",
@@ -3554,7 +3604,8 @@
    "enHtml": "Edmund felt much better as he began to <mark>sip</mark> the hot drink. ",
    "jp": "エドマンドは、その温かい飲み物をすすり始めると、気分がずいぶん良くなった。",
    "chapter": 4,
-   "gloss": "一口飲む"
+   "gloss": "一口飲む",
+   "exam": true
   },
   {
    "term": "foamy",
@@ -3610,7 +3661,8 @@
    "enHtml": "which, when opened, <mark>turned out to</mark> contain <mark>several pounds of</mark> the best Turkish Delight. ",
    "jp": "それを開けてみると、最高級のターキッシュ・デライトが数ポンドも入っていた。",
    "chapter": 4,
-   "gloss": "〜だとわかった"
+   "gloss": "〜だとわかった",
+   "exam": true
   },
   {
    "term": "several pounds of",
@@ -3638,7 +3690,8 @@
    "enHtml": "At first Edmund tried to remember that it is <mark>rude</mark> to speak <mark>with one's mouth full</mark>, but soon he forgot about <u>this</u> and thought only of trying to <mark>shovel down</mark> as much Turkish Delight as he could, ",
    "jp": "最初は、口いっぱいに頬張ったまま話すのは失礼だとエドマンドは思い出そうとしたが、すぐにそのことを忘れてしまい、ただできるだけ多くのターキッシュ・デライトを口に詰め込むことだけを考えるようになった。",
    "chapter": 4,
-   "gloss": "失礼な"
+   "gloss": "失礼な",
+   "exam": true
   },
   {
    "term": "with one's mouth full",
@@ -4136,6 +4189,94 @@
    "jp": "その頃には、彼らはかなりの距離を歩いてきていた。",
    "chapter": 4,
    "gloss": "良い（人たち）"
+  },
+  {
+   "term": "rows",
+   "gloss": "列（並んだもの）",
+   "chapter": 1,
+   "enHtml": "the thought of all those long passages and <mark>rows</mark> of doors leading into empty rooms was beginning to make her feel a little creepy.",
+   "jp": "長い廊下や、空っぽの部屋へと続くドアの列を思うと、少し不気味な気分になり始めていた。",
+   "exam": true
+  },
+  {
+   "term": "row",
+   "gloss": "騒動、口論（インフォーマル）",
+   "chapter": 1,
+   "enHtml": "\"There's sure to be a <mark>row</mark> if we're heard talking here.\"",
+   "jp": "「ここで話しているのが聞こえたら、きっと怒られるわ」",
+   "exam": true
+  },
+  {
+   "term": "set out",
+   "gloss": "出発する",
+   "chapter": 1,
+   "enHtml": "she could still see the open doorway of the wardrobe and even catch a glimpse of the empty room from which she had <mark>set out</mark>.",
+   "jp": "まだ開いたままのワードローブの扉が見え、自分が旅立った空っぽの部屋さえちらりと見えた。",
+   "exam": true
+  },
+  {
+   "term": "room",
+   "gloss": "スペース、余地（無冠詞で）",
+   "chapter": 1,
+   "enHtml": "going still further in and pushing the soft folds of the coats aside to make <mark>room</mark> for her.",
+   "jp": "さらに奥へと進み、自分の通るスペースを作るためにコートの柔らかなかさなりを脇へ押しやった。",
+   "exam": true
+  },
+  {
+   "term": "aside",
+   "gloss": "脇へ（set asideで「取っておく」）",
+   "chapter": 1,
+   "enHtml": "going still further in and pushing the soft folds of the coats <mark>aside</mark> to make room for her.",
+   "jp": "さらに奥へと進み、自分の通るスペースを作るためにコートの柔らかなかさなりを脇へ押しやった。",
+   "exam": true
+  },
+  {
+   "term": "intended",
+   "gloss": "意図した",
+   "chapter": 2,
+   "enHtml": "and then it stopped as if it had been going to say something it had not <mark>intended</mark> but had remembered in time.",
+   "jp": "まるで言おうとしていたこととは別のことを口にしようとしたが、間一髪で思い出したかのように、彼は言葉を止めた。",
+   "exam": true
+  },
+  {
+   "term": "respects",
+   "gloss": "点（in other respectsで「他の点では」）",
+   "chapter": 3,
+   "enHtml": "It was a beautiful face in other <mark>respects</mark>, but proud and cold and stern.",
+   "jp": "他の点では美しい顔だったが、高慢で冷たく、厳格な表情を浮かべていた。",
+   "exam": true
+  },
+  {
+   "term": "stern",
+   "gloss": "厳格な、厳しい",
+   "chapter": 3,
+   "enHtml": "It was a beautiful face in other respects, but proud and cold and <mark>stern</mark>.",
+   "jp": "他の点では美しい顔だったが、高慢で冷たく、厳格な表情を浮かべていた。",
+   "exam": true
+  },
+  {
+   "term": "looking out",
+   "gloss": "面している、外を見ている",
+   "chapter": 1,
+   "enHtml": "a long, low room with two windows <mark>looking out</mark> in one direction and two in another.",
+   "jp": "そこは細長い低めの部屋で、一方向には窓が二つ、もう一方向にも窓が二つあった。",
+   "exam": true
+  },
+  {
+   "term": "mustache",
+   "gloss": "口ひげ",
+   "chapter": 1,
+   "enHtml": "He had a small <mark>mustache</mark> under his nose.",
+   "jp": "彼は鼻の下に小さな口ひげを生やしていた。",
+   "exam": true
+  },
+  {
+   "term": "whisker",
+   "gloss": "頬ひげ",
+   "chapter": 1,
+   "enHtml": "The old man had thick <mark>whiskers</mark> on his cheeks.",
+   "jp": "その老人は頬に濃い頬ひげを生やしていた。",
+   "exam": true
   }
  ],
  "underline": [
