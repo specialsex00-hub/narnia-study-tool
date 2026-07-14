@@ -527,39 +527,65 @@ function buildMatchGame(){
   }, 1000);
 }
 
+// Builds the match-game DOM exactly once per game (new game / mode switch /
+// filter change / restart). Taps afterwards only toggle classes on the
+// existing tile elements via syncMatchTiles() -- rebuilding the whole
+// innerHTML on every tap was recreating the outer .card wrapper each time,
+// which replays its mount animation (fadeInUp) and reads as a "bounce" on
+// every interaction.
 function renderVocabMatch(){
   const area = document.getElementById('vocabArea');
   if(matchCards.length===0){
     area.innerHTML = `<div class="card empty">この条件では6語未満しかないため、マッチゲームを作成できません。章の範囲を広げてみてください。</div>`;
     return;
   }
-  const allCleared = matchCards.every(c=>c.cleared);
   area.innerHTML = `
     <div class="card">
       <div class="matchTop">
         <span>ペアになる「英語」と「意味」のタイルを2枚タップして選んでください</span>
-        <span>手数: ${matchMoves}　経過時間: <span id="matchTimer">0秒</span></span>
+        <span>手数: <span id="matchMovesLabel">0</span>　経過時間: <span id="matchTimer">0秒</span></span>
       </div>
-      ${allCleared ? `<div class="empty" id="matchDone">🎉 全ペア達成！ お見事です。<div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div></div>` : ''}
+      <div class="empty" id="matchDone" style="display:none"></div>
       <div class="matchGrid" id="matchGrid"></div>
     </div>
   `;
   const grid = document.getElementById('matchGrid');
   matchCards.forEach(c=>{
     const tile = document.createElement('div');
-    tile.className = 'matchTile'
-      + (matchSelected.includes(c.uid) ? ' selected' : '')
-      + (matchWrongIds.includes(c.uid) ? ' wrong' : '')
-      + (c.clearing ? ' clearing' : '')
-      + (c.cleared ? ' cleared' : '');
+    tile.className = 'matchTile';
     tile.dataset.uid = c.uid;
     tile.textContent = c.text;
-    if(!c.cleared) tile.onclick = ()=> onMatchTileClick(c.uid);
+    tile.onclick = ()=> onMatchTileClick(c.uid);
     grid.appendChild(tile);
   });
+  syncMatchTiles();
+}
+
+function syncMatchTiles(){
+  const movesEl = document.getElementById('matchMovesLabel');
+  if(movesEl) movesEl.textContent = matchMoves;
+  matchCards.forEach(c=>{
+    const tile = document.querySelector(`.matchTile[data-uid="${c.uid}"]`);
+    if(!tile) return;
+    tile.classList.toggle('selected', matchSelected.includes(c.uid));
+    tile.classList.toggle('wrong', matchWrongIds.includes(c.uid));
+    tile.classList.toggle('clearing', !!c.clearing);
+    tile.classList.toggle('cleared', !!c.cleared);
+  });
+  const allCleared = matchCards.every(c=>c.cleared);
+  const doneEl = document.getElementById('matchDone');
+  if(!doneEl) return;
   if(allCleared){
-    fireConfetti(document.getElementById('matchDone'));
-    document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); renderVocabMatch(); };
+    if(doneEl.dataset.shown !== '1'){
+      doneEl.dataset.shown = '1';
+      doneEl.style.display = '';
+      doneEl.innerHTML = `🎉 全ペア達成！ お見事です。<div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div>`;
+      fireConfetti(doneEl);
+      document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); renderVocabMatch(); };
+    }
+  } else {
+    doneEl.dataset.shown = '0';
+    doneEl.style.display = 'none';
   }
 }
 
@@ -569,12 +595,12 @@ function onMatchTileClick(uid){
   if(!card || card.cleared) return;
   if(matchSelected.includes(uid)){
     matchSelected = matchSelected.filter(id=>id!==uid);
-    renderVocabMatch();
+    syncMatchTiles();
     return;
   }
   if(matchSelected.length>=2) return;
   matchSelected.push(uid);
-  renderVocabMatch();
+  syncMatchTiles();
   if(matchSelected.length===2){
     matchLocked = true;
     matchMoves++;
@@ -583,22 +609,22 @@ function onMatchTileClick(uid){
     if(isMatch){
       setTimeout(()=>{
         a.clearing = true; b.clearing = true;
-        renderVocabMatch();
+        syncMatchTiles();
         setTimeout(()=>{
           a.cleared = true; b.cleared = true;
           matchSelected = [];
           matchLocked = false;
-          renderVocabMatch();
+          syncMatchTiles();
         }, 500);
       }, 220);
     } else {
       matchWrongIds = [a.uid, b.uid];
-      renderVocabMatch();
+      syncMatchTiles();
       setTimeout(()=>{
         matchWrongIds = [];
         matchSelected = [];
         matchLocked = false;
-        renderVocabMatch();
+        syncMatchTiles();
       }, 550);
     }
   }
