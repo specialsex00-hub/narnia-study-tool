@@ -140,6 +140,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .matchTile.selected{background:var(--accent); color:#fff; border-color:var(--accent); transform:scale(1.05);}
   .matchTile.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad); animation:shakeX 0.4s;}
   .matchTile.clearing{opacity:0; transform:scale(0.4); pointer-events:none;}
+  .matchTile.cleared{opacity:0; pointer-events:none; cursor:default; border-color:transparent; background:transparent;}
   .confetti{position:relative; height:50px; width:220px; margin:0 auto 6px;}
   .confetti span{position:absolute; top:-6px; width:8px; height:8px; border-radius:2px; animation:confettiFall 1.1s ease-in forwards;}
   /* summary tab */
@@ -580,15 +581,15 @@ function renderVocabMatch(){
   `;
   const grid = document.getElementById('matchGrid');
   matchCards.forEach(c=>{
-    if(c.cleared) return;
     const tile = document.createElement('div');
     tile.className = 'matchTile'
       + (matchSelected.includes(c.uid) ? ' selected' : '')
       + (matchWrongIds.includes(c.uid) ? ' wrong' : '')
-      + (c.clearing ? ' clearing' : '');
+      + (c.clearing ? ' clearing' : '')
+      + (c.cleared ? ' cleared' : '');
     tile.dataset.uid = c.uid;
     tile.textContent = c.text;
-    tile.onclick = ()=> onMatchTileClick(c.uid);
+    if(!c.cleared) tile.onclick = ()=> onMatchTileClick(c.uid);
     grid.appendChild(tile);
   });
   if(allCleared){
