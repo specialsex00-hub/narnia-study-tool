@@ -1,81 +1,476 @@
 [
-{"en": "They went to London because of ___.", "answer": "the air-raids"},
-{"en": "There was a ___ rain falling.", "answer": "steady"},
-{"en": "A room has two windows ___ in one direction.", "answer": "looking out"},
-{"en": "The mother ___ her children do anything they like.", "answer": "lets"},
-{"en": "He ___ be unavailable when we want him!", "answer": "would"},
-{"en": "He pretended that he was ___ his nose.", "answer": "blowing"},
-{"en": "The room was set ___ for them.", "answer": "aside"},
-{"en": "We are pretty ___ off here.", "answer": "well"},
-{"en": "There are ___ of doors.", "answer": "rows"},
-{"en": "There's sure to be a ___ if we're heard talking here.", "answer": "row"},
-{"en": "She stretched her arms in front of her so as not to ___ her face into it.", "answer": "bump"},
-{"en": "She thought it was very ___.", "answer": "queer"},
-{"en": "She felt very ___.", "answer": "inquisitive"},
-{"en": "She could see the room from which she had ___.", "answer": "set out"},
-{"en": "It would be ___ while trying the door of the wardrobe.", "answer": "worth"},
-{"en": "He remembered it ___ time.", "answer": "in"},
-{"en": "She pushed the coats aside to make ___ for her.", "answer": "room"},
-{"en": "She could catch a ___ of the empty room.", "answer": "glimpse"},
-{"en": "She looked back ___ her shoulder.", "answer": "over"},
-{"en": "The room was empty except ___ one big wardrobe.", "answer": "for"},
-{"en": "When it had finished it made a little ___.", "answer": "bow"},
-{"en": "He gave such ___ of surprise.", "answer": "a start"},
-{"en": "It is a land where eternal sunshine ___.", "answer": "reigns"},
-{"en": "He was going to say something it had not ___.", "answer": "intended"},
-{"en": "___ with the parcels and the snow, it looked as if he was doing Christmas shopping.", "answer": "What"},
-{"en": "He caught up his tail to keep it ___ trailing.", "answer": "from"},
-{"en": "The ground became ___.", "answer": "rough"},
-{"en": "Lucy ___ and said.", "answer": "shook herself"},
-{"en": "They gave themselves up to ___.", "answer": "jollification"},
-{"en": "Mr. Tumnus began to ___.", "answer": "howl"},
-{"en": "I only ___ to stay for thirty minutes.", "answer": "meant"},
-{"en": "They keep dancing for weeks ___ end.", "answer": "on"},
-{"en": "He talked about the hunting parties ___ the milk-white stag.", "answer": "after"},
-{"en": "The streams run with wine ___ of water.", "answer": "instead"},
-{"en": "It kept crying, so ___ Lucy was standing in a damp patch.", "answer": "presently"},
-{"en": "I shall be a statue of a Faun until the four ___ at Cair Paravel are filled.", "answer": "thrones"},
-{"en": "___ that you are an adult, you can drink alcohol.", "answer": "Now"},
-{"en": "She keeps her husband under her ___.", "answer": "thumb"},
-{"en": "You ought to be ___ of yourself, someone of your age.", "answer": "ashamed"},
-{"en": "'Mr. Tumnus!' said Lucy ___ great distress.", "answer": "in"},
-{"en": "I pretended to be friendly with you all ___ the sake of lulling you asleep.", "answer": "for"},
-{"en": "I pretended to be friendly with you all for the ___ of lulling you asleep.", "answer": "sake"},
-{"en": "I am in the ___ of the Witch.", "answer": "pay"},
-{"en": "I have taken service ___ the Witch.", "answer": "with"},
-{"en": "She ___ of the wardrobe.", "answer": "flung open the door"},
-{"en": "'Perhaps I may keep the handkerchief?' '___!'", "answer": "Rather"},
-{"en": "He rapped his ___ on the wall.", "answer": "knuckles"},
-{"en": "The others all stared ___ one another.", "answer": "at"},
-{"en": "Lucy could see ___ the distance a patch of light.", "answer": "in"},
-{"en": "He was panting ___ his turn.", "answer": "for"},
-{"en": "I hope you won't get into dreadful trouble ___ my account.", "answer": "on"},
-{"en": "I hope you won't get into dreadful trouble on my ___.", "answer": "account"},
-{"en": "She's just making ___ a story for fun.", "answer": "up"},
-{"en": "She's just making up a story ___ fun.", "answer": "for"},
-{"en": "The door must have swung open ___.", "answer": "of its own accord"},
-{"en": "You have really ___. I must admit.", "answer": "taken us in"},
-{"en": "Is that how you ___ a Queen?", "answer": "address"},
-{"en": "The others will start talking again about the whole ___.", "answer": "wretched business"},
-{"en": "She hardly knew what she was trying to say, and ___ into tears.", "answer": "burst"},
-{"en": "She could have ___ it up with the others quite easily.", "answer": "made"},
-{"en": "There was nothing for it ___ to jump into the wardrobe.", "answer": "but"},
-{"en": "Their branching horns shone like something ___ fire.", "answer": "on"},
-{"en": "Her imaginary country has turned ___ not to have been imaginary.", "answer": "out"},
-{"en": "The dwarf ___ the reindeer up so sharp that they almost sat down.", "answer": "pulled"},
-{"en": "It was a beautiful face in other ___.", "answer": "respects"},
-{"en": "He began feeling about ___ Lucy in the dark.", "answer": "for"},
-{"en": "Edmund was ___.", "answer": "spiteful"},
-{"en": "She was proud and cold and ___.", "answer": "stern"},
-{"en": "They ___ and stood champing their bits.", "answer": "recovered themselves"},
-{"en": "Then, just as ___, she appeared to change her mind.", "answer": "he gave himself up for lost"},
-{"en": "He didn't ask himself why the Queen was so ___.", "answer": "inquisitive"},
-{"en": "He looked Edmund ___.", "answer": "full in the face"},
-{"en": "The door from the world of men may ___ all.", "answer": "wreck"},
-{"en": "How did you come to enter my ___?", "answer": "dominions"},
-{"en": "The box ___ to contain several pounds of the best Turkish Delight.", "answer": "turned out"},
-{"en": "He did not like this arrangement but he ___ not disobey.", "answer": "dared"},
-{"en": "Answer me, once and for all, or I shall lose my ___.", "answer": "patience"},
-{"en": "It is ___ to speak with one's mouth full.", "answer": "rude"},
-{"en": "He began to ___ the hot drink.", "answer": "sip"}
+ {
+  "en": "They went to London because of ___.",
+  "answer": "the air-raids",
+  "jp": "彼らは空襲のためにロンドンへ行った。",
+  "explain": "air-raid(s)は「空襲」という意味。"
+ },
+ {
+  "en": "There was a ___ rain falling.",
+  "answer": "steady",
+  "jp": "絶え間ない雨が降っていた。",
+  "explain": "steadyは「絶え間ない、一定の」という意味の形容詞。"
+ },
+ {
+  "en": "A room has two windows ___ in one direction.",
+  "answer": "looking out",
+  "jp": "ある部屋には、一方向に面した窓が二つある。",
+  "explain": "look out（外を向く、面する）の現在分詞形。"
+ },
+ {
+  "en": "The mother ___ her children do anything they like.",
+  "answer": "lets",
+  "jp": "その母親は、子供たちに好きなことを何でもさせている。",
+  "explain": "let+目的語+動詞原形で「〜させる（許可・放任）」。三単現のsが付いてlets。"
+ },
+ {
+  "en": "He ___ be unavailable when we want him!",
+  "answer": "would",
+  "jp": "彼は私たちが必要な時に限って、決まって都合が悪いんだ！",
+  "explain": "wouldは「よく〜したものだ、きまって〜する」という習慣的な行動へのいらだちを表す用法。"
+ },
+ {
+  "en": "He pretended that he was ___ his nose.",
+  "answer": "blowing",
+  "jp": "彼は鼻をかんでいるふりをした。",
+  "explain": "blow one's noseで「鼻をかむ」。ここは進行形blowingの形。"
+ },
+ {
+  "en": "The room was set ___ for them.",
+  "answer": "aside",
+  "jp": "その部屋は彼らのために取っておかれていた。",
+  "explain": "set asideで「（特別な目的のために）取っておく」。"
+ },
+ {
+  "en": "We are pretty ___ off here.",
+  "answer": "well",
+  "jp": "私たちはここでかなり恵まれた暮らしをしている。",
+  "explain": "well offで「暮らし向きがよい、裕福な」。prettyは「かなり」という副詞。"
+ },
+ {
+  "en": "There are ___ of doors.",
+  "answer": "rows",
+  "jp": "ドアが何列も並んでいる。",
+  "explain": "a row of 〜で「一列の〜」。rowsと複数形にして「いくつもの列」を表す。"
+ },
+ {
+  "en": "There's sure to be a ___ if we're heard talking here.",
+  "answer": "row",
+  "jp": "ここで話しているのが聞こえたら、きっと騒ぎになるだろう。",
+  "explain": "rowはここでは「（インフォーマルな）騒動、口論」という意味の名詞。「列」を表すrowと同じ綴りの別の語。"
+ },
+ {
+  "en": "She stretched her arms in front of her so as not to ___ her face into it.",
+  "answer": "bump",
+  "jp": "彼女は顔をそれにぶつけないように、両腕を前に伸ばした。",
+  "explain": "bump A into Bで「AをBにぶつける」。so as not to doで「〜しないように」。"
+ },
+ {
+  "en": "She thought it was very ___.",
+  "answer": "queer",
+  "jp": "彼女はそれをとても奇妙だと思った。",
+  "explain": "queerは「奇妙な、風変わりな」という意味の形容詞。"
+ },
+ {
+  "en": "She felt very ___.",
+  "answer": "inquisitive",
+  "jp": "彼女はとても好奇心が強くなった。",
+  "explain": "inquisitiveは「詮索好きな、好奇心が強い」という意味の形容詞。"
+ },
+ {
+  "en": "She could see the room from which she had ___.",
+  "answer": "set out",
+  "jp": "彼女は自分が出発した部屋を見ることができた。",
+  "explain": "set outで「出発する」。関係代名詞whichの前に前置詞fromが来る形。"
+ },
+ {
+  "en": "It would be ___ while trying the door of the wardrobe.",
+  "answer": "worth",
+  "jp": "ワードローブの扉を試してみる価値があるだろう。",
+  "explain": "be worth whileで「〜する価値がある」（worthwhileと一語で綴られることも多い）。"
+ },
+ {
+  "en": "He remembered it ___ time.",
+  "answer": "in",
+  "jp": "彼はぎりぎり間に合ってそれを思い出した。",
+  "explain": "in timeで「間に合って、ちょうどよい時に」という成句。"
+ },
+ {
+  "en": "She pushed the coats aside to make ___ for her.",
+  "answer": "room",
+  "jp": "彼女は自分のためのスペースを作ろうと、コートを脇へ押しやった。",
+  "explain": "make room for 〜で「〜のためのスペースを作る」。roomは「部屋」ではなく「余地・スペース」という意味の不可算名詞。"
+ },
+ {
+  "en": "She could catch a ___ of the empty room.",
+  "answer": "glimpse",
+  "jp": "彼女はその空っぽの部屋をちらりと見ることができた。",
+  "explain": "catch a glimpse of 〜で「〜をちらっと見る」という成句。"
+ },
+ {
+  "en": "She looked back ___ her shoulder.",
+  "answer": "over",
+  "jp": "彼女は肩越しに振り返った。",
+  "explain": "look back over one's shoulderで「肩越しに振り返る」。"
+ },
+ {
+  "en": "The room was empty except ___ one big wardrobe.",
+  "answer": "for",
+  "jp": "その部屋は大きなワードローブが一つあるほかは空っぽだった。",
+  "explain": "except for 〜で「〜を除いて」。"
+ },
+ {
+  "en": "When it had finished it made a little ___.",
+  "answer": "bow",
+  "jp": "それは終えると、小さくお辞儀をした。",
+  "explain": "make a bowで「お辞儀をする」。"
+ },
+ {
+  "en": "He gave such ___ of surprise.",
+  "answer": "a start",
+  "jp": "彼は驚きのあまり、びくっと飛び上がった。",
+  "explain": "give a start of surpriseで「驚いてびくっとする」。such a + 名詞は強調の語順。"
+ },
+ {
+  "en": "It is a land where eternal sunshine ___.",
+  "answer": "reigns",
+  "jp": "そこは永遠の陽光が支配する国だ。",
+  "explain": "reignは「（王が）統治する」が原義で、比喩的に「（状態などが）行き渡る、支配する」という意味でも使われる。三単現のsが付く。"
+ },
+ {
+  "en": "He was going to say something it had not ___.",
+  "answer": "intended",
+  "jp": "彼は、意図していなかった何かを言おうとしていた。",
+  "explain": "intendは「意図する」。ここは過去完了had not intendedの形。"
+ },
+ {
+  "en": "___ with the parcels and the snow, it looked as if he was doing Christmas shopping.",
+  "answer": "What",
+  "jp": "包みやら雪やらで、まるでクリスマスの買い物をしているように見えた。",
+  "explain": "what with A and Bで「AやらBやらで（理由の列挙）」という決まり文句。文頭のWhatは大文字。"
+ },
+ {
+  "en": "He caught up his tail to keep it ___ trailing.",
+  "answer": "from",
+  "jp": "彼は尻尾を引きずらないように、まくり上げていた。",
+  "explain": "keep A from doingで「Aが〜しないようにする」。"
+ },
+ {
+  "en": "The ground became ___.",
+  "answer": "rough",
+  "jp": "地面はでこぼこになった。",
+  "explain": "roughは「でこぼこした、荒れた」という意味の形容詞。"
+ },
+ {
+  "en": "Lucy ___ and said.",
+  "answer": "shook herself",
+  "jp": "ルーシーは我に返って言った。",
+  "explain": "shake oneselfで「（ぼんやりした状態から）はっと我に返る」。"
+ },
+ {
+  "en": "They gave themselves up to ___.",
+  "answer": "jollification",
+  "jp": "彼らはお祭り騒ぎに身を任せた。",
+  "explain": "give oneself up to 〜で「〜に身を委ねる、ふける」。jollificationは「お祭り騒ぎ」。"
+ },
+ {
+  "en": "Mr. Tumnus began to ___.",
+  "answer": "howl",
+  "jp": "タムナス氏は大声で泣き始めた。",
+  "explain": "howlは「（動物が）遠吠えする」の他に「（人が）大声で泣き叫ぶ」という意味もある。"
+ },
+ {
+  "en": "I only ___ to stay for thirty minutes.",
+  "answer": "meant",
+  "jp": "私はほんの30分だけ滞在するつもりだった。",
+  "explain": "mean to doで「〜するつもりである」。過去形meant。"
+ },
+ {
+  "en": "They keep dancing for weeks ___ end.",
+  "answer": "on",
+  "jp": "彼らは何週間も休みなく踊り続ける。",
+  "explain": "for weeks on endで「何週間もぶっ続けで」。on endは「連続して」という意味の成句。"
+ },
+ {
+  "en": "He talked about the hunting parties ___ the milk-white stag.",
+  "answer": "after",
+  "jp": "彼は乳白色の雄鹿を追う狩りの一団について話した。",
+  "explain": "(hunting party) after 〜で「〜を追う（狩りの）一団」。afterは「〜を追って」という意味の前置詞。"
+ },
+ {
+  "en": "The streams run with wine ___ of water.",
+  "answer": "instead",
+  "jp": "小川は水の代わりにワインが流れる。",
+  "explain": "instead of 〜で「〜の代わりに」。"
+ },
+ {
+  "en": "It kept crying, so ___ Lucy was standing in a damp patch.",
+  "answer": "presently",
+  "jp": "それが泣き続けたので、まもなくルーシーは湿った場所に立っていた。",
+  "explain": "presentlyは「まもなく、やがて」という意味の副詞。"
+ },
+ {
+  "en": "I shall be a statue of a Faun until the four ___ at Cair Paravel are filled.",
+  "answer": "thrones",
+  "jp": "ケア・パラベルの四つの玉座が埋まるまで、私はファウンの像のままだろう。",
+  "explain": "throneは「玉座」。ここでは複数形で四人の王・女王の座を指す。"
+ },
+ {
+  "en": "___ that you are an adult, you can drink alcohol.",
+  "answer": "Now",
+  "jp": "あなたはもう大人になったのだから、お酒を飲むことができる。",
+  "explain": "now that 〜で「今や〜なので」という接続詞的表現。"
+ },
+ {
+  "en": "She keeps her husband under her ___.",
+  "answer": "thumb",
+  "jp": "彼女は夫を完全に支配している。",
+  "explain": "keep/have 人 under one's thumbで「（人）を意のままに支配する」という成句。"
+ },
+ {
+  "en": "You ought to be ___ of yourself, someone of your age.",
+  "answer": "ashamed",
+  "jp": "あなたくらいの年齢の人なら、恥を知るべきだ。",
+  "explain": "be ashamed of oneselfで「自分を恥じる」。ought to doで「〜すべきだ」。"
+ },
+ {
+  "en": "'Mr. Tumnus!' said Lucy ___ great distress.",
+  "answer": "in",
+  "jp": "「タムナスさん！」ルーシーはひどく取り乱して言った。",
+  "explain": "in great distressで「ひどく苦しんで、取り乱して」。"
+ },
+ {
+  "en": "I pretended to be friendly with you all ___ the sake of lulling you asleep.",
+  "answer": "for",
+  "jp": "私はあなたを眠らせるためだけに、親しいふりをしていた。",
+  "explain": "for the sake of doingで「〜するために」。lull 人 asleepで「（人）をあやして眠らせる」。"
+ },
+ {
+  "en": "I pretended to be friendly with you all for the ___ of lulling you asleep.",
+  "answer": "sake",
+  "jp": "私はあなたを眠らせるためだけに、親しいふりをしていた。",
+  "explain": "sakeはfor the sake of 〜の形で「〜のために」という意味を作る名詞。"
+ },
+ {
+  "en": "I am in the ___ of the Witch.",
+  "answer": "pay",
+  "jp": "私は魔女に雇われている身だ。",
+  "explain": "in the pay of 〜で「〜に雇われて、〜の手先で」。"
+ },
+ {
+  "en": "I have taken service ___ the Witch.",
+  "answer": "with",
+  "jp": "私は魔女に仕える身となった。",
+  "explain": "take service with 〜で「〜に仕える、〜の下で働く」。"
+ },
+ {
+  "en": "She ___ of the wardrobe.",
+  "answer": "flung open the door",
+  "jp": "彼女はワードローブの扉を勢いよく開け放った。",
+  "explain": "fling openで「（扉などを）勢いよく開け放つ」。flingの過去形flung。"
+ },
+ {
+  "en": "'Perhaps I may keep the handkerchief?' '___!'",
+  "answer": "Rather",
+  "jp": "「このハンカチをいただいてもいいですか？」「もちろんです！」",
+  "explain": "Rather!は口語で強い同意を表す「もちろん、ぜひ」という間投詞的表現。"
+ },
+ {
+  "en": "He rapped his ___ on the wall.",
+  "answer": "knuckles",
+  "jp": "彼は指の関節で壁をこつこつと叩いた。",
+  "explain": "knuckleは「指の関節」。rap one's knucklesで「指関節でこつこつ叩く」。"
+ },
+ {
+  "en": "The others all stared ___ one another.",
+  "answer": "at",
+  "jp": "他の者たちは皆、互いに顔を見合わせた。",
+  "explain": "stare at one anotherで「互いに見つめ合う」。"
+ },
+ {
+  "en": "Lucy could see ___ the distance a patch of light.",
+  "answer": "in",
+  "jp": "ルーシーは遠くに光の一角を見ることができた。",
+  "explain": "in the distanceで「遠くに」。"
+ },
+ {
+  "en": "He was panting ___ his turn.",
+  "answer": "for",
+  "jp": "彼は自分の順番が来るのを待ちきれず、息をはずませていた。",
+  "explain": "pant for 〜で「〜を切望する、待ち焦がれる」（元の場面ではpant for breath「息を切らす」）。"
+ },
+ {
+  "en": "I hope you won't get into dreadful trouble ___ my account.",
+  "answer": "on",
+  "jp": "私のせいで、あなたがひどい面倒に巻き込まれないことを願っている。",
+  "explain": "on one's accountで「〜のせいで、〜のために」。"
+ },
+ {
+  "en": "I hope you won't get into dreadful trouble on my ___.",
+  "answer": "account",
+  "jp": "私のせいで、あなたがひどい面倒に巻き込まれないことを願っている。",
+  "explain": "accountはon my accountの形で「私のせいで」という成句を作る名詞。"
+ },
+ {
+  "en": "She's just making ___ a story for fun.",
+  "answer": "up",
+  "jp": "彼女はただ面白半分に話をでっち上げているだけだ。",
+  "explain": "make up a storyで「話をでっち上げる」。"
+ },
+ {
+  "en": "She's just making up a story ___ fun.",
+  "answer": "for",
+  "jp": "彼女はただ面白半分に話をでっち上げているだけだ。",
+  "explain": "for funで「面白半分に、遊びで」。"
+ },
+ {
+  "en": "The door must have swung open ___.",
+  "answer": "of its own accord",
+  "jp": "扉はひとりでに開いたに違いない。",
+  "explain": "of its own accordで「ひとりでに、自然に」。must have doneで「〜したに違いない」。"
+ },
+ {
+  "en": "You have really ___. I must admit.",
+  "answer": "taken us in",
+  "jp": "正直に言うと、あなたには本当にだまされた。",
+  "explain": "take 人 inで「（人）をだます」。"
+ },
+ {
+  "en": "Is that how you ___ a Queen?",
+  "answer": "address",
+  "jp": "それが女王への話しかけ方なのか？",
+  "explain": "addressは動詞で「（人に）話しかける、呼びかける」。"
+ },
+ {
+  "en": "The others will start talking again about the whole ___.",
+  "answer": "wretched business",
+  "jp": "他の皆はまた、あのいまいましい出来事について話し始めるだろう。",
+  "explain": "wretched businessで「いまいましい（厄介な）出来事」。wretchedは「みじめな、嫌な」。"
+ },
+ {
+  "en": "She hardly knew what she was trying to say, and ___ into tears.",
+  "answer": "burst",
+  "jp": "彼女は自分が何を言おうとしているのかもわからないまま、泣き出した。",
+  "explain": "burst into tearsで「突然泣き出す」。"
+ },
+ {
+  "en": "She could have ___ it up with the others quite easily.",
+  "answer": "made",
+  "jp": "彼女はもっと簡単に他の皆と仲直りできたはずだった。",
+  "explain": "make it up with 〜で「〜と仲直りする」。could have doneで「〜できたはずだ（実際はしなかった）」。"
+ },
+ {
+  "en": "There was nothing for it ___ to jump into the wardrobe.",
+  "answer": "but",
+  "jp": "ワードローブに飛び込む以外に方法がなかった。",
+  "explain": "There is nothing for it but to doで「〜する以外に方法がない」。"
+ },
+ {
+  "en": "Their branching horns shone like something ___ fire.",
+  "answer": "on",
+  "jp": "枝分かれした角は、まるで燃えているかのように輝いていた。",
+  "explain": "on fireで「燃えている」。"
+ },
+ {
+  "en": "Her imaginary country has turned ___ not to have been imaginary.",
+  "answer": "out",
+  "jp": "彼女の空想上の国は、実は空想ではなかったとわかった。",
+  "explain": "turn out (to be) 〜で「〜だとわかる」。"
+ },
+ {
+  "en": "The dwarf ___ the reindeer up so sharp that they almost sat down.",
+  "answer": "pulled",
+  "jp": "小人がトナカイを急に引き止めたので、トナカイたちはもう少しで座り込むところだった。",
+  "explain": "pull upで「（動物や乗り物を）急に止める」。"
+ },
+ {
+  "en": "It was a beautiful face in other ___.",
+  "answer": "respects",
+  "jp": "他の点では、それは美しい顔だった。",
+  "explain": "in other respectsで「他の点では」。respectは「点、事項」という意味の名詞。"
+ },
+ {
+  "en": "He began feeling about ___ Lucy in the dark.",
+  "answer": "for",
+  "jp": "彼は暗闇の中で手探りでルーシーを探し始めた。",
+  "explain": "feel about for 〜で「〜を手探りで探す」。"
+ },
+ {
+  "en": "Edmund was ___.",
+  "answer": "spiteful",
+  "jp": "エドマンドは意地悪だった。",
+  "explain": "spitefulは「意地悪な、悪意のある」という意味の形容詞。"
+ },
+ {
+  "en": "She was proud and cold and ___.",
+  "answer": "stern",
+  "jp": "彼女は高慢で冷たく、厳格だった。",
+  "explain": "sternは「厳格な、厳しい」という意味の形容詞。"
+ },
+ {
+  "en": "They ___ and stood champing their bits.",
+  "answer": "recovered themselves",
+  "jp": "彼ら（トナカイたち）は体勢を立て直し、くつわを噛みながら立ち尽くした。",
+  "explain": "recover oneselfで「（驚きなどから）落ち着きを取り戻す」。"
+ },
+ {
+  "en": "Then, just as ___, she appeared to change her mind.",
+  "answer": "he gave himself up for lost",
+  "jp": "そして、彼がもう助からないと諦めかけたちょうどその時、彼女は気が変わったようだった。",
+  "explain": "give oneself up for lostで「もう助からないと観念する」。"
+ },
+ {
+  "en": "He didn't ask himself why the Queen was so ___.",
+  "answer": "inquisitive",
+  "jp": "彼は、なぜ女王がそんなに詮索好きなのか自問することはなかった。",
+  "explain": "inquisitiveは「詮索好きな、好奇心の強い」という意味の形容詞。"
+ },
+ {
+  "en": "He looked Edmund ___.",
+  "answer": "full in the face",
+  "jp": "彼はエドマンドの顔を真正面から見つめた。",
+  "explain": "look 人 full in the faceで「（人）の顔を真正面から見つめる」。"
+ },
+ {
+  "en": "The door from the world of men may ___ all.",
+  "answer": "wreck",
+  "jp": "人間の世界からの扉が、すべてを台無しにするかもしれない。",
+  "explain": "wreckは動詞で「（計画などを）台無しにする、破壊する」。"
+ },
+ {
+  "en": "How did you come to enter my ___?",
+  "answer": "dominions",
+  "jp": "どうやって私の領土に入ることになったのか？",
+  "explain": "dominionは「領土、支配権」。come to doで「〜することになる」。"
+ },
+ {
+  "en": "The box ___ to contain several pounds of the best Turkish Delight.",
+  "answer": "turned out",
+  "jp": "その箱は、最高級のターキッシュ・ディライトを数ポンド分も含んでいることがわかった。",
+  "explain": "turn out to doで「〜だとわかる」。"
+ },
+ {
+  "en": "He did not like this arrangement but he ___ not disobey.",
+  "answer": "dared",
+  "jp": "彼はこの取り決めが気に入らなかったが、あえて逆らおうとはしなかった。",
+  "explain": "dare not doで「あえて〜しない」。"
+ },
+ {
+  "en": "Answer me, once and for all, or I shall lose my ___.",
+  "answer": "patience",
+  "jp": "きっぱりと一度で答えなさい、さもないと私の堪忍袋の緒が切れるだろう。",
+  "explain": "lose one's patienceで「我慢の限界に達する」。once and for allは「これを最後に、きっぱりと」。"
+ },
+ {
+  "en": "It is ___ to speak with one's mouth full.",
+  "answer": "rude",
+  "jp": "口をいっぱいにしたまま話すのは失礼だ。",
+  "explain": "rudeは「失礼な」。with one's mouth fullで「口をいっぱいにしたまま」。"
+ },
+ {
+  "en": "He began to ___ the hot drink.",
+  "answer": "sip",
+  "jp": "彼は熱い飲み物を少しずつ飲み始めた。",
+  "explain": "sipは「（飲み物を）少しずつ飲む、すする」。"
+ }
 ]

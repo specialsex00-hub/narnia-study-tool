@@ -36,8 +36,11 @@ python3 build_html.py ../narnia_study_tool.html
 - `merge_glosses.py` — `data.json` の各語彙エントリに `gloss` フィールドを追加する。
 - `kotest.json` — 授業の小テストで実際に出た穴埋め問題（生徒が貼り付けた
   ものをそのまま収録）。「小テスト対策」タブの4択問題として出題される。
-  新しい小テストが追加されたら、同じ形式（`{en, answer}`、空欄は`___`）で
-  追記する。
+  各項目は `{en, answer, jp, explain}`（空欄は`___`）。`jp`は問題文と一緒に
+  最初から表示され、`explain`は解答後に表示される。新しい小テストを
+  追加する場合は `en`/`answer` を追記したうえで `add_kotest_jp.py` と
+  同じ要領で `jp`/`explain` を書き足す（このスクリプト自体は一度きりの
+  マージ用に書いたもので、そのまま再実行はできないので参考用）。
 - `add_kotest_tags.py` — `kotest.json` の各解答を `data.json` の語彙リストと
   突き合わせ、一致した語彙に `exam:true` を付与する（単語タブの
   「小テストの語のみ」フィルタに使われる）。一致しない解答のうち

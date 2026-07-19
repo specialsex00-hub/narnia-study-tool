@@ -1012,7 +1012,9 @@ function renderKotest(){
     <div class="progress">${kotestIdx+1} / ${kotestOrder.length}：空欄に入る語句を選んでください</div>
     <div class="card">
       <div class="en" style="font-size:17px">${item.en}</div>
-      <div id="kChoiceArea"></div>
+      <div class="jp">${item.jp || ''}</div>
+      <div id="kChoiceArea" style="margin-top:14px"></div>
+      <div id="kExplain" style="display:none" class="explain"></div>
     </div>
   `;
   const choiceArea = document.getElementById('kChoiceArea');
@@ -1033,6 +1035,11 @@ function renderKotest(){
         if(c.textContent === item.answer) c.classList.add('correct');
         else if(c===b) c.classList.add('wrong');
       });
+      if(item.explain){
+        const ex = document.getElementById('kExplain');
+        ex.style.display = 'block';
+        ex.textContent = item.explain;
+      }
       const nextBtn = document.createElement('button');
       nextBtn.className = 'primary';
       nextBtn.textContent = '次へ';
@@ -1221,7 +1228,7 @@ function renderReviewKotest(list){
   const ki = list[0];
   const item = KOTEST[ki];
   let answered = false;
-  area.innerHTML = `<div class="card"><div class="en" style="font-size:17px">${item.en}</div><div id="rkChoiceArea"></div></div>`;
+  area.innerHTML = `<div class="card"><div class="en" style="font-size:17px">${item.en}</div><div class="jp">${item.jp || ''}</div><div id="rkChoiceArea" style="margin-top:14px"></div><div id="rkExplain" style="display:none" class="explain"></div></div>`;
   const choiceArea = document.getElementById('rkChoiceArea');
   kotestChoices(item).forEach(opt=>{
     const b = document.createElement('button');
@@ -1238,6 +1245,11 @@ function renderReviewKotest(list){
         if(c.textContent === item.answer) c.classList.add('correct');
         else if(c===b) c.classList.add('wrong');
       });
+      if(item.explain){
+        const ex = document.getElementById('rkExplain');
+        ex.style.display = 'block';
+        ex.textContent = item.explain;
+      }
       const nextBtn = document.createElement('button');
       nextBtn.className = 'primary';
       nextBtn.textContent = '次へ';
