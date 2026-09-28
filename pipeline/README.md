@@ -4,13 +4,26 @@
 `英語(Writing&Reading).docx` と各JSONから生成します。教材が更新された場合や、
 新しい小テストの内容を追加したい場合は、このパイプラインを再実行してください。
 
-> **現在の状態**：前回（第1〜5章）の問題データは削除済みで、`data.json`
-> （vocab / underline / quiz / yellow_sentences）・`grammar.json`・
-> `comprehension.json`・`kotest.json` はすべて空になっています。
-> この状態で `build_html.py` だけを実行すると、各タブが「まだ問題が
-> 登録されていません。」と表示される空のツールが生成されます。
-> 新しい範囲のデータを入れるときは、下の手順で抽出するか、各JSONに
-> 直接問題を書き足してから `build_html.py` を実行してください。
+> **現在の状態**：前回（第1〜5章）の問題データは削除済みで、現在は授業の
+> 回ごとに手作業でデータを追加している。第1回ぶんは `round1_data.py` で
+> `data.json`（vocab / underline / quiz）・`grammar.json`・`comprehension.json`
+> に追記済み（`kotest.json` は空）。
+>
+> **下の docx 抽出手順（手順1）を実行すると `data.json` が丸ごと上書きされ、
+> 手作業で追加した回のデータが消える**ので注意。回を追加するときは
+> `round1_data.py` と同じ形で `roundN_data.py` を作って実行し、
+> `build_html.py` だけを再実行する：
+>
+> ```bash
+> cd pipeline
+> python3 round2_data.py          # 各JSONに追記（同じ回の二重追加は拒否される）
+> python3 build_html.py ../narnia_study_tool.html
+> ```
+>
+> 各項目には `round`（"第1回" など）を付ける。単語タブの回の選択肢は
+> 語彙の `round` から自動で作られる。下線部訳の項目は任意で `task`
+> （課題の指示文）と `note`（解答後に表示する解説）を持てる。`enHtml`
+> に `<u>` が無い項目は「全文を訳す」問題として表示される。
 >
 > なお `add_kotest_tags.py` 内の `NEW_ENTRIES`（前回の小テスト由来の
 > 補足語彙）はスクリプトに直書きされているため、手順3を実行すると

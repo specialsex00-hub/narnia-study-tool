@@ -1,6 +1,322 @@
 {
-  "vocab": [],
-  "underline": [],
-  "quiz": [],
+  "vocab": [
+    {
+      "term": "superior look",
+      "enHtml": "And Edmund gave a very <mark>superior look</mark> as if he were far older than Lucy (there was really only a year's difference) and then a little snigger and said,",
+      "jp": "するとエドマンドは、まるで自分がルーシーよりずっと年上であるかのように、いかにも人を見下したような顔つきをして（実際にはたった一つしか違わなかったのだが）、それから小さくくすっと忍び笑いをして言った。",
+      "chapter": 5,
+      "gloss": "見下したような顔つき",
+      "round": "第1回"
+    },
+    {
+      "term": "as if",
+      "enHtml": "And Edmund gave a very superior look <mark>as if</mark> he were far older than Lucy (there was really only a year's difference) and then a little snigger and said,",
+      "jp": "するとエドマンドは、まるで自分がルーシーよりずっと年上であるかのように、いかにも人を見下したような顔つきをして（実際にはたった一つしか違わなかったのだが）、それから小さくくすっと忍び笑いをして言った。",
+      "chapter": 5,
+      "gloss": "まるで〜であるかのように（＋仮定法）",
+      "round": "第1回"
+    },
+    {
+      "term": "snigger",
+      "enHtml": "And Edmund gave a very superior look as if he were far older than Lucy (there was really only a year's difference) and then a little <mark>snigger</mark> and said,",
+      "jp": "するとエドマンドは、まるで自分がルーシーよりずっと年上であるかのように、いかにも人を見下したような顔つきをして（実際にはたった一つしか違わなかったのだが）、それから小さくくすっと忍び笑いをして言った。",
+      "chapter": 5,
+      "gloss": "（小ばかにした）忍び笑い",
+      "round": "第1回"
+    },
+    {
+      "term": "rush out of",
+      "enHtml": "Poor Lucy gave Edmund one look and <mark>rushed out of</mark> the room.",
+      "jp": "かわいそうに、ルーシーはエドマンドをひとにらみすると、部屋から飛び出していった。",
+      "chapter": 5,
+      "gloss": "〜から飛び出す",
+      "round": "第1回"
+    },
+    {
+      "term": "nasty",
+      "enHtml": "Edmund, who was becoming a <mark>nastier</mark> person every minute, thought that he had scored a great success, and went on at once to say, \"There she goes again.",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。",
+      "chapter": 5,
+      "gloss": "いやな、意地の悪い",
+      "round": "第1回"
+    },
+    {
+      "term": "every minute",
+      "enHtml": "Edmund, who was becoming a nastier person <mark>every minute</mark>, thought that he had scored a great success, and went on at once to say, \"There she goes again.",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。",
+      "chapter": 5,
+      "gloss": "刻一刻と",
+      "round": "第1回"
+    },
+    {
+      "term": "score a great success",
+      "enHtml": "Edmund, who was becoming a nastier person every minute, thought that he had <mark>scored a great success</mark>, and went on at once to say, \"There she goes again.",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。",
+      "chapter": 5,
+      "gloss": "大成功を収める、してやったりとなる",
+      "round": "第1回"
+    },
+    {
+      "term": "go on to do",
+      "enHtml": "Edmund, who was becoming a nastier person every minute, thought that he had scored a great success, and <mark>went on at once to say</mark>, \"There she goes again.",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。",
+      "chapter": 5,
+      "gloss": "（続けて）次に〜する",
+      "round": "第1回"
+    },
+    {
+      "term": "There she goes again.",
+      "enHtml": "Edmund, who was becoming a nastier person every minute, thought that he had scored a great success, and went on at once to say, \"<mark>There she goes again.</mark>",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。",
+      "chapter": 5,
+      "gloss": "ほら、また始まった",
+      "round": "第1回"
+    },
+    {
+      "term": "That's the worst of 〜",
+      "enHtml": "<mark>That's the worst of</mark> young kids, they always—\"",
+      "jp": "ちびっ子ってやつはこれだから困るんだ、いつも――」",
+      "chapter": 5,
+      "gloss": "〜はそこが困る",
+      "round": "第1回"
+    },
+    {
+      "term": "Look here",
+      "enHtml": "\"<mark>Look here</mark>,\" said Peter, turning on him savagely, \"shut up!",
+      "jp": "「いいか」とピーターは、荒々しく彼に食ってかかった。「黙れ！",
+      "chapter": 5,
+      "gloss": "いいか、おい（注意を促す）",
+      "round": "第1回"
+    },
+    {
+      "term": "turn on 〜",
+      "enHtml": "\"Look here,\" said Peter, <mark>turning on</mark> him savagely, \"shut up!",
+      "jp": "「いいか」とピーターは、荒々しく彼に食ってかかった。「黙れ！",
+      "chapter": 5,
+      "gloss": "〜に食ってかかる",
+      "round": "第1回"
+    },
+    {
+      "term": "savagely",
+      "enHtml": "\"Look here,\" said Peter, turning on him <mark>savagely</mark>, \"shut up!",
+      "jp": "「いいか」とピーターは、荒々しく彼に食ってかかった。「黙れ！",
+      "chapter": 5,
+      "gloss": "荒々しく",
+      "round": "第1回"
+    },
+    {
+      "term": "shut up",
+      "enHtml": "\"Look here,\" said Peter, turning on him savagely, \"<mark>shut up</mark>!",
+      "jp": "「いいか」とピーターは、荒々しく彼に食ってかかった。「黙れ！",
+      "chapter": 5,
+      "gloss": "黙れ",
+      "round": "第1回"
+    },
+    {
+      "term": "beastly",
+      "enHtml": "You've been perfectly <mark>beastly</mark> to Lu ever since she started this nonsense about the wardrobe, and now you go playing games with her about it and setting her off again.",
+      "jp": "ルーがあの洋服だんすのばかげた話を言い出してからというもの、お前はずっとルーにひどい態度を取ってきた。それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。",
+      "chapter": 5,
+      "gloss": "ひどい、意地悪な",
+      "round": "第1回"
+    },
+    {
+      "term": "nonsense",
+      "enHtml": "You've been perfectly beastly to Lu ever since she started this <mark>nonsense</mark> about the wardrobe, and now you go playing games with her about it and setting her off again.",
+      "jp": "ルーがあの洋服だんすのばかげた話を言い出してからというもの、お前はずっとルーにひどい態度を取ってきた。それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。",
+      "chapter": 5,
+      "gloss": "ばかげた話、でたらめ",
+      "round": "第1回"
+    },
+    {
+      "term": "go playing",
+      "enHtml": "You've been perfectly beastly to Lu ever since she started this nonsense about the wardrobe, and now you <mark>go playing</mark> games with her about it and setting her off again.",
+      "jp": "ルーがあの洋服だんすのばかげた話を言い出してからというもの、お前はずっとルーにひどい態度を取ってきた。それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。",
+      "chapter": 5,
+      "gloss": "（よりによって）〜なんかする（go＋-ing：非難）",
+      "round": "第1回"
+    },
+    {
+      "term": "play games with 〜",
+      "enHtml": "You've been perfectly beastly to Lu ever since she started this nonsense about the wardrobe, and now you go <mark>playing games with</mark> her about it and setting her off again.",
+      "jp": "ルーがあの洋服だんすのばかげた話を言い出してからというもの、お前はずっとルーにひどい態度を取ってきた。それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。",
+      "chapter": 5,
+      "gloss": "〜をからかう、もてあそぶ",
+      "round": "第1回"
+    },
+    {
+      "term": "set 〜 off",
+      "enHtml": "You've been perfectly beastly to Lu ever since she started this nonsense about the wardrobe, and now you go playing games with her about it and <mark>setting her off</mark> again.",
+      "jp": "ルーがあの洋服だんすのばかげた話を言い出してからというもの、お前はずっとルーにひどい態度を取ってきた。それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。",
+      "chapter": 5,
+      "gloss": "〜を（また泣き）出させる",
+      "round": "第1回"
+    },
+    {
+      "term": "out of spite",
+      "enHtml": "I believe you did it simply <mark>out of spite</mark>.\"",
+      "jp": "お前がそんなことをしたのは、ただの意地悪からだと思うよ」",
+      "chapter": 5,
+      "gloss": "意地悪で、悪意から",
+      "round": "第1回"
+    },
+    {
+      "term": "take aback",
+      "enHtml": "\"But it's all nonsense,\" said Edmund, very <mark>taken aback</mark>.",
+      "jp": "「でも、あれは全部でたらめじゃないか」すっかり面食らって、エドマンドが言った。",
+      "chapter": 5,
+      "gloss": "面食らわせる（be taken aback：面食らう）",
+      "round": "第1回"
+    },
+    {
+      "term": "that's just the point",
+      "enHtml": "\"Of course it's all nonsense,\" said Peter, \"<mark>that's just the point</mark>.",
+      "jp": "「もちろん全部でたらめさ」とピーターは言った。「まさにそこが問題なんだ。",
+      "chapter": 5,
+      "gloss": "まさにそこが問題だ",
+      "round": "第1回"
+    }
+  ],
+  "underline": [
+    {
+      "underline": "（全文）",
+      "task": "文の構造に注意して訳しましょう",
+      "enHtml": "And Edmund gave a very superior look as if he were far older than Lucy (there was really only a year's difference) and then a little snigger and said.",
+      "jp": "するとエドマンドは、まるで自分がルーシーよりずっと年上であるかのように、いかにも人を見下したような顔つきをして（実際にはたった一つしか違わなかったのだが）、それから小さくくすっと忍び笑いをして言った。",
+      "note": "gave の目的語は a very superior look と a little snigger の2つ（give＋動作名詞＝〜する）。as if he were …：as if＋仮定法過去「まるで〜であるかのように」。far は比較級の強調「ずっと」。( ) 内は語り手の皮肉な補足。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "Edmund, who was becoming a nastier person every minute, thought that he had scored a great success, and went on at once to say, 'There she goes again.'",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。」",
+      "note": ", who … ,：非制限用法の関係代名詞。was becoming a nastier person every minute：「刻一刻と（ますます）いやなやつになっていった」。go on to do：「続けて〜する」（go on doing「〜し続ける」と区別）。There she goes again.：「ほら、また始まった」。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "go",
+      "task": "文の構造に注意して訳しましょう",
+      "enHtml": "and now you <u>go</u> playing games with her about it and setting her off again. I believe you did it simply out of spite.",
+      "jp": "それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。お前がそんなことをしたのは、ただの意地悪からだと思うよ。",
+      "note": "go は playing と setting の両方にかかる。この go は「行く」ではなく、go＋-ing で「（よりによって）〜なんかする」という非難を表す口語表現。play games with 〜「〜をからかう」、set 〜 off「〜を泣き出させる」、out of spite「意地悪で」。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "whichever it is",
+      "task": "下線部の内容を明らかにして訳しましょう",
+      "enHtml": "But <u>whichever it is</u>, what good do you think you'll do by jeering and nagging at her one day and encouraging her the next?",
+      "jp": "でも、ルーの頭がおかしくなりかけているにせよ、とんでもない嘘つきになりかけているにせよ、ある日はあの子をあざ笑ってがみがみ責め立て、次の日には（話を信じるふりをして）調子に乗らせるようなことをして、一体何の役に立つと思っているんだ。（何の役にも立ちはしない）",
+      "note": "whichever it is＝直前の either going queer in the head（頭がおかしくなりかけている）or else turning into a most frightful liar（ひどい嘘つきになりかけている）の「どちらであっても」。what good do you think you'll do：修辞疑問で「何の役にも立たない」。one day … the next (day)「ある日は…次の日は」。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "Nothing they could say to her made any difference.",
+      "jp": "みんながどんな言葉をかけても、まったく効き目がなかった。（ルーシーは少しも態度を変えなかった）",
+      "note": "Nothing (that) they could say to her が主語。否定語が主語の文は「何を言っても…しなかった」と訳すと自然。make a difference「効果がある」。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "'it's getting beyond us.'",
+      "jp": "「もう僕たちの手には負えなくなってきているよ。」",
+      "note": "it は漠然と「事態」（ルーシーの件）。beyond 〜「〜の手に負えない」。進行形 is getting で「だんだん〜になってきている」。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "[The Professor] said he was quite at their disposal.",
+      "jp": "教授は、何でも遠慮なく相談してくれてかまわないと言った。",
+      "note": "at 〜's disposal「〜の自由に使える」。直訳「自分は完全に君たちの自由に使ってよい」。said he was …は時制の一致なので「〜だと言った」と訳す。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "he sat listening to them with the tips of his fingers pressed together",
+      "task": "この状態を絵に描いてみましょう",
+      "enHtml": "Then <u>he sat listening to them with the tips of his fingers pressed together</u> and never interrupting.",
+      "jp": "それから教授は、両手の指先を合わせたまま座って二人の話に耳を傾け、一度も口を挟まなかった。",
+      "note": "絵：椅子に座った教授が、胸の前で手のひらは離したまま両手の指先だけを突き合わせ（山形・steepled fingers）、黙って聞いている。sit＋-ing「〜しながら座っている」。with＋O＋過去分詞「Oが〜された状態で」（付帯状況）。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "underline": "the last thing either of them expected",
+      "task": "1. 訳しましょう　2. 下線部の具体的な内容を説明しましょう",
+      "enHtml": "Then he cleared his throat and said <u>the last thing either of them expected</u>.",
+      "jp": "それから教授は咳払いをして、二人のどちらもまったく予想していなかったことを言った。",
+      "note": "下線部の内容：「How do you know that your sister's story is not true?（妹さんの話が本当ではないと、どうして分かるのかね？）」という言葉。二人は教授もルーシーがおかしいと同意してくれると思っていたのに、逆に自分たちの思い込みを問われた。the last＋名詞＋関係詞節「最も〜しそうにないもの」。",
+      "chapter": 5,
+      "round": "第1回"
+    }
+  ],
+  "quiz": [
+    {
+      "en": "And Edmund gave a very superior look as if he were far older than Lucy (there was really only a year's difference) and then a little snigger and said,",
+      "jp": "するとエドマンドは、まるで自分がルーシーよりずっと年上であるかのように、いかにも人を見下したような顔つきをして（実際にはたった一つしか違わなかったのだが）、それから小さくくすっと忍び笑いをして言った。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "Edmund, who was becoming a nastier person every minute, thought that he had scored a great success, and went on at once to say, \"There she goes again.\"",
+      "jp": "刻一刻といやな人間になりつつあったエドマンドは、うまくやってやったと思い、すぐさま続けてこう言った。「ほら、また始まった。」",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "And now you go playing games with her about it and setting her off again. I believe you did it simply out of spite.",
+      "jp": "それなのに今度は、よりによってそのことでルーをからかって遊んで、また泣き出させるなんて。お前がそんなことをしたのは、ただの意地悪からだと思うよ。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "\"Of course it's all nonsense,\" said Peter, \"that's just the point.\"",
+      "jp": "「もちろん全部でたらめさ」とピーターは言った。「まさにそこが問題なんだ。」",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "But whichever it is, what good do you think you'll do by jeering and nagging at her one day and encouraging her the next?",
+      "jp": "でも、どちらにせよ、ある日はあの子をあざ笑ってがみがみ責め立て、次の日には調子に乗らせるようなことをして、一体何の役に立つと思っているんだ。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "Nothing they could say to her made any difference.",
+      "jp": "みんながどんな言葉をかけても、まったく効き目がなかった。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "\"It's getting beyond us.\"",
+      "jp": "「もう僕たちの手には負えなくなってきているよ。」",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "The Professor said he was quite at their disposal.",
+      "jp": "教授は、何でも遠慮なく相談してくれてかまわないと言った。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "Then he sat listening to them with the tips of his fingers pressed together and never interrupting.",
+      "jp": "それから教授は、両手の指先を合わせたまま座って二人の話に耳を傾け、一度も口を挟まなかった。",
+      "chapter": 5,
+      "round": "第1回"
+    },
+    {
+      "en": "Then he cleared his throat and said the last thing either of them expected.",
+      "jp": "それから教授は咳払いをして、二人のどちらもまったく予想していなかったことを言った。",
+      "chapter": 5,
+      "round": "第1回"
+    }
+  ],
   "yellow_sentences": []
 }

@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "point": "as if＋仮定法過去",
+    "en": "Edmund gave a very superior look as if he ___ far older than Lucy.",
+    "choices": [
+      "were",
+      "is",
+      "has been",
+      "will be"
+    ],
+    "answer": "were",
+    "explain": "as if＋仮定法過去（be動詞は主語に関係なく were）で「まるで〜であるかのように」。実際には1歳しか違わないので、事実に反する内容＝仮定法。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "非制限用法の関係代名詞",
+    "en": "Edmund, ___ was becoming a nastier person every minute, thought that he had scored a great success.",
+    "choices": [
+      "who",
+      "that",
+      "which",
+      "whom"
+    ],
+    "answer": "who",
+    "explain": "コンマで挟んで先行詞（人）を補足説明する非制限用法。that は非制限用法では使えない。主格なので whom も不可。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "go on to do（続けて〜する）",
+    "en": "… and went on at once ___ say, \"There she goes again.\"",
+    "choices": [
+      "to",
+      "for",
+      "with",
+      "by"
+    ],
+    "answer": "to",
+    "explain": "go on to do は「（前のことに続けて）次に〜する」。go on doing（〜し続ける）とは意味が違うので注意。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "go＋-ing（非難：よりによって〜する）",
+    "en": "and now you go ___ games with her about it and setting her off again.",
+    "choices": [
+      "playing",
+      "to play",
+      "played",
+      "play"
+    ],
+    "answer": "playing",
+    "explain": "go＋-ing で「（よりによって）〜なんかする」という非難を表す口語表現。後ろの setting と並列になっている（go は playing と setting の両方にかかる）。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "out of（動機：〜から）",
+    "en": "I believe you did it simply ___ of spite.",
+    "choices": [
+      "out",
+      "because",
+      "in",
+      "for"
+    ],
+    "answer": "out",
+    "explain": "out of spite で「意地悪から、悪意で」。out of は動機・原因を表す（out of curiosity「好奇心から」など）。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "修辞疑問（what good …?＝何の役にも立たない）",
+    "en": "What ___ do you think you'll do by jeering and nagging at her one day and encouraging her the next?",
+    "choices": [
+      "good",
+      "well",
+      "best",
+      "better"
+    ],
+    "answer": "good",
+    "explain": "do good で「役に立つ」。What good do you think you'll do …? は「何の役に立つと思うのか」＝「何の役にも立たない」という修辞疑問。do you think は疑問詞の直後に入る。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "付帯状況 with＋O＋過去分詞",
+    "en": "Then he sat listening to them with the tips of his fingers ___ together and never interrupting.",
+    "choices": [
+      "pressed",
+      "pressing",
+      "to press",
+      "press"
+    ],
+    "answer": "pressed",
+    "explain": "with＋O＋過去分詞で「Oが〜された状態で」。指先は「押し合わされている」側なので受け身の意味の過去分詞 pressed。",
+    "chapter": 5,
+    "round": "第1回"
+  },
+  {
+    "point": "the last＋名詞（最も〜しそうにない）",
+    "en": "Then he cleared his throat and said the ___ thing either of them expected.",
+    "choices": [
+      "last",
+      "first",
+      "least",
+      "latest"
+    ],
+    "answer": "last",
+    "explain": "the last thing (that) 〜 expected で「最も予想していなかったこと」。the last＋名詞＋関係詞節は「最も〜しそうにない…」という意味になる。",
+    "chapter": 5,
+    "round": "第1回"
+  }
+]

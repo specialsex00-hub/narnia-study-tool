@@ -189,6 +189,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       <div class="subtab" data-vmode="match">マッチ</div>
     </div>
     <div class="filterrow">
+      <select id="vocabRound"></select>
       <select id="vocabChapter"></select>
       <select id="vocabFilter">
         <option value="all">すべて表示</option>
@@ -384,12 +385,18 @@ let vocabIdx = 0;
 let vocabFlipped = false;
 let vocabShowContext = false;
 let vocabChapter = 'all';
+let vocabRound = 'all';
 let vocabFilterMode = 'all';
+// 授業の回（"第1回" など）。語彙に round が付いているものだけ回で絞り込める。
+const VOCAB_ROUNDS = [...new Set(VOCAB.map(v=>v.round).filter(Boolean))];
 
 function vocabPool(){
   let idxs = VOCAB.map((_,i)=>i);
   if(vocabChapter !== 'all'){
     idxs = idxs.filter(i => VOCAB[i].chapter === Number(vocabChapter));
+  }
+  if(vocabRound !== 'all'){
+    idxs = idxs.filter(i => VOCAB[i].round === vocabRound);
   }
   return idxs;
 }
@@ -461,12 +468,12 @@ function renderVocabCard(){
         <div class="flip-face front">
           <div class="term">${item.term}</div>
           <div class="hint">タップして意味を確認</div>
-          <div class="srsbadge">第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
+          <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
         </div>
         <div class="flip-face back">
           <div class="term" style="margin-bottom:2px">${item.term}</div>
           <div class="gloss-big">${item.gloss || ''}</div>
-          <div class="srsbadge">第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
+          <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
           <div class="context-toggle"><button id="toggleContext">例文を見る</button></div>
           <div class="context-box hidden" id="ctxBox">
             <div class="en">${item.enHtml}</div>
@@ -517,7 +524,7 @@ function renderVocabList(){
   }
   const rows = idxs.map(i=>{
     const item = VOCAB[i];
-    return `<div class="vlistRow"><span class="vlistTerm">${item.term}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</span><span class="vlistGloss">${item.gloss||''}</span><span class="vlistChap">第${item.chapter}章</span></div>`;
+    return `<div class="vlistRow"><span class="vlistTerm">${item.term}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</span><span class="vlistGloss">${item.gloss||''}</span><span class="vlistChap">${item.round ? item.round+'・' : ''}第${item.chapter}章</span></div>`;
   }).join('');
   area.innerHTML = `
     <div class="card">
@@ -673,6 +680,15 @@ function onMatchTileClick(uid){
   }
 }
 
+document.getElementById('vocabRound').innerHTML =
+  `<option value="all">すべての回</option>` + VOCAB_ROUNDS.map(r=>`<option value="${r}">${r}</option>`).join('');
+document.getElementById('vocabRound').style.display = VOCAB_ROUNDS.length ? '' : 'none';
+document.getElementById('vocabRound').onchange = (e)=>{
+  vocabRound = e.target.value; vocabFlipped=false; vocabShowContext=false;
+  buildVocabOrder();
+  if(vocabMode==='match') buildMatchGame();
+  renderVocabRoot();
+};
 document.getElementById('vocabChapter').innerHTML = chapterSelectHtml('すべての章');
 document.getElementById('vocabChapter').onchange = (e)=>{
   vocabChapter = e.target.value; vocabFlipped=false; vocabShowContext=false;
@@ -710,8 +726,9 @@ function renderUnderline(){
   const gi = underlineOrder[underlineIdx];
   const item = UNDERLINE[gi];
   area.innerHTML = `
-    <div class="progress">${underlineIdx+1} / ${underlineOrder.length}（第${item.chapter}章）：下線部を日本語に訳してみましょう。</div>
+    <div class="progress">${underlineIdx+1} / ${underlineOrder.length}（${item.round ? item.round+'・' : ''}第${item.chapter}章）：${item.enHtml.includes('<u>') ? '下線部' : '全文'}を日本語に訳してみましょう。</div>
     <div class="card">
+      ${item.task ? `<div class="point-badge">課題：${item.task}</div>` : ''}
       <div class="en">${item.enHtml}</div>
       <textarea id="ansBox" placeholder="下線部の日本語訳を入力"></textarea>
       <div class="btnrow">
@@ -719,6 +736,7 @@ function renderUnderline(){
       </div>
       <div class="reveal" id="revealArea" style="display:none">
         <div class="jp"><b style="color:var(--ink)">全体の日本語訳：</b><br>${item.jp}</div>
+        ${item.note ? `<div class="explain">${item.note}</div>` : ''}
         <div class="btnrow">
           <button class="good" id="selfGood">できた</button>
           <button class="bad" id="selfBad">もう一度復習</button>
@@ -1369,10 +1387,12 @@ function renderReviewUnderline(list){
   const item = UNDERLINE[gi];
   area.innerHTML = `
     <div class="card">
+      ${item.task ? `<div class="point-badge">課題：${item.task}</div>` : ''}
       <div class="en">${item.enHtml}</div>
       <div class="btnrow"><button class="primary" id="rUShowAns">答えを見る</button></div>
       <div class="reveal" id="rURevealArea" style="display:none">
         <div class="jp">${item.jp}</div>
+        ${item.note ? `<div class="explain">${item.note}</div>` : ''}
         <div class="btnrow">
           <button class="good" id="rUGood">できた</button>
           <button class="bad" id="rUBad">もう一度復習</button>
