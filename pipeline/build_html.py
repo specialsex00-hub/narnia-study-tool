@@ -40,6 +40,8 @@ TEMPLATE = r"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ナルニア国物語 期末試験対策ツール</title>
 <meta name="theme-color" content="#8a5a3b">
+<link rel="icon" id="favicon" href="">
+<script>try{var t=localStorage.getItem("narnia-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
@@ -398,13 +400,88 @@ TEMPLATE = r"""<!DOCTYPE html>
   .tqMark{position:absolute; top:12px; right:44px; font-weight:800; font-size:16px;}
   .tq.review.ok .tqMark{color:var(--good);} .tq.review.ng .tqMark{color:var(--bad);}
   @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} .ringArc{stroke-dashoffset:var(--to);} }
+  /* theme colors (user-selectable) */
+  @media not (prefers-color-scheme: dark){
+    :root[data-theme="pink"]{--accent:#d9577f; --accent-dark:#ad3a60; --accent-bg:#fde4ec; --bg:#fdf6f8; --line:#f2dfe6;}
+    :root[data-theme="blue"]{--accent:#3b7dd8; --accent-dark:#285ea9; --accent-bg:#e3eefc; --bg:#f4f7fc; --line:#dde6f1;}
+    :root[data-theme="mint"]{--accent:#2f9e7a; --accent-dark:#1f7658; --accent-bg:#dcf3ea; --bg:#f3faf7; --line:#d8eae2;}
+    :root[data-theme="purple"]{--accent:#8a5cd1; --accent-dark:#6a40ab; --accent-bg:#efe6fb; --bg:#f8f5fd; --line:#e5ddf2;}
+    :root[data-theme="orange"]{--accent:#e2742a; --accent-dark:#b3561a; --accent-bg:#fdebdc; --bg:#fdf7f1; --line:#f0e2d4;}
+  }
+  @media (prefers-color-scheme: dark){
+    :root[data-theme="pink"]{--accent:#f28fb0; --accent-dark:#c2607f; --accent-bg:#3d2230; --on-accent:#25121a;}
+    :root[data-theme="blue"]{--accent:#7fb2f5; --accent-dark:#4f81c4; --accent-bg:#1f2c3f; --on-accent:#0f1826;}
+    :root[data-theme="mint"]{--accent:#6fd3ad; --accent-dark:#3f9b78; --accent-bg:#193229; --on-accent:#0d1f18;}
+    :root[data-theme="purple"]{--accent:#b797f0; --accent-dark:#8765c2; --accent-bg:#2c2240; --on-accent:#1a1228;}
+    :root[data-theme="orange"]{--accent:#f5a064; --accent-dark:#c2733d; --accent-bg:#3a2718; --on-accent:#24170c;}
+  }
+  /* lion logo + theme picker */
+  .logo{background:none; box-shadow:none; width:42px; height:42px; border-radius:0; display:block;}
+  .logo svg{width:42px; height:42px; display:block; filter:drop-shadow(0 2px 0 color-mix(in srgb, var(--accent-dark) 35%, transparent)); transition:transform 0.3s;}
+  .brand:hover .logo svg{transform:rotate(-8deg) scale(1.05);}
+  .appActions{display:flex; gap:8px; align-items:center;}
+  .themeWrap{position:relative;}
+  .themeBtn{width:40px; height:36px; padding:0; border-radius:20px; display:grid; place-items:center; background:var(--card);}
+  .themeDot{width:18px; height:18px; border-radius:50%; background:conic-gradient(#d9577f 0 25%, #3b7dd8 0 50%, #2f9e7a 0 75%, #e2742a 0); box-shadow:0 0 0 2px var(--card), 0 0 0 4px var(--accent);}
+  .pop{position:absolute; top:calc(100% + 8px); right:0; z-index:70; background:var(--card); border:2px solid var(--line); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.12), 0 3px 0 var(--line); padding:12px; display:none; animation:popIn 0.18s ease-out;}
+  .pop.open{display:block;}
+  @keyframes popIn{ from{opacity:0; transform:translateY(-6px) scale(0.97);} to{opacity:1; transform:none;} }
+  .popTitle{font-size:12px; font-weight:800; color:var(--sub); margin:0 4px 8px;}
+  .swatches{display:grid; grid-template-columns:repeat(3, 76px); gap:8px;}
+  .swatch{display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 4px; border-radius:14px; font-size:11.5px; box-shadow:none; border:2px solid transparent; background:transparent;}
+  .swatch:hover{background:var(--accent-bg);}
+  .swatch i{width:30px; height:30px; border-radius:50%; display:block; box-shadow:inset 0 -3px 0 rgba(0,0,0,0.18);}
+  .swatch.on{border-color:var(--accent); background:var(--accent-bg);}
+  .swatch.on i::after{content:"✓"; color:#fff; font-style:normal; font-weight:800; display:grid; place-items:center; height:100%; font-size:15px;}
+  /* pretty select (pill dropdown) */
+  .psel{position:relative; display:inline-block;}
+  .pselNative{display:none !important;}
+  .pselBtn{display:inline-flex; align-items:center; gap:6px; padding:7px 12px 7px 10px; border-radius:999px; background:var(--accent-bg); border-color:transparent; color:var(--accent); font-size:13px; box-shadow:0 3px 0 color-mix(in srgb, var(--accent) 30%, transparent);}
+  .pselBtn:hover{background:var(--accent-bg); filter:brightness(0.98);}
+  .pselIcon{font-size:14px; line-height:1;}
+  .pselLbl{color:var(--ink); max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .pselChev{width:12px; height:12px; transition:transform 0.2s;}
+  .psel.open .pselChev{transform:rotate(180deg);}
+  .psel.open .pselBtn{background:var(--accent); color:var(--on-accent);}
+  .psel.open .pselLbl{color:var(--on-accent);}
+  .pselMenu{position:absolute; top:calc(100% + 8px); left:0; z-index:50; min-width:100%; max-width:calc(100vw - 32px); max-height:min(320px, 60vh); overflow:auto; background:var(--card); border:2px solid var(--line); border-radius:16px; padding:6px; box-shadow:0 10px 30px rgba(0,0,0,0.12), 0 3px 0 var(--line); display:none; animation:popIn 0.16s ease-out;}
+  .psel.open .pselMenu{display:block;}
+  .psel.alignRight .pselMenu{left:auto; right:0;}
+  .pselOpt{display:flex; align-items:center; gap:8px; width:100%; text-align:left; white-space:nowrap; padding:9px 12px; border:none; box-shadow:none; background:transparent; border-radius:10px; font-size:13.5px; font-weight:700;}
+  .pselOpt::before{content:""; width:16px; flex:none; text-align:center; color:var(--accent);}
+  .pselOpt.on{background:var(--accent-bg); color:var(--accent);}
+  .pselOpt.on::before{content:"✓";}
+  .pselOpt:active{transform:none;}
+  /* remaining native selects (e.g. matching test) */
+  select{appearance:none; -webkit-appearance:none; padding-right:30px; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%23999' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; background-size:12px; border-radius:12px;}
+  /* flashcard: both faces centered */
+  .flip-outer{overflow:visible; background:transparent; border:none; box-shadow:none; padding:0;}
+  .flip-inner{transition:transform 0.55s cubic-bezier(.4,.2,.2,1);}
+  .flip-face{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:270px; padding:30px 22px; background:var(--card); border:2px solid var(--line); border-radius:22px; box-shadow:0 4px 0 var(--line);}
+  .flip-face.back{text-align:center; padding:30px 22px; background:linear-gradient(180deg, var(--accent-bg), var(--card) 65%);}
+  .flip-face.front .term{font-size:28px; font-weight:800;}
+  .backTerm{font-size:14px; font-weight:700; color:var(--sub); margin-bottom:6px;}
+  .gloss-big{font-size:26px; font-weight:800; color:var(--accent); margin:2px 0 6px; line-height:1.4;}
+  .context-toggle{margin-top:14px;}
+  .context-toggle button{font-size:12.5px; padding:6px 14px; border-radius:20px;}
+  .context-box{width:100%; max-width:560px; text-align:center; border-top:2px dashed var(--line);}
+  .context-box .en{font-size:14.5px; margin-bottom:6px;}
+  .context-box .jp{border-top:none; margin-top:0; padding-top:0; font-size:13.5px;}
+  .flipHint{display:inline-flex; align-items:center; gap:6px; margin-top:14px; font-size:12px; color:var(--sub); font-weight:700;}
+  .flipHint svg{width:14px; height:14px;}
 </style>
 </head>
 <body>
 <header class="appbar">
   <div class="appbarIn">
-    <div class="brand"><span class="logo">🦁</span><div><div class="brandTitle">ナルニア国物語</div><div class="brandSub">期末試験対策ツール</div></div></div>
-    <div class="streakChip" id="streakChip"></div>
+    <div class="brand"><span class="logo"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g style="fill:var(--accent-dark)"><circle cx="53.0" cy="33.0" r="9"/><circle cx="50.2" cy="43.5" r="9"/><circle cx="42.5" cy="51.2" r="9"/><circle cx="32.0" cy="54.0" r="9"/><circle cx="21.5" cy="51.2" r="9"/><circle cx="13.8" cy="43.5" r="9"/><circle cx="11.0" cy="33.0" r="9"/><circle cx="13.8" cy="22.5" r="9"/><circle cx="21.5" cy="14.8" r="9"/><circle cx="32.0" cy="12.0" r="9"/><circle cx="42.5" cy="14.8" r="9"/><circle cx="50.2" cy="22.5" r="9"/></g><g style="fill:var(--accent)"><circle cx="48.4" cy="37.4" r="7"/><circle cx="44.0" cy="45.0" r="7"/><circle cx="36.4" cy="49.4" r="7"/><circle cx="27.6" cy="49.4" r="7"/><circle cx="20.0" cy="45.0" r="7"/><circle cx="15.6" cy="37.4" r="7"/><circle cx="15.6" cy="28.6" r="7"/><circle cx="20.0" cy="21.0" r="7"/><circle cx="27.6" cy="16.6" r="7"/><circle cx="36.4" cy="16.6" r="7"/><circle cx="44.0" cy="21.0" r="7"/><circle cx="48.4" cy="28.6" r="7"/><circle cx="32" cy="33" r="19"/></g><circle cx="19.5" cy="21.5" r="5.5" fill="#ffd9a3"/><circle cx="19.5" cy="21.5" r="2.8" fill="#f2a877"/><circle cx="44.5" cy="21.5" r="5.5" fill="#ffd9a3"/><circle cx="44.5" cy="21.5" r="2.8" fill="#f2a877"/><ellipse cx="32" cy="35" rx="15.5" ry="14.5" fill="#ffe3b8"/><ellipse cx="25.5" cy="32" rx="2.3" ry="2.9" fill="#3a2718"/><circle cx="26.3" cy="31" r="0.9" fill="#fff"/><ellipse cx="38.5" cy="32" rx="2.3" ry="2.9" fill="#3a2718"/><circle cx="39.3" cy="31" r="0.9" fill="#fff"/><ellipse cx="21.5" cy="38.5" rx="3" ry="2" fill="#ff8fa3" opacity=".55"/><ellipse cx="42.5" cy="38.5" rx="3" ry="2" fill="#ff8fa3" opacity=".55"/><ellipse cx="32" cy="40.5" rx="6.5" ry="5" fill="#fff4e2"/><path d="M29.2 36.8h5.6c.8 0 1.2.9.7 1.5l-2.8 2.6a1 1 0 0 1-1.4 0l-2.8-2.6c-.5-.6-.1-1.5.7-1.5z" fill="#6b3a26"/><path d="M32 40.6v1.6M32 42.2c-.9 1.6-2.9 1.9-4 .6M32 42.2c.9 1.6 2.9 1.9 4 .6" fill="none" stroke="#6b3a26" stroke-width="1.2" stroke-linecap="round"/></svg></span><div><div class="brandTitle">ナルニア国物語</div><div class="brandSub">期末試験対策ツール</div></div></div>
+    <div class="appActions">
+      <div class="streakChip" id="streakChip"></div>
+      <div class="themeWrap">
+        <button class="themeBtn" id="themeBtn" aria-label="テーマカラーを変える" title="テーマカラー"><span class="themeDot"></span></button>
+        <div class="pop" id="themePop"><div class="popTitle">テーマカラー</div><div class="swatches" id="swatches"></div></div>
+      </div>
+    </div>
   </div>
 </header>
 <div class="navHost">
@@ -728,11 +805,11 @@ function renderVocabCard(){
       <div class="flip-inner" id="flipInner">
         <div class="flip-face front">
           <div class="term">${item.term}</div>
-          <div class="hint">タップして意味を確認</div>
+          <div class="flipHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg>タップして意味を確認</div>
           <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
         </div>
         <div class="flip-face back">
-          <div class="term" style="margin-bottom:2px">${item.term}</div>
+          <div class="backTerm">${item.term}</div>
           <div class="gloss-big">${item.gloss || ''}</div>
           <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
           <div class="context-toggle"><button id="toggleContext">例文を見る</button></div>
@@ -2450,6 +2527,7 @@ function setVocabRound(r){
   if(sel.value === r) return;
   sel.value = r;
   sel.onchange({target: sel});
+  if(sel._prettyRefresh) sel._prettyRefresh();
 }
 
 function roundStats(r){
@@ -2575,6 +2653,82 @@ function hideSheet(){
 
 document.querySelectorAll('.navItem').forEach(n=> n.onclick = ()=> goTo(n.dataset.nav));
 document.querySelectorAll('#practiceSeg button').forEach(b=> b.onclick = ()=> goTo('practice', b.dataset.p));
+
+// ---- pretty pill dropdowns (replace the native filter <select>s) ----
+function prettySelect(sel, icon){
+  if(!sel || sel._prettyRefresh) return;
+  const wrap = document.createElement('div'); wrap.className = 'psel';
+  const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pselBtn';
+  const menu = document.createElement('div'); menu.className = 'pselMenu'; menu.setAttribute('role','listbox');
+  sel.parentNode.insertBefore(wrap, sel);
+  wrap.append(btn, menu, sel);
+  sel.classList.add('pselNative');
+  const refresh = ()=>{
+    const o = sel.options[sel.selectedIndex];
+    btn.innerHTML = `<span class="pselIcon">${icon}</span><span class="pselLbl">${o ? escapeHtml(o.text) : ''}</span><svg class="pselChev" viewBox="0 0 12 12"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    wrap.style.display = sel.style.display === 'none' ? 'none' : '';
+  };
+  const outside = (e)=>{ if(!wrap.contains(e.target)) close(); };
+  const onKey = (e)=>{ if(e.key === 'Escape'){ close(); btn.focus(); } };
+  function close(){
+    wrap.classList.remove('open');
+    document.removeEventListener('pointerdown', outside, true);
+    document.removeEventListener('keydown', onKey);
+  }
+  btn.onclick = ()=>{
+    if(wrap.classList.contains('open')) return close();
+    document.querySelectorAll('.psel.open').forEach(w => w._close && w._close());
+    menu.innerHTML = [...sel.options].map((o,i)=>`<button type="button" role="option" class="pselOpt ${i===sel.selectedIndex?'on':''}" data-i="${i}">${escapeHtml(o.text)}</button>`).join('');
+    menu.querySelectorAll('.pselOpt').forEach(b => b.onclick = ()=>{
+      sel.selectedIndex = Number(b.dataset.i);
+      close(); refresh();
+      if(sel.onchange) sel.onchange({target: sel});
+    });
+    wrap.classList.add('open');
+    wrap.classList.remove('alignRight');
+    const r = menu.getBoundingClientRect();
+    if(r.right > window.innerWidth - 8) wrap.classList.add('alignRight');
+    document.addEventListener('pointerdown', outside, true);
+    document.addEventListener('keydown', onKey);
+    const on = menu.querySelector('.pselOpt.on'); if(on) on.focus();
+  };
+  wrap._close = close;
+  new MutationObserver(refresh).observe(sel, {childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:['style']});
+  sel._prettyRefresh = refresh;
+  refresh();
+}
+
+// ---- theme colors ----
+const THEMES = [{"k": "brown", "label": "ブラウン", "color": "#8a5a3b", "dark": "#66401f"}, {"k": "pink", "label": "ピンク", "color": "#d9577f", "dark": "#ad3a60"}, {"k": "blue", "label": "ブルー", "color": "#3b7dd8", "dark": "#285ea9"}, {"k": "mint", "label": "ミント", "color": "#2f9e7a", "dark": "#1f7658"}, {"k": "purple", "label": "パープル", "color": "#8a5cd1", "dark": "#6a40ab"}, {"k": "orange", "label": "オレンジ", "color": "#e2742a", "dark": "#b3561a"}];
+const LION_SVG = "<svg viewBox=\"0 0 64 64\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><g fill=\"var(--accent-dark)\"><circle cx=\"53.0\" cy=\"33.0\" r=\"9\"/><circle cx=\"50.2\" cy=\"43.5\" r=\"9\"/><circle cx=\"42.5\" cy=\"51.2\" r=\"9\"/><circle cx=\"32.0\" cy=\"54.0\" r=\"9\"/><circle cx=\"21.5\" cy=\"51.2\" r=\"9\"/><circle cx=\"13.8\" cy=\"43.5\" r=\"9\"/><circle cx=\"11.0\" cy=\"33.0\" r=\"9\"/><circle cx=\"13.8\" cy=\"22.5\" r=\"9\"/><circle cx=\"21.5\" cy=\"14.8\" r=\"9\"/><circle cx=\"32.0\" cy=\"12.0\" r=\"9\"/><circle cx=\"42.5\" cy=\"14.8\" r=\"9\"/><circle cx=\"50.2\" cy=\"22.5\" r=\"9\"/></g><g fill=\"var(--accent)\"><circle cx=\"48.4\" cy=\"37.4\" r=\"7\"/><circle cx=\"44.0\" cy=\"45.0\" r=\"7\"/><circle cx=\"36.4\" cy=\"49.4\" r=\"7\"/><circle cx=\"27.6\" cy=\"49.4\" r=\"7\"/><circle cx=\"20.0\" cy=\"45.0\" r=\"7\"/><circle cx=\"15.6\" cy=\"37.4\" r=\"7\"/><circle cx=\"15.6\" cy=\"28.6\" r=\"7\"/><circle cx=\"20.0\" cy=\"21.0\" r=\"7\"/><circle cx=\"27.6\" cy=\"16.6\" r=\"7\"/><circle cx=\"36.4\" cy=\"16.6\" r=\"7\"/><circle cx=\"44.0\" cy=\"21.0\" r=\"7\"/><circle cx=\"48.4\" cy=\"28.6\" r=\"7\"/><circle cx=\"32\" cy=\"33\" r=\"19\"/></g><circle cx=\"19.5\" cy=\"21.5\" r=\"5.5\" fill=\"#ffd9a3\"/><circle cx=\"19.5\" cy=\"21.5\" r=\"2.8\" fill=\"#f2a877\"/><circle cx=\"44.5\" cy=\"21.5\" r=\"5.5\" fill=\"#ffd9a3\"/><circle cx=\"44.5\" cy=\"21.5\" r=\"2.8\" fill=\"#f2a877\"/><ellipse cx=\"32\" cy=\"35\" rx=\"15.5\" ry=\"14.5\" fill=\"#ffe3b8\"/><ellipse cx=\"25.5\" cy=\"32\" rx=\"2.3\" ry=\"2.9\" fill=\"#3a2718\"/><circle cx=\"26.3\" cy=\"31\" r=\"0.9\" fill=\"#fff\"/><ellipse cx=\"38.5\" cy=\"32\" rx=\"2.3\" ry=\"2.9\" fill=\"#3a2718\"/><circle cx=\"39.3\" cy=\"31\" r=\"0.9\" fill=\"#fff\"/><ellipse cx=\"21.5\" cy=\"38.5\" rx=\"3\" ry=\"2\" fill=\"#ff8fa3\" opacity=\".55\"/><ellipse cx=\"42.5\" cy=\"38.5\" rx=\"3\" ry=\"2\" fill=\"#ff8fa3\" opacity=\".55\"/><ellipse cx=\"32\" cy=\"40.5\" rx=\"6.5\" ry=\"5\" fill=\"#fff4e2\"/><path d=\"M29.2 36.8h5.6c.8 0 1.2.9.7 1.5l-2.8 2.6a1 1 0 0 1-1.4 0l-2.8-2.6c-.5-.6-.1-1.5.7-1.5z\" fill=\"#6b3a26\"/><path d=\"M32 40.6v1.6M32 42.2c-.9 1.6-2.9 1.9-4 .6M32 42.2c.9 1.6 2.9 1.9 4 .6\" fill=\"none\" stroke=\"#6b3a26\" stroke-width=\"1.2\" stroke-linecap=\"round\"/></svg>";
+function applyTheme(k){
+  const t = THEMES.find(x=>x.k===k) || THEMES[0];
+  if(t.k === 'brown') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', t.k);
+  try{ localStorage.setItem('narnia-theme', t.k); }catch(e){}
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute('content', t.color);
+  const fav = LION_SVG.replace(/var\(--accent-dark\)/g, t.dark).replace(/var\(--accent\)/g, t.color);
+  const link = document.getElementById('favicon');
+  if(link) link.href = 'data:image/svg+xml,' + encodeURIComponent(fav);
+  document.querySelectorAll('.swatch').forEach(b => b.classList.toggle('on', b.dataset.k === t.k));
+}
+function currentTheme(){ return document.documentElement.getAttribute('data-theme') || 'brown'; }
+(function initThemePicker(){
+  const pop = document.getElementById('themePop');
+  document.getElementById('swatches').innerHTML = THEMES.map(t=>`<button class="swatch" data-k="${t.k}"><i style="background:${t.color}"></i>${t.label}</button>`).join('');
+  document.querySelectorAll('.swatch').forEach(b => b.onclick = ()=>{ applyTheme(b.dataset.k); pop.classList.remove('open'); });
+  const outside = (e)=>{ if(!pop.parentNode.contains(e.target)){ pop.classList.remove('open'); document.removeEventListener('pointerdown', outside, true); } };
+  document.getElementById('themeBtn').onclick = ()=>{
+    const open = !pop.classList.contains('open');
+    pop.classList.toggle('open', open);
+    if(open) document.addEventListener('pointerdown', outside, true);
+  };
+  applyTheme(currentTheme());
+})();
+
+[['vocabRound','📚'], ['vocabChapter','📖'], ['vocabFilter','✨'], ['underlineChapter','📖'], ['quizChapter','📖']]
+  .forEach(([id, icon]) => prettySelect(document.getElementById(id), icon));
 
 (async function init(){
   await store.load();
