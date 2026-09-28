@@ -114,10 +114,14 @@ JSONとしてまとめて保存される（`window.storage` が使える特殊�
   learn: { [語彙配列のindex]: 1 | 2 },   // 学習モード：1=学習中（4択正解済み）、2=習得
   learnWritten: true,                    // 学習モードで記述問題を出すか
   matchBest: { ["回|章"]: <ms> },         // マッチの自己ベスト（フィルタの組み合わせごと）
+  testSettings: {count, types:{tf,mc,written,matching}, dir},  // テストの設定
+  testHistory: [{ts, round, chapter, correct, total, pct, retake}], // テスト結果（最新50件）
+  days: { ["YYYY-MM-DD"]: true },         // 学習した日（連続学習日数の計算用）
 }
 ```
 
-`learn` / `learnWritten` / `matchBest` は version 5 の途中で追加したフィールドで、
+`learn` / `learnWritten` / `matchBest` / `testSettings` / `testHistory` / `days` は
+version 5 の途中で追加したフィールドで、
 読み込み時に `defaultData()` とマージしているので、古い保存データでもリセット
 されずにそのまま使える。
 
