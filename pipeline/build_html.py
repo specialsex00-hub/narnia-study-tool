@@ -141,6 +141,40 @@ TEMPLATE = r"""<!DOCTYPE html>
   .matchTile.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
   .matchTile.clearing{opacity:0; transition:opacity 0.5s ease;}
   .matchTile.cleared{opacity:0; pointer-events:none; cursor:default; border-color:transparent; background:transparent;}
+  /* match game extras */
+  .matchStart{text-align:center; padding:34px 20px;}
+  .matchStartIcon{font-size:34px; margin-bottom:6px;}
+  .matchClock{font-size:18px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; position:relative;}
+  .matchPenalty{position:absolute; right:0; top:-14px; font-size:12px; color:var(--bad); opacity:0;}
+  .matchPenalty.show{animation:penaltyUp 0.9s ease-out;}
+  @keyframes penaltyUp{ 0%{opacity:1; transform:translateY(6px);} 100%{opacity:0; transform:translateY(-10px);} }
+  .matchResult{font-size:40px; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; margin-bottom:6px;}
+  /* learn mode (Quizlet Learn) */
+  .learnHead{margin-bottom:14px;}
+  .learnBar{display:flex; height:8px; border-radius:6px; background:var(--line); overflow:hidden; margin-bottom:8px;}
+  .learnBar span{display:block; height:100%; transition:width 0.4s ease;}
+  .lbMastered{background:var(--good);}
+  .lbLearning{background:#e0a340;}
+  .learnLegend{display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:var(--sub); align-items:center;}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:-1px;}
+  .dFresh{background:var(--line);} .dLearning{background:#e0a340;} .dMastered{background:var(--good);}
+  .learnOpt{margin-left:auto; cursor:pointer;}
+  .learnCard{padding:24px;}
+  .learnLabel{font-size:12px; color:var(--sub); font-weight:600; margin-bottom:8px;}
+  .learnPrompt{font-size:24px; font-weight:600; margin-bottom:22px; line-height:1.4;}
+  .learnInput{width:100%; font-size:17px !important; padding:12px 14px !important; margin-bottom:4px;}
+  .learnInput.good{border-color:var(--good); background:var(--good-bg);}
+  .learnInput.bad{border-color:var(--bad); background:var(--bad-bg);}
+  .learnFb{margin-top:10px; font-weight:600; font-size:14px; animation:fadeInUp 0.25s ease;}
+  .learnFb.good{color:var(--good);} .learnFb.bad{color:var(--bad);}
+  .learnAns{margin-top:10px; padding:10px 12px; border-radius:8px; font-size:15px; animation:fadeInUp 0.25s ease;}
+  .learnAns span{display:block; font-size:11px; font-weight:600; margin-bottom:2px;}
+  .learnAns.good{background:var(--good-bg); color:var(--good);} .learnAns.bad{background:var(--bad-bg); color:var(--bad);}
+  .keyhint{display:inline-block; min-width:18px; font-size:11px; color:var(--sub); border:1px solid var(--line); border-radius:4px; padding:0 4px; margin-right:10px; text-align:center;}
+  .keyhint.inv{color:#fff; border-color:rgba(255,255,255,0.6); margin:0 0 0 8px;}
+  .lvl{font-size:11px; border-radius:10px; padding:1px 8px; align-self:center; white-space:nowrap;}
+  .lvl.mastered{background:var(--good-bg); color:var(--good);} .lvl.learning{background:#fbeed5; color:#a06a10;} .lvl.fresh{background:var(--accent-bg); color:var(--sub);}
+  .missMark{font-size:11px; color:var(--bad); font-weight:400;}
   .confetti{position:relative; height:50px; width:220px; margin:0 auto 6px;}
   .confetti span{position:absolute; top:-6px; width:8px; height:8px; border-radius:2px; animation:confettiFall 1.1s ease-in forwards;}
   /* summary tab */
@@ -185,8 +219,9 @@ TEMPLATE = r"""<!DOCTYPE html>
   <div class="panel active" id="panel-vocab">
     <div class="subtabs" id="vocabSubtabs">
       <div class="subtab active" data-vmode="card">カード</div>
-      <div class="subtab" data-vmode="list">一覧</div>
+      <div class="subtab" data-vmode="learn">学習</div>
       <div class="subtab" data-vmode="match">マッチ</div>
+      <div class="subtab" data-vmode="list">一覧</div>
     </div>
     <div class="filterrow">
       <select id="vocabRound"></select>
@@ -266,6 +301,9 @@ function defaultData(){
     comprehensionScore: {correct:0, total:0},
     kotestWrong: {},         // idx -> true
     kotestScore: {correct:0, total:0},
+    learn: {},               // vocab idx -> 1 (学習中) | 2 (習得)  学習モード
+    learnWritten: true,      // 学習モードで記述問題を出すか
+    matchBest: {},           // "round|chapter" -> best time (ms)  マッチ
   };
 }
 
@@ -281,7 +319,7 @@ const store = {
         const r = await window.storage.get(STORAGE_KEY);
         if(r && r.value){
           const parsed = JSON.parse(r.value);
-          if(parsed && parsed.version === 5){ this.data = parsed; return; }
+          if(parsed && parsed.version === 5){ this.data = Object.assign(defaultData(), parsed); return; }
         }
       }
     }catch(e){}
@@ -289,7 +327,7 @@ const store = {
       const raw = localStorage.getItem(STORAGE_KEY);
       if(raw){
         const parsed = JSON.parse(raw);
-        if(parsed && parsed.version === 5) this.data = parsed;
+        if(parsed && parsed.version === 5) this.data = Object.assign(defaultData(), parsed);
       }
     }catch(e){}
   },
@@ -430,6 +468,7 @@ function renderVocabRoot(){
   if(vocabMode === 'card') renderVocabCard();
   else if(vocabMode === 'list') renderVocabList();
   else if(vocabMode === 'match') renderVocabMatch();
+  else if(vocabMode === 'learn') renderVocabLearn();
 }
 
 document.getElementById('vocabSubtabs').querySelectorAll('.subtab').forEach(t=>{
@@ -539,18 +578,26 @@ function renderVocabList(){
   input.setSelectionRange(input.value.length, input.value.length);
 }
 
-// ---- vocab match game (Quizlet Match: every tile is visible from the start;
-// tap two tiles that form a term/meaning pair and they clear off the board) ----
+// ---- vocab match game (Quizlet Match: start screen, every tile visible,
+// tap two tiles that form a term/meaning pair and they clear off the board;
+// a wrong pair adds a 1-second penalty; best time is kept per filter) ----
+const MATCH_PENALTY_MS = 1000;
 let matchCards = [];       // {uid, vocabIdx, side, text, cleared, clearing}
 let matchSelected = [];    // up to 2 uids currently selected
 let matchWrongIds = [];    // uids currently flashing red
 let matchMoves = 0;
 let matchLocked = false;
 let matchStartTs = 0;
+let matchPenaltyMs = 0;
+let matchState = 'ready';  // ready | playing | done
 let matchTimerHandle = null;
 
+function matchBestKey(){ return `${vocabRound}|${vocabChapter}`; }
+function fmtSec(ms){ return (ms/1000).toFixed(1) + '秒'; }
+function matchElapsed(){ return Date.now() - matchStartTs + matchPenaltyMs; }
+
 function buildMatchGame(){
-  const pool = vocabPoolWithDueFilter().filter(i => VOCAB[i].gloss);
+  const pool = vocabPool().filter(i => VOCAB[i].gloss);
   const n = Math.min(6, pool.length);
   const chosen = shuffle(pool).slice(0, n);
   const cards = [];
@@ -563,14 +610,21 @@ function buildMatchGame(){
   matchWrongIds = [];
   matchMoves = 0;
   matchLocked = false;
+  matchPenaltyMs = 0;
+  matchState = 'ready';
+  if(matchTimerHandle){ clearInterval(matchTimerHandle); matchTimerHandle = null; }
+}
+
+function startMatchGame(){
+  matchState = 'playing';
   matchStartTs = Date.now();
+  matchPenaltyMs = 0;
   if(matchTimerHandle) clearInterval(matchTimerHandle);
   matchTimerHandle = setInterval(()=>{
-    if(vocabMode==='match'){
-      const el = document.getElementById('matchTimer');
-      if(el) el.textContent = Math.floor((Date.now()-matchStartTs)/1000) + '秒';
-    }
-  }, 1000);
+    const el = document.getElementById('matchTimer');
+    if(el && matchState==='playing') el.textContent = fmtSec(matchElapsed());
+  }, 100);
+  renderVocabMatch();
 }
 
 // Builds the match-game DOM exactly once per game (new game / mode switch /
@@ -586,14 +640,28 @@ function renderVocabMatch(){
     return;
   }
   if(matchCards.length===0){
-    area.innerHTML = `<div class="card empty">この条件では6語未満しかないため、マッチゲームを作成できません。章の範囲を広げてみてください。</div>`;
+    area.innerHTML = `<div class="card empty">この条件の単語がないため、マッチゲームを作成できません。回・章の範囲を広げてみてください。</div>`;
+    return;
+  }
+  const best = store.data.matchBest[matchBestKey()];
+  if(matchState==='ready'){
+    area.innerHTML = `
+      <div class="card matchStart">
+        <div class="matchStartIcon">⏱</div>
+        <div class="term">マッチ</div>
+        <div class="progress">すべての「英語」と「意味」を、できるだけ速くペアにして消していきましょう。<br>間違えると <b>+1秒</b> のペナルティ。</div>
+        <div class="progress">${best ? `自己ベスト：<b>${fmtSec(best)}</b>` : 'まだ記録はありません'}</div>
+        <div class="btnrow" style="justify-content:center"><button class="primary" id="matchStartBtn">ゲームを開始</button></div>
+      </div>
+    `;
+    document.getElementById('matchStartBtn').onclick = startMatchGame;
     return;
   }
   area.innerHTML = `
     <div class="card">
       <div class="matchTop">
-        <span>ペアになる「英語」と「意味」のタイルを2枚タップして選んでください</span>
-        <span>手数: <span id="matchMovesLabel">0</span>　経過時間: <span id="matchTimer">0秒</span></span>
+        <span>ペアになる「英語」と「意味」のタイルを2枚タップ</span>
+        <span class="matchClock"><span id="matchTimer">${fmtSec(matchState==='playing' ? matchElapsed() : 0)}</span><span class="matchPenalty" id="matchPenalty"></span></span>
       </div>
       <div class="empty" id="matchDone" style="display:none"></div>
       <div class="matchGrid" id="matchGrid"></div>
@@ -611,9 +679,31 @@ function renderVocabMatch(){
   syncMatchTiles();
 }
 
+function finishMatchGame(){
+  matchState = 'done';
+  if(matchTimerHandle){ clearInterval(matchTimerHandle); matchTimerHandle = null; }
+  const total = matchElapsed();
+  const key = matchBestKey();
+  const prev = store.data.matchBest[key];
+  const isBest = !prev || total < prev;
+  if(isBest){ store.data.matchBest[key] = total; store.save(); }
+  const timerEl = document.getElementById('matchTimer');
+  if(timerEl) timerEl.textContent = fmtSec(total);
+  const doneEl = document.getElementById('matchDone');
+  const grid = document.getElementById('matchGrid');
+  if(grid) grid.style.display = 'none';
+  doneEl.style.display = '';
+  doneEl.innerHTML = `
+    <div id="matchConf"></div>
+    <div class="matchResult">${fmtSec(total)}</div>
+    <div class="progress">${isBest ? (prev ? `🎉 自己ベスト更新！（前回のベスト ${fmtSec(prev)}）` : '🎉 初めての記録です！') : `自己ベスト：${fmtSec(prev)}`}</div>
+    <div class="progress">うちペナルティ ${matchPenaltyMs/1000}秒・手数 ${matchMoves}</div>
+    <div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div>`;
+  if(isBest) fireConfetti(document.getElementById('matchConf'));
+  document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); startMatchGame(); };
+}
+
 function syncMatchTiles(){
-  const movesEl = document.getElementById('matchMovesLabel');
-  if(movesEl) movesEl.textContent = matchMoves;
   matchCards.forEach(c=>{
     const tile = document.querySelector(`.matchTile[data-uid="${c.uid}"]`);
     if(!tile) return;
@@ -622,25 +712,18 @@ function syncMatchTiles(){
     tile.classList.toggle('clearing', !!c.clearing);
     tile.classList.toggle('cleared', !!c.cleared);
   });
-  const allCleared = matchCards.every(c=>c.cleared);
-  const doneEl = document.getElementById('matchDone');
-  if(!doneEl) return;
-  if(allCleared){
-    if(doneEl.dataset.shown !== '1'){
-      doneEl.dataset.shown = '1';
-      doneEl.style.display = '';
-      doneEl.innerHTML = `🎉 全ペア達成！ お見事です。<div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div>`;
-      fireConfetti(doneEl);
-      document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); renderVocabMatch(); };
-    }
-  } else {
-    doneEl.dataset.shown = '0';
-    doneEl.style.display = 'none';
-  }
+  if(matchState==='playing' && matchCards.every(c=>c.cleared)) finishMatchGame();
+}
+
+function flashMatchPenalty(){
+  const el = document.getElementById('matchPenalty');
+  if(!el) return;
+  el.textContent = '+1秒';
+  el.classList.remove('show'); void el.offsetWidth; el.classList.add('show');
 }
 
 function onMatchTileClick(uid){
-  if(matchLocked) return;
+  if(matchLocked || matchState!=='playing') return;
   const card = matchCards.find(c=>c.uid===uid);
   if(!card || card.cleared) return;
   if(matchSelected.includes(uid)){
@@ -665,9 +748,11 @@ function onMatchTileClick(uid){
           matchSelected = [];
           matchLocked = false;
           syncMatchTiles();
-        }, 500);
-      }, 220);
+        }, 350);
+      }, 120);
     } else {
+      matchPenaltyMs += MATCH_PENALTY_MS;
+      flashMatchPenalty();
       matchWrongIds = [a.uid, b.uid];
       syncMatchTiles();
       setTimeout(()=>{
@@ -675,10 +760,290 @@ function onMatchTileClick(uid){
         matchSelected = [];
         matchLocked = false;
         syncMatchTiles();
-      }, 550);
+      }, 450);
     }
   }
 }
+
+// ---- vocab learn mode (Quizlet Learn: rounds of up to 7 terms; a new term is
+// asked as multiple choice, a familiar one as a written answer; a term is
+// mastered after one correct written answer; misses come back later in the
+// same round). Per-term level is kept in store.data.learn:
+//   0 / missing = 未学習, 1 = 学習中（4択は正解済み）, 2 = 習得 ----
+const LEARN_ROUND_SIZE = 7;
+let learnQueue = [];        // vocab indices still to ask in this round
+let learnRoundItems = [];   // vocab indices in this round (for the summary)
+let learnRoundNo = 0;
+let learnRoundMissed = {};  // idx -> true if missed at least once this round
+let learnCurrent = null;    // {idx, type:'mc'|'written', options?}
+let learnAnswered = false;
+
+function learnLevel(i){ return store.data.learn[i] || 0; }
+function learnPool(){ return vocabPool().filter(i => VOCAB[i].gloss); }
+
+function buildLearnRound(){
+  const pool = learnPool();
+  const remaining = pool.filter(i => learnLevel(i) < 2);
+  // Terms already in progress come first, then new ones, like Quizlet.
+  const inProgress = shuffle(remaining.filter(i => learnLevel(i) === 1));
+  const fresh = remaining.filter(i => learnLevel(i) === 0);
+  learnRoundItems = inProgress.concat(fresh).slice(0, LEARN_ROUND_SIZE);
+  learnQueue = shuffle(learnRoundItems.slice());
+  learnRoundMissed = {};
+  learnRoundNo++;
+  learnCurrent = null;
+}
+
+function resetLearnForPool(){
+  learnPool().forEach(i => { delete store.data.learn[i]; });
+  store.save();
+  learnRoundNo = 0;
+  buildLearnRound();
+  renderVocabLearn();
+}
+
+function normalizeAnswer(s){
+  return (s||'').toLowerCase()
+    .replace(/[’‘`]/g, "'")
+    .replace(/[〜~…]/g, ' ')
+    .replace(/[.,!?;:"“”()（）]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function learnCounts(){
+  const pool = learnPool();
+  const c = {total: pool.length, fresh:0, learning:0, mastered:0};
+  pool.forEach(i => { const l = learnLevel(i); if(l>=2) c.mastered++; else if(l===1) c.learning++; else c.fresh++; });
+  return c;
+}
+
+function learnHeaderHtml(){
+  const c = learnCounts();
+  const pct = n => c.total ? (n/c.total*100) : 0;
+  return `
+    <div class="learnHead">
+      <div class="learnBar">
+        <span class="lbMastered" style="width:${pct(c.mastered)}%"></span><span class="lbLearning" style="width:${pct(c.learning)}%"></span>
+      </div>
+      <div class="learnLegend">
+        <span><i class="dot dFresh"></i>未学習 ${c.fresh}</span>
+        <span><i class="dot dLearning"></i>学習中 ${c.learning}</span>
+        <span><i class="dot dMastered"></i>習得 ${c.mastered}</span>
+        <label class="learnOpt"><input type="checkbox" id="learnWrittenOpt" ${store.data.learnWritten ? 'checked' : ''}> 記述問題を出す</label>
+      </div>
+    </div>`;
+}
+
+function bindLearnHeader(){
+  const opt = document.getElementById('learnWrittenOpt');
+  if(opt) opt.onchange = (e)=>{ store.data.learnWritten = e.target.checked; store.save(); if(!learnAnswered){ learnCurrent = null; renderVocabLearn(); } };
+}
+
+function renderVocabLearn(){
+  const area = document.getElementById('vocabArea');
+  if(VOCAB.length===0){
+    area.innerHTML = `<div class="card empty">まだ単語が登録されていません。</div>`;
+    return;
+  }
+  const pool = learnPool();
+  if(pool.length===0){
+    area.innerHTML = `<div class="card empty">この条件の単語がありません。回・章の範囲を広げてみてください。</div>`;
+    return;
+  }
+  const c = learnCounts();
+  if(c.mastered === c.total){
+    area.innerHTML = learnHeaderHtml() + `
+      <div class="card empty" id="learnAllDone">
+        <div class="term">🎉 すべての語を習得しました！</div>
+        <div class="progress">この範囲の ${c.total} 語をすべて覚えました。</div>
+        <div class="btnrow" style="justify-content:center"><button class="primary" id="learnRestart">最初からやり直す</button></div>
+      </div>`;
+    fireConfetti(document.getElementById('learnAllDone'));
+    document.getElementById('learnRestart').onclick = resetLearnForPool;
+    bindLearnHeader();
+    return;
+  }
+  if(learnRoundItems.length===0) buildLearnRound();
+  if(learnQueue.length===0){ renderLearnRoundSummary(); return; }
+  if(!learnCurrent){
+    const idx = learnQueue[0];
+    const written = learnLevel(idx) >= 1 && store.data.learnWritten;
+    learnCurrent = {idx, type: written ? 'written' : 'mc'};
+    if(!written){
+      const others = shuffle([...new Set(VOCAB.filter((v,j)=>j!==idx && v.gloss && v.gloss!==VOCAB[idx].gloss).map(v=>v.gloss))]).slice(0,3);
+      learnCurrent.options = shuffle([VOCAB[idx].gloss, ...others]);
+    }
+  }
+  learnAnswered = false;
+  const item = VOCAB[learnCurrent.idx];
+  const done = learnRoundItems.length - learnQueue.length;
+  const top = `${learnHeaderHtml()}
+    <div class="progress">ラウンド ${learnRoundNo}：${done} / ${learnRoundItems.length}</div>`;
+  if(learnCurrent.type==='mc'){
+    area.innerHTML = top + `
+      <div class="card learnCard">
+        <div class="learnLabel">英語</div>
+        <div class="learnPrompt">${item.term}</div>
+        <div class="learnLabel">正しい意味を選んでください</div>
+        <div id="learnChoices">${learnCurrent.options.map((o,k)=>`<button class="choice" data-k="${k}"><span class="keyhint">${k+1}</span>${escapeHtml(o)}</button>`).join('')}</div>
+        <div id="learnFeedback"></div>
+        <div class="btnrow" id="learnSkipRow"><button id="learnDontKnow">わからない</button></div>
+      </div>`;
+    document.querySelectorAll('#learnChoices .choice').forEach(b=>{
+      b.onclick = ()=> answerLearnMc(learnCurrent.options[Number(b.dataset.k)]);
+    });
+  } else {
+    area.innerHTML = top + `
+      <div class="card learnCard">
+        <div class="learnLabel">意味</div>
+        <div class="learnPrompt">${item.gloss}</div>
+        <div class="learnLabel">英語で答えてください</div>
+        <input type="text" class="learnInput" id="learnInput" placeholder="英語を入力" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <div id="learnFeedback"></div>
+        <div class="btnrow" id="learnSkipRow"><button class="primary" id="learnSubmit">答える</button><button id="learnDontKnow">わからない</button></div>
+      </div>`;
+    const input = document.getElementById('learnInput');
+    input.focus();
+    input.onkeydown = (e)=>{ if(e.key==='Enter' && !e.isComposing){ e.preventDefault(); if(!learnAnswered) answerLearnWritten(input.value); } };
+    document.getElementById('learnSubmit').onclick = ()=> answerLearnWritten(input.value);
+  }
+  document.getElementById('learnDontKnow').onclick = ()=>{
+    if(learnCurrent.type==='mc') answerLearnMc(null); else answerLearnWritten(null);
+  };
+  bindLearnHeader();
+}
+
+const PRAISE = ['正解！', 'その調子！', 'すばらしい！', 'よくできました！', '完璧です！'];
+
+function learnCorrect(){
+  const idx = learnCurrent.idx;
+  const lvl = learnLevel(idx);
+  // With written questions off, a second correct multiple choice masters the term.
+  store.data.learn[idx] = Math.min(2, lvl + 1);
+  store.save();
+  learnQueue.shift();
+}
+
+function learnWrong(){
+  const idx = learnCurrent.idx;
+  store.data.learn[idx] = 0;
+  store.save();
+  learnRoundMissed[idx] = true;
+  learnQueue.shift();
+  learnQueue.push(idx);   // ask again later in this round
+}
+
+function learnNext(){ learnCurrent = null; if(vocabMode==='learn') renderVocabLearn(); }
+
+function resetLearnSession(){
+  learnQueue = []; learnRoundItems = []; learnRoundNo = 0; learnRoundMissed = {}; learnCurrent = null;
+}
+
+function showLearnContinue(){
+  const row = document.getElementById('learnSkipRow');
+  row.innerHTML = `<button class="primary" id="learnContinue">続ける <span class="keyhint inv">Enter</span></button>`;
+  document.getElementById('learnContinue').onclick = learnNext;
+  document.getElementById('learnContinue').focus();
+}
+
+function answerLearnMc(opt){
+  if(learnAnswered) return;
+  learnAnswered = true;
+  const item = VOCAB[learnCurrent.idx];
+  const ok = opt === item.gloss;
+  document.querySelectorAll('#learnChoices .choice').forEach(b=>{
+    b.disabled = true;
+    const o = learnCurrent.options[Number(b.dataset.k)];
+    if(o === item.gloss) b.classList.add('correct');
+    else if(o === opt) b.classList.add('wrong');
+  });
+  const fb = document.getElementById('learnFeedback');
+  if(ok){
+    fb.innerHTML = `<div class="learnFb good">${PRAISE[Math.floor(Math.random()*PRAISE.length)]}</div>`;
+    learnCorrect();
+    document.getElementById('learnSkipRow').innerHTML = '';
+    setTimeout(learnNext, 900);
+  } else {
+    fb.innerHTML = `<div class="learnFb bad">${opt===null ? 'まだ覚えていなくても大丈夫。あとでもう一度出題します。' : 'おしい！ あとでもう一度出題します。'}</div>`;
+    learnWrong();
+    showLearnContinue();
+  }
+}
+
+function answerLearnWritten(value){
+  if(learnAnswered) return;
+  const item = VOCAB[learnCurrent.idx];
+  if(value !== null && !value.trim()) return;
+  learnAnswered = true;
+  const input = document.getElementById('learnInput');
+  input.disabled = true;
+  const ok = value !== null && normalizeAnswer(value) === normalizeAnswer(item.term);
+  const fb = document.getElementById('learnFeedback');
+  if(ok){
+    input.classList.add('good');
+    fb.innerHTML = `<div class="learnFb good">${PRAISE[Math.floor(Math.random()*PRAISE.length)]}　<b>${escapeHtml(item.term)}</b></div>`;
+    learnCorrect();
+    document.getElementById('learnSkipRow').innerHTML = '';
+    setTimeout(learnNext, 1100);
+    return;
+  }
+  input.classList.add('bad');
+  fb.innerHTML = `
+    ${value===null ? '' : `<div class="learnAns bad"><span>あなたの答え</span>${escapeHtml(value)}</div>`}
+    <div class="learnAns good"><span>正解</span>${escapeHtml(item.term)}</div>`;
+  learnWrong();
+  showLearnContinue();
+  if(value !== null){
+    const row = document.getElementById('learnSkipRow');
+    const ov = document.createElement('button');
+    ov.textContent = '正解にする（入力ミスだった）';
+    ov.onclick = ()=>{
+      // Undo the miss: take the re-queued copy out and count it as correct.
+      const idx = learnCurrent.idx;
+      learnQueue.pop();
+      learnQueue.unshift(idx);
+      delete learnRoundMissed[idx];
+      store.data.learn[idx] = 1;
+      learnCorrect();
+      learnNext();
+    };
+    row.appendChild(ov);
+  }
+}
+
+function renderLearnRoundSummary(){
+  const area = document.getElementById('vocabArea');
+  const rows = learnRoundItems.map(i=>{
+    const l = learnLevel(i);
+    const st = l>=2 ? '<span class="lvl mastered">習得</span>' : (l===1 ? '<span class="lvl learning">学習中</span>' : '<span class="lvl fresh">未学習</span>');
+    return `<div class="vlistRow"><span class="vlistTerm">${VOCAB[i].term}${learnRoundMissed[i] ? ' <span class="missMark">✕ 間違えた</span>' : ''}</span><span class="vlistGloss">${VOCAB[i].gloss}</span>${st}</div>`;
+  }).join('');
+  area.innerHTML = learnHeaderHtml() + `
+    <div class="card" id="learnRoundDone">
+      <div class="term">ラウンド ${learnRoundNo} 完了！</div>
+      <div class="progress">このラウンドで学習した語</div>
+      ${rows}
+      <div class="btnrow"><button class="primary" id="learnNextRound">次のラウンドへ</button></div>
+    </div>`;
+  fireConfetti(document.getElementById('learnRoundDone'));
+  document.getElementById('learnNextRound').onclick = ()=>{ buildLearnRound(); renderVocabLearn(); };
+  bindLearnHeader();
+}
+
+document.addEventListener('keydown', (e)=>{
+  if(vocabMode!=='learn' || !document.getElementById('panel-vocab').classList.contains('active')) return;
+  if(e.target && e.target.tagName==='INPUT' && e.target.type==='text') return;
+  if(e.key==='Enter'){
+    const btn = document.getElementById('learnContinue') || document.getElementById('learnNextRound');
+    if(btn){ e.preventDefault(); btn.click(); }
+    return;
+  }
+  if(learnCurrent && learnCurrent.type==='mc' && !learnAnswered && /^[1-4]$/.test(e.key)){
+    const opt = learnCurrent.options[Number(e.key)-1];
+    if(opt!==undefined) answerLearnMc(opt);
+  }
+});
 
 document.getElementById('vocabRound').innerHTML =
   `<option value="all">すべての回</option>` + VOCAB_ROUNDS.map(r=>`<option value="${r}">${r}</option>`).join('');
@@ -686,6 +1051,7 @@ document.getElementById('vocabRound').style.display = VOCAB_ROUNDS.length ? '' :
 document.getElementById('vocabRound').onchange = (e)=>{
   vocabRound = e.target.value; vocabFlipped=false; vocabShowContext=false;
   buildVocabOrder();
+  resetLearnSession();
   if(vocabMode==='match') buildMatchGame();
   renderVocabRoot();
 };
@@ -693,6 +1059,7 @@ document.getElementById('vocabChapter').innerHTML = chapterSelectHtml('すべて
 document.getElementById('vocabChapter').onchange = (e)=>{
   vocabChapter = e.target.value; vocabFlipped=false; vocabShowContext=false;
   buildVocabOrder();
+  resetLearnSession();
   if(vocabMode==='match') buildMatchGame();
   renderVocabRoot();
 };

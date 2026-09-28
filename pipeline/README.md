@@ -111,7 +111,17 @@ JSONとしてまとめて保存される（`window.storage` が使える特殊�
   comprehensionScore: {correct, total},
   kotestWrong: { [小テスト配列のindex]: true },        // 復習タブ用
   kotestScore: {correct, total},
+  learn: { [語彙配列のindex]: 1 | 2 },   // 学習モード：1=学習中（4択正解済み）、2=習得
+  learnWritten: true,                    // 学習モードで記述問題を出すか
+  matchBest: { ["回|章"]: <ms> },         // マッチの自己ベスト（フィルタの組み合わせごと）
 }
+```
+
+`learn` / `learnWritten` / `matchBest` は version 5 の途中で追加したフィールドで、
+読み込み時に `defaultData()` とマージしているので、古い保存データでもリセット
+されずにそのまま使える。
+
+```
 ```
 
 進捗はVOCAB/UNDERLINE/QUIZ/GRAMMAR/COMPREHENSION/KOTEST配列の **index** を
@@ -121,5 +131,5 @@ JSONとしてまとめて保存される（`window.storage` が使える特殊�
 大きく変わらない限りは頻繁に再実行しない想定。
 
 なお、単語マッチゲーム（Quizletスタイル。全タイルが最初から表向きで、
-正しいペアをタップすると消える）は進捗を保存しない一発勝負のミニゲームとして
-実装しており、SRS（間隔反復）には影響しない。
+正しいペアをタップすると消える）は自己ベストのタイムだけを保存する。
+学習モードの習熟度（`learn`）も含め、カードのSRS（間隔反復）とは独立している。
