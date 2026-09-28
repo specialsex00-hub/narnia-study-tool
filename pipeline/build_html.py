@@ -249,11 +249,11 @@ const KOTEST = __KOTEST_JSON__;
 (function(){
 
 const STORAGE_KEY = 'narnia-progress';
-const CHAPTER_COUNT = Math.max(...VOCAB.map(v=>v.chapter), ...QUIZ.map(q=>q.chapter));
+const CHAPTER_COUNT = Math.max(0, ...VOCAB.map(v=>v.chapter), ...QUIZ.map(q=>q.chapter));
 
 function defaultData(){
   return {
-    version: 4,
+    version: 5,
     vocab: {},               // idx -> {box, due}
     underlineDone: {},       // idx -> true
     underlineWrong: {},      // idx -> true
@@ -280,7 +280,7 @@ const store = {
         const r = await window.storage.get(STORAGE_KEY);
         if(r && r.value){
           const parsed = JSON.parse(r.value);
-          if(parsed && parsed.version === 4){ this.data = parsed; return; }
+          if(parsed && parsed.version === 5){ this.data = parsed; return; }
         }
       }
     }catch(e){}
@@ -288,7 +288,7 @@ const store = {
       const raw = localStorage.getItem(STORAGE_KEY);
       if(raw){
         const parsed = JSON.parse(raw);
-        if(parsed && parsed.version === 4) this.data = parsed;
+        if(parsed && parsed.version === 5) this.data = parsed;
       }
     }catch(e){}
   },
@@ -442,6 +442,10 @@ function renderVocabCard(){
   // replacing the whole subtree on every interaction skips the transition.
   const area = document.getElementById('vocabArea');
   document.getElementById('vocabProgress').textContent = vocabOrder.length ? `${Math.min(vocabIdx+1,vocabOrder.length)} / ${vocabOrder.length}` : '';
+  if(VOCAB.length===0){
+    area.innerHTML = `<div class="card empty">まだ単語が登録されていません。</div>`;
+    return;
+  }
   if(vocabOrder.length===0){
     area.innerHTML = `<div class="card empty">この条件のカードはありません。すべて覚えました！</div>`;
     return;
@@ -570,6 +574,10 @@ function buildMatchGame(){
 // every interaction.
 function renderVocabMatch(){
   const area = document.getElementById('vocabArea');
+  if(VOCAB.length===0){
+    area.innerHTML = `<div class="card empty">まだ単語が登録されていません。</div>`;
+    return;
+  }
   if(matchCards.length===0){
     area.innerHTML = `<div class="card empty">この条件では6語未満しかないため、マッチゲームを作成できません。章の範囲を広げてみてください。</div>`;
     return;
@@ -690,6 +698,10 @@ function buildUnderlineOrder(){
 
 function renderUnderline(){
   const area = document.getElementById('underlineArea');
+  if(UNDERLINE.length===0){
+    area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
   if(underlineOrder.length===0){
     area.innerHTML = `<div class="card empty">この条件の下線部はありません。</div>`;
     return;
@@ -789,6 +801,10 @@ document.getElementById('quizSubtabs').querySelectorAll('.subtab').forEach(t=>{
 
 function renderQuiz(){
   const area = document.getElementById('quizArea');
+  if(QUIZ.length===0){
+    area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
   if(quizOrder.length===0){
     area.innerHTML = `<div class="card empty">この条件の問題はありません。</div>`;
     return;
@@ -841,6 +857,10 @@ function renderQuiz(){
 
 function renderComprehension(){
   const area = document.getElementById('quizArea');
+  if(COMPREHENSION.length===0){
+    area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
   if(compOrder.length===0){
     area.innerHTML = `<div class="card empty">この条件の問題はありません。</div>`;
     return;
@@ -915,6 +935,10 @@ function buildGrammarOrder(){
 
 function renderGrammar(){
   const area = document.getElementById('grammarArea');
+  if(GRAMMAR.length===0){
+    area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
   if(grammarIdx >= grammarOrder.length){
     area.innerHTML = `<div class="card empty" id="gramDoneCard">文法問題は以上です。お疲れ様でした。<div class="btnrow" style="justify-content:center"><button class="primary" id="restartGrammar">もう一度</button></div></div>`;
     fireConfetti(document.getElementById('gramDoneCard'));
@@ -999,6 +1023,10 @@ function kotestChoices(item){
 
 function renderKotest(){
   const area = document.getElementById('kotestArea');
+  if(KOTEST.length===0){
+    area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
   if(kotestIdx >= kotestOrder.length){
     area.innerHTML = `<div class="card empty" id="kotestDoneCard">小テスト対策は以上です。お疲れ様でした。<div class="btnrow" style="justify-content:center"><button class="primary" id="restartKotest">もう一度</button></div></div>`;
     fireConfetti(document.getElementById('kotestDoneCard'));
@@ -1159,9 +1187,8 @@ function renderSummary(){
   html += `</div></div>`;
 
   SUMMARY.chapters.forEach(c=>{
-    const gpoints = GRAMMAR.filter(g => g.chapter === c.chapter);
-    const vocabTerms = VOCAB.filter(v => v.chapter === c.chapter && v.term.split(' ').length > 1).slice(0, 8);
-    const vocabFallback = vocabTerms.length ? vocabTerms : VOCAB.filter(v => v.chapter === c.chapter).slice(0, 8);
+    const gpoints = c.grammar_points || [];
+    const vocabFallback = c.keywords || [];
     html += `
       <div class="card" id="sum-ch${c.chapter}">
         ${BANNER_SVG[c.svg] || ''}

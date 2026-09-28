@@ -1,8 +1,20 @@
 # narnia_study_tool.html 生成パイプライン
 
 `narnia_study_tool.html`（リポジトリ直下）は、以下のスクリプトで元教材
-`英語(Writing&Reading).docx` から自動生成しています。教材が更新された場合や、
+`英語(Writing&Reading).docx` と各JSONから生成します。教材が更新された場合や、
 新しい小テストの内容を追加したい場合は、このパイプラインを再実行してください。
+
+> **現在の状態**：前回（第1〜5章）の問題データは削除済みで、`data.json`
+> （vocab / underline / quiz / yellow_sentences）・`grammar.json`・
+> `comprehension.json`・`kotest.json` はすべて空になっています。
+> この状態で `build_html.py` だけを実行すると、各タブが「まだ問題が
+> 登録されていません。」と表示される空のツールが生成されます。
+> 新しい範囲のデータを入れるときは、下の手順で抽出するか、各JSONに
+> 直接問題を書き足してから `build_html.py` を実行してください。
+>
+> なお `add_kotest_tags.py` 内の `NEW_ENTRIES`（前回の小テスト由来の
+> 補足語彙）はスクリプトに直書きされているため、手順3を実行すると
+> それらが語彙に追加されます。不要なら `NEW_ENTRIES` を空にしてください。
 
 ## 再実行手順
 
@@ -47,12 +59,16 @@ python3 build_html.py ../narnia_study_tool.html
   学習価値のあるもの（mustache/whiskerなど本文に無い補足語彙も含む）は
   `NEW_ENTRIES` として新規語彙に追加する。**docxを再抽出すると
   `exam` フラグは消えるので、抽出のたびに必ずこのスクリプトを再実行する。**
-- `grammar.json` — 文法4択問題30問（本文中の実際の文を使用）。各問題に
-  `chapter` フィールドを持たせており、「まとめ」タブの章別文法ポイント
-  表示にも使われる。教材更新時に流用・追加可能。
-- `comprehension.json` — 内容理解4択クイズ22問（訳ではなく、本文の
+- `grammar.json` — 文法4択問題（本文中の実際の文を使用）。各項目は
+  `{chapter, en, choices, answer, point, explain}`。現在は空。
+- `comprehension.json` — 内容理解4択クイズ（訳ではなく、本文の
   出来事・事実を問う設問）。読解クイズタブの「内容理解」サブタブで使用。
+  各項目は `{chapter, q, choices, answer, explain}`。現在は空。
 - `summary_data.json` — 「まとめ」タブ用の章あらすじ・登場人物データ。
+  各章の「重要文法ポイント」（`grammar_points`）と「キーワード」
+  （`keywords`）も章ごとにこのファイルに直接持たせており、`grammar.json`
+  や語彙データとは独立している（問題データを削除しても「まとめ」タブの
+  内容が変わらないようにするため）。
   章バナーやキャラクターアバターのSVGはハードコードせずbuild_html.py内の
   `BANNER_SVG` / `CHAR_ICON` に定義されており、`summary_data.json` 側は
   どのSVGキーを使うか（`svg` フィールド）を指定するだけ。
@@ -65,11 +81,12 @@ python3 build_html.py ../narnia_study_tool.html
 進捗はブラウザの `localStorage` に `narnia-progress` というキーで1つの
 JSONとしてまとめて保存される（`window.storage` が使える特殊な環境では
 そちらも併用するが、GitHub Pagesなど通常のブラウザではlocalStorageのみが
-実際に効く）。`version: 4` のスキーマ：
+実際に効く）。`version: 5` のスキーマ：
+（問題データを削除した際に `version` を 4→5 に上げ、古い進捗はリセットした）
 
 ```
 {
-  version: 4,
+  version: 5,
   vocab: { [語彙配列のindex]: {box: 0-6, due: <ms timestamp>} },  // Leitner式間隔反復
   underlineDone: { [下線配列のindex]: true },
   underlineWrong: { [下線配列のindex]: true },        // 復習タブ用
