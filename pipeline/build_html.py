@@ -1,8 +1,44 @@
 #!/usr/bin/env python3
 """Assemble the final narnia_study_tool.html from data.json + grammar.json +
 comprehension.json + summary_data.json."""
+import hashlib
 import json
+import re
 import sys
+
+# アップデート履歴。新しい版を公開するときは先頭に1件足す（APP_VERSION も自動で変わる）。
+# ツールを開いたとき、前回から増えた分が「アップデートしました」として表示される。
+CHANGELOG = [
+    ("2026.10.04", [
+        "学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません",
+        "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました",
+        "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました",
+        "アップデートがあると、このお知らせが出るようになりました",
+    ]),
+]
+APP_VERSION = CHANGELOG[0][0]
+
+
+def stable_id(prefix, key, used):
+    """Short id derived from an item's content, so saved progress follows the
+    item even if the arrays are reordered or new items are inserted."""
+    base = prefix + hashlib.sha1(key.encode('utf-8')).hexdigest()[:10]
+    uid, n = base, 2
+    while uid in used:
+        uid = f'{base}-{n}'; n += 1
+    used.add(uid)
+    return uid
+
+
+def add_ids(items, prefix, keyfn):
+    used = set()
+    for it in items:
+        it['id'] = stable_id(prefix, keyfn(it), used)
+    return items
+
+
+def strip_tags(h):
+    return re.sub(r'<[^>]+>', '', h or '')
 
 def main():
     data = json.load(open('data.json', encoding='utf-8'))
@@ -10,6 +46,13 @@ def main():
     comprehension = json.load(open('comprehension.json', encoding='utf-8'))
     summary = json.load(open('summary_data.json', encoding='utf-8'))
     kotest = json.load(open('kotest.json', encoding='utf-8'))
+
+    add_ids(data['vocab'], 'v', lambda v: f"{v['term']}|{v['chapter']}|{v.get('round','')}")
+    add_ids(data['underline'], 'u', lambda u: f"{strip_tags(u['enHtml'])}|{u.get('underline','')}|{u['chapter']}")
+    add_ids(data['quiz'], 'q', lambda q: q['en'])
+    add_ids(grammar, 'g', lambda g: f"{g['en']}|{g['answer']}")
+    add_ids(comprehension, 'c', lambda c: c['q'])
+    add_ids(kotest, 'k', lambda k: f"{k['en']}|{k['answer']}")
 
     vocab_json = json.dumps(data['vocab'], ensure_ascii=False)
     underline_json = json.dumps(data['underline'], ensure_ascii=False)
@@ -25,7 +68,9 @@ def main():
                     .replace('__GRAMMAR_JSON__', grammar_json) \
                     .replace('__COMPREHENSION_JSON__', comprehension_json) \
                     .replace('__SUMMARY_JSON__', summary_json) \
-                    .replace('__KOTEST_JSON__', kotest_json)
+                    .replace('__KOTEST_JSON__', kotest_json) \
+                    .replace('__APP_VERSION__', APP_VERSION) \
+                    .replace('__CHANGELOG_JSON__', json.dumps(CHANGELOG, ensure_ascii=False))
 
     outpath = sys.argv[1] if len(sys.argv) > 1 else 'narnia_study_tool.html'
     with open(outpath, 'w', encoding='utf-8') as f:
@@ -98,11 +143,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   .lead{color:var(--sub); font-size:13px; margin:0 0 20px;}
   .tabs{display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--line); flex-wrap:wrap;}
   .tab{padding:10px 14px; font-size:14px; cursor:pointer; color:var(--sub); border-bottom:2px solid transparent; user-select:none; transition:color 0.2s, border-color 0.2s;}
-  .tab:hover{color:var(--accent);}
+  @media (hover: hover){ .tab:hover{color:var(--accent);} }
   .tab.active{color:var(--accent); border-bottom-color:var(--accent); font-weight:600;}
   .subtabs{display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap;}
   .subtab{padding:6px 12px; font-size:12.5px; cursor:pointer; color:var(--sub); border:1px solid var(--line); border-radius:20px; background:var(--card); transition:all 0.2s;}
-  .subtab:hover{background:var(--accent-bg);}
+  @media (hover: hover){ .subtab:hover{background:var(--accent-bg);} }
   .subtab.active{background:var(--accent); color:#fff; border-color:var(--accent);}
   .panel{display:none;}
   .panel.active{display:block;}
@@ -114,7 +159,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   @keyframes floaty{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-4px);} }
   .statrow{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;}
   .stat{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:13px; flex:1; min-width:100px; transition:transform 0.15s;}
-  .stat:hover{transform:translateY(-2px);}
+  @media (hover: hover){ .stat:hover{transform:translateY(-2px);} }
   .stat b{display:block; font-size:20px; font-weight:600; margin-top:2px;}
   mark{background:var(--mark); color:var(--mark-ink); padding:0 2px; border-radius:2px;}
   u{text-decoration-color:var(--accent); text-decoration-thickness:2px;}
@@ -122,10 +167,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   .jp{font-size:15px; color:var(--sub); border-top:1px dashed var(--line); padding-top:12px; margin-top:12px;}
   .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
   button{font-family:inherit; font-size:14px; padding:9px 16px; border-radius:8px; border:1px solid var(--line); background:var(--card); cursor:pointer; color:var(--ink); transition:background 0.15s, transform 0.1s;}
-  button:hover{background:var(--accent-bg);}
+  @media (hover: hover){ button:hover{background:var(--accent-bg);} }
   button:active{transform:scale(0.96);}
   button.primary{background:var(--accent); color:#fff; border-color:var(--accent);}
-  button.primary:hover{opacity:0.9;}
+  @media (hover: hover){ button.primary:hover{opacity:0.9;} }
   button.good{background:var(--good-bg); color:var(--good); border-color:var(--good);}
   button.bad{background:var(--bad-bg); color:var(--bad); border-color:var(--bad);}
   .term{font-size:22px; font-weight:600; margin-bottom:6px;}
@@ -172,7 +217,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .matchTile{min-height:64px; padding:12px 10px; border-radius:10px; border:1px solid var(--line); background:var(--card);
     display:flex; align-items:center; justify-content:center; text-align:center; font-size:13px; line-height:1.35;
     cursor:pointer; user-select:none; transition:background 0.25s ease, border-color 0.25s ease, color 0.25s ease, opacity 0.5s ease;}
-  .matchTile:hover{background:var(--accent-bg);}
+  @media (hover: hover){ .matchTile:hover{background:var(--accent-bg);} }
   .matchTile.selected{background:var(--accent); color:#fff; border-color:var(--accent);}
   .matchTile.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
   .matchTile.clearing{opacity:0; transition:opacity 0.5s ease;}
@@ -217,7 +262,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .banner{width:100%; border-radius:10px; margin-bottom:14px; display:block;}
   .charGrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(140px,1fr)); gap:12px; margin-bottom:20px;}
   .charCard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center; transition:transform 0.15s;}
-  .charCard:hover{transform:translateY(-3px);}
+  @media (hover: hover){ .charCard:hover{transform:translateY(-3px);} }
   .charCard svg{width:56px; height:56px; margin-bottom:8px; animation:floaty 3s ease-in-out infinite;}
   .charName{font-weight:600; font-size:13px;}
   .charNameEn{font-size:11px; color:var(--sub); margin-bottom:6px;}
@@ -232,7 +277,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .gpointName{font-weight:600; margin-bottom:2px;}
   .toc{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
   .toc a{font-size:12.5px; color:var(--accent); background:var(--accent-bg); border-radius:20px; padding:5px 12px; text-decoration:none;}
-  .toc a:hover{opacity:0.8;}
+  @media (hover: hover){ .toc a:hover{opacity:0.8;} }
   /* ================= UI refresh (education-app style) ================= */
   body{font-family:"M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; -webkit-tap-highlight-color:transparent;}
   .wrap{max-width:760px; padding:16px 16px 110px;}
@@ -250,7 +295,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .nav{display:flex; gap:4px;}
   .navItem{flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 4px; border:none; background:none; box-shadow:none; color:var(--sub); font-size:11px; font-weight:700; border-radius:12px; position:relative;}
   .navItem svg{width:24px; height:24px;}
-  .navItem:hover{background:var(--accent-bg);}
+  @media (hover: hover){ .navItem:hover{background:var(--accent-bg);} }
   .navItem.active{color:var(--accent);}
   .navItem.active svg{stroke-width:2.4;}
   .navItem .badge{position:absolute; top:0; right:calc(50% - 22px); margin:0; background:var(--bad); color:#fff; font-size:10px; padding:1px 6px; line-height:1.4;}
@@ -270,7 +315,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   button:active{transform:translateY(2px); box-shadow:0 1px 0 var(--line);}
   button.primary{background:var(--accent); border-color:var(--accent); color:var(--on-accent); box-shadow:0 4px 0 var(--accent-dark);}
   button.primary:active{box-shadow:0 1px 0 var(--accent-dark);}
-  button.primary:hover{opacity:1; filter:brightness(1.05);}
+  @media (hover: hover){ button.primary:hover{opacity:1; filter:brightness(1.05);} }
   button.good{box-shadow:0 3px 0 var(--good);}
   button.bad{box-shadow:0 3px 0 var(--bad);}
   button.good.solid{background:var(--good); border-color:var(--good); color:#fff; box-shadow:0 4px 0 var(--good-dark);}
@@ -418,7 +463,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* lion logo + theme picker */
   .logo{background:none; box-shadow:none; width:42px; height:42px; border-radius:0; display:block;}
   .logo svg{width:42px; height:42px; display:block; filter:drop-shadow(0 2px 0 color-mix(in srgb, var(--accent-dark) 35%, transparent)); transition:transform 0.3s;}
-  .brand:hover .logo svg{transform:rotate(-8deg) scale(1.05);}
+  @media (hover: hover){ .brand:hover .logo svg{transform:rotate(-8deg) scale(1.05);} }
   .appActions{display:flex; gap:8px; align-items:center;}
   .themeWrap{position:relative;}
   .themeBtn{width:40px; height:36px; padding:0; border-radius:20px; display:grid; place-items:center; background:var(--card);}
@@ -429,7 +474,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .popTitle{font-size:12px; font-weight:800; color:var(--sub); margin:0 4px 8px;}
   .swatches{display:grid; grid-template-columns:repeat(3, 76px); gap:8px;}
   .swatch{display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 4px; border-radius:14px; font-size:11.5px; box-shadow:none; border:2px solid transparent; background:transparent;}
-  .swatch:hover{background:var(--accent-bg);}
+  @media (hover: hover){ .swatch:hover{background:var(--accent-bg);} }
   .swatch i{width:30px; height:30px; border-radius:50%; display:block; box-shadow:inset 0 -3px 0 rgba(0,0,0,0.18);}
   .swatch.on{border-color:var(--accent); background:var(--accent-bg);}
   .swatch.on i::after{content:"✓"; color:#fff; font-style:normal; font-weight:800; display:grid; place-items:center; height:100%; font-size:15px;}
@@ -437,7 +482,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .psel{position:relative; display:inline-block;}
   .pselNative{display:none !important;}
   .pselBtn{display:inline-flex; align-items:center; gap:6px; padding:7px 12px 7px 10px; border-radius:999px; background:var(--accent-bg); border-color:transparent; color:var(--accent); font-size:13px; box-shadow:0 3px 0 color-mix(in srgb, var(--accent) 30%, transparent);}
-  .pselBtn:hover{background:var(--accent-bg); filter:brightness(0.98);}
+  @media (hover: hover){ .pselBtn:hover{background:var(--accent-bg); filter:brightness(0.98);} }
   .pselIcon{font-size:14px; line-height:1;}
   .pselLbl{color:var(--ink); max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .pselChev{width:12px; height:12px; transition:transform 0.2s;}
@@ -469,6 +514,20 @@ TEMPLATE = r"""<!DOCTYPE html>
   .context-box .jp{border-top:none; margin-top:0; padding-top:0; font-size:13.5px;}
   .flipHint{display:inline-flex; align-items:center; gap:6px; margin-top:14px; font-size:12px; color:var(--sub); font-weight:700;}
   .flipHint svg{width:14px; height:14px;}
+  /* toast notices (update / backup) */
+  .toastHost{position:fixed; left:0; right:0; top:calc(env(safe-area-inset-top) + 70px); z-index:90; display:flex; flex-direction:column; align-items:center; gap:10px; padding:0 12px; pointer-events:none;}
+  .toast{pointer-events:auto; width:100%; max-width:520px; display:flex; gap:12px; align-items:flex-start; background:var(--card); border:2px solid var(--accent); border-radius:18px; padding:14px 14px 14px 16px; box-shadow:0 12px 30px rgba(0,0,0,0.16), 0 3px 0 var(--accent-dark); animation:toastIn 0.35s cubic-bezier(.2,.9,.3,1.2);}
+  .toast.leaving{animation:toastOut 0.25s ease-in forwards;}
+  @keyframes toastIn{ from{opacity:0; transform:translateY(-16px) scale(0.97);} to{opacity:1; transform:none;} }
+  @keyframes toastOut{ to{opacity:0; transform:translateY(-12px);} }
+  .toastIcon{font-size:26px; line-height:1.1;}
+  .toastBody{flex:1; min-width:0;}
+  .toastTitle{font-weight:800; font-size:15px; color:var(--accent);}
+  .toastBody ul{margin:6px 0 0; padding-left:18px; font-size:13px; color:var(--ink); line-height:1.6;}
+  .toastActions{display:flex; gap:8px; margin-top:10px;}
+  .toastClose{border:none; box-shadow:none; background:transparent; font-size:20px; line-height:1; padding:2px 6px; color:var(--sub);}
+  .backupLast{font-size:12.5px; font-weight:700; margin-bottom:2px;}
+  .versionNote{text-align:center; font-size:11px; color:var(--sub); margin:18px 0 4px;}
 </style>
 </head>
 <body>
@@ -562,6 +621,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   </div>
 </main>
 <div class="sheet" id="sheet" aria-live="polite"></div>
+<div class="toastHost" id="toastHost"></div>
 
 <script>
 const VOCAB = __VOCAB_JSON__;
@@ -576,11 +636,77 @@ const KOTEST = __KOTEST_JSON__;
 (function(){
 
 const STORAGE_KEY = 'narnia-progress';
+// ---- toast + "アップデートしました" notice ----
+const APP_VERSION = "__APP_VERSION__";
+const CHANGELOG = __CHANGELOG_JSON__;
+const SEEN_VERSION_KEY = 'narnia-app-version';
+
+function showToast(icon, title, items, actions){
+  const host = document.getElementById('toastHost');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.setAttribute('role', 'status');
+  el.innerHTML = `
+    <div class="toastIcon">${icon}</div>
+    <div class="toastBody">
+      <div class="toastTitle">${title}</div>
+      ${items && items.length ? `<ul>${items.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>` : ''}
+      <div class="toastActions"></div>
+    </div>
+    <button class="toastClose" aria-label="閉じる">×</button>`;
+  const close = ()=>{ el.classList.add('leaving'); setTimeout(()=>el.remove(), 250); };
+  el.querySelector('.toastClose').onclick = close;
+  const row = el.querySelector('.toastActions');
+  (actions || []).forEach(a=>{
+    const b = document.createElement('button');
+    b.className = a.primary ? 'primary small' : 'small';
+    b.textContent = a.label;
+    b.onclick = ()=>{ a.onclick(); if(a.close !== false) close(); };
+    row.appendChild(b);
+  });
+  if(!row.children.length) row.remove();
+  host.appendChild(el);
+  return {close};
+}
+
+function showUpdateNotice(){
+  let seen = null;
+  try{ seen = localStorage.getItem(SEEN_VERSION_KEY); }catch(e){}
+  let hasProgress = false;
+  try{ hasProgress = !!localStorage.getItem(STORAGE_KEY); }catch(e){}
+  try{ localStorage.setItem(SEEN_VERSION_KEY, APP_VERSION); }catch(e){}
+  if(seen === APP_VERSION) return;
+  if(!seen && !hasProgress) return;  // first visit ever: nothing to announce
+  // Everything newer than the version this device saw last (CHANGELOG is newest first).
+  const fresh = [];
+  for(const [ver, items] of CHANGELOG){ if(ver === seen) break; fresh.push(...items); }
+  showToast('🎉', `アップデートしました（${APP_VERSION.replace(/\./g,'/')}）`, fresh.slice(0, 6));
+}
+
+// While the page stays open, look for a newer published version and offer a reload.
+let newerVersionShown = false;
+async function checkForNewerVersion(){
+  if(newerVersionShown || !/^https?:/.test(location.protocol)) return;
+  try{
+    const res = await fetch(location.pathname + '?v=' + Date.now(), {cache: 'no-store'});
+    const text = await res.text();
+    const m = text.match(/const APP_VERSION = "([^"]+)"/);
+    if(m && m[1] !== APP_VERSION){
+      newerVersionShown = true;
+      showToast('✨', '新しいバージョンがあります', ['更新すると最新の機能・問題が使えます（学習記録はそのまま残ります）'],
+        [{label: '今すぐ更新', primary: true, onclick: ()=>{ store.save(true); location.reload(); }}]);
+    }
+  }catch(e){}
+}
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState === 'visible') checkForNewerVersion(); });
+setInterval(checkForNewerVersion, 15*60*1000);
+
+
 const CHAPTER_COUNT = Math.max(0, ...VOCAB.map(v=>v.chapter), ...QUIZ.map(q=>q.chapter));
 
 function defaultData(){
   return {
-    version: 5,
+    version: 6,
     vocab: {},               // idx -> {box, due}
     underlineDone: {},       // idx -> true
     underlineWrong: {},      // idx -> true
@@ -598,42 +724,149 @@ function defaultData(){
     testSettings: {count:10, types:{tf:true, mc:true, written:true, matching:true}, dir:'en'},  // テスト
     testHistory: [],         // [{ts, round, chapter, correct, total, pct}]  テスト
     days: {},                // "YYYY-MM-DD" -> true  学習した日（連続記録）
+    _orphans: {},            // 今のデータに無い問題の記録（消さずに保管）
   };
+}
+
+// Progress is kept in memory keyed by array index (that's what the tabs use),
+// but persisted keyed by each item's stable id. That way adding, removing or
+// reordering questions in a later update never shifts or drops saved progress.
+// Records whose item no longer exists are parked in `_orphans` instead of
+// being thrown away, so they come back if the item returns.
+const ID_KEYED = {
+  vocab: ()=>VOCAB, learn: ()=>VOCAB,
+  underlineDone: ()=>UNDERLINE, underlineWrong: ()=>UNDERLINE,
+  quizWrong: ()=>QUIZ, grammarWrong: ()=>GRAMMAR,
+  comprehensionWrong: ()=>COMPREHENSION, kotestWrong: ()=>KOTEST,
+};
+const BACKUP_KEY = 'narnia-progress-backup';         // daily automatic snapshot
+const BACKUP_DATE_KEY = 'narnia-progress-backup-date';
+
+function toPersisted(data){
+  const out = Object.assign({}, data, {version: 6, keyedById: true});
+  const orphans = data._orphans || {};
+  out._orphans = {};
+  Object.keys(ID_KEYED).forEach(key=>{
+    const arr = ID_KEYED[key]();
+    const byId = Object.assign({}, orphans[key] || {});
+    Object.entries(data[key] || {}).forEach(([idx, val])=>{
+      const item = arr[Number(idx)];
+      if(item && item.id) byId[item.id] = val;
+    });
+    out[key] = byId;
+  });
+  return out;
+}
+
+function fromPersisted(p){
+  const data = Object.assign(defaultData(), p, {version: 6});
+  data._orphans = {};
+  Object.keys(ID_KEYED).forEach(key=>{
+    const arr = ID_KEYED[key]();
+    const index = {}; arr.forEach((it, i)=>{ if(it.id) index[it.id] = i; });
+    const mem = {}, orphan = Object.assign({}, (p._orphans || {})[key] || {});
+    Object.entries(p[key] || {}).forEach(([id, val])=>{
+      if(index[id] !== undefined){ mem[index[id]] = val; delete orphan[id]; }
+      else orphan[id] = val;
+    });
+    data[key] = mem;
+    if(Object.keys(orphan).length) data._orphans[key] = orphan;
+  });
+  return data;
+}
+
+function parseSaved(raw){
+  const parsed = JSON.parse(raw);
+  if(!parsed || typeof parsed !== 'object') return null;
+  if(parsed.keyedById) return fromPersisted(parsed);
+  // Older saves (version 5 and before) were keyed by array index. Those
+  // indices still match the current arrays (data has only been appended
+  // since), so keep them as they are and merge in any new fields.
+  return Object.assign(defaultData(), parsed, {version: 6, _orphans: {}});
 }
 
 const store = {
   data: defaultData(),
   async load(){
-    // Prefer window.storage when the page is hosted inside an environment
-    // that provides it; otherwise (a normal browser / GitHub Pages) fall
-    // back to localStorage, which is what actually persists on a plain
-    // deployed site.
+    let raw = null;
     try{
       if(window.storage && window.storage.get){
         const r = await window.storage.get(STORAGE_KEY);
-        if(r && r.value){
-          const parsed = JSON.parse(r.value);
-          if(parsed && parsed.version === 5){ this.data = Object.assign(defaultData(), parsed); return; }
-        }
+        if(r && r.value) raw = r.value;
       }
     }catch(e){}
+    if(!raw){ try{ raw = localStorage.getItem(STORAGE_KEY); }catch(e){} }
+    if(!raw) return;
     try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(raw){
-        const parsed = JSON.parse(raw);
-        if(parsed && parsed.version === 5) this.data = Object.assign(defaultData(), parsed);
+      const parsed = JSON.parse(raw);
+      // Keep an untouched copy of the old-format save before its first migration.
+      if(parsed && !parsed.keyedById && !localStorage.getItem(STORAGE_KEY + '-before-v6')){
+        localStorage.setItem(STORAGE_KEY + '-before-v6', raw);
       }
     }catch(e){}
+    let migrated = false;
+    try{
+      const d = parseSaved(raw);
+      if(d){
+        this.data = d;
+        // Re-save an old index-keyed save right away in the id-keyed format, so
+        // a later update that reorders questions can't shift these records.
+        migrated = !JSON.parse(raw).keyedById;
+      }
+    }catch(e){
+      // Unreadable save: keep it aside instead of overwriting it.
+      try{ localStorage.setItem(STORAGE_KEY + '-unreadable-' + Date.now(), raw); }catch(_){}
+    }
+    // One automatic snapshot per day (the state as of the first visit that day).
+    try{
+      const today = todayKey();
+      if(localStorage.getItem(BACKUP_DATE_KEY) !== today){
+        localStorage.setItem(BACKUP_KEY, raw);
+        localStorage.setItem(BACKUP_DATE_KEY, today);
+      }
+    }catch(e){}
+    try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
+    if(migrated) await this.save(true);
   },
+  serialize(){ return JSON.stringify(toPersisted(this.data)); },
   async save(quiet){
     if(!quiet) markStudied();  // settings-only saves don't count as a study day
-    const json = JSON.stringify(this.data);
+    const json = this.serialize();
     try{
       if(window.storage && window.storage.set){ await window.storage.set(STORAGE_KEY, json); }
     }catch(e){}
     try{ localStorage.setItem(STORAGE_KEY, json); }catch(e){}
   }
 };
+
+// ---- backup file export / import ----
+function downloadBackup(){
+  const json = JSON.stringify({app: 'narnia-study-tool', exportedAt: new Date().toISOString(), appVersion: APP_VERSION, progress: toPersisted(store.data)}, null, 1);
+  const blob = new Blob([json], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `narnia-backup-${todayKey()}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+  showToast('💾', 'バックアップを保存しました', [`ファイル名：narnia-backup-${todayKey()}.json`]);
+}
+
+function restoreBackupFromFile(file, onDone){
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    try{
+      const obj = JSON.parse(reader.result);
+      const progress = obj && obj.progress ? obj.progress : obj;
+      if(!progress || typeof progress !== 'object' || !('vocab' in progress)) throw new Error('format');
+      // Keep the current state aside so a wrong file can be undone by hand.
+      try{ localStorage.setItem(STORAGE_KEY + '-before-restore', store.serialize()); }catch(e){}
+      store.data = parseSaved(JSON.stringify(progress));
+      store.save(true);
+      onDone(true);
+    }catch(e){ onDone(false); }
+  };
+  reader.readAsText(file);
+}
 
 function shuffle(arr){
   const a = arr.slice();
@@ -2539,6 +2772,15 @@ function roundStats(r){
   return {total: idxs.length, mastered, learning, best: tests.length ? Math.max(...tests.map(h=>h.pct)) : null, chapters};
 }
 
+function lastExportLabel(){
+  let t = null;
+  try{ t = Number(localStorage.getItem('narnia-last-export')) || null; }catch(e){}
+  if(!t) return '<span class="badTxt">まだバックアップを保存していません</span>';
+  const days = Math.floor((Date.now()-t)/86400000);
+  const when = new Date(t).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'});
+  return days >= 14 ? `<span class="badTxt">最後の保存：${when}（${days}日前）。そろそろ保存がおすすめです</span>` : `最後の保存：${when}${days ? `（${days}日前）` : '（今日）'}`;
+}
+
 function renderHome(){
   const area = document.getElementById('homeArea');
   const h = new Date().getHours();
@@ -2604,8 +2846,37 @@ function renderHome(){
     <div class="statrow" id="statrow"></div>
 
     ${recent.length ? `<div class="secHead">最近のテスト</div><div class="card">${recent.map(h=>`<div class="histRow"><span>${new Date(h.ts).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'})}・${h.round==='all'?'すべての回':h.round}</span><span>${h.correct} / ${h.total}</span><b class="${h.pct>=80?'goodTxt':(h.pct<50?'badTxt':'')}">${h.pct}%</b></div>`).join('')}</div>` : ''}
+
+    <div class="secHead">学習記録のバックアップ</div>
+    <div class="card backupCard">
+      <div class="progress" style="margin-bottom:8px">学習記録はこの端末のブラウザに保存されています。ツールを更新しても消えませんが、機種変更やブラウザのデータ削除に備えて、ときどきファイルに保存しておくと安心です。</div>
+      <div class="backupLast">${lastExportLabel()}</div>
+      <div class="btnrow">
+        <button class="primary" id="backupSave">💾 バックアップを保存</button>
+        <button id="backupLoad">📂 バックアップから復元</button>
+        <input type="file" id="backupFile" accept="application/json,.json" style="display:none">
+      </div>
+    </div>
+    <div class="versionNote">バージョン ${APP_VERSION.replace(/\./g,'/')}</div>
   `;
   updateStats();
+  document.getElementById('backupSave').onclick = ()=>{
+    downloadBackup();
+    try{ localStorage.setItem('narnia-last-export', String(Date.now())); }catch(e){}
+    renderHome();
+  };
+  const fileInput = document.getElementById('backupFile');
+  document.getElementById('backupLoad').onclick = ()=> fileInput.click();
+  fileInput.onchange = ()=>{
+    const f = fileInput.files && fileInput.files[0];
+    if(!f) return;
+    if(!confirm('今の学習記録を、選んだバックアップの内容に置き換えます。よろしいですか？')){ fileInput.value=''; return; }
+    restoreBackupFromFile(f, ok=>{
+      if(ok){ try{ sessionStorage.setItem('narnia-restored','1'); }catch(e){} location.reload(); }
+      else showToast('⚠️', '復元できませんでした', ['このツールで保存したバックアップファイル（.json）を選んでください']);
+      fileInput.value = '';
+    });
+  };
   document.getElementById('homeStart').onclick = ()=>{ if(VOCAB.length) goTo('vocab','learn'); };
   area.querySelectorAll('.roundBtns button').forEach(b=> b.onclick = ()=>{
     goTo('vocab');
@@ -2732,6 +3003,13 @@ function currentTheme(){ return document.documentElement.getAttribute('data-them
 
 (async function init(){
   await store.load();
+  showUpdateNotice();
+  try{
+    if(sessionStorage.getItem('narnia-restored')){
+      sessionStorage.removeItem('narnia-restored');
+      showToast('✅', 'バックアップから復元しました', ['学習記録をバックアップの内容に戻しました']);
+    }
+  }catch(e){}
   updateStats();
   goTo('home');
   buildVocabOrder(); renderVocabRoot();
