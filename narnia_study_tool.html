@@ -448,6 +448,28 @@
   .toastClose{border:none; box-shadow:none; background:transparent; font-size:20px; line-height:1; padding:2px 6px; color:var(--sub);}
   .backupLast{font-size:12.5px; font-weight:700; margin-bottom:2px;}
   .versionNote{text-align:center; font-size:11px; color:var(--sub); margin:18px 0 4px;}
+  /* study sets */
+  .setListHead{margin:2px 2px 14px;}
+  .setListTitle{font-size:18px; font-weight:800; margin-bottom:2px;}
+  .setCard{display:flex; align-items:center; gap:14px; width:100%; text-align:left; padding:16px; margin-bottom:12px; border-radius:20px; background:var(--card); font-weight:600; color:var(--ink);}
+  .setBadge{flex:none; width:54px; height:54px; border-radius:16px; background:var(--accent); color:var(--on-accent); display:grid; place-items:center; font-size:24px; font-weight:800; box-shadow:0 3px 0 var(--accent-dark);}
+  .allSet .setBadge{background:var(--accent-bg); box-shadow:0 3px 0 color-mix(in srgb, var(--accent) 35%, transparent);}
+  .setMain{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;}
+  .setName{font-size:17px; font-weight:800;}
+  .setSub{font-size:12.5px; color:var(--sub);}
+  .setStats{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .setStats span{font-size:11.5px; font-weight:700; color:var(--accent); background:var(--accent-bg); border-radius:20px; padding:2px 9px;}
+  .setStats span.zero{color:var(--sub); background:transparent; border:1px dashed var(--line);}
+  .learnBar.mini{height:8px; margin:6px 0 0;}
+  .setChev{flex:none; width:22px; height:22px; color:var(--sub);}
+  .setChev svg{width:22px; height:22px;}
+  .setDivider{font-size:12px; font-weight:800; color:var(--sub); margin:18px 4px 10px;}
+  .setBar{display:flex; align-items:center; gap:12px; margin-bottom:12px;}
+  .backBtn{display:inline-flex; align-items:center; gap:4px; padding:8px 14px 8px 10px; border-radius:999px; font-size:13px; flex:none;}
+  .backBtn svg{width:16px; height:16px;}
+  .setBarTitle{min-width:0;}
+  .setBarName{font-size:17px; font-weight:800; line-height:1.25;}
+  .setBarSub{font-size:12px; color:var(--sub); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 </style>
 </head>
 <body>
@@ -477,6 +499,13 @@
     <div id="homeArea"></div>
   </div>
 
+  <div class="panel" id="panel-practiceSets">
+    <div id="practiceSetList"></div>
+  </div>
+  <div class="setBar" id="practiceSetBar" style="display:none">
+      <button class="backBtn" id="practiceBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>セット一覧</button>
+      <div class="setBarTitle"><div class="setBarName" id="practiceSetName"></div><div class="setBarSub" id="practiceSetSub"></div></div>
+    </div>
   <div class="seg" id="practiceSeg" style="display:none">
     <button data-p="underline">下線部訳</button>
     <button data-p="quiz">読解クイズ</button>
@@ -485,6 +514,12 @@
   </div>
 
   <div class="panel" id="panel-vocab">
+    <div id="vocabSetList"></div>
+    <div id="vocabSetView" style="display:none">
+    <div class="setBar" id="vocabSetBar">
+      <button class="backBtn" id="vocabBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>セット一覧</button>
+      <div class="setBarTitle"><div class="setBarName" id="vocabSetName"></div><div class="setBarSub" id="vocabSetSub"></div></div>
+    </div>
     <div class="subtabs" id="vocabSubtabs">
       <div class="subtab active" data-vmode="card">カード</div>
       <div class="subtab" data-vmode="learn">学習</div>
@@ -493,8 +528,7 @@
       <div class="subtab" data-vmode="list">一覧</div>
     </div>
     <div class="filterrow">
-      <select id="vocabRound"></select>
-      <select id="vocabChapter"></select>
+      <div style="display:none"><select id="vocabRound"></select><select id="vocabChapter"></select></div>
       <select id="vocabFilter">
         <option value="all">すべて表示</option>
         <option value="due">復習が必要な語のみ</option>
@@ -503,12 +537,11 @@
       <span class="progress" id="vocabProgress"></span>
     </div>
     <div id="vocabArea"></div>
+    </div>
   </div>
 
   <div class="panel" id="panel-underline">
-    <div class="filterrow">
-      <select id="underlineChapter"></select>
-    </div>
+    <div style="display:none"><select id="underlineChapter"></select></div>
     <div id="underlineArea"></div>
   </div>
 
@@ -517,9 +550,7 @@
       <div class="subtab active" data-qmode="translate">日本語訳を選ぶ</div>
       <div class="subtab" data-qmode="comprehension">内容理解</div>
     </div>
-    <div class="filterrow">
-      <select id="quizChapter"></select>
-    </div>
+    <div style="display:none"><select id="quizChapter"></select></div>
     <div id="quizArea"></div>
   </div>
 
@@ -557,8 +588,8 @@ const KOTEST = [];
 
 const STORAGE_KEY = 'narnia-progress';
 // ---- toast + "アップデートしました" notice ----
-const APP_VERSION = "2026.10.04";
-const CHANGELOG = [["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
+const APP_VERSION = "2026.10.05";
+const CHANGELOG = [["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
 const SEEN_VERSION_KEY = 'narnia-app-version';
 
 function showToast(icon, title, items, actions){
@@ -1870,9 +1901,7 @@ let underlineChapter = 'all';
 
 function buildUnderlineOrder(){
   let idxs = UNDERLINE.map((_,i)=>i);
-  if(underlineChapter !== 'all'){
-    idxs = idxs.filter(i => UNDERLINE[i].chapter === Number(underlineChapter));
-  }
+  if(practiceRound !== 'all') idxs = idxs.filter(i => UNDERLINE[i].round === practiceRound);
   underlineOrder = shuffle(idxs);
   underlineIdx = 0;
 }
@@ -1943,18 +1972,14 @@ let compIdx = 0;
 
 function buildQuizOrder(){
   let idxs = QUIZ.map((_,i)=>i);
-  if(quizChapter !== 'all'){
-    idxs = idxs.filter(i => QUIZ[i].chapter === Number(quizChapter));
-  }
+  if(practiceRound !== 'all') idxs = idxs.filter(i => QUIZ[i].round === practiceRound);
   quizOrder = shuffle(idxs).slice(0, 30);
   quizIdx = 0;
 }
 
 function buildCompOrder(){
   let idxs = COMPREHENSION.map((_,i)=>i);
-  if(quizChapter !== 'all'){
-    idxs = idxs.filter(i => COMPREHENSION[i].chapter === Number(quizChapter));
-  }
+  if(practiceRound !== 'all') idxs = idxs.filter(i => COMPREHENSION[i].round === practiceRound);
   compOrder = shuffle(idxs);
   compIdx = 0;
 }
@@ -2112,7 +2137,7 @@ let grammarAnswered = false;
 let grammarHintShown = false;
 
 function buildGrammarOrder(){
-  grammarOrder = shuffle(GRAMMAR.map((_,i)=>i));
+  grammarOrder = shuffle(GRAMMAR.map((_,i)=>i).filter(i => practiceRound==='all' || GRAMMAR[i].round===practiceRound));
   grammarIdx = 0;
 }
 
@@ -2120,6 +2145,10 @@ function renderGrammar(){
   const area = document.getElementById('grammarArea');
   if(GRAMMAR.length===0){
     area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
+  if(grammarOrder.length===0){
+    area.innerHTML = `<div class="card empty">このセットには文法問題がありません。</div>`;
     return;
   }
   if(grammarIdx >= grammarOrder.length){
@@ -2189,7 +2218,7 @@ let kotestIdx = 0;
 let kotestAnswered = false;
 
 function buildKotestOrder(){
-  kotestOrder = shuffle(KOTEST.map((_,i)=>i));
+  kotestOrder = shuffle(KOTEST.map((_,i)=>i).filter(i => practiceRound==='all' || KOTEST[i].round===practiceRound));
   kotestIdx = 0;
 }
 
@@ -2208,6 +2237,10 @@ function renderKotest(){
   const area = document.getElementById('kotestArea');
   if(KOTEST.length===0){
     area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`;
+    return;
+  }
+  if(kotestOrder.length===0){
+    area.innerHTML = `<div class="card empty">このセットには小テストの問題がありません。</div>`;
     return;
   }
   if(kotestIdx >= kotestOrder.length){
@@ -2657,21 +2690,31 @@ function goTo(nav, sub){
   hideSheet();
   currentNav = nav;
   document.querySelectorAll('.navItem').forEach(n=>n.classList.toggle('active', n.dataset.nav===nav));
-  document.getElementById('practiceSeg').style.display = nav==='practice' ? '' : 'none';
+  if(nav !== 'practice'){
+    document.getElementById('practiceSeg').style.display = 'none';
+    document.getElementById('practiceSetBar').style.display = 'none';
+  }
   if(nav==='practice'){
-    if(sub) currentPractice = sub;
-    document.querySelectorAll('#practiceSeg button').forEach(b=>b.classList.toggle('on', b.dataset.p===currentPractice));
-    showPanel(currentPractice);
+    if(sub){
+      currentPractice = sub;
+      // Shortcut into a tab without a chosen set: use the newest class round.
+      if(!practiceSet){ practiceSet = newestRound(practiceRounds()); practiceRound = practiceSet; saveSets(); rebuildPractice(); }
+    }
+    showPracticeView();
+  } else if(nav==='vocab'){
+    showPanel('vocab');
+    if(sub && !vocabSet){ enterVocabSet(newestRound(vocabRounds()), sub); return; }
+    showVocabSetView();
+    if(sub){
+      const t = document.querySelector(`#vocabSubtabs .subtab[data-vmode="${sub}"]`);
+      if(t) t.click();
+    }
   } else {
     showPanel(nav);
   }
   if(nav==='home') renderHome();
   if(nav==='review') renderReview();
   if(nav==='summary') renderSummary();
-  if(nav==='vocab' && sub){
-    const t = document.querySelector(`#vocabSubtabs .subtab[data-vmode="${sub}"]`);
-    if(t) t.click();
-  }
   window.scrollTo({top:0});
 }
 
@@ -2800,9 +2843,7 @@ function renderHome(){
   document.getElementById('homeStart').onclick = ()=>{ if(VOCAB.length) goTo('vocab','learn'); };
   area.querySelectorAll('.roundBtns button').forEach(b=> b.onclick = ()=>{
     goTo('vocab');
-    setVocabRound(b.dataset.r);
-    const t = document.querySelector(`#vocabSubtabs .subtab[data-vmode="${b.dataset.m}"]`);
-    if(t) t.click();
+    enterVocabSet(b.dataset.r, b.dataset.m);
   });
   area.querySelectorAll('.tile').forEach(b=> b.onclick = ()=> goTo('practice', b.dataset.p));
   const rv = document.getElementById('homeReview');
@@ -2844,6 +2885,180 @@ function hideSheet(){
 
 document.querySelectorAll('.navItem').forEach(n=> n.onclick = ()=> goTo(n.dataset.nav));
 document.querySelectorAll('#practiceSeg button').forEach(b=> b.onclick = ()=> goTo('practice', b.dataset.p));
+// ================= STUDY SETS (choose a set first, then study inside it) =================
+// A set is one class round ("第1回" ...) or "all". The chosen set sticks until
+// the user presses "‹ セット一覧", and is remembered on this device.
+const ROUND_INFO = {"第1回": {"title": "Chapter 5, part 2", "pages": "p.52〜54"}};
+const SETS_KEY = 'narnia-sets';
+let vocabSet = null;      // null = showing the set list
+let practiceSet = null;
+let practiceRound = 'all';
+
+function roundsOf(...lists){
+  const seen = [];
+  lists.forEach(list => list.forEach(it => { if(it.round && !seen.includes(it.round)) seen.push(it.round); }));
+  return seen;
+}
+function vocabRounds(){ return roundsOf(VOCAB); }
+function practiceRounds(){ return roundsOf(UNDERLINE, QUIZ, COMPREHENSION, GRAMMAR, KOTEST); }
+function newestRound(rounds){ return rounds.length ? rounds[rounds.length-1] : 'all'; }
+
+function roundSubtitle(r, items){
+  const info = ROUND_INFO[r];
+  if(info) return [info.title, info.pages].filter(Boolean).join('・');
+  const ch = [...new Set(items.filter(it=>it.round===r).map(it=>it.chapter))].sort((a,b)=>a-b);
+  return ch.length ? `第${ch.join('・')}章` : '';
+}
+
+function saveSets(){
+  try{ localStorage.setItem(SETS_KEY, JSON.stringify({vocab: vocabSet, practice: practiceSet})); }catch(e){}
+}
+function restoreSets(){
+  try{
+    const s = JSON.parse(localStorage.getItem(SETS_KEY) || '{}');
+    if(s.vocab && (s.vocab==='all' || vocabRounds().includes(s.vocab))) vocabSet = s.vocab;
+    if(s.practice && (s.practice==='all' || practiceRounds().includes(s.practice))) practiceSet = s.practice;
+  }catch(e){}
+}
+
+const BACK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+const CHEV_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+
+function setCardHtml(o){
+  return `<button class="setCard ${o.all?'allSet':''}" data-set="${o.key}">
+    <span class="setBadge">${o.badge}</span>
+    <span class="setMain">
+      <span class="setName">${o.name}</span>
+      ${o.sub ? `<span class="setSub">${o.sub}</span>` : ''}
+      ${o.extra || ''}
+    </span>
+    <span class="setChev">${CHEV_ICON}</span>
+  </button>`;
+}
+
+// ---- vocab sets ----
+function renderVocabSetList(){
+  const area = document.getElementById('vocabSetList');
+  if(VOCAB.length===0){ area.innerHTML = `<div class="card empty">まだ単語が登録されていません。</div>`; return; }
+  const rounds = vocabRounds().slice().reverse();   // newest class first
+  const cardFor = (key)=>{
+    const idxs = VOCAB.map((_,i)=>i).filter(i => key==='all' || VOCAB[i].round===key);
+    const mastered = idxs.filter(i => (store.data.learn[i]||0) >= 2).length;
+    const learning = idxs.filter(i => (store.data.learn[i]||0) === 1).length;
+    const tests = store.data.testHistory.filter(h => h.round===key && !h.retake);
+    const best = tests.length ? Math.max(...tests.map(h=>h.pct)) : null;
+    const pm = idxs.length ? mastered/idxs.length*100 : 0, pl = idxs.length ? learning/idxs.length*100 : 0;
+    return setCardHtml({
+      key, all: key==='all',
+      badge: key==='all' ? '📚' : key.replace(/^第|回$/g,''),
+      name: key==='all' ? 'すべての単語' : key,
+      sub: key==='all' ? '全部の回をまとめて総復習' : roundSubtitle(key, VOCAB),
+      extra: `<span class="setStats"><span>単語 ${idxs.length}語</span><span>習得 ${Math.round(pm)}%</span>${best!==null ? `<span>テスト最高 ${best}%</span>` : ''}</span>
+        <span class="learnBar mini"><span class="lbMastered" style="width:${pm}%"></span><span class="lbLearning" style="width:${pl}%"></span></span>`,
+    });
+  };
+  area.innerHTML = `
+    <div class="setListHead"><div class="setListTitle">学習するセットを選んでください</div><div class="progress" style="margin:0">選んだセットの単語だけで、カード・学習・テスト・マッチができます</div></div>
+    ${rounds.map(cardFor).join('')}
+    ${rounds.length ? `<div class="setDivider">まとめて復習</div>` : ''}
+    ${cardFor('all')}`;
+  area.querySelectorAll('.setCard').forEach(b => b.onclick = ()=> enterVocabSet(b.dataset.set));
+}
+
+function showVocabSetView(){
+  const inSet = !!vocabSet;
+  document.getElementById('vocabSetList').style.display = inSet ? 'none' : '';
+  document.getElementById('vocabSetView').style.display = inSet ? '' : 'none';
+  if(!inSet){ renderVocabSetList(); return; }
+  document.getElementById('vocabSetName').textContent = vocabSet==='all' ? 'すべての単語' : vocabSet;
+  const n = VOCAB.filter(v => vocabSet==='all' || v.round===vocabSet).length;
+  document.getElementById('vocabSetSub').textContent = (vocabSet==='all' ? '全部の回' : roundSubtitle(vocabSet, VOCAB)) + `・${n}語`;
+}
+
+function enterVocabSet(key, mode){
+  vocabSet = key; saveSets();
+  hideSheet();
+  const sel = document.getElementById('vocabRound');
+  sel.value = key;
+  if(sel.onchange) sel.onchange({target: sel});   // resets learn/test sessions and rebuilds orders
+  showVocabSetView();
+  const t = document.querySelector(`#vocabSubtabs .subtab[data-vmode="${mode || vocabMode}"]`);
+  if(t) t.click(); else renderVocabRoot();
+  window.scrollTo({top:0});
+}
+
+function exitVocabSet(){
+  vocabSet = null; saveSets();
+  hideSheet();
+  if(matchTimerHandle){ clearInterval(matchTimerHandle); matchTimerHandle = null; }
+  showVocabSetView();
+  window.scrollTo({top:0});
+}
+
+// ---- practice sets ----
+function practiceItemsIn(key){
+  const f = it => key==='all' || it.round===key;
+  return {u: UNDERLINE.filter(f).length, q: QUIZ.filter(f).length + COMPREHENSION.filter(f).length, g: GRAMMAR.filter(f).length, k: KOTEST.filter(f).length};
+}
+
+function renderPracticeSetList(){
+  const area = document.getElementById('practiceSetList');
+  const all = practiceItemsIn('all');
+  if(all.u + all.q + all.g + all.k === 0){ area.innerHTML = `<div class="card empty">まだ問題が登録されていません。</div>`; return; }
+  const rounds = practiceRounds().slice().reverse();
+  const cardFor = (key)=>{
+    const c = practiceItemsIn(key);
+    const chip = (label, n) => `<span class="${n?'':'zero'}">${label} ${n}</span>`;
+    return setCardHtml({
+      key, all: key==='all',
+      badge: key==='all' ? '📚' : key.replace(/^第|回$/g,''),
+      name: key==='all' ? 'すべての問題' : key,
+      sub: key==='all' ? '全部の回をまとめて総復習' : roundSubtitle(key, [].concat(UNDERLINE, QUIZ, COMPREHENSION, GRAMMAR, KOTEST)),
+      extra: `<span class="setStats">${chip('下線部訳', c.u)}${chip('読解', c.q)}${chip('文法', c.g)}${chip('小テスト', c.k)}</span>`,
+    });
+  };
+  area.innerHTML = `
+    <div class="setListHead"><div class="setListTitle">練習するセットを選んでください</div><div class="progress" style="margin:0">選んだセットの問題だけで、下線部訳・読解クイズ・文法・小テストを練習できます</div></div>
+    ${rounds.map(cardFor).join('')}
+    ${rounds.length ? `<div class="setDivider">まとめて復習</div>` : ''}
+    ${cardFor('all')}`;
+  area.querySelectorAll('.setCard').forEach(b => b.onclick = ()=> enterPracticeSet(b.dataset.set));
+}
+
+function rebuildPractice(){
+  buildUnderlineOrder(); renderUnderline();
+  buildQuizOrder(); buildCompOrder(); renderQuizRoot();
+  buildGrammarOrder(); renderGrammar();
+  buildKotestOrder(); renderKotest();
+}
+
+function enterPracticeSet(key, tab){
+  practiceSet = key; practiceRound = key; saveSets();
+  rebuildPractice();
+  goTo('practice', tab);
+}
+
+function exitPracticeSet(){
+  practiceSet = null; practiceRound = 'all'; saveSets();
+  goTo('practice');
+}
+
+function showPracticeView(){
+  const inSet = !!practiceSet;
+  document.getElementById('practiceSetBar').style.display = inSet ? '' : 'none';
+  document.getElementById('practiceSeg').style.display = inSet ? '' : 'none';
+  if(!inSet){ showPanel('practiceSets'); renderPracticeSetList(); return; }
+  document.getElementById('practiceSetName').textContent = practiceSet==='all' ? 'すべての問題' : practiceSet;
+  const c = practiceItemsIn(practiceSet);
+  document.getElementById('practiceSetSub').textContent = (practiceSet==='all' ? '全部の回' : roundSubtitle(practiceSet, [].concat(UNDERLINE, QUIZ, COMPREHENSION, GRAMMAR, KOTEST))) + `・${c.u+c.q+c.g+c.k}問`;
+  document.querySelectorAll('#practiceSeg button').forEach(b=>b.classList.toggle('on', b.dataset.p===currentPractice));
+  showPanel(currentPractice);
+}
+
+document.getElementById('vocabBack').onclick = exitVocabSet;
+document.getElementById('practiceBack').onclick = exitPracticeSet;
+
+
 
 // ---- pretty pill dropdowns (replace the native filter <select>s) ----
 function prettySelect(sel, icon){
@@ -2918,7 +3133,7 @@ function currentTheme(){ return document.documentElement.getAttribute('data-them
   applyTheme(currentTheme());
 })();
 
-[['vocabRound','📚'], ['vocabChapter','📖'], ['vocabFilter','✨'], ['underlineChapter','📖'], ['quizChapter','📖']]
+[['vocabFilter','✨']]
   .forEach(([id, icon]) => prettySelect(document.getElementById(id), icon));
 
 (async function init(){
@@ -2931,6 +3146,13 @@ function currentTheme(){ return document.documentElement.getAttribute('data-them
     }
   }catch(e){}
   updateStats();
+  restoreSets();
+  practiceRound = practiceSet || 'all';
+  if(vocabSet){
+    const sel = document.getElementById('vocabRound');
+    sel.value = vocabSet;
+    if(sel.onchange) sel.onchange({target: sel});
+  }
   goTo('home');
   buildVocabOrder(); renderVocabRoot();
   buildUnderlineOrder(); renderUnderline();
