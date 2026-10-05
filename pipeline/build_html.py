@@ -9,6 +9,10 @@ import sys
 # アップデート履歴。新しい版を公開するときは先頭に1件足す（APP_VERSION も自動で変わる）。
 # ツールを開いたとき、前回から増えた分が「アップデートしました」として表示される。
 CHANGELOG = [
+    ("2026.10.05-4", [
+        "第2回（p.53〜55）のセットを追加しました：単語28語（授業で赤字の重要語句14件を含む）",
+        "練習問題も追加：下線部訳4問（p.55の課題）・訳の4択13問・内容理解8問・文法9問",
+    ]),
     ("2026.10.05-3", [
         "テストを新しくしました：1問ずつ解く集中モード（上に進み具合のバー、問題番号から移動もできます）",
         "○×・4択は選ぶと自動で次の問題へ。マッチングはタップで組み合わせる形になりました",
@@ -36,6 +40,7 @@ APP_VERSION = CHANGELOG[0][0]
 # 授業の回ごとの表示名（セット一覧の副題）。回を追加したらここにも1行足す。
 ROUND_INFO = {
     "第1回": {"title": "Chapter 5, part 2", "pages": "p.52〜54"},
+    "第2回": {"title": "Chapter 5, part 2", "pages": "p.53〜55"},
 }
 
 
@@ -3062,7 +3067,7 @@ function renderHome(){
   for(let k=6;k>=0;k--){ const d = new Date(); d.setDate(d.getDate()-k); week.push(d); }
   const wd = ['日','月','火','水','木','金','土'];
   const wrongTotal = Object.keys(store.data.quizWrong).length + Object.keys(store.data.underlineWrong).length + Object.keys(store.data.grammarWrong).length + Object.keys(store.data.comprehensionWrong).length + Object.keys(store.data.kotestWrong).length;
-  const rounds = VOCAB_ROUNDS.length ? VOCAB_ROUNDS : [];
+  const rounds = VOCAB_ROUNDS.slice().reverse();   // newest class first
   const practice = [
     {p:'underline', icon:'✍️', name:'下線部訳', n: UNDERLINE.length},
     {p:'quiz', icon:'📖', name:'読解クイズ', n: QUIZ.length + COMPREHENSION.length},

@@ -175,6 +175,230 @@
       "chapter": 5,
       "gloss": "まさにそこが問題だ",
       "round": "第1回"
+    },
+    {
+      "term": "do good",
+      "enHtml": "But whichever it is, what <mark>good</mark> do you think you'll do by jeering and nagging at her one day and encouraging her the next?\"",
+      "jp": "でも、そのどちらだとしても、ある日は冷やかしていじめておいて、次の日にはけしかける(励ます)ようなことをして、一体それが何の役に立つと思っているんだ?」",
+      "chapter": 5,
+      "gloss": "役に立つ（what good …? ＝一体何の役に立つのか）",
+      "round": "第2回"
+    },
+    {
+      "term": "jeer at 〜",
+      "enHtml": "But whichever it is, what good do you think you'll do by <mark>jeering</mark> and nagging at her one day and encouraging her the next?\"",
+      "jp": "でも、そのどちらだとしても、ある日は冷やかしていじめておいて、次の日にはけしかける(励ます)ようなことをして、一体それが何の役に立つと思っているんだ?」",
+      "chapter": 5,
+      "gloss": "〜をあざける、冷やかす",
+      "round": "第2回"
+    },
+    {
+      "term": "nag at 〜",
+      "enHtml": "But whichever it is, what good do you think you'll do by jeering and <mark>nagging</mark> at her one day and encouraging her the next?\"",
+      "jp": "でも、そのどちらだとしても、ある日は冷やかしていじめておいて、次の日にはけしかける(励ます)ようなことをして、一体それが何の役に立つと思っているんだ?」",
+      "chapter": 5,
+      "gloss": "〜にがみがみ言う、小言を言う",
+      "round": "第2回"
+    },
+    {
+      "term": "encourage",
+      "enHtml": "But whichever it is, what good do you think you'll do by jeering and nagging at her one day and <mark>encouraging</mark> her the next?\"",
+      "jp": "でも、そのどちらだとしても、ある日は冷やかしていじめておいて、次の日にはけしかける(励ます)ようなことをして、一体それが何の役に立つと思っているんだ?」",
+      "chapter": 5,
+      "gloss": "励ます、けしかける",
+      "round": "第2回"
+    },
+    {
+      "term": "row",
+      "enHtml": "\"Do stop it,\" said Susan; \"it won't make things any better having a <mark>row</mark> between you two.",
+      "jp": "「もうやめてよ」とスーザンが言った。「二人で口けんかしたって、何も良くなりはしないわ。",
+      "chapter": 5,
+      "gloss": "口げんか、口論（発音は［ráu］）",
+      "round": "第2回"
+    },
+    {
+      "term": "stick to 〜",
+      "enHtml": "She <mark>stuck to</mark> her story and said: \"I don't care what you think, and I don't care what you say.",
+      "jp": "彼女は自分の話を曲げず、こう言った。「みんながどう思おうとかまわないし、何を言おうとかまわない。",
+      "chapter": 5,
+      "gloss": "〜を曲げない、〜に固執する（stick-stuck-stuck）",
+      "round": "第2回"
+    },
+    {
+      "term": "at one's disposal",
+      "enHtml": "So they went and knocked at the study door, and the Professor said, \"Come in,\" and got up and found chairs for them and said he was quite <mark>at their disposal</mark>.",
+      "jp": "そこで二人は書斎のドアをノックしに行った。すると教授は「お入り」と言い、立ち上がって椅子を用意し、何でも遠慮なく話してくれてかまわないと言った。",
+      "chapter": 5,
+      "gloss": "〜の自由に使える、何でも力になる",
+      "round": "第2回"
+    },
+    {
+      "term": "the last thing",
+      "enHtml": "Then he cleared his throat and said the <mark>last thing</mark> either of them expected: \"How do you know,\" he asked, \"that your sister's story is not true?\"",
+      "jp": "それから咳払いをすると、二人が最も予想していなかったことを口にした。「妹さんの話が本当ではないと、どうして分かるんだね?」と教授は尋ねた。",
+      "chapter": 5,
+      "gloss": "最も〜しそうにないこと（the last thing 人 expected＝まったく予想外のこと）",
+      "round": "第2回"
+    },
+    {
+      "term": "pull oneself together",
+      "enHtml": "Then Susan <mark>pulled herself together</mark> and said, \"But Edmund said they had only been pretending.\"",
+      "jp": "それからスーザンは気を取り直して言った。「でも、エドマンドは、二人でただふりをしていただけだって言ったんです」",
+      "chapter": 5,
+      "gloss": "気を取り直す、落ち着きを取り戻す",
+      "round": "第2回"
+    },
+    {
+      "term": "deserve consideration",
+      "enHtml": "\"That is a point,\" said the Professor, \"which certainly <mark>deserves consideration</mark>; very careful consideration.",
+      "jp": "「それは確かに考えてみる価値のある点だね」と教授は言った。「それも、よくよく考えてみるべき点だ。",
+      "chapter": 5,
+      "gloss": "考慮に値する、考えてみる価値がある",
+      "round": "第2回"
+    },
+    {
+      "term": "lead 人 to do",
+      "enHtml": "For instance - if you will excuse me for asking the question - does your experience <mark>lead you to</mark> <mark>regard</mark> your brother or your sister <mark>as</mark> the more reliable?",
+      "jp": "たとえば――こんなことを尋ねるのを許してもらえるなら――これまでの経験からして、君たちは弟さんと妹さんのどちらのほうが信用できると思うかね?",
+      "chapter": 5,
+      "gloss": "人に〜させる（経験が人を〜へ導く→経験から〜と考える）",
+      "round": "第2回"
+    },
+    {
+      "term": "regard A as B",
+      "enHtml": "For instance - if you will excuse me for asking the question - does your experience <mark>lead you to</mark> <mark>regard</mark> your brother or your sister <mark>as</mark> the more reliable?",
+      "jp": "たとえば――こんなことを尋ねるのを許してもらえるなら――これまでの経験からして、君たちは弟さんと妹さんのどちらのほうが信用できると思うかね?",
+      "chapter": 5,
+      "gloss": "AをBとみなす",
+      "round": "第2回"
+    },
+    {
+      "term": "more than I know",
+      "enHtml": "\"That is <mark>more than I know</mark>,\" said the Professor,",
+      "jp": "「それは私にも分からないね」と教授は言った。",
+      "chapter": 5,
+      "gloss": "私には分からない（直訳：私が知っている以上のこと）",
+      "round": "第2回"
+    },
+    {
+      "term": "charge",
+      "enHtml": "\"and a <mark>charge</mark> of lying against someone whom you have always found truthful is a very serious thing; a very serious thing indeed.\"",
+      "jp": "「それに、これまでずっと正直だと分かっている人を嘘つき呼ばわりするのは、とても重大なことだよ。本当に重大なことだ」",
+      "chapter": 5,
+      "gloss": "非難、告発（a charge of lying against 〜＝〜を嘘つきだと責めること）",
+      "round": "第2回"
+    },
+    {
+      "term": "before now",
+      "enHtml": "You've always liked being beastly to anyone smaller than yourself; we've seen that at school <mark>before now</mark>.\"",
+      "jp": "お前は昔から、自分より小さい相手にひどいことをするのが好きだった。学校でもそういうところを何度も見てきたんだからな」",
+      "chapter": 5,
+      "gloss": "これまでに（何度も）",
+      "round": "第2回"
+    },
+    {
+      "term": "a good deal later",
+      "enHtml": "It was not surprising that when they found Lucy, <mark>a good deal later</mark>, everyone could see that she had been crying.",
+      "jp": "しばらく経ってようやくルーシーを見つけたとき、彼女が泣いていたのが誰の目にも明らかだったのも、無理のないことだった。",
+      "chapter": 5,
+      "gloss": "かなりたってから",
+      "round": "第2回"
+    },
+    {
+      "term": "make a difference",
+      "enHtml": "Nothing they could say to her <mark>made any difference</mark>.",
+      "jp": "みんなが何を言っても、ルーシーの様子は少しも変わらなかった。",
+      "chapter": 5,
+      "gloss": "違いを生む、効き目がある（not any difference＝まったく効果がない）",
+      "round": "第2回"
+    },
+    {
+      "term": "miserable",
+      "enHtml": "Lucy was <mark>miserable</mark> and Edmund was beginning to feel that his plan wasn't working as well as he had expected.",
+      "jp": "ルーシーはみじめな気分で、エドマンドは自分の計画が思ったほどうまくいっていないと感じ始めていた。",
+      "chapter": 5,
+      "gloss": "みじめな、ひどく落ち込んだ",
+      "round": "第2回"
+    },
+    {
+      "term": "out of one's mind",
+      "enHtml": "The two older ones were really beginning to think that Lucy was <mark>out of her mind</mark>.",
+      "jp": "上の二人は、ルーシーが本当に頭がおかしくなってしまったのではないかと、真剣に思い始めていた。",
+      "chapter": 5,
+      "gloss": "頭がおかしくなって、正気を失って",
+      "round": "第2回"
+    },
+    {
+      "term": "in whispers",
+      "enHtml": "They stood in the passage talking about it <mark>in whispers</mark> long after she had gone to bed.",
+      "jp": "ルーシーが寝てしまってからもずいぶん長いあいだ、二人は廊下に立ち、そのことをひそひそと話し合っていた。",
+      "chapter": 5,
+      "gloss": "ひそひそ声で",
+      "round": "第2回"
+    },
+    {
+      "term": "get beyond 人",
+      "enHtml": "\"He'll write to Father if he thinks there is really something wrong with Lu,\" said Peter; \"it's <mark>getting beyond us</mark>.\"",
+      "jp": "「ルーに本当に何かおかしなところがあると思ったら、教授がお父さんに手紙を書いてくれるだろう」とピーターは言った。「もう僕たちの手には負えないよ」",
+      "chapter": 5,
+      "gloss": "人の手に負えなくなる",
+      "round": "第2回"
+    },
+    {
+      "term": "interrupt",
+      "enHtml": "Then he sat listening to them with the tips of his fingers pressed together and never <mark>interrupting</mark>, till they had finished the whole story.",
+      "jp": "それから教授は、指先を合わせるようにして座り、二人が話を全部終えるまで、一度も口を挟まずに耳を傾けていた。",
+      "chapter": 5,
+      "gloss": "（話に）口を挟む、さえぎる",
+      "round": "第2回"
+    },
+    {
+      "term": "clear one's throat",
+      "enHtml": "Then he <mark>cleared his throat</mark> and said the last thing either of them expected: \"How do you know,\" he asked, \"that your sister's story is not true?\"",
+      "jp": "それから咳払いをすると、二人が最も予想していなかったことを口にした。「妹さんの話が本当ではないと、どうして分かるんだね?」と教授は尋ねた。",
+      "chapter": 5,
+      "gloss": "咳払いをする",
+      "round": "第2回"
+    },
+    {
+      "term": "for instance",
+      "enHtml": "<mark>For instance</mark> - if you will excuse me for asking the question - does your experience lead you to regard your brother or your sister as the more reliable?",
+      "jp": "たとえば――こんなことを尋ねるのを許してもらえるなら――これまでの経験からして、君たちは弟さんと妹さんのどちらのほうが信用できると思うかね?",
+      "chapter": 5,
+      "gloss": "たとえば",
+      "round": "第2回"
+    },
+    {
+      "term": "reliable",
+      "enHtml": "For instance - if you will excuse me for asking the question - does your experience lead you to regard your brother or your sister as the more <mark>reliable</mark>?",
+      "jp": "たとえば――こんなことを尋ねるのを許してもらえるなら――これまでの経験からして、君たちは弟さんと妹さんのどちらのほうが信用できると思うかね?",
+      "chapter": 5,
+      "gloss": "信頼できる",
+      "round": "第2回"
+    },
+    {
+      "term": "truthful",
+      "enHtml": "I mean, which is the more <mark>truthful</mark>?\"",
+      "jp": "つまり、どちらのほうが正直かということだが」",
+      "chapter": 5,
+      "gloss": "正直な、嘘をつかない",
+      "round": "第2回"
+    },
+    {
+      "term": "up till now",
+      "enHtml": "\"<mark>Up till now</mark>, I'd have said Lucy every time.\"",
+      "jp": "「これまでだったら、いつだってルーシーのほうだと答えていたでしょう」",
+      "chapter": 5,
+      "gloss": "今までは",
+      "round": "第2回"
+    },
+    {
+      "term": "in general",
+      "enHtml": "\"Well,\" said Susan, \"<mark>in general</mark>, I'd say the same as Peter, but this couldn't be true - all this about the wood and the faun.\"",
+      "jp": "「そうですね」とスーザンは言った。「ふだんならピーターと同じ意見です。でも、今度のことは本当のはずがありません――森だとかフォーンだとか、そういう話は全部」",
+      "chapter": 5,
+      "gloss": "ふだんは、一般的に",
+      "round": "第2回"
     }
   ],
   "underline": [
@@ -254,6 +478,40 @@
       "note": "下線部の内容：「How do you know that your sister's story is not true?（妹さんの話が本当ではないと、どうして分かるのかね？）」という言葉。二人は教授もルーシーがおかしいと同意してくれると思っていたのに、逆に自分たちの思い込みを問われた。the last＋名詞＋関係詞節「最も〜しそうにないもの」。",
       "chapter": 5,
       "round": "第1回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "Then Susan pulled herself together and said.",
+      "jp": "それからスーザンは気を取り直して言った。",
+      "note": "pull oneself together「気を取り直す、落ち着きを取り戻す」。直前で教授の予想外の質問に驚いて言葉に詰まった（\"Oh, but—\"）スーザンが、立ち直って話し始める場面。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "'That is a point,' said the Professor, 'which certainly deserves consideration.'",
+      "jp": "「それは確かに考えてみる価値のある点だね」と教授は言った。",
+      "note": "which の先行詞は a point（said the Professor が間に挟まって離れている）。deserve consideration「考慮に値する」。That＝スーザンの言った「エドマンドは、二人でふりをしていただけだと言った」こと。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "文構造に気をつけて、訳しましょう",
+      "enHtml": "For instance, --if you will excuse me for asking the question--does your experience lead you to regard your brother or your sister as the more reliable?",
+      "jp": "たとえば――こんなことを尋ねるのを許してもらえるなら――これまでの経験からすると、君たちは弟さん（エドマンド）と妹さん（ルーシー）のどちらのほうが信頼できると思うかね？",
+      "note": "ダッシュの間は挿入（if you will …：will は相手の意志「〜してくれるなら」）。your experience lead(s) you to do は無生物主語→「経験から〜と考える」。regard A as B「AをBとみなす」。二者の比較なので the more reliable。ピーターの答え：これまでならいつもルーシー。スーザンの答え：ふだんならルーシーだが、森とフォーンの話は本当のはずがない。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "underline": "That",
+      "task": "1. 下線部の内容は？　2. 訳しましょう",
+      "enHtml": "'<u>That</u> is more than I know,' said the Professor, 'and a charge of lying against someone whom you have always found truthful is a very serious thing; a very serious thing indeed.'",
+      "jp": "「それは私には分からないね」と教授は言った。「それに、これまでずっと正直だと分かっている人に対して、嘘をついていると責めるのは、とても重大なことだよ。本当に、とても重大なことだ」",
+      "note": "下線部 That＝スーザンの「森やフォーンの話が本当であるはずがない」ということ。more than I know「私には分からない」（＝本当ではないとは言い切れない）。a charge of lying against 〜「〜を嘘つきだと責めること」が主語。someone whom you have always found truthful は find O C の O が関係代名詞 whom になった形。",
+      "chapter": 5,
+      "round": "第2回"
     }
   ],
   "quiz": [
@@ -316,6 +574,84 @@
       "jp": "それから教授は咳払いをして、二人のどちらもまったく予想していなかったことを言った。",
       "chapter": 5,
       "round": "第1回"
+    },
+    {
+      "en": "\"Do stop it,\" said Susan; \"it won't make things any better having a row between you two.",
+      "jp": "「もうやめてよ」とスーザンが言った。「二人で口けんかしたって、何も良くなりはしないわ。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "It was not surprising that when they found Lucy, a good deal later, everyone could see that she had been crying.",
+      "jp": "しばらく経ってようやくルーシーを見つけたとき、彼女が泣いていたのが誰の目にも明らかだったのも、無理のないことだった。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "She stuck to her story and said: \"I don't care what you think, and I don't care what you say.",
+      "jp": "彼女は自分の話を曲げず、こう言った。「みんながどう思おうとかまわないし、何を言おうとかまわない。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "Lucy was miserable and Edmund was beginning to feel that his plan wasn't working as well as he had expected.",
+      "jp": "ルーシーはみじめな気分で、エドマンドは自分の計画が思ったほどうまくいっていないと感じ始めていた。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "The two older ones were really beginning to think that Lucy was out of her mind.",
+      "jp": "上の二人は、ルーシーが本当に頭がおかしくなってしまったのではないかと、真剣に思い始めていた。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "They stood in the passage talking about it in whispers long after she had gone to bed.",
+      "jp": "ルーシーが寝てしまってからもずいぶん長いあいだ、二人は廊下に立ち、そのことをひそひそと話し合っていた。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "Then Susan pulled herself together and said, \"But Edmund said they had only been pretending.\"",
+      "jp": "それからスーザンは気を取り直して言った。「でも、エドマンドは、二人でただふりをしていただけだって言ったんです」",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "\"That is a point,\" said the Professor, \"which certainly deserves consideration; very careful consideration.",
+      "jp": "「それは確かに考えてみる価値のある点だね」と教授は言った。「それも、よくよく考えてみるべき点だ。",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "For instance - if you will excuse me for asking the question - does your experience lead you to regard your brother or your sister as the more reliable?",
+      "jp": "たとえば――こんなことを尋ねるのを許してもらえるなら――これまでの経験からして、君たちは弟さんと妹さんのどちらのほうが信用できると思うかね?",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "\"Up till now, I'd have said Lucy every time.\"",
+      "jp": "「これまでだったら、いつだってルーシーのほうだと答えていたでしょう」",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "\"Well,\" said Susan, \"in general, I'd say the same as Peter, but this couldn't be true - all this about the wood and the faun.\"",
+      "jp": "「そうですね」とスーザンは言った。「ふだんならピーターと同じ意見です。でも、今度のことは本当のはずがありません――森だとかフォーンだとか、そういう話は全部」",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "\"and a charge of lying against someone whom you have always found truthful is a very serious thing; a very serious thing indeed.\"",
+      "jp": "「それに、これまでずっと正直だと分かっている人を嘘つき呼ばわりするのは、とても重大なことだよ。本当に重大なことだ」",
+      "chapter": 5,
+      "round": "第2回"
+    },
+    {
+      "en": "\"We were afraid it mightn't even be lying,\" said Susan; \"we thought there might be something wrong with Lucy.\"",
+      "jp": "「私たち、ひょっとすると嘘ですらないのではと心配していたんです」とスーザンは言った。「ルーシーはどこかおかしいのかもしれないと思って」",
+      "chapter": 5,
+      "round": "第2回"
     }
   ],
   "yellow_sentences": []

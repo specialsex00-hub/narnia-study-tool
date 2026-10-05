@@ -76,5 +76,109 @@
     "explain": "\"How do you know that your sister's story is not true?\"。二人は教授もルーシーがおかしいと同意すると思っていたのに、逆に「話が本当かもしれない」と自分たちの思い込みを問われた。",
     "chapter": 5,
     "round": "第1回"
+  },
+  {
+    "q": "スーザンが「二人でけんかしないで」と止めたあと、提案したことは？",
+    "choices": [
+      "ルーシーを捜しに行くこと",
+      "教授に相談しに行くこと",
+      "お母さんに手紙を書くこと",
+      "洋服だんすをもう一度調べること"
+    ],
+    "answer": "ルーシーを捜しに行くこと",
+    "explain": "\"Do stop it … Let's go and find Lucy.\"。教授に相談するのは翌朝になってから決めたこと。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "その晩、エドマンドが感じ始めていたことは？",
+    "choices": [
+      "自分の計画が思ったほどうまくいっていない",
+      "ルーシーの話は本当かもしれない",
+      "ピーターに謝らなければならない",
+      "教授に叱られるかもしれない"
+    ],
+    "answer": "自分の計画が思ったほどうまくいっていない",
+    "explain": "\"Edmund was beginning to feel that his plan wasn't working as well as he had expected.\"",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "ルーシーが寝たあと、ピーターとスーザンはどうしていたか？",
+    "choices": [
+      "廊下に立って、ひそひそ声で長いあいだ話し合っていた",
+      "すぐに教授の書斎へ行った",
+      "洋服だんすの部屋を調べに行った",
+      "エドマンドと一緒にトランプをしていた"
+    ],
+    "answer": "廊下に立って、ひそひそ声で長いあいだ話し合っていた",
+    "explain": "\"They stood in the passage talking about it in whispers long after she had gone to bed.\" in whispers＝ひそひそ声で。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "教授の質問（話が本当でないとどうして分かるのか）に、スーザンが最初に持ち出した反論は？",
+    "choices": [
+      "エドマンドが「二人でふりをしていただけ」と言ったこと",
+      "洋服だんすの奥は板で行き止まりだったこと",
+      "ルーシーが前にも嘘をついたことがあること",
+      "フォーンなどいるはずがないこと"
+    ],
+    "answer": "エドマンドが「二人でふりをしていただけ」と言ったこと",
+    "explain": "\"But Edmund said they had only been pretending.\" 教授はそれを「考えてみる価値のある点だ」と受け止め、では二人のどちらが信頼できるかと尋ねる。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "「弟と妹のどちらが信頼できるか」と聞かれて、ピーターはどう答えたか？",
+    "choices": [
+      "これまでなら、いつもルーシーと答えていた",
+      "これまでなら、いつもエドマンドと答えていた",
+      "どちらも同じくらい信頼できる",
+      "どちらも信頼できない"
+    ],
+    "answer": "これまでなら、いつもルーシーと答えていた",
+    "explain": "\"That's just the funny thing about it, sir. Up till now, I'd have said Lucy every time.\" だからこそ今回のことが「妙」だと言っている。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "同じ質問へのスーザンの答えとして正しいものは？",
+    "choices": [
+      "ふだんならピーターと同じ（ルーシー）だが、森とフォーンの話は本当のはずがない",
+      "エドマンドのほうがずっと信頼できる",
+      "ルーシーの話は全部本当だと思う",
+      "分からないので教授に決めてほしい"
+    ],
+    "answer": "ふだんならピーターと同じ（ルーシー）だが、森とフォーンの話は本当のはずがない",
+    "explain": "\"in general, I'd say the same as Peter, but this couldn't be true - all this about the wood and the faun.\"",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "教授が「とても重大なことだ」と言ったのは何について？",
+    "choices": [
+      "いつも正直だと分かっている人を、嘘つきだと責めること",
+      "子どもが夜遅くまで起きていること",
+      "洋服だんすに勝手に入ること",
+      "親に手紙を書かずに済ませること"
+    ],
+    "answer": "いつも正直だと分かっている人を、嘘つきだと責めること",
+    "explain": "\"a charge of lying against someone whom you have always found truthful is a very serious thing\"。charge＝非難。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "q": "スーザンたちが「嘘ですらないかもしれない」と心配していたのは、どういうことか？",
+    "choices": [
+      "ルーシーの頭がどこかおかしくなっているかもしれないこと",
+      "ルーシーが本当に別の国に行ったかもしれないこと",
+      "エドマンドが嘘をついているかもしれないこと",
+      "教授が話を信じてくれないかもしれないこと"
+    ],
+    "answer": "ルーシーの頭がどこかおかしくなっているかもしれないこと",
+    "explain": "\"we thought there might be something wrong with Lucy.\" 教授は \"Madness, you mean?\"（狂気、ということかね）と聞き返す。",
+    "chapter": 5,
+    "round": "第2回"
   }
 ]

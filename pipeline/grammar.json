@@ -110,5 +110,131 @@
     "explain": "the last thing (that) 〜 expected で「最も予想していなかったこと」。the last＋名詞＋関係詞節は「最も〜しそうにない…」という意味になる。",
     "chapter": 5,
     "round": "第1回"
+  },
+  {
+    "point": "動名詞（〜することは）",
+    "en": "\"It won't make things any better ___ a row between you two.\"",
+    "choices": [
+      "having",
+      "to have",
+      "had",
+      "have"
+    ],
+    "answer": "having",
+    "explain": "it は形式主語で、後ろの having a row（口げんかをすること）を指す口語の形。「二人で口げんかしても、何も良くならない」。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "It is … that 〜（〜なのは…だ）",
+    "en": "It was not surprising ___ when they found Lucy, a good deal later, everyone could see that she had been crying.",
+    "choices": [
+      "that",
+      "what",
+      "which",
+      "if"
+    ],
+    "answer": "that",
+    "explain": "It は形式主語で、that 以下が本当の主語。「〜なのも無理はなかった」。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "再帰代名詞（pull oneself together）",
+    "en": "Then Susan pulled ___ together and said, \"But Edmund said they had only been pretending.\"",
+    "choices": [
+      "herself",
+      "her",
+      "she",
+      "hers"
+    ],
+    "answer": "herself",
+    "explain": "pull oneself together「気を取り直す」。主語 Susan と同じ人なので再帰代名詞 herself。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "関係代名詞 which（先行詞が離れている）",
+    "en": "\"That is a point,\" said the Professor, \"___ certainly deserves consideration.\"",
+    "choices": [
+      "which",
+      "what",
+      "who",
+      "where"
+    ],
+    "answer": "which",
+    "explain": "先行詞は a point（物）。said the Professor が挟まって離れているが、a point which certainly deserves consideration とつながる。what は先行詞を含むので不可。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "if you will …（相手の意志：〜してくれるなら）",
+    "en": "For instance - if you ___ excuse me for asking the question - does your experience lead you to regard your brother or your sister as the more reliable?",
+    "choices": [
+      "will",
+      "shall",
+      "must",
+      "should"
+    ],
+    "answer": "will",
+    "explain": "条件節の will は未来ではなく相手の意志。「こんな質問をすることを許してくれるなら」という丁寧な前置き。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "lead O to do（Oに〜させる）",
+    "en": "… does your experience lead you ___ regard your brother or your sister as the more reliable?",
+    "choices": [
+      "to",
+      "for",
+      "into",
+      "at"
+    ],
+    "answer": "to",
+    "explain": "lead O to do「Oを〜するように導く、Oに〜させる」。無生物主語なので「経験から〜と考える」と訳すと自然。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "regard A as B（AをBとみなす）",
+    "en": "… does your experience lead you to regard your brother or your sister ___ the more reliable?",
+    "choices": [
+      "as",
+      "for",
+      "to",
+      "like"
+    ],
+    "answer": "as",
+    "explain": "regard A as B「AをBとみなす」。同じ形に think of A as B、look on A as B など。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "the＋比較級（二者のうち〜なほう）",
+    "en": "… regard your brother or your sister as ___ more reliable?",
+    "choices": [
+      "the",
+      "a",
+      "most",
+      "much"
+    ],
+    "answer": "the",
+    "explain": "2人のうち「より信頼できるほう」と特定するので the＋比較級。I mean, which is the more truthful? も同じ形。",
+    "chapter": 5,
+    "round": "第2回"
+  },
+  {
+    "point": "関係代名詞 whom（find O C の O）",
+    "en": "\"and a charge of lying against someone ___ you have always found truthful is a very serious thing\"",
+    "choices": [
+      "whom",
+      "whose",
+      "what",
+      "which"
+    ],
+    "answer": "whom",
+    "explain": "you have always found someone truthful（その人が正直だと分かっている）の someone が先行詞になり、目的格の whom が使われている。",
+    "chapter": 5,
+    "round": "第2回"
   }
 ]
