@@ -469,6 +469,114 @@
   .setBarTitle{min-width:0;}
   .setBarName{font-size:17px; font-weight:800; line-height:1.25;}
   .setBarSub{font-size:12px; color:var(--sub); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  /* ===== test: setup ===== */
+  .testHero{display:flex; align-items:center; gap:16px; padding:18px; background:linear-gradient(135deg, var(--accent-bg), var(--card) 75%);}
+  .testHeroLion svg{width:68px; height:68px; display:block; animation:floaty 3s ease-in-out infinite;}
+  .testHeroTitle{font-size:21px; font-weight:800; line-height:1.3;}
+  .testHeroSub{font-size:13px; color:var(--sub); font-weight:700;}
+  .bestChip{display:inline-block; margin-top:6px; font-size:12px; font-weight:800; color:var(--accent); background:var(--card); border:2px solid var(--accent-bg); border-radius:20px; padding:2px 10px;}
+  .setupSec{margin:18px 2px 0;}
+  .setupLabel{font-size:13.5px; font-weight:800; margin:0 2px 8px; color:var(--ink);}
+  .setupLabel b{color:var(--accent); margin-left:6px;}
+  .chipRow{display:flex; gap:8px; flex-wrap:wrap;}
+  .chipRow button{min-width:56px; border-radius:999px; padding:8px 14px; font-size:14px;}
+  .chipRow button.on{background:var(--accent); border-color:var(--accent); color:var(--on-accent); box-shadow:0 3px 0 var(--accent-dark);}
+  .typeGrid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .typeTile{position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:2px; text-align:left; padding:14px; border-radius:18px; background:var(--card); opacity:0.7;}
+  .typeTile.on{opacity:1; border-color:var(--accent); background:var(--accent-bg); box-shadow:0 3px 0 var(--accent);}
+  .ttIcon{font-size:24px; line-height:1.2;}
+  .ttName{font-size:15px; font-weight:800;}
+  .ttDesc{font-size:11.5px; color:var(--sub); font-weight:600;}
+  .ttCheck{position:absolute; top:10px; right:10px; width:22px; height:22px; border-radius:50%; border:2px solid var(--line); display:grid; place-items:center; font-size:12px; font-weight:800; color:transparent; background:var(--card);}
+  .typeTile.on .ttCheck{background:var(--accent); border-color:var(--accent); color:var(--on-accent);}
+  .startBtn{margin-top:22px; font-size:17px; padding:15px;}
+  .histCard{padding:14px 12px 10px;}
+  .histBars{display:flex; gap:8px; align-items:flex-end; justify-content:center; height:120px;}
+  .hb{flex:1; max-width:42px; display:flex; flex-direction:column; align-items:center; gap:3px; height:100%;}
+  .hbVal{font-size:11px; font-weight:800; color:var(--sub);}
+  .hbBar{flex:1; width:100%; display:flex; align-items:flex-end; background:var(--bg); border-radius:8px; overflow:hidden;}
+  .hbBar i{display:block; width:100%; border-radius:8px;}
+  .hbBar i.g{background:var(--good);} .hbBar i.w{background:var(--warn);} .hbBar i.b{background:var(--bad);}
+  .hbDate{font-size:10px; color:var(--sub);}
+  .seg.small button{font-size:12px; padding:5px 10px;}
+
+  /* ===== test: focus mode (one question per screen) ===== */
+  body.examMode .nav, body.examMode .appbar, body.examMode #vocabSetBar, body.examMode #vocabSubtabs, body.examMode #panel-vocab .filterrow{display:none !important;}
+  body.examMode .wrap{padding-top:12px; padding-bottom:40px;}
+  .examTop{position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:12px; padding:10px 0 8px; background:var(--bg);}
+  .examClose{width:38px; height:38px; padding:0; border-radius:50%; font-size:16px; color:var(--sub); flex:none;}
+  .examProg{flex:1; height:14px; background:var(--line); border-radius:10px; overflow:hidden;}
+  .examProg span{display:block; height:100%; background:var(--good); border-radius:10px; transition:width 0.35s cubic-bezier(.3,.8,.3,1); box-shadow:inset 0 -3px 0 rgba(0,0,0,0.12);}
+  .examCount{font-size:13px; font-weight:800; color:var(--sub); min-width:40px; text-align:right;}
+  .examDots{display:flex; gap:6px; overflow-x:auto; padding:4px 2px 12px; scrollbar-width:none;}
+  .examDots::-webkit-scrollbar{display:none;}
+  .dot{flex:none; min-width:32px; height:32px; padding:0 8px; border-radius:16px; font-size:12px; box-shadow:none; color:var(--sub);}
+  .dot.done{background:var(--accent-bg); border-color:var(--accent-bg); color:var(--accent);}
+  .dot.cur{border-color:var(--accent); color:var(--accent); box-shadow:0 2px 0 var(--accent);}
+  .examCard{padding:22px 20px 24px; min-height:52vh; display:flex; flex-direction:column; animation:qIn 0.28s ease-out;}
+  @keyframes qIn{ from{opacity:0; transform:translateX(14px);} to{opacity:1; transform:none;} }
+  .qType{align-self:flex-start; font-size:11.5px; font-weight:800; color:var(--accent); background:var(--accent-bg); border-radius:20px; padding:3px 10px; margin-bottom:14px;}
+  .qLabel{font-size:13px; font-weight:700; color:var(--sub); margin-bottom:8px;}
+  .qPrompt{font-size:28px; font-weight:800; line-height:1.35; margin-bottom:18px; word-break:break-word;}
+  .qShown{align-self:flex-start; font-size:19px; font-weight:800; color:var(--accent); background:var(--accent-bg); border-radius:14px; padding:10px 16px; margin:-4px 0 22px;}
+  .qHint{font-size:12px; color:var(--sub); margin-top:8px;}
+  .qInput{font-size:20px !important; padding:14px 16px !important;}
+  .tfBig{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:auto;}
+  .tfBig button{display:flex; flex-direction:column; align-items:center; gap:2px; padding:16px 10px; border-radius:20px; font-size:14px;}
+  .tfBig button span{font-size:34px; line-height:1.1; font-weight:800;}
+  .tfO span{color:var(--good);} .tfX span{color:var(--bad);}
+  .tfO.on{background:var(--good-bg); border-color:var(--good); box-shadow:0 4px 0 var(--good);}
+  .tfX.on{background:var(--bad-bg); border-color:var(--bad); box-shadow:0 4px 0 var(--bad);}
+  .optList{display:flex; flex-direction:column; gap:10px; margin-top:auto;}
+  .opt{display:flex; align-items:center; gap:12px; text-align:left; padding:14px 16px; border-radius:16px; font-size:15.5px;}
+  .optKey{flex:none; width:28px; height:28px; border-radius:9px; border:2px solid var(--line); display:grid; place-items:center; font-size:12px; font-weight:800; color:var(--sub);}
+  .opt.on{border-color:var(--accent); background:var(--accent-bg); box-shadow:0 3px 0 var(--accent);}
+  .opt.on .optKey{background:var(--accent); border-color:var(--accent); color:var(--on-accent);}
+  .mtRows{display:flex; flex-direction:column; gap:8px; margin-bottom:16px;}
+  .mtRow{display:grid; grid-template-columns:minmax(90px, 40%) 1fr; gap:10px; align-items:center; text-align:left; padding:11px 14px; border-radius:14px;}
+  .mtTerm{font-weight:800; font-size:15px;}
+  .mtSlot{font-size:13px; color:var(--sub); border:2px dashed var(--line); border-radius:10px; padding:6px 10px; font-weight:600;}
+  .mtRow.filled .mtSlot{border-style:solid; border-color:var(--accent-bg); background:var(--accent-bg); color:var(--accent);}
+  .mtRow.pick{border-color:var(--accent); box-shadow:0 3px 0 var(--accent);}
+  .mtRow.pick .mtSlot{border-color:var(--accent); color:var(--accent);}
+  .mtChips{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto;}
+  .mtChip{border-radius:999px; padding:8px 14px; font-size:13px;}
+  .mtChip.used{opacity:0.35;}
+  .examNav{display:flex; gap:10px; margin-top:14px;}
+  .examNav button{flex:1; padding:13px; font-size:15px;}
+  .examNav button:disabled{opacity:0.4;}
+  .sheet.neutral{background:var(--card); border-color:var(--accent); color:var(--ink);}
+  .sheet.neutral .sheetTitle{color:var(--accent);}
+  .sheet.neutral .sheetBody{color:var(--sub);}
+
+  /* ===== test: result ===== */
+  .resultHero{text-align:center; padding:22px 18px 18px; background:linear-gradient(180deg, var(--accent-bg), var(--card) 55%);}
+  .resultLion svg{width:96px; height:96px; display:block; margin:0 auto 4px; animation:lionHop 0.9s ease 0.1s both;}
+  @keyframes lionHop{ 0%{transform:translateY(10px) scale(0.8); opacity:0;} 60%{transform:translateY(-8px) scale(1.05); opacity:1;} 100%{transform:none;} }
+  .resultGrade{font-size:30px; font-weight:800; color:var(--accent); line-height:1.25;}
+  .resultMsg{font-size:13.5px; color:var(--sub); font-weight:700; margin-bottom:16px;}
+  .scoreBox{background:var(--card); border:2px solid var(--line); border-radius:18px; padding:14px; margin-bottom:16px;}
+  .scoreMain{font-weight:800; line-height:1;}
+  .scoreMain b{font-size:52px; color:var(--ink);}
+  .scoreMain span{font-size:20px; color:var(--sub); margin-left:4px;}
+  .scoreStats{display:grid; grid-template-columns:repeat(3,1fr); margin-top:12px; border-top:2px dashed var(--line); padding-top:10px;}
+  .scoreStats div{display:flex; flex-direction:column; gap:2px;}
+  .scoreStats span{font-size:11px; color:var(--sub); font-weight:700;}
+  .scoreStats b{font-size:17px;}
+  .resultBtns{display:flex; flex-direction:column; gap:10px;}
+  .resultBtnRow{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .reviewHead{display:flex; justify-content:space-between; align-items:center; gap:10px; margin:22px 2px 10px;}
+  .reviewList{padding:4px 16px;}
+  .rvRow{display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px dashed var(--line);}
+  .rvRow:first-child{border-top:none;}
+  .rvMark{flex:none; width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-size:13px; font-weight:800; color:#fff; margin-top:2px;}
+  .rvRow.ok .rvMark{background:var(--good);} .rvRow.ng .rvMark{background:var(--bad);}
+  .rvMain{flex:1; min-width:0;}
+  .rvQ{font-weight:800; font-size:15px;}
+  .rvShown{display:block; font-size:12.5px; color:var(--accent); font-weight:700;}
+  .rvA{font-size:13px; color:var(--sub);}
+  .rvA.ng{color:var(--bad);} .rvA.ok{color:var(--good); font-weight:700;}
+  .rvType{flex:none; font-size:10.5px; font-weight:800; color:var(--sub); border:1px solid var(--line); border-radius:10px; padding:1px 7px; margin-top:3px;}
 </style>
 </head>
 <body>
@@ -587,8 +695,8 @@ const KOTEST = [];
 
 const STORAGE_KEY = 'narnia-progress';
 // ---- toast + "アップデートしました" notice ----
-const APP_VERSION = "2026.10.05-2";
-const CHANGELOG = [["2026.10.05-2", ["下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）", "パソコンでも、スマホと同じ下のタブバーになりました"]], ["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
+const APP_VERSION = "2026.10.05-3";
+const CHANGELOG = [["2026.10.05-3", ["テストを新しくしました：1問ずつ解く集中モード（上に進み具合のバー、問題番号から移動もできます）", "○×・4択は選ぶと自動で次の問題へ。マッチングはタップで組み合わせる形になりました", "結果画面にライオンと評価、点数・時間・前回比、まちがえた問題だけの答え合わせを追加しました", "テストの設定画面を見やすくし、これまでの成績をグラフで見られるようにしました"]], ["2026.10.05-2", ["下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）", "パソコンでも、スマホと同じ下のタブバーになりました"]], ["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
 const SEEN_VERSION_KEY = 'narnia-app-version';
 
 function showToast(icon, title, items, actions){
@@ -943,6 +1051,7 @@ function buildVocabOrder(){
 }
 
 function renderVocabRoot(){
+  if(vocabMode !== 'test') setExamMode(false);
   document.getElementById('vocabFilter').style.display = (vocabMode==='card') ? '' : 'none';
   document.getElementById('vocabProgress').style.display = (vocabMode==='card') ? '' : 'none';
   if(vocabMode === 'card') renderVocabCard();
@@ -1614,15 +1723,41 @@ function testAnsweredCount(){
   }, 0);
 }
 
+// ---- test UI: setup → one question per screen (focus mode) → result ----
+const TEST_TYPE_INFO = {
+  tf:       {icon:'⭕', name:'○×', desc:'意味が合っているか判断'},
+  mc:       {icon:'🔤', name:'4択', desc:'4つの中から選ぶ'},
+  written:  {icon:'⌨️', name:'記述', desc:'意味を見て英語を入力'},
+  matching: {icon:'🧩', name:'マッチング', desc:'英語と意味を組み合わせる'},
+};
+let testPos = 0;            // index into testQuestions
+let testMatchPick = null;   // matching: row index waiting for a meaning
+let testReviewFilter = 'all';
+
+function setExamMode(on){ document.body.classList.toggle('examMode', !!on); }
+
 function renderVocabTest(){
   const area = document.getElementById('vocabArea');
   if(VOCAB.length===0){
+    setExamMode(false);
     area.innerHTML = `<div class="card empty">まだ単語が登録されていません。</div>`;
     return;
   }
+  setExamMode(testState==='taking');
   if(testState==='taking') return renderTestTaking();
   if(testState==='result') return renderTestResult();
   renderTestSetup();
+}
+
+function testHistoryHere(){
+  return store.data.testHistory.filter(h => h.round===vocabRound && h.chapter===vocabChapter);
+}
+
+function historyBars(hist){
+  const last = hist.filter(h=>!h.retake).slice(-8);
+  if(!last.length) return '';
+  return `<div class="histBars">${last.map(h=>`
+    <div class="hb"><span class="hbVal">${h.pct}</span><span class="hbBar"><i style="height:${Math.max(6,h.pct)}%" class="${h.pct>=80?'g':(h.pct>=50?'w':'b')}"></i></span><span class="hbDate">${new Date(h.ts).getMonth()+1}/${new Date(h.ts).getDate()}</span></div>`).join('')}</div>`;
 }
 
 function renderTestSetup(){
@@ -1630,163 +1765,279 @@ function renderTestSetup(){
   const st = testSettings();
   const pool = testPool();
   if(pool.length===0){
-    area.innerHTML = `<div class="card empty">この条件の単語がありません。回・章の範囲を広げてみてください。</div>`;
+    area.innerHTML = `<div class="card empty">このセットには単語がありません。</div>`;
     return;
   }
   const counts = [5,10,15,20].filter(c => c < pool.length);
-  const hist = store.data.testHistory.filter(h => h.round===vocabRound && h.chapter===vocabChapter);
+  const hist = testHistoryHere();
   const full = hist.filter(h=>!h.retake);
   const best = full.length && !testRetakePool ? Math.max(...full.map(h=>h.pct)) : null;
+  const n = st.count==='all' || !counts.includes(Number(st.count)) ? pool.length : Number(st.count);
   area.innerHTML = `
-    <div class="card testSetup">
-      <div class="setupHead">
-        <div class="setupIcon">📝</div>
-        <div>
-          <div class="term" style="margin:0">テスト</div>
-          <div class="progress" style="margin:0">${testRetakePool ? `間違えた ${pool.length} 語で再テスト` : `この範囲の単語：${pool.length} 語`}${best!==null ? `・ベスト ${best}%` : ''}</div>
-        </div>
-      </div>
-      <div class="setRow">
-        <div class="setLabel">問題数</div>
-        <div class="seg" id="tCount">
-          ${counts.map(c=>`<button data-v="${c}" class="${String(st.count)===String(c)?'on':''}">${c}</button>`).join('')}
-          <button data-v="all" class="${st.count==='all' || !counts.includes(Number(st.count)) ?'on':''}">全部（${pool.length}）</button>
-        </div>
-      </div>
-      <div class="setRow">
-        <div class="setLabel">出題形式</div>
-        <div class="chipsel" id="tTypes">
-          ${TEST_TYPES.map(t=>`<button data-k="${t.key}" class="${st.types[t.key]?'on':''}">${t.label}</button>`).join('')}
-        </div>
-      </div>
-      <div class="setRow">
-        <div class="setLabel">問題の向き</div>
-        <div class="seg" id="tDir">
-          <button data-v="en" class="${st.dir==='en'?'on':''}">英語→意味</button>
-          <button data-v="jp" class="${st.dir==='jp'?'on':''}">意味→英語</button>
-          <button data-v="mix" class="${st.dir==='mix'?'on':''}">ミックス</button>
-        </div>
-        <div class="progress" style="margin:6px 0 0">※記述は意味を見て英語を入力します。</div>
-      </div>
-      <div class="btnrow">
-        <button class="primary big" id="tStart">テストを開始</button>
-        ${testRetakePool ? '<button id="tAll">範囲全体に戻す</button>' : ''}
+    <div class="card testHero">
+      <div class="testHeroLion">${LION_SVG}</div>
+      <div class="testHeroText">
+        <div class="testHeroTitle">${testRetakePool ? '間違えた語で再テスト' : '単語テスト'}</div>
+        <div class="testHeroSub">${testRetakePool ? `前回まちがえた ${pool.length} 語` : `${vocabSet==='all' ? 'すべての単語' : vocabRound}・${pool.length}語`}</div>
+        ${best!==null ? `<span class="bestChip">🏆 ベスト ${best}%</span>` : ''}
       </div>
     </div>
-    ${hist.length ? `<div class="card"><div class="subhead">この範囲のテスト履歴</div>${hist.slice(-5).reverse().map(h=>`<div class="histRow"><span>${new Date(h.ts).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'})} ${new Date(h.ts).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}</span><span>${h.correct} / ${h.total}${h.retake?'（再テスト）':''}</span><b class="${h.pct>=80?'goodTxt':(h.pct<50?'badTxt':'')}">${h.pct}%</b></div>`).join('')}</div>` : ''}
+
+    <div class="setupSec">
+      <div class="setupLabel">問題数 <b>${n}問</b></div>
+      <div class="chipRow" id="tCount">
+        ${counts.map(c=>`<button data-v="${c}" class="${n===c?'on':''}">${c}</button>`).join('')}
+        <button data-v="all" class="${n===pool.length?'on':''}">全部 ${pool.length}</button>
+      </div>
+    </div>
+
+    <div class="setupSec">
+      <div class="setupLabel">出題形式</div>
+      <div class="typeGrid" id="tTypes">
+        ${TEST_TYPES.map(t=>{ const i = TEST_TYPE_INFO[t.key]; return `
+          <button class="typeTile ${st.types[t.key]?'on':''}" data-k="${t.key}">
+            <span class="ttIcon">${i.icon}</span><span class="ttName">${i.name}</span><span class="ttDesc">${i.desc}</span><span class="ttCheck">✓</span>
+          </button>`; }).join('')}
+      </div>
+    </div>
+
+    <div class="setupSec">
+      <div class="setupLabel">問題の向き</div>
+      <div class="seg" id="tDir">
+        <button data-v="en" class="${st.dir==='en'?'on':''}">英語 → 意味</button>
+        <button data-v="jp" class="${st.dir==='jp'?'on':''}">意味 → 英語</button>
+        <button data-v="mix" class="${st.dir==='mix'?'on':''}">ミックス</button>
+      </div>
+    </div>
+
+    <button class="primary big block startBtn" id="tStart">テストをはじめる</button>
+    ${testRetakePool ? '<button class="ghost block" id="tAll">セット全体のテストに戻す</button>' : ''}
+
+    ${full.length ? `<div class="setupSec"><div class="setupLabel">これまでの成績</div><div class="card histCard">${historyBars(hist)}</div></div>` : ''}
   `;
   const save = ()=>{ store.save(true); renderTestSetup(); };
   area.querySelectorAll('#tCount button').forEach(b=> b.onclick = ()=>{ st.count = b.dataset.v==='all' ? 'all' : Number(b.dataset.v); save(); });
   area.querySelectorAll('#tDir button').forEach(b=> b.onclick = ()=>{ st.dir = b.dataset.v; save(); });
-  area.querySelectorAll('#tTypes button').forEach(b=> b.onclick = ()=>{
+  area.querySelectorAll('#tTypes .typeTile').forEach(b=> b.onclick = ()=>{
     st.types[b.dataset.k] = !st.types[b.dataset.k];
     if(!Object.values(st.types).some(Boolean)) st.types[b.dataset.k] = true; // keep at least one
     save();
   });
-  document.getElementById('tStart').onclick = ()=>{ buildTest(); renderVocabTest(); window.scrollTo({top:0}); };
+  document.getElementById('tStart').onclick = startTest;
   const all = document.getElementById('tAll');
   if(all) all.onclick = ()=>{ testRetakePool = null; renderTestSetup(); };
 }
 
-function testSectionTitle(type){
-  return {tf:'○× 問題', mc:'4択問題', written:'記述問題', matching:'マッチング問題'}[type];
+function startTest(){
+  buildTest();
+  testPos = 0; testMatchPick = null;
+  renderVocabTest();
+  window.scrollTo({top:0});
+}
+
+function isAnswered(q){
+  if(q.type==='matching') return q.answer.every(a=>a!=='');
+  if(q.type==='written') return !!q.answer.trim();
+  return q.answer !== null;
+}
+
+function questionNumberLabel(qi){
+  // matching groups count as several questions
+  let no = 1;
+  for(let k=0;k<qi;k++) no += testQuestions[k].type==='matching' ? testQuestions[k].items.length : 1;
+  const q = testQuestions[qi];
+  return q.type==='matching' ? `${no}–${no+q.items.length-1}` : String(no);
 }
 
 function renderTestTaking(){
   const area = document.getElementById('vocabArea');
-  let no = 0, lastType = null, html = '';
-  html += `<div class="testBar" id="testBar"><div class="testBarIn"><span id="testAnswered"></span><div class="thinBar"><span id="testBarFill"></span></div><button class="primary small" id="tSubmitTop">提出</button></div></div>`;
-  testQuestions.forEach((q, qi)=>{
-    if(q.type !== lastType){ html += `<div class="testSection">${testSectionTitle(q.type)}</div>`; lastType = q.type; }
-    if(q.type==='tf'){
-      no++;
-      html += `<div class="card tq" data-qi="${qi}">
-        <div class="tqNo">${no}</div>
-        <div class="tqPrompt">${escapeHtml(q.prompt)}</div>
-        <div class="tqShown">＝ ${escapeHtml(q.shown)}</div>
-        <div class="tfRow"><button class="tfBtn ${q.answer===true?'on':''}" data-v="1">○ 正しい</button><button class="tfBtn ${q.answer===false?'on':''}" data-v="0">× 誤り</button></div>
+  const q = testQuestions[testPos];
+  const total = testQuestionCount(), answered = testAnsweredCount();
+  const last = testPos === testQuestions.length-1;
+  const info = TEST_TYPE_INFO[q.type];
+  let body = '';
+  if(q.type==='tf'){
+    body = `
+      <div class="qLabel">${q.dir==='en' ? 'この英語の意味は合っている？' : 'この意味の英語は合っている？'}</div>
+      <div class="qPrompt">${escapeHtml(q.prompt)}</div>
+      <div class="qShown">${escapeHtml(q.shown)}</div>
+      <div class="tfBig">
+        <button class="tfO ${q.answer===true?'on':''}" data-v="1"><span>○</span>正しい</button>
+        <button class="tfX ${q.answer===false?'on':''}" data-v="0"><span>×</span>まちがい</button>
       </div>`;
-    } else if(q.type==='mc'){
-      no++;
-      html += `<div class="card tq" data-qi="${qi}">
-        <div class="tqNo">${no}</div>
-        <div class="tqLabel">${q.dir==='en' ? '意味を選んでください' : '英語を選んでください'}</div>
-        <div class="tqPrompt">${escapeHtml(q.prompt)}</div>
-        <div class="mcGrid">${q.options.map((o,k)=>`<button class="choice ${q.answer===o?'on':''}" data-k="${k}">${escapeHtml(o)}</button>`).join('')}</div>
-      </div>`;
-    } else if(q.type==='written'){
-      no++;
-      html += `<div class="card tq" data-qi="${qi}">
-        <div class="tqNo">${no}</div>
-        <div class="tqLabel">英語で答えてください</div>
-        <div class="tqPrompt">${escapeHtml(q.prompt)}</div>
-        <input type="text" class="learnInput tWritten" value="${escapeHtml(q.answer)}" placeholder="英語を入力" autocomplete="off" autocapitalize="off" spellcheck="false">
-      </div>`;
-    } else {
-      const from = no + 1; no += q.items.length;
-      html += `<div class="card tq" data-qi="${qi}">
-        <div class="tqNo">${from}–${no}</div>
-        <div class="tqLabel">それぞれの英語に合う意味を選んでください</div>
-        ${q.items.map((idx,k)=>`<div class="matchRow"><span class="matchTerm">${escapeHtml(VOCAB[idx].term)}</span>
-          <select data-k="${k}" class="${q.answer[k]?'on':''}"><option value="">選択…</option>${q.options.map(o=>`<option ${q.answer[k]===o?'selected':''}>${escapeHtml(o)}</option>`).join('')}</select></div>`).join('')}
-      </div>`;
-    }
-  });
-  html += `<div class="card submitCard" id="submitCard"><div id="submitMsg"></div><button class="primary big" id="tSubmit">テストを提出</button></div>`;
-  area.innerHTML = html;
+  } else if(q.type==='mc'){
+    body = `
+      <div class="qLabel">${q.dir==='en' ? '正しい意味を選んでください' : '正しい英語を選んでください'}</div>
+      <div class="qPrompt">${escapeHtml(q.prompt)}</div>
+      <div class="optList">${q.options.map((o,k)=>`<button class="opt ${q.answer===o?'on':''}" data-k="${k}"><span class="optKey">${'ABCD'[k]}</span><span>${escapeHtml(o)}</span></button>`).join('')}</div>`;
+  } else if(q.type==='written'){
+    body = `
+      <div class="qLabel">この意味の英語を入力してください</div>
+      <div class="qPrompt">${escapeHtml(q.prompt)}</div>
+      <input type="text" class="learnInput qInput" id="tInput" value="${escapeHtml(q.answer)}" placeholder="英語で入力" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div class="qHint">Enter で次の問題へ</div>`;
+  } else {
+    const used = q.answer.filter(Boolean);
+    body = `
+      <div class="qLabel">英語をタップ → 合う意味をタップ</div>
+      <div class="mtRows">${q.items.map((idx,k)=>`
+        <button class="mtRow ${testMatchPick===k?'pick':''} ${q.answer[k]?'filled':''}" data-k="${k}">
+          <span class="mtTerm">${escapeHtml(VOCAB[idx].term)}</span>
+          <span class="mtSlot">${q.answer[k] ? escapeHtml(q.answer[k]) : 'タップして選ぶ'}</span>
+        </button>`).join('')}</div>
+      <div class="mtChips">${q.options.map((o,k)=>`<button class="mtChip ${used.includes(o)?'used':''}" data-k="${k}">${escapeHtml(o)}</button>`).join('')}</div>`;
+  }
+  area.innerHTML = `
+    <div class="examTop">
+      <button class="examClose" id="tQuit" aria-label="テストを中断">✕</button>
+      <div class="examProg"><span style="width:${answered/total*100}%"></span></div>
+      <span class="examCount">${answered}/${total}</span>
+    </div>
+    <div class="examDots">${testQuestions.map((x,k)=>`<button class="dot ${isAnswered(x)?'done':''} ${k===testPos?'cur':''}" data-k="${k}">${questionNumberLabel(k)}</button>`).join('')}</div>
+    <div class="examCard card" id="examCard">
+      <span class="qType">${info.icon} ${info.name}</span>
+      ${body}
+    </div>
+    <div class="examNav">
+      <button id="tPrev" ${testPos===0?'disabled':''}>‹ 前へ</button>
+      ${last ? `<button class="primary" id="tFinish">提出する</button>` : `<button class="primary" id="tNext">次へ ›</button>`}
+    </div>`;
 
-  const updateBar = ()=>{
-    const a = testAnsweredCount(), t = testQuestionCount();
-    document.getElementById('testAnswered').textContent = `回答 ${a} / ${t}`;
-    document.getElementById('testBarFill').style.width = (a/t*100)+'%';
+  const card = document.getElementById('examCard');
+  const advance = ()=>{ setTimeout(()=>{ if(testState==='taking' && testPos < testQuestions.length-1){ testPos++; renderTestTaking(); } else renderTestTaking(); }, 260); };
+  if(q.type==='tf'){
+    card.querySelectorAll('.tfBig button').forEach(b=> b.onclick = ()=>{ q.answer = b.dataset.v==='1'; card.querySelectorAll('.tfBig button').forEach(x=>x.classList.toggle('on', x===b)); advance(); });
+  } else if(q.type==='mc'){
+    card.querySelectorAll('.opt').forEach(b=> b.onclick = ()=>{ q.answer = q.options[Number(b.dataset.k)]; card.querySelectorAll('.opt').forEach(x=>x.classList.toggle('on', x===b)); advance(); });
+  } else if(q.type==='written'){
+    const input = document.getElementById('tInput');
+    input.oninput = ()=>{ q.answer = input.value; };
+    input.onkeydown = (e)=>{ if(e.key==='Enter' && !e.isComposing){ e.preventDefault(); if(last) finishTest(); else { testPos++; renderTestTaking(); } } };
+    setTimeout(()=>input.focus(), 50);
+  } else {
+    card.querySelectorAll('.mtRow').forEach(b=> b.onclick = ()=>{
+      const k = Number(b.dataset.k);
+      if(q.answer[k] && testMatchPick!==k){ q.answer[k] = ''; }   // tap a filled row to clear it
+      testMatchPick = k; renderTestTaking();
+    });
+    card.querySelectorAll('.mtChip').forEach(b=> b.onclick = ()=>{
+      const o = q.options[Number(b.dataset.k)];
+      let k = testMatchPick;
+      if(k===null) k = q.answer.findIndex(a=>!a);
+      if(k<0) return;
+      const prev = q.answer.indexOf(o); if(prev>=0) q.answer[prev] = '';
+      q.answer[k] = o;
+      const nextEmpty = q.answer.findIndex(a=>!a);
+      testMatchPick = nextEmpty>=0 ? nextEmpty : null;
+      renderTestTaking();
+    });
+  }
+  area.querySelectorAll('.examDots .dot').forEach(d=> d.onclick = ()=>{ testPos = Number(d.dataset.k); testMatchPick = null; renderTestTaking(); });
+  document.getElementById('tPrev').onclick = ()=>{ if(testPos>0){ testPos--; testMatchPick=null; renderTestTaking(); } };
+  const nx = document.getElementById('tNext'); if(nx) nx.onclick = ()=>{ testPos++; testMatchPick=null; renderTestTaking(); };
+  const fin = document.getElementById('tFinish'); if(fin) fin.onclick = finishTest;
+  document.getElementById('tQuit').onclick = ()=>{
+    showSheet('neutral', 'テストを中断しますか？', '途中までの回答は記録されません', [
+      {label:'中断する', primary:true, onclick: ()=>{ hideSheet(); testState='setup'; renderVocabTest(); window.scrollTo({top:0}); }},
+      {label:'続ける', onclick: hideSheet},
+    ]);
   };
-  area.querySelectorAll('.tq').forEach(card=>{
-    const q = testQuestions[Number(card.dataset.qi)];
-    if(q.type==='tf'){
-      card.querySelectorAll('.tfBtn').forEach(b=> b.onclick = ()=>{
-        q.answer = b.dataset.v==='1';
-        card.querySelectorAll('.tfBtn').forEach(x=>x.classList.toggle('on', x===b));
-        updateBar();
-      });
-    } else if(q.type==='mc'){
-      card.querySelectorAll('.choice').forEach(b=> b.onclick = ()=>{
-        q.answer = q.options[Number(b.dataset.k)];
-        card.querySelectorAll('.choice').forEach(x=>x.classList.toggle('on', x===b));
-        updateBar();
-      });
-    } else if(q.type==='written'){
-      const input = card.querySelector('input');
-      input.oninput = ()=>{ q.answer = input.value; updateBar(); };
-    } else {
-      card.querySelectorAll('select').forEach(sel=> sel.onchange = ()=>{
-        q.answer[Number(sel.dataset.k)] = sel.value;
-        sel.classList.toggle('on', !!sel.value);
-        updateBar();
-      });
-    }
-  });
-  const trySubmit = ()=>{
-    const left = testQuestionCount() - testAnsweredCount();
-    if(left > 0){
-      const msg = document.getElementById('submitMsg');
-      msg.innerHTML = `<div class="warnBox">未回答が <b>${left}問</b> あります。このまま提出しますか？<div class="btnrow" style="justify-content:center"><button id="tForce" class="primary">提出する</button><button id="tBack">戻って解く</button></div></div>`;
-      document.getElementById('submitCard').scrollIntoView({behavior:'smooth', block:'center'});
-      document.getElementById('tForce').onclick = submitTest;
-      document.getElementById('tBack').onclick = ()=>{ msg.innerHTML=''; const first = [...area.querySelectorAll('.tq')].find(c=>!isCardAnswered(c)); if(first) first.scrollIntoView({behavior:'smooth', block:'center'}); };
-      return;
-    }
-    submitTest();
-  };
-  document.getElementById('tSubmit').onclick = trySubmit;
-  document.getElementById('tSubmitTop').onclick = trySubmit;
-  updateBar();
+  const cur = area.querySelector('.examDots .dot.cur'); if(cur && cur.scrollIntoView) cur.scrollIntoView({block:'nearest', inline:'center'});
 }
 
-function isCardAnswered(card){
-  const q = testQuestions[Number(card.dataset.qi)];
-  if(q.type==='matching') return q.answer.every(a=>a!=='');
-  if(q.type==='written') return !!q.answer.trim();
-  return q.answer !== null;
+function finishTest(){
+  const left = testQuestionCount() - testAnsweredCount();
+  if(left > 0){
+    showSheet('neutral', `未回答が ${left}問 あります`, 'このまま提出すると、未回答は不正解になります', [
+      {label:'提出する', primary:true, onclick: ()=>{ hideSheet(); submitTest(); }},
+      {label:'戻って解く', onclick: ()=>{ hideSheet(); testPos = testQuestions.findIndex(q=>!isAnswered(q)); renderTestTaking(); }},
+    ]);
+    return;
+  }
+  submitTest();
+}
+
+// keyboard: 1–4 / A–D choose, ←/→ move, O/X for ○×
+document.addEventListener('keydown', (e)=>{
+  if(testState!=='taking' || vocabMode!=='test' || !document.body.classList.contains('examMode')) return;
+  if(e.target && e.target.tagName==='INPUT') return;
+  const q = testQuestions[testPos]; if(!q) return;
+  const k = e.key.toLowerCase();
+  if(k==='arrowright' && testPos<testQuestions.length-1){ testPos++; testMatchPick=null; renderTestTaking(); }
+  else if(k==='arrowleft' && testPos>0){ testPos--; testMatchPick=null; renderTestTaking(); }
+  else if(q.type==='mc'){
+    const i = '1234'.indexOf(k)>=0 ? '1234'.indexOf(k) : 'abcd'.indexOf(k);
+    if(i>=0){ const b = document.querySelector(`.opt[data-k="${i}"]`); if(b) b.click(); }
+  } else if(q.type==='tf'){
+    if(k==='o' || k==='1'){ const b = document.querySelector('.tfO'); if(b) b.click(); }
+    if(k==='x' || k==='2'){ const b = document.querySelector('.tfX'); if(b) b.click(); }
+  }
+});
+
+function gradeTitle(pct){
+  if(pct===100) return {t:'天才！', s:'全問正解、パーフェクトです 🎉'};
+  if(pct>=80) return {t:'すばらしい！', s:'あと少しで満点。間違えた語をおさえよう'};
+  if(pct>=60) return {t:'いい調子！', s:'間違えた語を復習すれば、もっと伸びます'};
+  if(pct>=30) return {t:'その調子！', s:'学習モードで間違えた語を覚えてから再挑戦しよう'};
+  return {t:'ここからスタート！', s:'まずはカードや学習モードで単語に慣れよう'};
+}
+
+function renderTestResult(){
+  setExamMode(false);
+  const area = document.getElementById('vocabArea');
+  const R = testLastResult;
+  const wrongIdx = [...new Set(R.rows.filter(r=>!r.ok).map(r=>r.idx))];
+  const g = gradeTitle(R.pct);
+  const sec = Math.round(R.ms/1000);
+  const prev = R.prevPct;
+  const diff = prev===null || prev===undefined ? '' : (R.pct-prev > 0 ? `<span class="goodTxt">▲ ${R.pct-prev}</span>` : (R.pct-prev < 0 ? `<span class="badTxt">▼ ${prev-R.pct}</span>` : '±0'));
+  const rows = R.rows.map((r,n)=>({r,n})).filter(x => testReviewFilter==='all' || !x.r.ok);
+  area.innerHTML = `
+    <div class="card resultHero ${R.pct>=80?'great':''}" id="testResultCard">
+      <div id="testConf"></div>
+      <div class="resultLion">${LION_SVG}</div>
+      <div class="resultGrade">${g.t}</div>
+      <div class="resultMsg">${g.s}</div>
+      <div class="scoreBox">
+        <div class="scoreMain"><b>${R.correct}</b><span>/ ${R.total}</span></div>
+        <div class="scoreStats">
+          <div><span>正答率</span><b>${R.pct}%</b></div>
+          <div><span>時間</span><b>${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}</b></div>
+          <div><span>前回比</span><b>${diff || '―'}</b></div>
+        </div>
+      </div>
+      <div class="resultBtns">
+        ${wrongIdx.length ? `<button class="primary big block" id="tRetake">間違えた ${wrongIdx.length} 語で再テスト</button>` : ''}
+        <div class="resultBtnRow">
+          <button id="tAgain">もう一度</button>
+          <button id="tNew">設定を変える</button>
+        </div>
+      </div>
+    </div>
+    <div class="reviewHead">
+      <div class="setupLabel" style="margin:0">答え合わせ</div>
+      <div class="seg small" id="tFilter">
+        <button data-v="all" class="${testReviewFilter==='all'?'on':''}">すべて ${R.total}</button>
+        <button data-v="ng" class="${testReviewFilter==='ng'?'on':''}">まちがい ${R.total-R.correct}</button>
+      </div>
+    </div>
+    <div class="card reviewList">
+      ${rows.length ? rows.map(({r,n})=>`
+        <div class="rvRow ${r.ok?'ok':'ng'}">
+          <span class="rvMark">${r.ok?'✓':'✕'}</span>
+          <div class="rvMain">
+            <div class="rvQ">${escapeHtml(r.q.type==='matching' ? VOCAB[r.idx].term : r.q.prompt)}${r.q.type==='tf' ? `<span class="rvShown">＝ ${escapeHtml(r.q.shown)}</span>` : ''}</div>
+            ${r.ok ? `<div class="rvA">${escapeHtml(r.yours)}</div>` : `<div class="rvA ng">あなた：${escapeHtml(r.yours)}</div><div class="rvA ok">正解：${escapeHtml(r.right)}</div>`}
+          </div>
+          <span class="rvType">${TEST_TYPE_INFO[r.q.type].name}</span>
+        </div>`).join('') : '<div class="empty">まちがいはありません 🎉</div>'}
+    </div>`;
+  if(R.pct>=80 && !R.celebrated){ R.celebrated = true; fireConfetti(document.getElementById('testConf')); }
+  const rt = document.getElementById('tRetake');
+  if(rt) rt.onclick = ()=>{ testRetakePool = wrongIdx; testState='setup'; startTest(); };
+  document.getElementById('tAgain').onclick = ()=>{ testRetakePool = null; startTest(); };
+  document.getElementById('tNew').onclick = ()=>{ testRetakePool = null; testState='setup'; renderVocabTest(); window.scrollTo({top:0}); };
+  area.querySelectorAll('#tFilter button').forEach(b=> b.onclick = ()=>{ testReviewFilter = b.dataset.v; renderTestResult(); });
 }
 
 function gradeTest(){
@@ -1814,7 +2065,10 @@ function submitTest(){
   const correct = rows.filter(r=>r.ok).length;
   const total = rows.length;
   const pct = total ? Math.round(correct/total*100) : 0;
-  testLastResult = {rows, correct, total, pct, ms: Date.now()-testStartTs};
+  const prevTests = store.data.testHistory.filter(h => h.round===vocabRound && h.chapter===vocabChapter && !h.retake);
+  const prevPct = !testRetakePool && prevTests.length ? prevTests[prevTests.length-1].pct : null;
+  testLastResult = {rows, correct, total, pct, prevPct, ms: Date.now()-testStartTs};
+  testReviewFilter = 'all';
   store.data.testHistory.push({ts: Date.now(), round: vocabRound, chapter: vocabChapter, correct, total, pct, retake: !!testRetakePool});
   if(store.data.testHistory.length > 50) store.data.testHistory = store.data.testHistory.slice(-50);
   store.save();
@@ -1823,53 +2077,7 @@ function submitTest(){
   window.scrollTo({top:0});
 }
 
-function scoreRing(pct){
-  const r = 52, c = 2*Math.PI*r;
-  const col = pct>=80 ? 'var(--good)' : (pct>=50 ? 'var(--warn)' : 'var(--bad)');
-  return `<svg class="ring" viewBox="0 0 128 128" width="128" height="128" aria-label="正答率 ${pct}%">
-    <circle cx="64" cy="64" r="${r}" fill="none" stroke="var(--line)" stroke-width="12"/>
-    <circle cx="64" cy="64" r="${r}" fill="none" stroke="${col}" stroke-width="12" stroke-linecap="round"
-      stroke-dasharray="${c}" stroke-dashoffset="${c}" transform="rotate(-90 64 64)" class="ringArc" style="--to:${c*(1-pct/100)}"/>
-    <text x="64" y="70" text-anchor="middle" class="ringTxt">${pct}%</text>
-  </svg>`;
-}
-
-function renderTestResult(){
-  const area = document.getElementById('vocabArea');
-  const R = testLastResult;
-  const wrongIdx = [...new Set(R.rows.filter(r=>!r.ok).map(r=>r.idx))];
-  const msg = R.pct===100 ? 'パーフェクト！ 完璧です 🎉' : R.pct>=80 ? 'よくできました！ あと少しで満点です' : R.pct>=50 ? 'いい調子！ 間違えた語を復習しましょう' : 'ここから伸ばしていきましょう。学習モードで復習がおすすめです';
-  const sec = Math.round(R.ms/1000);
-  area.innerHTML = `
-    <div class="card resultCard" id="testResultCard">
-      <div id="testConf"></div>
-      ${scoreRing(R.pct)}
-      <div class="resultScore">${R.correct} / ${R.total} 問正解</div>
-      <div class="progress">${msg}</div>
-      <div class="resultMeta"><span>⏱ ${Math.floor(sec/60)}分${sec%60}秒</span><span class="goodTxt">✓ 正解 ${R.correct}</span><span class="badTxt">✕ 不正解 ${R.total-R.correct}</span></div>
-      <div class="btnrow" style="justify-content:center">
-        ${wrongIdx.length ? `<button class="primary" id="tRetake">間違えた ${wrongIdx.length} 語で再テスト</button>` : ''}
-        <button id="tNew">新しいテスト</button>
-      </div>
-    </div>
-    <div class="testSection">答え合わせ</div>
-    ${R.rows.map((r,n)=>`
-      <div class="card tq review ${r.ok?'ok':'ng'}">
-        <div class="tqNo">${n+1}</div>
-        <div class="tqMark">${r.ok?'✓':'✕'}</div>
-        <div class="tqLabel">${testSectionTitle(r.q.type)}</div>
-        <div class="tqPrompt">${escapeHtml(r.q.type==='matching' ? VOCAB[r.idx].term : (r.q.type==='written' ? r.q.prompt : r.q.prompt))}${r.q.type==='tf' ? `<span class="tqShownInline">＝ ${escapeHtml(r.q.shown)}</span>` : ''}</div>
-        ${r.ok ? `<div class="learnAns good"><span>あなたの答え</span>${escapeHtml(r.yours)}</div>`
-               : `<div class="learnAns bad"><span>あなたの答え</span>${escapeHtml(r.yours)}</div><div class="learnAns good"><span>正解</span>${escapeHtml(r.right)}</div>`}
-      </div>`).join('')}
-  `;
-  if(R.pct>=80) fireConfetti(document.getElementById('testConf'));
-  const rt = document.getElementById('tRetake');
-  if(rt) rt.onclick = ()=>{ testRetakePool = wrongIdx; testState='setup'; renderVocabTest(); window.scrollTo({top:0}); };
-  document.getElementById('tNew').onclick = ()=>{ testRetakePool = null; testState='setup'; renderVocabTest(); window.scrollTo({top:0}); };
-}
-
-function resetTestSession(){ testState = 'setup'; testQuestions = []; testRetakePool = null; }
+function resetTestSession(){ testState = 'setup'; testQuestions = []; testRetakePool = null; setExamMode(false); }
 
 document.getElementById('vocabRound').innerHTML =
   `<option value="all">すべての回</option>` + VOCAB_ROUNDS.map(r=>`<option value="${r}">${r}</option>`).join('');
@@ -2857,14 +3065,14 @@ function showSheet(kind, title, bodyHtml, buttons, autoHideMs){
   clearTimeout(sheetTimer);
   el.className = 'sheet ' + kind;
   el.innerHTML = `<div class="sheetIn">
-      <div class="sheetText"><div class="sheetTitle">${kind==='good'?'✓ ':'✕ '}${title}</div>${bodyHtml ? `<div class="sheetBody">${bodyHtml}</div>` : ''}</div>
+      <div class="sheetText"><div class="sheetTitle">${kind==='good'?'✓ ':(kind==='bad'?'✕ ':'')}${title}</div>${bodyHtml ? `<div class="sheetBody">${bodyHtml}</div>` : ''}</div>
       <div class="sheetBtns" id="sheetBtns"></div>
     </div>`;
   const row = el.querySelector('#sheetBtns');
   (buttons||[]).forEach(b=>{
     const btn = document.createElement('button');
     if(b.id) btn.id = b.id;
-    btn.className = b.primary ? (kind==='good' ? 'good solid' : 'bad solid') : 'ghost';
+    btn.className = b.primary ? (kind==='good' ? 'good solid' : (kind==='bad' ? 'bad solid' : 'primary solid')) : 'ghost';
     btn.innerHTML = b.label;
     btn.onclick = b.onclick;
     row.appendChild(btn);
@@ -2988,6 +3196,7 @@ function enterVocabSet(key, mode){
 
 function exitVocabSet(){
   vocabSet = null; saveSets();
+  setExamMode(false);
   hideSheet();
   if(matchTimerHandle){ clearInterval(matchTimerHandle); matchTimerHandle = null; }
   showVocabSetView();
