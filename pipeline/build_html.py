@@ -9,6 +9,10 @@ import sys
 # アップデート履歴。新しい版を公開するときは先頭に1件足す（APP_VERSION も自動で変わる）。
 # ツールを開いたとき、前回から増えた分が「アップデートしました」として表示される。
 CHANGELOG = [
+    ("2026.10.05-2", [
+        "下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）",
+        "パソコンでも、スマホと同じ下のタブバーになりました",
+    ]),
     ("2026.10.05", [
         "単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました",
         "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます",
@@ -303,24 +307,23 @@ TEMPLATE = r"""<!DOCTYPE html>
   .streakChip .flame{filter:grayscale(1); opacity:0.5;}
   .streakChip .flame.lit{filter:none; opacity:1;}
   .streakUnit{font-size:11px; color:var(--sub);}
-  .nav{display:flex; gap:4px;}
-  .navItem{flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 4px; border:none; background:none; box-shadow:none; color:var(--sub); font-size:11px; font-weight:700; border-radius:12px; position:relative;}
-  .navItem svg{width:24px; height:24px;}
-  @media (hover: hover){ .navItem:hover{background:var(--accent-bg);} }
+  /* bottom tab bar (filled icons; active tab colored with a soft pill) */
+  .nav{position:fixed; left:0; right:0; bottom:0; z-index:40; display:flex; background:var(--card); border-top:1px solid var(--line); padding:6px 6px calc(6px + env(safe-area-inset-bottom)); box-shadow:0 -4px 18px rgba(0,0,0,0.04);}
+  .navItem{--off:color-mix(in srgb, var(--sub) 62%, var(--card)); flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:4px 2px; border:none; background:none; box-shadow:none; color:var(--off); font-size:11px; font-weight:800; border-radius:14px; position:relative; transition:color 0.2s;}
+  .navPill{position:relative; width:54px; height:34px; border-radius:13px; display:grid; place-items:center; transition:background 0.25s, transform 0.25s;}
+  .navItem svg{width:26px; height:26px; display:block;}
+  .navItem .knock{fill:var(--card);}
+  .navItem .knockLine{stroke:var(--card); stroke-width:1.6; fill:none;}
   .navItem.active{color:var(--accent);}
-  .navItem.active svg{stroke-width:2.4;}
-  .navItem .badge{position:absolute; top:0; right:calc(50% - 22px); margin:0; background:var(--bad); color:#fff; font-size:10px; padding:1px 6px; line-height:1.4;}
-  @media (max-width:719px){
-    .nav{position:fixed; left:0; right:0; bottom:0; z-index:40; background:var(--card); border-top:1px solid var(--line); padding:6px 8px calc(6px + env(safe-area-inset-bottom));}
-  }
+  .navItem.active .navPill{background:var(--accent-bg); animation:navPop 0.35s ease;}
+  @keyframes navPop{ 0%{transform:scale(0.85);} 60%{transform:scale(1.08);} 100%{transform:scale(1);} }
+  @media (hover: hover){ .navItem:hover{color:var(--accent);} }
+  .navItem:active .navPill{transform:scale(0.9);}
+  .navItem:active{transform:none;}
+  .navItem .badge{position:absolute; top:-3px; left:calc(50% + 8px); margin:0; background:var(--bad); color:#fff; font-size:10px; padding:0 6px; line-height:1.5; border:2px solid var(--card); border-radius:10px;}
   @media (min-width:720px){
-    .navHost{max-width:760px; margin:0 auto; padding:0 16px 8px;}
-    .navItem{flex-direction:row; gap:6px; font-size:13.5px; padding:8px 10px; flex:none;}
-    .navItem svg{width:20px; height:20px;}
-    .navItem.active{background:var(--accent-bg);}
-    .navItem .badge{position:static; margin-left:2px;}
+    .nav{left:50%; right:auto; bottom:16px; transform:translateX(-50%); width:min(520px, calc(100% - 32px)); border:1px solid var(--line); border-radius:24px; padding:8px 6px; box-shadow:0 10px 30px rgba(0,0,0,0.10);}
   }
-  .navItem:active{transform:scale(0.95);}
   /* buttons: chunky "pressable" style */
   button{font-weight:700; border-width:2px; border-radius:12px; box-shadow:0 3px 0 var(--line); transition:transform 0.08s, box-shadow 0.08s, background 0.15s;}
   button:active{transform:translateY(2px); box-shadow:0 1px 0 var(--line);}
@@ -578,11 +581,11 @@ TEMPLATE = r"""<!DOCTYPE html>
 </header>
 <div class="navHost">
   <nav class="nav" id="nav">
-    <button class="navItem" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span>ホーム</span></button>
-    <button class="navItem" data-nav="vocab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/><path d="M9 7h6"/></svg><span>単語</span></button>
-    <button class="navItem" data-nav="practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg><span>練習</span></button>
-    <button class="navItem" data-nav="summary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg><span>まとめ</span></button>
-    <button class="navItem" data-nav="review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg><span>復習</span><span class="badge" id="reviewBadge" style="display:none"></span></button>
+    <button class="navItem" data-nav="home" aria-label="ホーム"><span class="navPill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.1 2.9a1.4 1.4 0 0 1 1.8 0l8.3 7.1c.9.8.4 2.3-.8 2.3H19v7.4c0 .9-.7 1.6-1.6 1.6h-3.2v-5.1a2.2 2.2 0 0 0-4.4 0v5.1H6.6c-.9 0-1.6-.7-1.6-1.6v-7.4H3.6c-1.2 0-1.7-1.5-.8-2.3z"/></svg></span><span class="navLbl">ホーム</span></button>
+    <button class="navItem" data-nav="vocab" aria-label="単語"><span class="navPill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="8" y="2.5" width="13" height="15.5" rx="3" opacity=".4"/><rect x="3" y="6" width="13.5" height="15.5" rx="3"/><path d="M9.75 9.6 7.1 17.4h1.9l.5-1.6h2.6l.5 1.6h1.9l-2.65-7.8zm-.05 4.6.85-2.7.85 2.7z" class="knock"/></svg></span><span class="navLbl">単語</span></button>
+    <button class="navItem" data-nav="practice" aria-label="練習"><span class="navPill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.6 3.4a2.3 2.3 0 0 1 3.2 0l1.8 1.8a2.3 2.3 0 0 1 0 3.2L9.9 19.1l-5.6 1.6a.8.8 0 0 1-1-1l1.6-5.6z"/><path d="M13.6 5.4l5 5" class="knockLine"/></svg></span><span class="navLbl">練習</span></button>
+    <button class="navItem" data-nav="summary" aria-label="まとめ"><span class="navPill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6.1c0-.9.7-1.6 1.6-1.6 3.1 0 5.8.8 7.4 2.3v13.7c-1.8-1.3-4.4-1.9-7.4-1.9-.9 0-1.6-.7-1.6-1.6zm20 0c0-.9-.7-1.6-1.6-1.6-3.1 0-5.8.8-7.4 2.3v13.7c1.8-1.3 4.4-1.9 7.4-1.9.9 0 1.6-.7 1.6-1.6z"/></svg></span><span class="navLbl">まとめ</span></button>
+    <button class="navItem" data-nav="review" aria-label="復習"><span class="navPill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 1 7.1 3.8V5.2a1.4 1.4 0 0 1 2.8 0v5.6c0 .8-.6 1.4-1.4 1.4h-5.6a1.4 1.4 0 0 1 0-2.8h2.3A5.7 5.7 0 1 0 17.7 15a1.4 1.4 0 1 1 2.5 1.3A8.5 8.5 0 1 1 12 3.5z"/></svg><span class="badge" id="reviewBadge" style="display:none"></span></span><span class="navLbl">復習</span></button>
   </nav>
 </div>
 <main class="wrap">
