@@ -9,6 +9,10 @@ import sys
 # アップデート履歴。新しい版を公開するときは先頭に1件足す（APP_VERSION も自動で変わる）。
 # ツールを開いたとき、前回から増えた分が「アップデートしました」として表示される。
 CHANGELOG = [
+    ("2026.10.09-2", [
+        "マッチ終了後、ランキングがすぐ表示されるようになりました（前回の結果に新しいタイムを入れて先に表示し、裏で最新の順位に更新します）",
+        "パソコンでマッチのカードが大きく、文字も見やすくなりました",
+    ]),
     ("2026.10.09", [
         "マッチにランキングを追加しました：ニックネームを決めると、セットごとにみんなのタイムと順位が見られます",
         "ランキングに載るのはニックネームとタイムだけです（参加しないこともできます）",
@@ -711,6 +715,17 @@ TEMPLATE = r"""<!DOCTYPE html>
   .rkJoinRow{display:flex; gap:8px;}
   .rkJoinRow input{flex:1; min-width:0; font-size:15px; padding:9px 12px;}
   button.ghost.small{font-size:12px; padding:2px 6px;}
+  /* match tiles: fixed columns, bigger on wide screens */
+  .matchGrid{grid-template-columns:repeat(3, 1fr); gap:10px;}
+  .matchTile{min-height:76px; font-size:14.5px; line-height:1.4; padding:12px 10px; word-break:break-word;}
+  @media (min-width:720px){
+    .matchGrid{grid-template-columns:repeat(4, 1fr); gap:14px;}
+    .matchTile{min-height:108px; font-size:18px; padding:16px 14px; border-radius:18px;}
+    .matchTop{font-size:14px;}
+    .matchClock{font-size:22px;}
+  }
+  .rkSync{font-size:11px; color:var(--sub); margin-left:4px; animation:fadePulse 1.2s ease-in-out infinite;}
+  @keyframes fadePulse{ 50%{opacity:0.35;} }
 </style>
 </head>
 <body>
@@ -1321,6 +1336,13 @@ function matchBestKey(){ return `${vocabRound}|${vocabChapter}`; }
 function fmtSec(ms){ return (ms/1000).toFixed(1) + '秒'; }
 function matchElapsed(){ return Date.now() - matchStartTs + matchPenaltyMs; }
 
+// Match tiles drop trailing bracketed notes from the meaning, so tiles stay short.
+function shortGloss(g){
+  let t = (g||'').trim(), prev;
+  do{ prev = t; t = t.replace(/\s*(（[^（）]*）|\([^()]*\))\s*$/, '').trim(); }while(t !== prev && t);   // trailing notes only
+  return t || g;
+}
+
 function buildMatchGame(){
   const pool = vocabPool().filter(i => VOCAB[i].gloss);
   const n = Math.min(6, pool.length);
@@ -1328,7 +1350,7 @@ function buildMatchGame(){
   const cards = [];
   chosen.forEach((vi, i)=>{
     cards.push({uid:'t'+i, vocabIdx:vi, side:'term', text:VOCAB[vi].term, cleared:false, clearing:false});
-    cards.push({uid:'g'+i, vocabIdx:vi, side:'gloss', text:VOCAB[vi].gloss, cleared:false, clearing:false});
+    cards.push({uid:'g'+i, vocabIdx:vi, side:'gloss', text:shortGloss(VOCAB[vi].gloss), cleared:false, clearing:false});
   });
   matchCards = shuffle(cards);
   matchSelected = [];
@@ -1429,10 +1451,7 @@ function finishMatchGame(){
     <div id="rankHost" class="rankAfter"></div>`;
   if(isBest) fireConfetti(document.getElementById('matchConf'));
   document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); startMatchGame(); };
-  const host = document.getElementById('rankHost');
-  submitMatchScore(rankSetKey(), total, matchMoves, matchPenaltyMs)
-    .then(saved => renderLeaderboard(host, {justSaved: saved}))
-    .catch(() => renderLeaderboard(host));
+  renderLeaderboard(document.getElementById('rankHost'), {finishedMs: total, moves: matchMoves, penaltyMs: matchPenaltyMs});
 }
 
 function syncMatchTiles(){
@@ -1499,8 +1518,12 @@ function onMatchTileClick(uid){
 
 // ================= MATCH LEADERBOARD (Firebase: anonymous auth + Firestore) =================
 // Scores live at leaderboards/{set}/scores/{uid}: one doc per player per set,
-// holding that player's best time. The SDK is loaded lazily the first time the
-// match screen needs it, so the rest of the tool never waits on the network.
+// holding that player's best time.
+// Speed: the last board seen for each set is cached on the device, so the board
+// (with a just-finished time slotted in) shows instantly; the network requests
+// run in parallel in the background and then replace it with the real ranking.
+// The SDK and sign-in are warmed up shortly after the app opens for players
+// who have joined the ranking.
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCXb5TpCaG4eD391WHEUJmLm6z3wmLeWVI",
   authDomain: "firestore-database-2c739.firebaseapp.com",
@@ -1512,12 +1535,23 @@ const FIREBASE_CONFIG = {
 const FB_VER = '10.14.1';
 const NICK_KEY = 'narnia-nickname';
 const RANK_OPTOUT_KEY = 'narnia-rank-optout';
+const RANK_CACHE_KEY = 'narnia-rank-cache';
 const RANK_MIN_MS = 2000;   // must match the Firestore rules
 let fbPromise = null;
 
 function nickname(){ try{ return localStorage.getItem(NICK_KEY) || ''; }catch(e){ return ''; } }
 function rankOptOut(){ try{ return localStorage.getItem(RANK_OPTOUT_KEY) === '1'; }catch(e){ return false; } }
 function rankSetKey(){ return vocabRound === 'all' ? 'すべて' : vocabRound; }
+
+// ---- per-set cache: {rows:[{id,name,ms}], total, uid, mine:{name,ms}|null, myRank} ----
+function rankCacheAll(){ try{ return JSON.parse(localStorage.getItem(RANK_CACHE_KEY) || '{}'); }catch(e){ return {}; } }
+function rankCacheGet(set){ return rankCacheAll()[set] || null; }
+function rankCachePut(set, board){
+  const all = rankCacheAll();
+  all[set] = {rows: board.rows.map(r=>({id:r.id, name:r.name, ms:r.ms})), total: board.total, uid: board.uid,
+              mine: board.mine ? {name: board.mine.name, ms: board.mine.ms} : null, myRank: board.myRank};
+  try{ localStorage.setItem(RANK_CACHE_KEY, JSON.stringify(all)); }catch(e){}
+}
 
 function fb(){
   if(!fbPromise){
@@ -1538,20 +1572,33 @@ function fb(){
   return fbPromise;
 }
 
-async function fetchLeaderboard(set, myMs){
+// Warm up the SDK + sign-in in the background for players in the ranking.
+function warmUpRanking(){
+  if(!nickname() || rankOptOut() || !/^https?:/.test(location.protocol)) return;
+  const go = ()=> fb().catch(()=>{});
+  if('requestIdleCallback' in window) requestIdleCallback(go, {timeout: 3000}); else setTimeout(go, 1500);
+}
+
+async function fetchLeaderboard(set){
   const {db, uid, fs} = await fb();
   const col = fs.collection(db, 'leaderboards', set, 'scores');
-  const top = await fs.getDocs(fs.query(col, fs.orderBy('ms'), fs.limit(10)));
+  // Independent requests in parallel.
+  const [top, mineSnap, totalAgg] = await Promise.all([
+    fs.getDocs(fs.query(col, fs.orderBy('ms'), fs.limit(10))),
+    fs.getDoc(fs.doc(db, 'leaderboards', set, 'scores', uid)),
+    fs.getCountFromServer(col).catch(()=>null),
+  ]);
   const rows = top.docs.map(d => Object.assign({id: d.id}, d.data()));
-  const mineSnap = await fs.getDoc(fs.doc(db, 'leaderboards', set, 'scores', uid));
   const mine = mineSnap.exists() ? mineSnap.data() : null;
-  let myRank = null, total = null;
+  let myRank = null;
   if(mine){
-    const ahead = await fs.getCountFromServer(fs.query(col, fs.where('ms', '<', mine.ms)));
-    myRank = ahead.data().count + 1;
+    const k = rows.findIndex(r => r.id === uid);
+    if(k >= 0) myRank = k + 1;   // in the top 10: no extra request needed
+    else myRank = (await fs.getCountFromServer(fs.query(col, fs.where('ms', '<', mine.ms)))).data().count + 1;
   }
-  try{ total = (await fs.getCountFromServer(col)).data().count; }catch(e){}
-  return {rows, uid, mine, myRank, total};
+  const board = {rows, uid, mine, myRank, total: totalAgg ? totalAgg.data().count : null};
+  rankCachePut(set, board);
+  return board;
 }
 
 // Saves the time if it beats this player's stored best. Returns true when saved.
@@ -1559,10 +1606,19 @@ async function submitMatchScore(set, ms, moves, penaltyMs){
   if(rankOptOut() || !nickname() || ms < RANK_MIN_MS) return false;
   const {db, uid, fs} = await fb();
   const ref = fs.doc(db, 'leaderboards', set, 'scores', uid);
-  const cur = await fs.getDoc(ref);
-  if(cur.exists() && cur.data().ms <= ms) return false;
-  await fs.setDoc(ref, {name: nickname(), ms: Math.round(ms), set, moves, penalty: Math.round(penaltyMs), v: APP_VERSION, updatedAt: fs.serverTimestamp()});
-  return true;
+  const cached = rankCacheGet(set);
+  // Skip the read when the cached best for this device already tells us the answer.
+  let best = cached && cached.uid === uid ? (cached.mine ? cached.mine.ms : Infinity) : null;
+  if(best === null){ const cur = await fs.getDoc(ref); best = cur.exists() ? cur.data().ms : Infinity; }
+  if(best <= ms) return false;
+  try{
+    await fs.setDoc(ref, {name: nickname(), ms: Math.round(ms), set, moves, penalty: Math.round(penaltyMs), v: APP_VERSION, updatedAt: fs.serverTimestamp()});
+    return true;
+  }catch(e){
+    // Rejected by the rules (e.g. a faster record already exists that the cache didn't know about).
+    if(e && e.code === 'permission-denied') return false;
+    throw e;
+  }
 }
 
 // Rename: rewrite the name on every set this player has a score in.
@@ -1574,11 +1630,43 @@ async function renameEverywhere(name){
     const cur = await fs.getDoc(ref);
     if(cur.exists()) await fs.setDoc(ref, Object.assign({}, cur.data(), {name, updatedAt: fs.serverTimestamp()}));
   }));
+  try{ localStorage.removeItem(RANK_CACHE_KEY); }catch(e){}
+}
+
+// Board as it will look once a new time `ms` is saved (from the cache, no network).
+function provisionalBoard(set, ms){
+  const c = rankCacheGet(set);
+  if(!c) return null;
+  const uid = c.uid;
+  const prev = c.mine ? c.mine.ms : Infinity;
+  if(ms >= prev) return Object.assign({}, c, {provisional: true});
+  const name = nickname();
+  const others = c.rows.filter(r => r.id !== uid);
+  const rows = others.concat([{id: uid, name, ms}]).sort((a,b)=>a.ms-b.ms).slice(0, 10);
+  const k = rows.findIndex(r => r.id === uid);
+  // Outside the cached top 10 we only know a lower bound, so leave the rank to the server.
+  const myRank = k >= 0 ? k + 1 : null;
+  const total = c.total !== null && c.total !== undefined ? c.total + (c.mine ? 0 : 1) : null;
+  return {rows, uid, mine: {name, ms}, myRank, total, provisional: true};
 }
 
 function rankMedal(n){ return n===1 ? '🥇' : n===2 ? '🥈' : n===3 ? '🥉' : `<span class="rkNum">${n}</span>`; }
 
-// Renders the leaderboard card into `host`. `justSaved` highlights a new record.
+function boardListHtml(r, justSaved){
+  if(!r.rows.length) return `<div class="rkMsg">まだ記録がありません。一番乗りを目指そう！</div>`;
+  const meInTop = r.rows.some(x => x.id === r.uid);
+  return `<ol class="rkList">${r.rows.map((x,i)=>`
+      <li class="${x.id===r.uid?'me':''} ${x.id===r.uid && justSaved?'fresh':''}">
+        <span class="rkPos">${rankMedal(i+1)}</span><span class="rkName">${escapeHtml(x.name||'???')}${x.id===r.uid?' <small>(あなた)</small>':''}</span><span class="rkTime">${fmtSec(x.ms)}</span>
+      </li>`).join('')}
+    ${r.mine && !meInTop ? `<li class="me sep"><span class="rkPos"><span class="rkNum">${r.myRank || '…'}</span></span><span class="rkName">${escapeHtml(r.mine.name)} <small>(あなた)</small></span><span class="rkTime">${fmtSec(r.mine.ms)}</span></li>` : ''}
+    </ol>
+    <div class="rkMsg small">${r.total ? `参加者 ${r.total}人` : ''}${r.myRank ? `${r.total ? '・' : ''}あなたは <b>${r.myRank}位</b>` : ''}${r.provisional ? ' <span class="rkSync">更新中…</span>' : ''}</div>`;
+}
+
+// Renders the leaderboard card into `host`.
+// opts.finishedMs: a just-finished time — show it slotted into the cached board
+// right away, save it, then refresh with the server's ranking.
 async function renderLeaderboard(host, opts){
   if(!host) return;
   opts = opts || {};
@@ -1592,7 +1680,7 @@ async function renderLeaderboard(host, opts){
         <div class="rkJoinRow"><input type="text" id="rkNickIn" maxlength="12" placeholder="ニックネーム（12文字まで）"><button class="primary" id="rkJoinBtn">参加する</button></div>
         <button class="ghost small" id="rkSkip">参加しない</button>
       </div>
-      <div id="rkList"><div class="rkMsg">読み込み中…</div></div></div>`;
+      <div id="rkList"></div></div>`;
     const join = ()=>{
       const v = document.getElementById('rkNickIn').value.trim().slice(0, 12);
       if(!v) return;
@@ -1603,35 +1691,40 @@ async function renderLeaderboard(host, opts){
     document.getElementById('rkNickIn').onkeydown = e => { if(e.key==='Enter' && !e.isComposing) join(); };
     document.getElementById('rkSkip').onclick = ()=>{ try{ localStorage.setItem(RANK_OPTOUT_KEY, '1'); }catch(e){} renderLeaderboard(host, opts); };
   } else {
-    host.innerHTML = `<div class="card rkCard">${head}<div id="rkList"><div class="rkMsg">読み込み中…</div></div>
+    host.innerHTML = `<div class="card rkCard">${head}<div id="rkList"></div>
       <div class="rkFoot">${rankOptOut()
         ? `ランキングに参加していません <button class="ghost small" id="rkRejoin">参加する</button>`
         : `ニックネーム：<b>${escapeHtml(nick)}</b> <button class="ghost small" id="rkRename">変更</button>`}</div></div>`;
     const rj = document.getElementById('rkRejoin');
-    if(rj) rj.onclick = ()=>{ try{ localStorage.removeItem(RANK_OPTOUT_KEY); }catch(e){} renderLeaderboard(host, opts); };
+    if(rj) rj.onclick = ()=>{ try{ localStorage.removeItem(RANK_OPTOUT_KEY); }catch(e){} renderLeaderboard(host, {}); };
     const rn = document.getElementById('rkRename');
     if(rn) rn.onclick = ()=>{
       const v = (prompt('新しいニックネーム（12文字まで・本名は避けてください）', nick) || '').trim().slice(0, 12);
       if(!v || v === nick) return;
       try{ localStorage.setItem(NICK_KEY, v); }catch(e){}
-      renameEverywhere(v).catch(()=>{}).finally(()=> renderLeaderboard(host, opts));
+      renameEverywhere(v).catch(()=>{}).finally(()=> renderLeaderboard(host, {}));
     };
   }
   const list = host.querySelector('#rkList');
+  const joined = nick && !rankOptOut();
+  const finished = opts.finishedMs !== undefined && joined;
+
+  // 1) Instant: cached board (with the new time slotted in when just finished).
+  const instant = finished ? provisionalBoard(set, opts.finishedMs) : rankCacheGet(set);
+  if(instant) list.innerHTML = boardListHtml(Object.assign({provisional: true}, instant), finished);
+  else list.innerHTML = `<div class="rkMsg">読み込み中…</div>`;
+
+  // 2) Network: save (if finished) and fetch the real board.
   try{
+    let saved = false;
+    if(finished) saved = await submitMatchScore(set, opts.finishedMs, opts.moves, opts.penaltyMs);
     const r = await fetchLeaderboard(set);
     if(!host.isConnected) return;
-    if(!r.rows.length){ list.innerHTML = `<div class="rkMsg">まだ記録がありません。一番乗りを目指そう！</div>`; return; }
-    const meInTop = r.rows.some(x => x.id === r.uid);
-    list.innerHTML = `<ol class="rkList">${r.rows.map((x,i)=>`
-        <li class="${x.id===r.uid?'me':''} ${x.id===r.uid && opts.justSaved?'fresh':''}">
-          <span class="rkPos">${rankMedal(i+1)}</span><span class="rkName">${escapeHtml(x.name||'???')}${x.id===r.uid?' <small>(あなた)</small>':''}</span><span class="rkTime">${fmtSec(x.ms)}</span>
-        </li>`).join('')}
-      ${r.mine && !meInTop ? `<li class="me sep"><span class="rkPos"><span class="rkNum">${r.myRank}</span></span><span class="rkName">${escapeHtml(r.mine.name)} <small>(あなた)</small></span><span class="rkTime">${fmtSec(r.mine.ms)}</span></li>` : ''}
-      </ol>
-      ${r.total ? `<div class="rkMsg small">参加者 ${r.total}人${r.myRank ? `・あなたは <b>${r.myRank}位</b>` : ''}</div>` : ''}`;
+    list.innerHTML = boardListHtml(r, saved);
   }catch(e){
-    if(host.isConnected) list.innerHTML = `<div class="rkMsg">ランキングを読み込めませんでした（オフラインかもしれません）</div>`;
+    if(!host.isConnected) return;
+    if(instant) list.querySelector('.rkSync') && (list.querySelector('.rkSync').textContent = '（オフラインのため前回の表示）');
+    else list.innerHTML = `<div class="rkMsg">ランキングを読み込めませんでした（オフラインかもしれません）</div>`;
   }
 }
 
@@ -3641,6 +3734,7 @@ function currentTheme(){ return document.documentElement.getAttribute('data-them
     if(sel.onchange) sel.onchange({target: sel});
   }
   goTo('home');
+  warmUpRanking();
   buildVocabOrder(); renderVocabRoot();
   buildUnderlineOrder(); renderUnderline();
   buildQuizOrder(); buildCompOrder(); renderQuiz();
