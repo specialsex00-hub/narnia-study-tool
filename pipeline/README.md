@@ -149,3 +149,16 @@ version 5 の途中で追加したフィールドで、
 なお、単語マッチゲーム（Quizletスタイル。全タイルが最初から表向きで、
 正しいペアをタップすると消える）は自己ベストのタイムだけを保存する。
 学習モードの習熟度（`learn`）も含め、カードのSRS（間隔反復）とは独立している。
+
+## マッチのランキング（Firebase）
+
+マッチのタイムは Firebase（プロジェクト `firestore-database-2c739`）の Firestore に保存する。
+
+- 認証：匿名ログイン（端末・ブラウザごとに別ユーザー）
+- データ：`leaderboards/{セット名}/scores/{uid}` に1人1件、そのセットの自己ベストだけ
+  （`name`, `ms`, `set`, `moves`, `penalty`, `v`, `updatedAt`）
+- セキュリティルール：リポジトリ直下の `firestore.rules`。変更したら Firebase コンソールの
+  Firestore Database →「ルール」に貼り付けて公開する。誰でも閲覧可、書き込みは本人の
+  ドキュメントのみ・2秒〜10分・名前12文字まで・自己ベストより遅い記録での上書き不可。
+- SDK はマッチ画面を開いたときだけ gstatic から読み込む（`build_html.py` 内の `FIREBASE_CONFIG`）。
+  apiKey などの設定値は公開されても問題ない種類のもの（安全性はルールで担保）。

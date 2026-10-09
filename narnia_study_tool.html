@@ -577,6 +577,30 @@
   .rvA{font-size:13px; color:var(--sub);}
   .rvA.ng{color:var(--bad);} .rvA.ok{color:var(--good); font-weight:700;}
   .rvType{flex:none; font-size:10.5px; font-weight:800; color:var(--sub); border:1px solid var(--line); border-radius:10px; padding:1px 7px; margin-top:3px;}
+  /* match leaderboard */
+  .rkCard{padding:16px 16px 12px; margin-top:14px; text-align:left;}
+  .rankAfter .rkCard{margin-top:18px;}
+  .rkHead{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+  .rkTitle{font-size:16px; font-weight:800;}
+  .rkSet{font-size:11.5px; font-weight:800; color:var(--accent); background:var(--accent-bg); border-radius:20px; padding:2px 10px;}
+  .rkList{list-style:none; margin:0; padding:0;}
+  .rkList li{display:grid; grid-template-columns:34px 1fr auto; align-items:center; gap:8px; padding:8px 10px; border-radius:12px; font-size:14.5px;}
+  .rkList li:nth-child(odd){background:var(--bg);}
+  .rkList li.me{background:var(--accent-bg); font-weight:800;}
+  .rkList li.fresh{animation:popScale 0.6s ease 2;}
+  .rkList li.sep{margin-top:6px; border-top:2px dashed var(--line); border-radius:0 0 12px 12px;}
+  .rkPos{font-size:18px; text-align:center; line-height:1;}
+  .rkNum{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; background:var(--line); font-size:12px; font-weight:800; color:var(--sub);}
+  .rkName{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .rkName small{color:var(--accent); font-weight:700;}
+  .rkTime{font-variant-numeric:tabular-nums; font-weight:800;}
+  .rkMsg{font-size:13px; color:var(--sub); text-align:center; padding:10px 0 4px;}
+  .rkMsg.small{font-size:12px; padding-top:8px;}
+  .rkFoot{font-size:12.5px; color:var(--sub); margin-top:8px; display:flex; align-items:center; gap:4px; justify-content:flex-end;}
+  .rkJoin{background:var(--accent-bg); border-radius:14px; padding:12px; margin-bottom:10px;}
+  .rkJoinRow{display:flex; gap:8px;}
+  .rkJoinRow input{flex:1; min-width:0; font-size:15px; padding:9px 12px;}
+  button.ghost.small{font-size:12px; padding:2px 6px;}
 </style>
 </head>
 <body>
@@ -695,8 +719,8 @@ const KOTEST = [];
 
 const STORAGE_KEY = 'narnia-progress';
 // ---- toast + "アップデートしました" notice ----
-const APP_VERSION = "2026.10.05-4";
-const CHANGELOG = [["2026.10.05-4", ["第2回（p.53〜55）のセットを追加しました：単語28語（授業で赤字の重要語句14件を含む）", "練習問題も追加：下線部訳4問（p.55の課題）・訳の4択13問・内容理解8問・文法9問"]], ["2026.10.05-3", ["テストを新しくしました：1問ずつ解く集中モード（上に進み具合のバー、問題番号から移動もできます）", "○×・4択は選ぶと自動で次の問題へ。マッチングはタップで組み合わせる形になりました", "結果画面にライオンと評価、点数・時間・前回比、まちがえた問題だけの答え合わせを追加しました", "テストの設定画面を見やすくし、これまでの成績をグラフで見られるようにしました"]], ["2026.10.05-2", ["下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）", "パソコンでも、スマホと同じ下のタブバーになりました"]], ["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
+const APP_VERSION = "2026.10.09";
+const CHANGELOG = [["2026.10.09", ["マッチにランキングを追加しました：ニックネームを決めると、セットごとにみんなのタイムと順位が見られます", "ランキングに載るのはニックネームとタイムだけです（参加しないこともできます）"]], ["2026.10.05-4", ["第2回（p.53〜55）のセットを追加しました：単語28語（授業で赤字の重要語句14件を含む）", "練習問題も追加：下線部訳4問（p.55の課題）・訳の4択13問・内容理解8問・文法9問"]], ["2026.10.05-3", ["テストを新しくしました：1問ずつ解く集中モード（上に進み具合のバー、問題番号から移動もできます）", "○×・4択は選ぶと自動で次の問題へ。マッチングはタップで組み合わせる形になりました", "結果画面にライオンと評価、点数・時間・前回比、まちがえた問題だけの答え合わせを追加しました", "テストの設定画面を見やすくし、これまでの成績をグラフで見られるようにしました"]], ["2026.10.05-2", ["下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）", "パソコンでも、スマホと同じ下のタブバーになりました"]], ["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
 const SEEN_VERSION_KEY = 'narnia-app-version';
 
 function showToast(icon, title, items, actions){
@@ -1244,8 +1268,10 @@ function renderVocabMatch(){
         <div class="progress">${best ? `自己ベスト：<b>${fmtSec(best)}</b>` : 'まだ記録はありません'}</div>
         <div class="btnrow" style="justify-content:center"><button class="primary" id="matchStartBtn">ゲームを開始</button></div>
       </div>
+      <div id="rankHost"></div>
     `;
     document.getElementById('matchStartBtn').onclick = startMatchGame;
+    renderLeaderboard(document.getElementById('rankHost'));
     return;
   }
   area.innerHTML = `
@@ -1289,9 +1315,14 @@ function finishMatchGame(){
     <div class="matchResult">${fmtSec(total)}</div>
     <div class="progress">${isBest ? (prev ? `🎉 自己ベスト更新！（前回のベスト ${fmtSec(prev)}）` : '🎉 初めての記録です！') : `自己ベスト：${fmtSec(prev)}`}</div>
     <div class="progress">うちペナルティ ${matchPenaltyMs/1000}秒・手数 ${matchMoves}</div>
-    <div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div>`;
+    <div class="btnrow" style="justify-content:center"><button class="primary" id="matchAgain">もう一度</button></div>
+    <div id="rankHost" class="rankAfter"></div>`;
   if(isBest) fireConfetti(document.getElementById('matchConf'));
   document.getElementById('matchAgain').onclick = ()=>{ buildMatchGame(); startMatchGame(); };
+  const host = document.getElementById('rankHost');
+  submitMatchScore(rankSetKey(), total, matchMoves, matchPenaltyMs)
+    .then(saved => renderLeaderboard(host, {justSaved: saved}))
+    .catch(() => renderLeaderboard(host));
 }
 
 function syncMatchTiles(){
@@ -1353,6 +1384,144 @@ function onMatchTileClick(uid){
         syncMatchTiles();
       }, 450);
     }
+  }
+}
+
+// ================= MATCH LEADERBOARD (Firebase: anonymous auth + Firestore) =================
+// Scores live at leaderboards/{set}/scores/{uid}: one doc per player per set,
+// holding that player's best time. The SDK is loaded lazily the first time the
+// match screen needs it, so the rest of the tool never waits on the network.
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCXb5TpCaG4eD391WHEUJmLm6z3wmLeWVI",
+  authDomain: "firestore-database-2c739.firebaseapp.com",
+  projectId: "firestore-database-2c739",
+  storageBucket: "firestore-database-2c739.firebasestorage.app",
+  messagingSenderId: "108894892386",
+  appId: "1:108894892386:web:625a773467a5cfcee37c3b",
+};
+const FB_VER = '10.14.1';
+const NICK_KEY = 'narnia-nickname';
+const RANK_OPTOUT_KEY = 'narnia-rank-optout';
+const RANK_MIN_MS = 2000;   // must match the Firestore rules
+let fbPromise = null;
+
+function nickname(){ try{ return localStorage.getItem(NICK_KEY) || ''; }catch(e){ return ''; } }
+function rankOptOut(){ try{ return localStorage.getItem(RANK_OPTOUT_KEY) === '1'; }catch(e){ return false; } }
+function rankSetKey(){ return vocabRound === 'all' ? 'すべて' : vocabRound; }
+
+function fb(){
+  if(!fbPromise){
+    fbPromise = (async ()=>{
+      const base = `https://www.gstatic.com/firebasejs/${FB_VER}/`;
+      const [appM, authM, fsM] = await Promise.all([
+        import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-firestore.js'),
+      ]);
+      const app = appM.initializeApp(FIREBASE_CONFIG);
+      const auth = authM.getAuth(app);
+      if(!auth.currentUser){
+        await new Promise(res => { const off = authM.onAuthStateChanged(auth, ()=>{ off(); res(); }); });
+      }
+      if(!auth.currentUser) await authM.signInAnonymously(auth);
+      return {db: fsM.getFirestore(app), uid: auth.currentUser.uid, fs: fsM};
+    })().catch(e => { fbPromise = null; throw e; });
+  }
+  return fbPromise;
+}
+
+async function fetchLeaderboard(set, myMs){
+  const {db, uid, fs} = await fb();
+  const col = fs.collection(db, 'leaderboards', set, 'scores');
+  const top = await fs.getDocs(fs.query(col, fs.orderBy('ms'), fs.limit(10)));
+  const rows = top.docs.map(d => Object.assign({id: d.id}, d.data()));
+  const mineSnap = await fs.getDoc(fs.doc(db, 'leaderboards', set, 'scores', uid));
+  const mine = mineSnap.exists() ? mineSnap.data() : null;
+  let myRank = null, total = null;
+  if(mine){
+    const ahead = await fs.getCountFromServer(fs.query(col, fs.where('ms', '<', mine.ms)));
+    myRank = ahead.data().count + 1;
+  }
+  try{ total = (await fs.getCountFromServer(col)).data().count; }catch(e){}
+  return {rows, uid, mine, myRank, total};
+}
+
+// Saves the time if it beats this player's stored best. Returns true when saved.
+async function submitMatchScore(set, ms, moves, penaltyMs){
+  if(rankOptOut() || !nickname() || ms < RANK_MIN_MS) return false;
+  const {db, uid, fs} = await fb();
+  const ref = fs.doc(db, 'leaderboards', set, 'scores', uid);
+  const cur = await fs.getDoc(ref);
+  if(cur.exists() && cur.data().ms <= ms) return false;
+  await fs.setDoc(ref, {name: nickname(), ms: Math.round(ms), set, moves, penalty: Math.round(penaltyMs), v: APP_VERSION, updatedAt: fs.serverTimestamp()});
+  return true;
+}
+
+// Rename: rewrite the name on every set this player has a score in.
+async function renameEverywhere(name){
+  const {db, uid, fs} = await fb();
+  const sets = VOCAB_ROUNDS.concat(['すべて']);
+  await Promise.all(sets.map(async set => {
+    const ref = fs.doc(db, 'leaderboards', set, 'scores', uid);
+    const cur = await fs.getDoc(ref);
+    if(cur.exists()) await fs.setDoc(ref, Object.assign({}, cur.data(), {name, updatedAt: fs.serverTimestamp()}));
+  }));
+}
+
+function rankMedal(n){ return n===1 ? '🥇' : n===2 ? '🥈' : n===3 ? '🥉' : `<span class="rkNum">${n}</span>`; }
+
+// Renders the leaderboard card into `host`. `justSaved` highlights a new record.
+async function renderLeaderboard(host, opts){
+  if(!host) return;
+  opts = opts || {};
+  const set = rankSetKey();
+  const nick = nickname();
+  const head = `<div class="rkHead"><span class="rkTitle">🏆 ランキング</span><span class="rkSet">${escapeHtml(set)}</span></div>`;
+  if(!nick && !rankOptOut()){
+    host.innerHTML = `<div class="card rkCard">${head}
+      <div class="rkJoin">
+        <div class="progress" style="margin:0 0 8px">ニックネームを決めると、マッチのタイムがみんなのランキングに載ります。<br><b>本名は使わないでください。</b></div>
+        <div class="rkJoinRow"><input type="text" id="rkNickIn" maxlength="12" placeholder="ニックネーム（12文字まで）"><button class="primary" id="rkJoinBtn">参加する</button></div>
+        <button class="ghost small" id="rkSkip">参加しない</button>
+      </div>
+      <div id="rkList"><div class="rkMsg">読み込み中…</div></div></div>`;
+    const join = ()=>{
+      const v = document.getElementById('rkNickIn').value.trim().slice(0, 12);
+      if(!v) return;
+      try{ localStorage.setItem(NICK_KEY, v); localStorage.removeItem(RANK_OPTOUT_KEY); }catch(e){}
+      renderLeaderboard(host, opts);
+    };
+    document.getElementById('rkJoinBtn').onclick = join;
+    document.getElementById('rkNickIn').onkeydown = e => { if(e.key==='Enter' && !e.isComposing) join(); };
+    document.getElementById('rkSkip').onclick = ()=>{ try{ localStorage.setItem(RANK_OPTOUT_KEY, '1'); }catch(e){} renderLeaderboard(host, opts); };
+  } else {
+    host.innerHTML = `<div class="card rkCard">${head}<div id="rkList"><div class="rkMsg">読み込み中…</div></div>
+      <div class="rkFoot">${rankOptOut()
+        ? `ランキングに参加していません <button class="ghost small" id="rkRejoin">参加する</button>`
+        : `ニックネーム：<b>${escapeHtml(nick)}</b> <button class="ghost small" id="rkRename">変更</button>`}</div></div>`;
+    const rj = document.getElementById('rkRejoin');
+    if(rj) rj.onclick = ()=>{ try{ localStorage.removeItem(RANK_OPTOUT_KEY); }catch(e){} renderLeaderboard(host, opts); };
+    const rn = document.getElementById('rkRename');
+    if(rn) rn.onclick = ()=>{
+      const v = (prompt('新しいニックネーム（12文字まで・本名は避けてください）', nick) || '').trim().slice(0, 12);
+      if(!v || v === nick) return;
+      try{ localStorage.setItem(NICK_KEY, v); }catch(e){}
+      renameEverywhere(v).catch(()=>{}).finally(()=> renderLeaderboard(host, opts));
+    };
+  }
+  const list = host.querySelector('#rkList');
+  try{
+    const r = await fetchLeaderboard(set);
+    if(!host.isConnected) return;
+    if(!r.rows.length){ list.innerHTML = `<div class="rkMsg">まだ記録がありません。一番乗りを目指そう！</div>`; return; }
+    const meInTop = r.rows.some(x => x.id === r.uid);
+    list.innerHTML = `<ol class="rkList">${r.rows.map((x,i)=>`
+        <li class="${x.id===r.uid?'me':''} ${x.id===r.uid && opts.justSaved?'fresh':''}">
+          <span class="rkPos">${rankMedal(i+1)}</span><span class="rkName">${escapeHtml(x.name||'???')}${x.id===r.uid?' <small>(あなた)</small>':''}</span><span class="rkTime">${fmtSec(x.ms)}</span>
+        </li>`).join('')}
+      ${r.mine && !meInTop ? `<li class="me sep"><span class="rkPos"><span class="rkNum">${r.myRank}</span></span><span class="rkName">${escapeHtml(r.mine.name)} <small>(あなた)</small></span><span class="rkTime">${fmtSec(r.mine.ms)}</span></li>` : ''}
+      </ol>
+      ${r.total ? `<div class="rkMsg small">参加者 ${r.total}人${r.myRank ? `・あなたは <b>${r.myRank}位</b>` : ''}</div>` : ''}`;
+  }catch(e){
+    if(host.isConnected) list.innerHTML = `<div class="rkMsg">ランキングを読み込めませんでした（オフラインかもしれません）</div>`;
   }
 }
 

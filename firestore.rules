@@ -1,0 +1,44 @@
+rules_version = '2';
+
+// Firestore security rules for the match leaderboard.
+// Paste into Firebase console → Firestore Database → ルール, then 公開.
+//
+// leaderboards/{set}/scores/{uid}
+//   One document per (set, player). Anyone can read the board; a signed-in
+//   (anonymous) player can only write their own document, only with a sane
+//   time, and can only replace it with an equal or faster time (renames keep
+//   the same time).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leaderboards/{set}/scores/{uid} {
+      allow read: if true;
+
+      allow create: if isOwner(uid) && validScore(set);
+      allow update: if isOwner(uid) && validScore(set)
+                    && request.resource.data.ms <= resource.data.ms;
+      allow delete: if isOwner(uid);
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+
+  function isOwner(uid) {
+    return request.auth != null && request.auth.uid == uid;
+  }
+
+  function validScore(set) {
+    let d = request.resource.data;
+    return d.keys().hasOnly(['name', 'ms', 'set', 'moves', 'penalty', 'v', 'updatedAt'])
+      && d.keys().hasAll(['name', 'ms', 'set', 'updatedAt'])
+      && d.name is string && d.name.size() >= 1 && d.name.size() <= 12
+      && d.ms is int && d.ms >= 2000 && d.ms <= 600000
+      && d.set is string && d.set == set && set.size() <= 20
+      && (!('moves' in d) || (d.moves is int && d.moves >= 6 && d.moves <= 500))
+      && (!('penalty' in d) || (d.penalty is int && d.penalty >= 0 && d.penalty <= 600000))
+      && (!('v' in d) || (d.v is string && d.v.size() <= 20))
+      && d.updatedAt == request.time;
+  }
+}
