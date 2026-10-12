@@ -56,7 +56,7 @@ python3 narnia_docx.py mark marks.json                     # 対訳の課題の�
  {"page": "57", "start": "\"That is the very thing", "highlight": "\"That is the very thing that makes her story so likely to be true,\"", "underline": "the very thing"}]
 ```
 - `start`：英文段落の書き出し（そのページ内で1つに決まる長さ）。
-- `highlight`：マーカーを引く範囲（段落の先頭から）。`"*"` で段落全体。
-- `underline`：課題で下線が引かれている語句（任意）。
+- `highlight`：マーカーを引く範囲（段落内の文字列そのまま）。`"*"` で段落全体。
+- `underline`：課題で下線が引かれている語句（任意）。複数あるときは出てくる順にリスト（例 `["that", "it"]`）。単語単位で一致するので、`it` が `with` の中に引かれることはない。
 
 実際に使った JSON は `examples/` にある（第3回の解答・マーカー、p.56〜58 の対訳）。ひな形としてコピーして使う。
