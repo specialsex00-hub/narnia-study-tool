@@ -399,6 +399,230 @@
       "chapter": 5,
       "gloss": "ふだんは、一般的に",
       "round": "第2回"
+    },
+    {
+      "term": "make one's mind easy (about 〜)",
+      "enHtml": "\"Oh, you can <mark>make your minds easy</mark> about that.",
+      "jp": "「ああ、その点なら安心していい。",
+      "chapter": 5,
+      "gloss": "（〜について）安心する",
+      "round": "第3回"
+    },
+    {
+      "term": "have only to do (to 〜)",
+      "enHtml": "One <mark>has only to</mark> look at her and talk to her <mark>to see</mark> that she is not mad.\"",
+      "jp": "あの子を見て、話をしてみさえすれば、気が変になっていないことはすぐに分かる」",
+      "chapter": 5,
+      "gloss": "…しさえすれば（〜できる）（One has only to look at her … to see 〜＝あの子を見さえすれば〜が分かる）",
+      "round": "第3回"
+    },
+    {
+      "term": "for the moment",
+      "enHtml": "<mark>For the moment</mark> then and unless any further evidence turns up, we must assume that she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "gloss": "さしあたって、今のところは",
+      "round": "第3回"
+    },
+    {
+      "term": "then",
+      "enHtml": "For the moment <mark>then</mark> and unless any further evidence turns up, we must assume that she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "gloss": "それなら、だとすれば（前の話を受けて）",
+      "round": "第3回"
+    },
+    {
+      "term": "unless",
+      "enHtml": "For the moment then and <mark>unless</mark> any further evidence turns up, we must assume that she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "gloss": "〜しない限り",
+      "round": "第3回"
+    },
+    {
+      "term": "turn up",
+      "enHtml": "For the moment then and unless any further evidence <mark>turns up</mark>, we must assume that she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "gloss": "（物・証拠などが）現れる、出てくる",
+      "round": "第3回"
+    },
+    {
+      "term": "have A to do with B",
+      "enHtml": "\"What <mark>has</mark> that <mark>to do with</mark> it?\" said the Professor.",
+      "jp": "「それがこの話と何の関係があるのかね？」と教授は言った。",
+      "chapter": 5,
+      "gloss": "AがBと関係がある（What has A to do with B?＝AがBと何の関係があるのか→関係ない）",
+      "round": "第3回"
+    },
+    {
+      "term": "of one's own",
+      "enHtml": "\"If there really is a door in this house that leads to some other world (and I should warn you that this is a very strange house, and even I know very little about it) - if, I say, she had got into another world, I should not be at all surprised to find that the other world had a separate time <mark>of its own</mark>; so that however long you stayed there it would never take up any of our time.",
+      "jp": "「もしこの家に、本当にどこか別の世界へ通じる扉があるとしたら（言っておくが、ここはとても不思議な家で、私でさえほとんど何も知らないのだよ）――いいかね、もしあの子が別の世界に入ったのだとしたら、その世界にはこちらとは別の独自の時間が流れていると分かっても、私は少しも驚かないだろう。だから、向こうにどれだけ長くいても、こちらの時間は少しもたたないというわけだ。",
+      "chapter": 5,
+      "gloss": "自分自身の、独自の（a separate time of its own＝独自の別の時間）",
+      "round": "第3回"
+    },
+    {
+      "term": "dream that 〜",
+      "enHtml": "She had <mark>never dreamed that</mark> a grown-up would talk like the professor and didn't know what to think.",
+      "jp": "大人が教授のような話し方をするなんて夢にも思っていなかったので、スーザンはどう考えたらいいのか分からなかった。",
+      "chapter": 5,
+      "gloss": "〜ということを想像する（had never dreamed that 〜＝〜とは夢にも思っていなかった）",
+      "round": "第3回"
+    },
+    {
+      "term": "half to oneself",
+      "enHtml": "\"Logic!\" said the Professor <mark>half to himself</mark>.",
+      "jp": "「論理だよ！」と教授は半ばひとりごとのように言った。",
+      "chapter": 5,
+      "gloss": "半ばひとりごとのように",
+      "round": "第3回"
+    },
+    {
+      "term": "possibility",
+      "enHtml": "There are only three <mark>possibilities</mark>.",
+      "jp": "可能性は三つしかない。",
+      "chapter": 5,
+      "gloss": "可能性",
+      "round": "第3回"
+    },
+    {
+      "term": "either A or B (or C)",
+      "enHtml": "<mark>Either</mark> your sister is telling lies, <mark>or</mark> she is mad, <mark>or</mark> she is telling the truth.",
+      "jp": "妹さんが嘘をついているか、気が変になっているか、本当のことを言っているかのどれかだ。",
+      "chapter": 5,
+      "gloss": "AかBか（Cか）のどれか",
+      "round": "第3回"
+    },
+    {
+      "term": "obvious",
+      "enHtml": "You know she doesn't tell lies and it is <mark>obvious</mark> that she is not mad.",
+      "jp": "妹さんが嘘をつかないことは君たちも知っているし、気が変になっていないことも明らかだ。",
+      "chapter": 5,
+      "gloss": "明らかな（it is obvious that 〜＝〜は明らかだ）",
+      "round": "第3回"
+    },
+    {
+      "term": "evidence",
+      "enHtml": "For the moment then and unless any further <mark>evidence</mark> turns up, we must assume that she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "gloss": "証拠（any further evidence＝何かそれ以上の証拠）",
+      "round": "第3回"
+    },
+    {
+      "term": "assume that 〜",
+      "enHtml": "For the moment then and unless any further evidence turns up, we must <mark>assume that</mark> she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "gloss": "（証拠はないが）〜だと考える、〜と仮定する",
+      "round": "第3回"
+    },
+    {
+      "term": "look at 〜 hard",
+      "enHtml": "Susan <mark>looked at him very hard</mark> and was quite sure from the expression on his face that he was not making fun of them.",
+      "jp": "スーザンは教授をじっと見つめ、その顔つきから、教授が自分たちをからかっているのではないとはっきり分かった。",
+      "chapter": 5,
+      "gloss": "〜をじっと見つめる",
+      "round": "第3回"
+    },
+    {
+      "term": "expression",
+      "enHtml": "Susan looked at him very hard and was quite sure from the <mark>expression</mark> on his face that he was not making fun of them.",
+      "jp": "スーザンは教授をじっと見つめ、その顔つきから、教授が自分たちをからかっているのではないとはっきり分かった。",
+      "chapter": 5,
+      "gloss": "表情、顔つき",
+      "round": "第3回"
+    },
+    {
+      "term": "make fun of 〜",
+      "enHtml": "Susan looked at him very hard and was quite sure from the expression on his face that he was not <mark>making fun of</mark> them.",
+      "jp": "スーザンは教授をじっと見つめ、その顔つきから、教授が自分たちをからかっているのではないとはっきり分かった。",
+      "chapter": 5,
+      "gloss": "〜をからかう",
+      "round": "第3回"
+    },
+    {
+      "term": "for one thing",
+      "enHtml": "\"Well, <mark>for one thing</mark>,\" said Peter, \"if it was real why doesn't everyone find this country every time they go to the wardrobe?",
+      "jp": "「ええと、一つには」とピーターは言った。「もしそれが本当なら、どうして誰でも洋服だんすに行くたびにその国を見つけられないんでしょう？",
+      "chapter": 5,
+      "gloss": "一つには（理由を挙げるときの前置き）",
+      "round": "第3回"
+    },
+    {
+      "term": "pretend",
+      "enHtml": "It was less than a minute, and she <mark>pretended</mark> to have been away for hours.\"",
+      "jp": "1分もたっていなかったのに、あの子は何時間も向こうに行っていたようなふりをしたんです」",
+      "chapter": 5,
+      "gloss": "ふりをする（pretend to have been 〜＝〜していたふりをする）",
+      "round": "第3回"
+    },
+    {
+      "term": "all the time",
+      "enHtml": "\"Well, sir, if things are real, they're there <mark>all the time</mark>.\"",
+      "jp": "「だって先生、本当にあるものなら、いつだってそこにあるはずです」",
+      "chapter": 5,
+      "gloss": "いつも、常に",
+      "round": "第3回"
+    },
+    {
+      "term": "the very moment 〜",
+      "enHtml": "She came running after us <mark>the very moment</mark> we were out of the room.",
+      "jp": "私たちが部屋を出たまさにその瞬間に、あの子は走って追いかけてきました。",
+      "chapter": 5,
+      "gloss": "〜したまさにその瞬間に（接続詞のように使う）",
+      "round": "第3回"
+    },
+    {
+      "term": "be likely to do",
+      "enHtml": "\"That is the very thing that makes her story so <mark>likely to</mark> be true,\" said the Professor.",
+      "jp": "「まさにそのことが、あの子の話をいかにも本当らしくしているのだよ」と教授は言った。",
+      "chapter": 5,
+      "gloss": "〜しそうだ、〜らしい（so likely to be true＝いかにも本当らしい）",
+      "round": "第3回"
+    },
+    {
+      "term": "lead to 〜",
+      "enHtml": "\"If there really is a door in this house that <mark>leads to</mark> some other world (and I should warn you that this is a very strange house, and even I know very little about it) - if, I say, she had got into another world, I should not be at all surprised to find that the other world had a separate time of its own; so that however long you stayed there it would never take up any of our time.",
+      "jp": "「もしこの家に、本当にどこか別の世界へ通じる扉があるとしたら（言っておくが、ここはとても不思議な家で、私でさえほとんど何も知らないのだよ）――いいかね、もしあの子が別の世界に入ったのだとしたら、その世界にはこちらとは別の独自の時間が流れていると分かっても、私は少しも驚かないだろう。だから、向こうにどれだけ長くいても、こちらの時間は少しもたたないというわけだ。",
+      "chapter": 5,
+      "gloss": "〜へ通じる",
+      "round": "第3回"
+    },
+    {
+      "term": "warn 人 that 〜",
+      "enHtml": "\"If there really is a door in this house that leads to some other world (and I should <mark>warn you that</mark> this is a very strange house, and even I know very little about it) - if, I say, she had got into another world, I should not be at all surprised to find that the other world had a separate time of its own; so that however long you stayed there it would never take up any of our time.",
+      "jp": "「もしこの家に、本当にどこか別の世界へ通じる扉があるとしたら（言っておくが、ここはとても不思議な家で、私でさえほとんど何も知らないのだよ）――いいかね、もしあの子が別の世界に入ったのだとしたら、その世界にはこちらとは別の独自の時間が流れていると分かっても、私は少しも驚かないだろう。だから、向こうにどれだけ長くいても、こちらの時間は少しもたたないというわけだ。",
+      "chapter": 5,
+      "gloss": "人に〜だと警告する、前もって言っておく",
+      "round": "第3回"
+    },
+    {
+      "term": "not 〜 at all",
+      "enHtml": "\"If there really is a door in this house that leads to some other world (and I should warn you that this is a very strange house, and even I know very little about it) - if, I say, she had got into another world, I should <mark>not be at all</mark> surprised to find that the other world had a separate time of its own; so that however long you stayed there it would never take up any of our time.",
+      "jp": "「もしこの家に、本当にどこか別の世界へ通じる扉があるとしたら（言っておくが、ここはとても不思議な家で、私でさえほとんど何も知らないのだよ）――いいかね、もしあの子が別の世界に入ったのだとしたら、その世界にはこちらとは別の独自の時間が流れていると分かっても、私は少しも驚かないだろう。だから、向こうにどれだけ長くいても、こちらの時間は少しもたたないというわけだ。",
+      "chapter": 5,
+      "gloss": "少しも〜ない",
+      "round": "第3回"
+    },
+    {
+      "term": "however long 〜",
+      "enHtml": "\"If there really is a door in this house that leads to some other world (and I should warn you that this is a very strange house, and even I know very little about it) - if, I say, she had got into another world, I should not be at all surprised to find that the other world had a separate time of its own; so that <mark>however long</mark> you stayed there it would never take up any of our time.",
+      "jp": "「もしこの家に、本当にどこか別の世界へ通じる扉があるとしたら（言っておくが、ここはとても不思議な家で、私でさえほとんど何も知らないのだよ）――いいかね、もしあの子が別の世界に入ったのだとしたら、その世界にはこちらとは別の独自の時間が流れていると分かっても、私は少しも驚かないだろう。だから、向こうにどれだけ長くいても、こちらの時間は少しもたたないというわけだ。",
+      "chapter": 5,
+      "gloss": "どんなに長く〜しても",
+      "round": "第3回"
+    },
+    {
+      "term": "take up",
+      "enHtml": "\"If there really is a door in this house that leads to some other world (and I should warn you that this is a very strange house, and even I know very little about it) - if, I say, she had got into another world, I should not be at all surprised to find that the other world had a separate time of its own; so that however long you stayed there it would never <mark>take up</mark> any of our time.",
+      "jp": "「もしこの家に、本当にどこか別の世界へ通じる扉があるとしたら（言っておくが、ここはとても不思議な家で、私でさえほとんど何も知らないのだよ）――いいかね、もしあの子が別の世界に入ったのだとしたら、その世界にはこちらとは別の独自の時間が流れていると分かっても、私は少しも驚かないだろう。だから、向こうにどれだけ長くいても、こちらの時間は少しもたたないというわけだ。",
+      "chapter": 5,
+      "gloss": "（時間・場所を）とる、使う",
+      "round": "第3回"
     }
   ],
   "underline": [
@@ -512,6 +736,59 @@
       "note": "下線部 That＝スーザンの「森やフォーンの話が本当であるはずがない」ということ。more than I know「私には分からない」（＝本当ではないとは言い切れない）。a charge of lying against 〜「〜を嘘つきだと責めること」が主語。someone whom you have always found truthful は find O C の O が関係代名詞 whom になった形。",
       "chapter": 5,
       "round": "第2回"
+    },
+    {
+      "underline": "that",
+      "task": "下線部の指す内容を簡単に答えなさい",
+      "enHtml": "'Oh, you can make your minds easy about <u>that</u>.'",
+      "jp": "「ああ、その点なら安心していい。」",
+      "note": "下線部 that＝直前のスーザンの心配「ルーシーはどこかおかしい（頭が変になっている）のではないか」ということ。教授の \"Madness, you mean?\" を受けて「その点なら安心していい」と言っている。make one's mind easy (about 〜)「（〜について）安心する」。理由は直後の One has only to look at her and talk to her to see that she is not mad.（あの子を見て話してみれば、気が変になっていないことはすぐ分かる）。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "とあるが、それぞれどのようなものかまとめましょう。",
+      "enHtml": "There are only three possibilities.",
+      "jp": "可能性は三つしかない。",
+      "note": "三つの可能性：① ルーシーが嘘をついている（Either your sister is telling lies,）② ルーシーの頭がおかしくなっている（or she is mad,）③ ルーシーが本当のことを言っている（or she is telling the truth.）。教授の論理：ルーシーは嘘をつかない子だと二人とも認めている（①は否定）、気が変になっていないのも明らか（②も否定）→ 残る③「本当のことを言っている」と考えるしかない。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "For the moment then and unless any further evidence turns up, we must assume that she is telling the truth.",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えなければならないのだよ。",
+      "note": "for the moment「さしあたって」。then「それなら、だとすれば」（前の三つの可能性の話を受ける）。unless 〜「〜しない限り」。any further evidence「それ以上の（何か新しい）証拠」。turn up「現れる、出てくる」。assume that 〜「（証拠はないが）〜だと考える」。must＝論理的にそう考えるしかない。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "underline": "that / it",
+      "task": "下線部の内容を明らかにして訳しなさい",
+      "enHtml": "'What has <u>that</u> to do with <u>it</u>?'",
+      "jp": "「僕たちが見たときには洋服だんすの中に何もなかったということが、ルーシーの話が本当かどうかということと、いったい何の関係があるのかね？」（＝何の関係もない）",
+      "note": "that＝直前のピーターの発言「もし本当なら、どうして誰でも洋服だんすに行くたびにその国を見つけられないのか。僕たちが見たときには何もなかった」ということ。it＝今問題になっていること、つまり「ルーシーの話が本当かどうか」。have to do with 〜「〜と関係がある」。What has A to do with B? は修辞疑問で「関係ない」の意味。have something / nothing / a lot to do with 〜 もセットで。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "theyの後に省略されたものを補いましょう",
+      "enHtml": "'Are they?' said the Professor.",
+      "jp": "「（本当にあるものは）いつもそこにあるのかね？」と教授は言った。",
+      "note": "補うもの：Are they (there all the time)?　直前のピーターの \"if things are real, they're there all the time.\" を受けた疑問文。they＝things（本当にあるもの）。教授は「本当にあるものでも、いつもそこにあるとは限らないのではないか」と問い返している。だからピーターは何と言っていいか分からなくなった。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "underline": "That / that",
+      "task": "1. 最初のthatの内容を答えなさい　2. 訳しましょう",
+      "enHtml": "'<u>That</u> is the very thing <u>that</u> makes her story so likely to be true,' said the Professor.",
+      "jp": "「まさにそのこと（1分もたっていないのに何時間も行っていたと言ったこと）が、あの子の話をいかにも本当らしくしているのだよ」と教授は言った。",
+      "note": "最初の That＝直前のスーザンの発言「ルーシーには時間がなかった。私たちが部屋を出た瞬間に追いかけてきて、1分もたっていなかったのに、何時間も向こうに行っていたふりをした」ということ。2つ目の that は関係代名詞（主格）で、先行詞は the very thing（まさにその〜）。make O C「OをCにする」、be likely to do「〜しそうだ」。スーザンは「時間がなかった」ことを嘘の証拠だと思ったが、教授は逆に本当らしい理由だと言っている（続きで、別の世界には独自の時間がある、と説明する）。",
+      "chapter": 5,
+      "round": "第3回"
     }
   ],
   "quiz": [
@@ -652,6 +929,90 @@
       "jp": "「私たち、ひょっとすると嘘ですらないのではと心配していたんです」とスーザンは言った。「ルーシーはどこかおかしいのかもしれないと思って」",
       "chapter": 5,
       "round": "第2回"
+    },
+    {
+      "en": "One has only to look at her and talk to her to see that she is not mad.\"",
+      "jp": "あの子を見て、話をしてみさえすれば、気が変になっていないことはすぐに分かる」",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "She had never dreamed that a grown-up would talk like the professor and didn't know what to think.",
+      "jp": "大人が教授のような話し方をするなんて夢にも思っていなかったので、スーザンはどう考えたらいいのか分からなかった。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "Either your sister is telling lies, or she is mad, or she is telling the truth.",
+      "jp": "妹さんが嘘をついているか、気が変になっているか、本当のことを言っているかのどれかだ。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "You know she doesn't tell lies and it is obvious that she is not mad.",
+      "jp": "妹さんが嘘をつかないことは君たちも知っているし、気が変になっていないことも明らかだ。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "For the moment then and unless any further evidence turns up, we must assume that she is telling the truth.\"",
+      "jp": "だとすれば、さしあたっては、そして何かほかの証拠が出てこない限りは、妹さんは本当のことを言っていると考えるべきなのだよ」",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "Susan looked at him very hard and was quite sure from the expression on his face that he was not making fun of them.",
+      "jp": "スーザンは教授をじっと見つめ、その顔つきから、教授が自分たちをからかっているのではないとはっきり分かった。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "\"Well, for one thing,\" said Peter, \"if it was real why doesn't everyone find this country every time they go to the wardrobe?",
+      "jp": "「ええと、一つには」とピーターは言った。「もしそれが本当なら、どうして誰でも洋服だんすに行くたびにその国を見つけられないんでしょう？",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "I mean, there was nothing there when we looked; even Lucy didn't pretend there was.\"",
+      "jp": "つまり、僕たちが見たときには何もなかったんです。ルーシーでさえ、何かあるふりはしませんでした」",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "\"What has that to do with it?\" said the Professor.",
+      "jp": "「それがこの話と何の関係があるのかね？」と教授は言った。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "\"Well, sir, if things are real, they're there all the time.\"",
+      "jp": "「だって先生、本当にあるものなら、いつだってそこにあるはずです」",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "\"Lucy had had no time to have gone anywhere, even if there was such a place.",
+      "jp": "「たとえそんな場所があったとしても、ルーシーにはどこかへ行っている時間なんてなかったんです。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "She came running after us the very moment we were out of the room.",
+      "jp": "私たちが部屋を出たまさにその瞬間に、あの子は走って追いかけてきました。",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "It was less than a minute, and she pretended to have been away for hours.\"",
+      "jp": "1分もたっていなかったのに、あの子は何時間も向こうに行っていたようなふりをしたんです」",
+      "chapter": 5,
+      "round": "第3回"
+    },
+    {
+      "en": "\"That is the very thing that makes her story so likely to be true,\" said the Professor.",
+      "jp": "「まさにそのことが、あの子の話をいかにも本当らしくしているのだよ」と教授は言った。",
+      "chapter": 5,
+      "round": "第3回"
     }
   ],
   "yellow_sentences": []

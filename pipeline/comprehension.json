@@ -180,5 +180,122 @@
     "explain": "\"we thought there might be something wrong with Lucy.\" 教授は \"Madness, you mean?\"（狂気、ということかね）と聞き返す。",
     "chapter": 5,
     "round": "第2回"
+  },
+  {
+    "q": "教授が「ルーシーは気が変になっていない」と言える理由として挙げたことは？",
+    "choices": [
+      "あの子を見て話してみれば分かる",
+      "医者に診てもらったから",
+      "ルーシーが自分でそう言ったから",
+      "エドマンドがそう証言したから"
+    ],
+    "answer": "あの子を見て話してみれば分かる",
+    "explain": "\"One has only to look at her and talk to her to see that she is not mad.\" have only to do「〜しさえすればよい」。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "教授の話を聞いたスーザンがどう考えたらいいか分からなくなったのはなぜか？",
+    "choices": [
+      "大人が教授のような話し方をするとは夢にも思っていなかったから",
+      "教授が怒り出したから",
+      "教授の英語が難しすぎたから",
+      "ピーターが教授に反論したから"
+    ],
+    "answer": "大人が教授のような話し方をするとは夢にも思っていなかったから",
+    "explain": "\"She had never dreamed that a grown-up would talk like the professor and didn't know what to think.\" 大人なら「ルーシーの作り話だ」と言うと思っていた。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "教授が挙げた三つの可能性のうち、教授が「そう考えるべきだ」としたのはどれか？",
+    "choices": [
+      "ルーシーは本当のことを言っている",
+      "ルーシーは嘘をついている",
+      "ルーシーは気が変になっている",
+      "エドマンドが嘘をついている"
+    ],
+    "answer": "ルーシーは本当のことを言っている",
+    "explain": "嘘をつく子ではない（①を否定）、気が変になっていないのも明らか（②を否定）→ \"we must assume that she is telling the truth.\"",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "スーザンが教授の顔つきから確信したことは？",
+    "choices": [
+      "教授は自分たちをからかっているのではない",
+      "教授は怒っている",
+      "教授は何かを隠している",
+      "教授は話をよく聞いていなかった"
+    ],
+    "answer": "教授は自分たちをからかっているのではない",
+    "explain": "\"was quite sure from the expression on his face that he was not making fun of them.\" make fun of「からかう」。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "ピーターが「話が本当なはずがない」と考える理由として最初に挙げたことは？",
+    "choices": [
+      "本当なら、洋服だんすに行くたびに誰でもその国を見つけられるはずだ",
+      "ルーシーは前にも嘘をついたことがある",
+      "教授の家には洋服だんすが一つしかない",
+      "フォーンなどこの世にいるはずがない"
+    ],
+    "answer": "本当なら、洋服だんすに行くたびに誰でもその国を見つけられるはずだ",
+    "explain": "\"if it was real why doesn't everyone find this country every time they go to the wardrobe?\" 自分たちが見たときには何もなかった。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "スーザンが挙げた反論「時間がなかった」とは、どういうことか？",
+    "choices": [
+      "部屋を出た瞬間に追いかけてきたので、1分もたっていなかった",
+      "ルーシーは学校に行く時間だった",
+      "洋服だんすを調べる時間がなかった",
+      "教授に相談する時間がなかった"
+    ],
+    "answer": "部屋を出た瞬間に追いかけてきたので、1分もたっていなかった",
+    "explain": "\"She came running after us the very moment we were out of the room. It was less than a minute, and she pretended to have been away for hours.\"",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "「時間がなかった」という点について、教授はどう言ったか？",
+    "choices": [
+      "まさにそのことが、話をいかにも本当らしくしている",
+      "だからルーシーの話は嘘だと分かる",
+      "時計が壊れていたのだろう",
+      "スーザンの勘違いだ"
+    ],
+    "answer": "まさにそのことが、話をいかにも本当らしくしている",
+    "explain": "\"That is the very thing that makes her story so likely to be true.\" 作り話なら、もっともらしく長く隠れていたはず。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "教授は自分の家について何と言ったか？",
+    "choices": [
+      "とても不思議な家で、自分でさえほとんど何も知らない",
+      "自分が建てた家なので隅々まで知っている",
+      "最近買ったばかりの家だ",
+      "何の変哲もない普通の家だ"
+    ],
+    "answer": "とても不思議な家で、自分でさえほとんど何も知らない",
+    "explain": "\"I should warn you that this is a very strange house, and even I know very little about it\"",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "q": "教授の考えでは、別の世界に独自の時間が流れているとすると、どうなるか？",
+    "choices": [
+      "向こうにどれだけ長くいても、こちらの時間は少しもたたない",
+      "向こうの1日がこちらの1年になる",
+      "向こうに行くと年をとらなくなる",
+      "こちらに戻ってこられなくなる"
+    ],
+    "answer": "向こうにどれだけ長くいても、こちらの時間は少しもたたない",
+    "explain": "\"the other world had a separate time of its own; so that however long you stayed there it would never take up any of our time.\"",
+    "chapter": 5,
+    "round": "第3回"
   }
 ]

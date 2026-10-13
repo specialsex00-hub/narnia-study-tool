@@ -236,5 +236,145 @@
     "explain": "you have always found someone truthful（その人が正直だと分かっている）の someone が先行詞になり、目的格の whom が使われている。",
     "chapter": 5,
     "round": "第2回"
+  },
+  {
+    "point": "have only to do（〜しさえすればよい）",
+    "en": "One has only to look at her and talk to her ___ see that she is not mad.",
+    "choices": [
+      "to",
+      "for",
+      "and",
+      "in"
+    ],
+    "answer": "to",
+    "explain": "have only to do「〜しさえすればよい」。後ろの to see は結果・目的の不定詞で「見て話しさえすれば、〜が分かる」。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "either A or B（AかBのどれか）",
+    "en": "___ your sister is telling lies, or she is mad, or she is telling the truth.",
+    "choices": [
+      "Either",
+      "Neither",
+      "Both",
+      "Whether"
+    ],
+    "answer": "Either",
+    "explain": "either A or B (or C)「AかBか（Cか）のどれか」。Neither は nor と、Both は and と組む。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "形式主語 it（it is … that 〜）",
+    "en": "You know she doesn't tell lies and it is obvious ___ she is not mad.",
+    "choices": [
+      "that",
+      "what",
+      "which",
+      "if"
+    ],
+    "answer": "that",
+    "explain": "it は形式主語で、that 以下が本当の主語。「彼女が気が変になっていないことは明らかだ」。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "unless（〜しない限り）",
+    "en": "For the moment then and ___ any further evidence turns up, we must assume that she is telling the truth.",
+    "choices": [
+      "unless",
+      "if",
+      "until",
+      "since"
+    ],
+    "answer": "unless",
+    "explain": "unless「〜しない限り」（≒ if … not）。「何かほかの証拠が出てこない限り、本当のことを言っていると考えるべきだ」。if だと意味が逆になる。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "make fun of（〜をからかう）",
+    "en": "… was quite sure from the expression on his face that he was not making fun ___ them.",
+    "choices": [
+      "of",
+      "at",
+      "with",
+      "to"
+    ],
+    "answer": "of",
+    "explain": "make fun of 〜「〜をからかう」。同じ意味の laugh at、第2回の jeer at と前置詞の違いに注意。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "have A to do with B（AがBと関係がある）",
+    "en": "\"What has that to do ___ it?\" said the Professor.",
+    "choices": [
+      "with",
+      "for",
+      "of",
+      "about"
+    ],
+    "answer": "with",
+    "explain": "have A to do with B「AがBと関係がある」。What has A to do with B? は「AがBと何の関係があるのか（関係ない）」という修辞疑問。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "完了不定詞（to have＋過去分詞）",
+    "en": "It was less than a minute, and she pretended to have ___ away for hours.",
+    "choices": [
+      "been",
+      "be",
+      "being",
+      "was"
+    ],
+    "answer": "been",
+    "explain": "to have been は完了不定詞で、pretended（ふりをした）時点より前のこと「何時間も行っていた」を表す。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "関係代名詞 that（先行詞に the very）",
+    "en": "\"That is the very thing ___ makes her story so likely to be true,\" said the Professor.",
+    "choices": [
+      "that",
+      "what",
+      "where",
+      "whom"
+    ],
+    "answer": "that",
+    "explain": "先行詞 the very thing（まさにそのこと）を受ける主格の関係代名詞。先行詞に the very・the only・最上級などが付くと that が好まれる。what は先行詞を含むので不可。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "of one's own（独自の）",
+    "en": "… I should not be at all surprised to find that the other world had a separate time of ___ own.",
+    "choices": [
+      "its",
+      "it",
+      "it's",
+      "their"
+    ],
+    "answer": "its",
+    "explain": "of one's own「自分自身の、独自の」。the other world を受けるので its。it's は it is の短縮形。",
+    "chapter": 5,
+    "round": "第3回"
+  },
+  {
+    "point": "however（どんなに〜しても）",
+    "en": "… so that ___ long you stayed there it would never take up any of our time.",
+    "choices": [
+      "however",
+      "whatever",
+      "whenever",
+      "although"
+    ],
+    "answer": "however",
+    "explain": "however＋形容詞・副詞＋S V「どんなに〜しても」。however long you stayed there＝向こうにどれだけ長くいても。",
+    "chapter": 5,
+    "round": "第3回"
   }
 ]
