@@ -376,5 +376,145 @@
     "explain": "however＋形容詞・副詞＋S V「どんなに〜しても」。however long you stayed there＝向こうにどれだけ長くいても。",
     "chapter": 5,
     "round": "第3回"
+  },
+  {
+    "point": "for oneself（自分で）",
+    "en": "On the other hand, I don't think many girls of her age would invent that idea ___ themselves.",
+    "choices": [
+      "for",
+      "of",
+      "to",
+      "at"
+    ],
+    "answer": "for",
+    "explain": "for oneself「自分で、独力で」。主語 many girls を受けて themselves。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "仮定法過去完了",
+    "en": "If she had been pretending, she would have ___ for a reasonable time before coming out and telling her story.",
+    "choices": [
+      "hidden",
+      "hid",
+      "hide",
+      "hiding"
+    ],
+    "answer": "hidden",
+    "explain": "If S had＋過去分詞, S would have＋過去分詞「（あのとき）もし〜していたなら、…しただろう」。hide-hid-hidden。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "比較級で最上級の意味",
+    "en": "\"Nothing is ___ probable,\" said the Professor.",
+    "choices": [
+      "more",
+      "most",
+      "much",
+      "very"
+    ],
+    "answer": "more",
+    "explain": "Nothing is more＋形容詞 (than 〜)「〜ほど…なものはない」。than 以下（that there could be other worlds …）が省略されている。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "be to 不定詞（予定・義務）",
+    "en": "\"But what are we ___ do?\" said Susan.",
+    "choices": [
+      "to",
+      "for",
+      "going",
+      "must"
+    ],
+    "answer": "to",
+    "explain": "be to do「〜すべきだ、〜することになっている」。What are we to do?「私たちはどうすればいいのか」。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "関係代名詞 which（2つの節が並列）",
+    "en": "\"there is one plan ___ no one has yet suggested and which is well worth trying.\"",
+    "choices": [
+      "which",
+      "what",
+      "who",
+      "where"
+    ],
+    "answer": "which",
+    "explain": "先行詞 one plan に、which no one has yet suggested（目的格）と which is well worth trying（主格）の2つの節が and でかかっている。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "be worth -ing（〜する価値がある）",
+    "en": "\"there is one plan which no one has yet suggested and which is well worth ___.\"",
+    "choices": [
+      "trying",
+      "to try",
+      "try",
+      "tried"
+    ],
+    "answer": "trying",
+    "explain": "be worth -ing「〜する価値がある」。worth の後ろは動名詞。well は「大いに」と worth を強める。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "try -ing（試しに〜してみる）",
+    "en": "\"We might all try ___ our own business,\" said he.",
+    "choices": [
+      "minding",
+      "to mind",
+      "mind",
+      "minded"
+    ],
+    "answer": "minding",
+    "explain": "try -ing「試しに〜してみる」（try to do は「〜しようと努力する」）。mind one's own business「他人のことに口出ししない」。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "比較級の強調（a good deal）",
+    "en": "After this, things were a good deal ___ for Lucy.",
+    "choices": [
+      "better",
+      "good",
+      "best",
+      "well"
+    ],
+    "answer": "better",
+    "explain": "a good deal＋比較級「ずっと〜」。much / far / a lot も比較級を強める。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "neither A nor B（AもBも〜ない）",
+    "en": "… and neither she ___ anyone else felt inclined to talk about the wardrobe at all.",
+    "choices": [
+      "nor",
+      "or",
+      "and",
+      "but"
+    ],
+    "answer": "nor",
+    "explain": "neither A nor B「AもBも〜ない」。either A or B（AかBのどちらか）と区別する。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "point": "it looks as if 〜（まるで〜のように見える）",
+    "en": "And so for a time it looked as ___ all the adventures were coming to an end.",
+    "choices": [
+      "if",
+      "like",
+      "so",
+      "than"
+    ],
+    "answer": "if",
+    "explain": "it looks as if 〜「まるで〜のように見える」。as though も同じ意味。",
+    "chapter": 5,
+    "round": "第4回"
   }
 ]

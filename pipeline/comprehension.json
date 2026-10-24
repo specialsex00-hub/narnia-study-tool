@@ -297,5 +297,109 @@
     "explain": "\"the other world had a separate time of its own; so that however long you stayed there it would never take up any of our time.\"",
     "chapter": 5,
     "round": "第3回"
+  },
+  {
+    "q": "教授が「あの子くらいの女の子が自分で思いつくとは思えない」と言った考えとは？",
+    "choices": [
+      "別の世界には独自の時間があり、向こうにどれだけいてもこちらの時間はたたない",
+      "洋服だんすの奥に別の国がある",
+      "フォーンという生き物がいる",
+      "教授の家はとても不思議な家だ"
+    ],
+    "answer": "別の世界には独自の時間があり、向こうにどれだけいてもこちらの時間はたたない",
+    "explain": "that idea は直前の \"the other world had a separate time of its own; so that however long you stayed there it would never take up any of our time.\" を指す。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "教授によると、もしルーシーがふりをしていたのなら、どうしたはずか？",
+    "choices": [
+      "それらしく思えるだけの時間隠れてから、出てきて話をした",
+      "すぐに部屋から出てきた",
+      "洋服だんすのことは話さなかった",
+      "エドマンドと口裏を合わせた"
+    ],
+    "answer": "それらしく思えるだけの時間隠れてから、出てきて話をした",
+    "explain": "\"If she had been pretending, she would have hidden for a reasonable time before coming out and telling her story.\"（仮定法過去完了）",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "\"Nothing is more probable\" と言いながら、教授は何をしていたか？",
+    "choices": [
+      "眼鏡を外して磨いていた",
+      "本棚から本を取り出していた",
+      "窓の外を眺めていた",
+      "パイプに火をつけていた"
+    ],
+    "answer": "眼鏡を外して磨いていた",
+    "explain": "\"taking off his spectacles and beginning to polish them, while he muttered to himself …\"",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "スーザンが「話が本題からそれ始めている」と感じたのはなぜか？",
+    "choices": [
+      "知りたいのは「どうすればいいか」なのに、教授は論理や学校の話をしていたから",
+      "教授が急に昔の思い出話を始めたから",
+      "ピーターが別の質問を始めたから",
+      "教授が居眠りを始めたから"
+    ],
+    "answer": "知りたいのは「どうすればいいか」なのに、教授は論理や学校の話をしていたから",
+    "explain": "スーザンは \"But what are we to do?\" と聞いている。get off the point「本題からそれる」。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "教授が「試してみる価値が大いにある」と言った方法は？",
+    "choices": [
+      "みんなが他人のことに口出ししないようにすること",
+      "もう一度洋服だんすを調べること",
+      "ルーシーを医者に連れて行くこと",
+      "両親に手紙を書くこと"
+    ],
+    "answer": "みんなが他人のことに口出ししないようにすること",
+    "explain": "\"We might all try minding our own business.\" mind one's own business「他人のことに口出ししない」。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "その後、ルーシーにとって状況がずいぶん良くなったのはなぜか？",
+    "choices": [
+      "ピーターが、エドマンドがルーシーをからかうのをやめるように取り計らったから",
+      "エドマンドがルーシーに謝ったから",
+      "教授がルーシーの話を信じると皆に言ったから",
+      "ルーシーが洋服だんすの話をやめたから"
+    ],
+    "answer": "ピーターが、エドマンドがルーシーをからかうのをやめるように取り計らったから",
+    "explain": "\"Peter saw to it that Edmund stopped jeering at her\" see to it that 〜「〜するように取り計らう」。",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "洋服だんすの話題は、その後どうなったか？",
+    "choices": [
+      "誰も話す気にならない、どちらかというと気味の悪い話題になった",
+      "みんなが毎日話す楽しい話題になった",
+      "教授だけが話題にした",
+      "エドマンドがいつも持ち出した"
+    ],
+    "answer": "誰も話す気にならない、どちらかというと気味の悪い話題になった",
+    "explain": "\"neither she nor anyone else felt inclined to talk about the wardrobe at all. It had become a rather alarming subject.\"",
+    "chapter": 5,
+    "round": "第4回"
+  },
+  {
+    "q": "イギリス中から人々が教授の家にやって来たのはなぜか？",
+    "choices": [
+      "家がとても古くて有名で、中を見学させてほしかったから",
+      "教授の講義を聞きたかったから",
+      "家が売りに出されていたから",
+      "教授が客を招待していたから"
+    ],
+    "answer": "家がとても古くて有名で、中を見学させてほしかったから",
+    "explain": "\"was so old and famous that people from all over England used to come and ask permission to see over it.\" so … that 〜「とても…なので〜」。",
+    "chapter": 5,
+    "round": "第4回"
   }
 ]

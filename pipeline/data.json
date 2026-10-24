@@ -623,6 +623,230 @@
       "chapter": 5,
       "gloss": "（時間・場所を）とる、使う",
       "round": "第3回"
+    },
+    {
+      "term": "be to do",
+      "enHtml": "\"But what <mark>are we to do</mark>?\" said Susan.",
+      "jp": "「でも、私たちはどうすればいいんでしょう？」とスーザンは言った。",
+      "chapter": 5,
+      "gloss": "〜すべきだ、〜することになっている（What are we to do?＝私たちはどうすればいいのか）",
+      "round": "第4回"
+    },
+    {
+      "term": "get off the point",
+      "enHtml": "She felt that the conversation was beginning to <mark>get off the point</mark>.",
+      "jp": "話が本題からそれ始めているような気がしたのだ。",
+      "chapter": 5,
+      "gloss": "本題からそれる",
+      "round": "第4回"
+    },
+    {
+      "term": "no one has yet done",
+      "enHtml": "\"My dear young lady,\" said the Professor, suddenly looking up with a very sharp expression at both of them, \"there is one plan which <mark>no one has yet suggested</mark> and which is well worth trying.\"",
+      "jp": "「お嬢さん」と教授は、急にとても鋭い顔つきで二人を見上げて言った。「まだ誰も言い出していないが、試してみる価値の大いにある方法が一つあるよ」",
+      "chapter": 5,
+      "gloss": "まだ誰も〜していない（yet は否定の意味の文で「まだ」）",
+      "round": "第4回"
+    },
+    {
+      "term": "mind one's own business",
+      "enHtml": "\"We might all try <mark>minding our own business</mark>,\" said he.",
+      "jp": "「みんなで、他人のことに口出しせず、自分のことだけを気にかけるようにしてみてはどうかね」と教授は言った。",
+      "chapter": 5,
+      "gloss": "他人のことに口出ししない、自分のことだけを気にかける",
+      "round": "第4回"
+    },
+    {
+      "term": "see to it that 〜",
+      "enHtml": "Peter <mark>saw to it that</mark> Edmund stopped jeering at her, and neither she nor anyone else felt inclined to talk about the wardrobe at all.",
+      "jp": "ピーターは、エドマンドがルーシーをからかうのをやめるように気をつけて見張っていたし、ルーシーもほかの誰も、洋服だんすのことを話す気にはまったくならなかった。",
+      "chapter": 5,
+      "gloss": "〜するように取り計らう、必ず〜するようにする（it は that 以下を指す）",
+      "round": "第4回"
+    },
+    {
+      "term": "alarming",
+      "enHtml": "It had become a rather <mark>alarming</mark> subject.",
+      "jp": "それは、どちらかというと気味の悪い話題になっていたのだ。",
+      "chapter": 5,
+      "gloss": "気味の悪い、不安にさせる",
+      "round": "第4回"
+    },
+    {
+      "term": "be not to be",
+      "enHtml": "And so for a time it looked as if all the adventures were coming to an end; but that <mark>was not to be</mark>.",
+      "jp": "こうしてしばらくの間は、冒険はすべて終わりに近づいているかのように見えた。しかし、そうはならなかった。",
+      "chapter": 5,
+      "gloss": "そうなる運命ではない、そうはならない（be to 不定詞の「運命」）",
+      "round": "第4回"
+    },
+    {
+      "term": "may well 〜",
+      "enHtml": "It was the sort of house that is mentioned in guide books and even in histories; and <mark>well</mark> it <mark>might be</mark>, for all manner of stories were told about it, some of them even stranger than the one I am telling you now.",
+      "jp": "それは旅行案内書や、歴史の本にさえ出てくるような家だった。それももっともなことで、この家についてはありとあらゆる話が伝わっていて、中には今私がお話ししているこの物語よりも、もっと不思議なものさえあったのだ。",
+      "chapter": 5,
+      "gloss": "〜するのももっともだ（well it might be＝it might well be の倒置）",
+      "round": "第4回"
+    },
+    {
+      "term": "for ＋文（接続詞）",
+      "enHtml": "It was the sort of house that is mentioned in guide books and even in histories; and well it might be, <mark>for</mark> all manner of stories were told about it, some of them even stranger than the one I am telling you now.",
+      "jp": "それは旅行案内書や、歴史の本にさえ出てくるような家だった。それももっともなことで、この家についてはありとあらゆる話が伝わっていて、中には今私がお話ししているこの物語よりも、もっと不思議なものさえあったのだ。",
+      "chapter": 5,
+      "gloss": "というのも〜だから（理由をあとから付け加える）",
+      "round": "第4回"
+    },
+    {
+      "term": "all manner of 〜",
+      "enHtml": "It was the sort of house that is mentioned in guide books and even in histories; and well it might be, for <mark>all manner of</mark> stories were told about it, some of them even stranger than the one I am telling you now.",
+      "jp": "それは旅行案内書や、歴史の本にさえ出てくるような家だった。それももっともなことで、この家についてはありとあらゆる話が伝わっていて、中には今私がお話ししているこの物語よりも、もっと不思議なものさえあったのだ。",
+      "chapter": 5,
+      "gloss": "あらゆる種類の〜",
+      "round": "第4回"
+    },
+    {
+      "term": "on the other hand",
+      "enHtml": "<mark>On the other hand</mark>, I don't think many girls of her age would invent that idea for themselves.",
+      "jp": "その一方で、あの子くらいの年の女の子で、そんな考えを自分で思いつく子はあまりいないと思う。",
+      "chapter": 5,
+      "gloss": "その一方で、他方では",
+      "round": "第4回"
+    },
+    {
+      "term": "invent",
+      "enHtml": "On the other hand, I don't think many girls of her age would <mark>invent</mark> that idea for themselves.",
+      "jp": "その一方で、あの子くらいの年の女の子で、そんな考えを自分で思いつく子はあまりいないと思う。",
+      "chapter": 5,
+      "gloss": "（話・考えを）作り出す、でっち上げる",
+      "round": "第4回"
+    },
+    {
+      "term": "for oneself",
+      "enHtml": "On the other hand, I don't think many girls of her age would invent that idea <mark>for themselves</mark>.",
+      "jp": "その一方で、あの子くらいの年の女の子で、そんな考えを自分で思いつく子はあまりいないと思う。",
+      "chapter": 5,
+      "gloss": "自分で、独力で",
+      "round": "第4回"
+    },
+    {
+      "term": "reasonable",
+      "enHtml": "If she had been pretending, she would have hidden for a <mark>reasonable</mark> time before coming out and telling her story.\"",
+      "jp": "もしふりをしていたのなら、出てきて話をする前に、それらしく思えるだけの時間は隠れていただろうからね」",
+      "chapter": 5,
+      "gloss": "それなりの、妥当な（for a reasonable time＝それらしく思えるだけの時間）",
+      "round": "第4回"
+    },
+    {
+      "term": "all over the place",
+      "enHtml": "\"But do you really mean, sir,\" said Peter, \"that there could be other worlds - <mark>all over the place</mark>, just round the corner - like that?\"",
+      "jp": "「でも先生、本当に」とピーターは言った。「そんなふうに別の世界が――あちこちに、すぐそこの角を曲がったところに――ありうるとおっしゃるんですか？」",
+      "chapter": 5,
+      "gloss": "あちこちに、至る所に",
+      "round": "第4回"
+    },
+    {
+      "term": "probable",
+      "enHtml": "\"Nothing is more <mark>probable</mark>,\" said the Professor, taking off his spectacles and beginning to polish them, while he muttered to himself, \"I wonder what they do teach them at these schools.\"",
+      "jp": "「これほどありそうなことはないよ」と教授は言い、眼鏡を外して磨き始めながら、「近ごろの学校では、いったい何を教えているのやら」とひとりつぶやいた。",
+      "chapter": 5,
+      "gloss": "ありそうな、起こりそうな（Nothing is more probable＝これほどありそうなことはない）",
+      "round": "第4回"
+    },
+    {
+      "term": "take off",
+      "enHtml": "\"Nothing is more probable,\" said the Professor, <mark>taking off</mark> his spectacles and beginning to polish them, while he muttered to himself, \"I wonder what they do teach them at these schools.\"",
+      "jp": "「これほどありそうなことはないよ」と教授は言い、眼鏡を外して磨き始めながら、「近ごろの学校では、いったい何を教えているのやら」とひとりつぶやいた。",
+      "chapter": 5,
+      "gloss": "（眼鏡・服などを）外す、脱ぐ",
+      "round": "第4回"
+    },
+    {
+      "term": "polish",
+      "enHtml": "\"Nothing is more probable,\" said the Professor, taking off his spectacles and beginning to <mark>polish</mark> them, while he muttered to himself, \"I wonder what they do teach them at these schools.\"",
+      "jp": "「これほどありそうなことはないよ」と教授は言い、眼鏡を外して磨き始めながら、「近ごろの学校では、いったい何を教えているのやら」とひとりつぶやいた。",
+      "chapter": 5,
+      "gloss": "磨く",
+      "round": "第4回"
+    },
+    {
+      "term": "mutter to oneself",
+      "enHtml": "\"Nothing is more probable,\" said the Professor, taking off his spectacles and beginning to polish them, while he <mark>muttered to himself</mark>, \"I wonder what they do teach them at these schools.\"",
+      "jp": "「これほどありそうなことはないよ」と教授は言い、眼鏡を外して磨き始めながら、「近ごろの学校では、いったい何を教えているのやら」とひとりつぶやいた。",
+      "chapter": 5,
+      "gloss": "ひとりつぶやく",
+      "round": "第4回"
+    },
+    {
+      "term": "be worth -ing",
+      "enHtml": "\"My dear young lady,\" said the Professor, suddenly looking up with a very sharp expression at both of them, \"there is one plan which no one has yet suggested and which is well <mark>worth trying</mark>.\"",
+      "jp": "「お嬢さん」と教授は、急にとても鋭い顔つきで二人を見上げて言った。「まだ誰も言い出していないが、試してみる価値の大いにある方法が一つあるよ」",
+      "chapter": 5,
+      "gloss": "〜する価値がある（well worth trying＝試してみる価値が大いにある）",
+      "round": "第4回"
+    },
+    {
+      "term": "a good deal＋比較級",
+      "enHtml": "After this, things were <mark>a good deal better</mark> for Lucy.",
+      "jp": "それからは、ルーシーにとって状況はずいぶん良くなった。",
+      "chapter": 5,
+      "gloss": "ずっと〜、かなり〜（比較級の強調）",
+      "round": "第4回"
+    },
+    {
+      "term": "neither A nor B",
+      "enHtml": "Peter saw to it that Edmund stopped jeering at her, and <mark>neither</mark> she <mark>nor</mark> anyone else felt inclined to talk about the wardrobe at all.",
+      "jp": "ピーターは、エドマンドがルーシーをからかうのをやめるように気をつけて見張っていたし、ルーシーもほかの誰も、洋服だんすのことを話す気にはまったくならなかった。",
+      "chapter": 5,
+      "gloss": "AもBも〜ない",
+      "round": "第4回"
+    },
+    {
+      "term": "feel inclined to do",
+      "enHtml": "Peter saw to it that Edmund stopped jeering at her, and neither she nor anyone else <mark>felt inclined to</mark> talk about the wardrobe at all.",
+      "jp": "ピーターは、エドマンドがルーシーをからかうのをやめるように気をつけて見張っていたし、ルーシーもほかの誰も、洋服だんすのことを話す気にはまったくならなかった。",
+      "chapter": 5,
+      "gloss": "〜したい気がする、〜する気になる",
+      "round": "第4回"
+    },
+    {
+      "term": "for a time",
+      "enHtml": "And so <mark>for a time</mark> it looked as if all the adventures were coming to an end; but that was not to be.",
+      "jp": "こうしてしばらくの間は、冒険はすべて終わりに近づいているかのように見えた。しかし、そうはならなかった。",
+      "chapter": 5,
+      "gloss": "しばらくの間",
+      "round": "第4回"
+    },
+    {
+      "term": "it looks as if 〜",
+      "enHtml": "And so for a time <mark>it looked as if</mark> all the adventures were coming to an end; but that was not to be.",
+      "jp": "こうしてしばらくの間は、冒険はすべて終わりに近づいているかのように見えた。しかし、そうはならなかった。",
+      "chapter": 5,
+      "gloss": "まるで〜のように見える",
+      "round": "第4回"
+    },
+    {
+      "term": "come to an end",
+      "enHtml": "And so for a time it looked as if all the adventures were <mark>coming to an end</mark>; but that was not to be.",
+      "jp": "こうしてしばらくの間は、冒険はすべて終わりに近づいているかのように見えた。しかし、そうはならなかった。",
+      "chapter": 5,
+      "gloss": "終わる",
+      "round": "第4回"
+    },
+    {
+      "term": "used to do",
+      "enHtml": "This house of the Professor's - which even he knew so little about - was so old and famous that people from all over England <mark>used to</mark> come and ask permission to see over it.",
+      "jp": "この教授の家は――教授自身でさえほとんど何も知らないのだが――とても古くて有名だったので、イギリス中から人々がやって来ては、中を見学させてほしいと頼んだものだった。",
+      "chapter": 5,
+      "gloss": "以前はよく〜したものだ",
+      "round": "第4回"
+    },
+    {
+      "term": "see over 〜",
+      "enHtml": "This house of the Professor's - which even he knew so little about - was so old and famous that people from all over England used to come and ask permission to <mark>see over</mark> it.",
+      "jp": "この教授の家は――教授自身でさえほとんど何も知らないのだが――とても古くて有名だったので、イギリス中から人々がやって来ては、中を見学させてほしいと頼んだものだった。",
+      "chapter": 5,
+      "gloss": "（建物など）を見て回る、見学する",
+      "round": "第4回"
     }
   ],
   "underline": [
@@ -789,6 +1013,67 @@
       "note": "最初の That＝直前のスーザンの発言「ルーシーには時間がなかった。私たちが部屋を出た瞬間に追いかけてきて、1分もたっていなかったのに、何時間も向こうに行っていたふりをした」ということ。2つ目の that は関係代名詞（主格）で、先行詞は the very thing（まさにその〜）。make O C「OをCにする」、be likely to do「〜しそうだ」。スーザンは「時間がなかった」ことを嘘の証拠だと思ったが、教授は逆に本当らしい理由だと言っている（続きで、別の世界には独自の時間がある、と説明する）。",
       "chapter": 5,
       "round": "第3回"
+    },
+    {
+      "underline": "that idea",
+      "task": "1. 訳しましょう　2. それでは、教授は、ルーシーくらいの女の子はどのように振る舞うのが普通だと言っているか？",
+      "enHtml": "On the other hand, I don't think many girls of her age would invent <u>that idea</u> for themselves.",
+      "jp": "その一方で、あの子くらいの年の女の子で、そんな考えを自分で思いつく子が多いとは思わない。",
+      "note": "that idea＝直前の「別の世界にはこちらとは別の独自の時間が流れていて、向こうにどれだけ長くいても、こちらの時間はまったくたたない」という考え。I don't think 〜 は「〜とは思わない」と否定を後ろに回して訳すと自然。for oneself「自分で」、invent「作り出す」。2. 普通の振る舞い：ふりをしているのなら、出てきて話をする前に、それらしく思えるだけの時間は隠れているはずだ（If she had been pretending, she would have hidden for a reasonable time before coming out and telling her story.＝仮定法過去完了）。だから1分で戻って何時間も行っていたと言うのは作り話として不自然＝本当らしい。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "probableの後に省略されているものを同じページから抜き出しましょう",
+      "enHtml": "'Nothing is more probable.'",
+      "jp": "「（そんなふうに別の世界があちこちに、すぐそこの角を曲がったところにあるということ）ほどありそうなことはないよ。」",
+      "note": "省略されているもの：Nothing is more probable (than that there could be other worlds - all over the place, just round the corner - like that).　直前のピーターの質問 \"But do you really mean, sir, that there could be other worlds - all over the place, just round the corner - like that?\" の that 以下。Nothing is more＋形容詞 (than 〜)「〜ほど…なものはない」（比較級で最上級の意味）。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "She felt that the conversation was beginning to get off the point.",
+      "jp": "スーザンは、話が本題からそれ始めているような気がした。",
+      "note": "get off the point「本題からそれる」。the point は「要点、本題」（第1回の that's just the point と同じ point）。スーザンが知りたいのは「これからどうすればいいか（What are we to do?）」なのに、教授は論理や「学校で何を教えているのやら」という話をしているので、そう感じた。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "1. 訳しましょう　2. planの内容を説明しましょう",
+      "enHtml": "There is one plan which no one has yet suggested and which is well worth trying.",
+      "jp": "まだ誰も言い出していないが、試してみる価値の大いにある方法が一つあるよ。",
+      "note": "which no one has yet suggested と which is well worth trying の2つの関係代名詞節が、どちらも one plan にかかる（1つ目は目的格、2つ目は主格）。be worth -ing「〜する価値がある」、well は worth を強める。2. plan の内容：直後の \"We might all try minding our own business.\"＝みんなが他人のことに口出しせず、自分のことだけを気にかけるようにしてみること（ルーシーの話を詮索したり問い詰めたりせず、そっとしておくこと）。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "Peter saw to it that Edmund stopped jeering at her.",
+      "jp": "ピーターは、エドマンドがルーシーをからかうのをやめるように気をつけて取り計らった。",
+      "note": "see to it that 〜「〜するように取り計らう、必ず〜するようにする（ensure）」。it は形式目的語で that 以下を指す。stop -ing「〜するのをやめる」（stop to do は「〜するために立ち止まる」）。jeer at 〜「〜をあざける」（第2回の単語）。課題プリントでは see だが本文は saw。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "underline": "but that was not to be",
+      "task": "thatの内容を明らかにして下線部を訳しましょう",
+      "enHtml": "And so for a time it looked as if all the adventures were coming to an end; <u>but that was not to be</u>.",
+      "jp": "こうしてしばらくの間は、冒険はすべて終わりに近づいているかのように見えた。しかし、冒険がすべて終わってしまうということにはならなかった（そうなる運命ではなかった）。",
+      "note": "that＝直前の「冒険がすべて終わりに近づいている（終わってしまう）」ということ。be not to be は be to 不定詞の「運命」の用法で「そうなる運命ではなかった、そうはならなかった」。it looked as if 〜「〜であるかのように見えた」。come to an end「終わる」。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "underline": "it / it",
+      "task": "下線部の指すものを明らかにして訳しましょう",
+      "enHtml": "It was the sort of house that is mentioned in guide books and even in histories; and well <u>it</u> might be, for all manner of stories were told about <u>it</u>, some of them even stranger than the one I am telling you now.",
+      "jp": "それは旅行案内書や歴史の本にさえ出てくるような家だった。そして、教授の家がそういう本に出てくるのも当然のことだった。というのも、その家についてはありとあらゆる話が伝わっていて、中には今私がお話ししているこの物語よりもっと不思議なものさえあったからだ。",
+      "note": "どちらの it も「教授の家（This house of the Professor's）」。1つ目は well it might be (mentioned in guide books and histories) と省略されている。well it might be は it might well be の倒置で、may / might well 〜「〜するのももっともだ」。for は接続詞で「というのも〜だから」。all manner of 〜「あらゆる種類の〜」。the one＝the story。I は語り手（作者）。",
+      "chapter": 5,
+      "round": "第4回"
     }
   ],
   "quiz": [
@@ -1013,6 +1298,78 @@
       "jp": "「まさにそのことが、あの子の話をいかにも本当らしくしているのだよ」と教授は言った。",
       "chapter": 5,
       "round": "第3回"
+    },
+    {
+      "en": "If she had been pretending, she would have hidden for a reasonable time before coming out and telling her story.\"",
+      "jp": "もしふりをしていたのなら、出てきて話をする前に、それらしく思えるだけの時間は隠れていただろうからね」",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "\"But do you really mean, sir,\" said Peter, \"that there could be other worlds - all over the place, just round the corner - like that?\"",
+      "jp": "「でも先生、本当に」とピーターは言った。「そんなふうに別の世界が――あちこちに、すぐそこの角を曲がったところに――ありうるとおっしゃるんですか？」",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "\"Nothing is more probable,\" said the Professor, taking off his spectacles and beginning to polish them, while he muttered to himself, \"I wonder what they do teach them at these schools.\"",
+      "jp": "「これほどありそうなことはないよ」と教授は言い、眼鏡を外して磨き始めながら、「近ごろの学校では、いったい何を教えているのやら」とひとりつぶやいた。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "\"But what are we to do?\" said Susan.",
+      "jp": "「でも、私たちはどうすればいいんでしょう？」とスーザンは言った。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "\"We might all try minding our own business,\" said he.",
+      "jp": "「みんなで、他人のことに口出しせず、自分のことだけを気にかけるようにしてみてはどうかね」と教授は言った。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "And that was the end of that conversation.",
+      "jp": "そして、その話はそれで終わりになった。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "After this, things were a good deal better for Lucy.",
+      "jp": "それからは、ルーシーにとって状況はずいぶん良くなった。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "Peter saw to it that Edmund stopped jeering at her, and neither she nor anyone else felt inclined to talk about the wardrobe at all.",
+      "jp": "ピーターは、エドマンドがルーシーをからかうのをやめるように気をつけて見張っていたし、ルーシーもほかの誰も、洋服だんすのことを話す気にはまったくならなかった。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "It had become a rather alarming subject.",
+      "jp": "それは、どちらかというと気味の悪い話題になっていたのだ。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "And so for a time it looked as if all the adventures were coming to an end; but that was not to be.",
+      "jp": "こうしてしばらくの間は、冒険はすべて終わりに近づいているかのように見えた。しかし、そうはならなかった。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "This house of the Professor's - which even he knew so little about - was so old and famous that people from all over England used to come and ask permission to see over it.",
+      "jp": "この教授の家は――教授自身でさえほとんど何も知らないのだが――とても古くて有名だったので、イギリス中から人々がやって来ては、中を見学させてほしいと頼んだものだった。",
+      "chapter": 5,
+      "round": "第4回"
+    },
+    {
+      "en": "\"My dear young lady,\" said the Professor, suddenly looking up with a very sharp expression at both of them, \"there is one plan which no one has yet suggested and which is well worth trying.\"",
+      "jp": "「お嬢さん」と教授は、急にとても鋭い顔つきで二人を見上げて言った。「まだ誰も言い出していないが、試してみる価値の大いにある方法が一つあるよ」",
+      "chapter": 5,
+      "round": "第4回"
     }
   ],
   "yellow_sentences": []
