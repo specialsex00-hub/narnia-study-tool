@@ -424,6 +424,8 @@
   .flip-face{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:270px; padding:30px 22px; background:var(--card); border:2px solid var(--line); border-radius:22px; box-shadow:0 4px 0 var(--line);}
   .flip-face.back{text-align:center; padding:30px 22px; background:linear-gradient(180deg, var(--accent-bg), var(--card) 65%);}
   .flip-face.front .term{font-size:28px; font-weight:800;}
+  #cardDir{flex:0 0 auto;}
+  .flip-face.front .term.jpTerm{font-size:24px; line-height:1.45;}
   .backTerm{font-size:14px; font-weight:700; color:var(--sub); margin-bottom:6px;}
   .gloss-big{font-size:26px; font-weight:800; color:var(--accent); margin:2px 0 6px; line-height:1.4;}
   .context-toggle{margin-top:14px;}
@@ -676,6 +678,10 @@
         <option value="due">復習が必要な語のみ</option>
         <option value="exam">小テストの語のみ</option>
       </select>
+      <div class="seg small" id="cardDir">
+        <button data-d="en">英語 ▶︎ 日本語</button>
+        <button data-d="jp">日本語 ▶︎ 英語</button>
+      </div>
       <span class="progress" id="vocabProgress"></span>
     </div>
     <div id="vocabArea"></div>
@@ -730,8 +736,8 @@ const KOTEST = [];
 
 const STORAGE_KEY = 'narnia-progress';
 // ---- toast + "アップデートしました" notice ----
-const APP_VERSION = "2026.10.24";
-const CHANGELOG = [["2026.10.24", ["第4回（p.57 l.17〜58）のセットを追加しました：単語28語（授業で赤字の重要語句をすべて含む）", "練習問題も追加：下線部訳7問（第3回の課題の続き）・訳の4択12問・内容理解8問・文法10問"]], ["2026.10.13", ["第3回（p.56〜57 l.16）のセットを追加しました：単語28語（授業で赤字の重要語句8件を含む）", "練習問題も追加：下線部訳6問（第3回の課題）・訳の4択14問・内容理解9問・文法10問"]], ["2026.10.09-2", ["マッチ終了後、ランキングがすぐ表示されるようになりました（前回の結果に新しいタイムを入れて先に表示し、裏で最新の順位に更新します）", "パソコンでマッチのカードが大きく、文字も見やすくなりました"]], ["2026.10.09", ["マッチにランキングを追加しました：ニックネームを決めると、セットごとにみんなのタイムと順位が見られます", "ランキングに載るのはニックネームとタイムだけです（参加しないこともできます）"]], ["2026.10.05-4", ["第2回（p.53〜55）のセットを追加しました：単語28語（授業で赤字の重要語句14件を含む）", "練習問題も追加：下線部訳4問（p.55の課題）・訳の4択13問・内容理解8問・文法9問"]], ["2026.10.05-3", ["テストを新しくしました：1問ずつ解く集中モード（上に進み具合のバー、問題番号から移動もできます）", "○×・4択は選ぶと自動で次の問題へ。マッチングはタップで組み合わせる形になりました", "結果画面にライオンと評価、点数・時間・前回比、まちがえた問題だけの答え合わせを追加しました", "テストの設定画面を見やすくし、これまでの成績をグラフで見られるようにしました"]], ["2026.10.05-2", ["下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）", "パソコンでも、スマホと同じ下のタブバーになりました"]], ["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
+const APP_VERSION = "2026.10.26";
+const CHANGELOG = [["2026.10.26", ["単語カードの向きを選べるようになりました：「英語 ▶︎ 日本語」と「日本語 ▶︎ 英語」（選んだ向きは次に開いたときも続きます）"]], ["2026.10.24", ["第4回（p.57 l.17〜58）のセットを追加しました：単語28語（授業で赤字の重要語句をすべて含む）", "練習問題も追加：下線部訳7問（第3回の課題の続き）・訳の4択12問・内容理解8問・文法10問"]], ["2026.10.13", ["第3回（p.56〜57 l.16）のセットを追加しました：単語28語（授業で赤字の重要語句8件を含む）", "練習問題も追加：下線部訳6問（第3回の課題）・訳の4択14問・内容理解9問・文法10問"]], ["2026.10.09-2", ["マッチ終了後、ランキングがすぐ表示されるようになりました（前回の結果に新しいタイムを入れて先に表示し、裏で最新の順位に更新します）", "パソコンでマッチのカードが大きく、文字も見やすくなりました"]], ["2026.10.09", ["マッチにランキングを追加しました：ニックネームを決めると、セットごとにみんなのタイムと順位が見られます", "ランキングに載るのはニックネームとタイムだけです（参加しないこともできます）"]], ["2026.10.05-4", ["第2回（p.53〜55）のセットを追加しました：単語28語（授業で赤字の重要語句14件を含む）", "練習問題も追加：下線部訳4問（p.55の課題）・訳の4択13問・内容理解8問・文法9問"]], ["2026.10.05-3", ["テストを新しくしました：1問ずつ解く集中モード（上に進み具合のバー、問題番号から移動もできます）", "○×・4択は選ぶと自動で次の問題へ。マッチングはタップで組み合わせる形になりました", "結果画面にライオンと評価、点数・時間・前回比、まちがえた問題だけの答え合わせを追加しました", "テストの設定画面を見やすくし、これまでの成績をグラフで見られるようにしました"]], ["2026.10.05-2", ["下のタブバーのデザインを新しくしました（塗りつぶしのアイコン、選んでいるタブに色が付く）", "パソコンでも、スマホと同じ下のタブバーになりました"]], ["2026.10.05", ["単語・練習タブを開くと、まず学習するセット（授業の回）を選ぶ画面になりました", "選んだセットは「‹ セット一覧」を押すまで、カード・学習・テスト・マッチ・練習問題すべてに適用されます", "「すべての章」の選択欄はなくしました"]], ["2026.10.04", ["学習記録の保存方法を改善しました。今後ツールを更新しても記録は消えません", "記録のバックアップ（ファイルへの書き出し・読み込み）をホーム画面の下に追加しました", "スマホで、選んでいない選択肢に色が付いて見えることがある問題を直しました", "アップデートがあると、このお知らせが出るようになりました"]]];
 const SEEN_VERSION_KEY = 'narnia-app-version';
 
 function showToast(icon, title, items, actions){
@@ -813,6 +819,7 @@ function defaultData(){
     kotestScore: {correct:0, total:0},
     learn: {},               // vocab idx -> 1 (学習中) | 2 (習得)  学習モード
     learnWritten: true,      // 学習モードで記述問題を出すか
+    cardDir: 'en',           // カードの向き：'en'＝英語→日本語、'jp'＝日本語→英語
     matchBest: {},           // "round|chapter" -> best time (ms)  マッチ
     testSettings: {count:10, types:{tf:true, mc:true, written:true, matching:true}, dir:'en'},  // テスト
     testHistory: [],         // [{ts, round, chapter, correct, total, pct}]  テスト
@@ -1089,6 +1096,7 @@ function renderVocabRoot(){
   if(vocabMode !== 'test') setExamMode(false);
   document.getElementById('vocabFilter').style.display = (vocabMode==='card') ? '' : 'none';
   document.getElementById('vocabProgress').style.display = (vocabMode==='card') ? '' : 'none';
+  document.getElementById('cardDir').style.display = (vocabMode==='card') ? '' : 'none';
   if(vocabMode === 'card') renderVocabCard();
   else if(vocabMode === 'list') renderVocabList();
   else if(vocabMode === 'match') renderVocabMatch();
@@ -1127,17 +1135,23 @@ function renderVocabCard(){
   const item = VOCAB[gi];
   const st = vocabState(gi);
   const boxLabel = st.box>0 ? `習熟度 ${st.box} / ${BOX_INTERVAL_DAYS.length-1}` : '未学習';
+  const jpFirst = store.data.cardDir === 'jp';
+  document.querySelectorAll('#cardDir button').forEach(b => b.classList.toggle('on', b.dataset.d === (jpFirst ? 'jp' : 'en')));
+  // 日本語→英語では、表に意味（末尾のかっこ書きは答えのヒントになるので省く）、裏に英語
+  const frontText = jpFirst ? shortGloss(item.gloss || '') : item.term;
+  const backSmall = jpFirst ? (item.gloss || '') : item.term;
+  const backBig = jpFirst ? item.term : (item.gloss || '');
   area.innerHTML = `
     <div class="card flip-outer flip-3d" id="flipOuter">
       <div class="flip-inner" id="flipInner">
         <div class="flip-face front">
-          <div class="term">${item.term}</div>
-          <div class="flipHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg>タップして意味を確認</div>
+          <div class="term${jpFirst ? ' jpTerm' : ''}">${frontText}</div>
+          <div class="flipHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg>${jpFirst ? 'タップして英語を確認' : 'タップして意味を確認'}</div>
           <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
         </div>
         <div class="flip-face back">
-          <div class="backTerm">${item.term}</div>
-          <div class="gloss-big">${item.gloss || ''}</div>
+          <div class="backTerm">${backSmall}</div>
+          <div class="gloss-big">${backBig}</div>
           <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
           <div class="context-toggle"><button id="toggleContext">例文を見る</button></div>
           <div class="context-box hidden" id="ctxBox">
@@ -2357,6 +2371,11 @@ document.getElementById('vocabChapter').onchange = (e)=>{
   if(vocabMode==='match') buildMatchGame();
   renderVocabRoot();
 };
+document.querySelectorAll('#cardDir button').forEach(b => b.onclick = ()=>{
+  if(store.data.cardDir === b.dataset.d) return;
+  store.data.cardDir = b.dataset.d; store.save(true);
+  renderVocabCard();   // 同じカードのまま、向きだけ変える
+});
 document.getElementById('vocabFilter').onchange = (e)=>{ vocabFilterMode = e.target.value; vocabFlipped=false; vocabShowContext=false; buildVocabOrder(); renderVocabRoot(); };
 
 // ================= UNDERLINE TAB =================
