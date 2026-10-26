@@ -1,0 +1,93 @@
+{"heading": "授業ワーク（第4回・Chapter 5, part 3 ／ Chapter 6, part 1）",
+ "note": "※ p.62〜63（Chapter 6）はまだ対訳プリントに入っていないため、原作の本文をもとに解答しています。",
+ "items": [
+  {"loc": "p. 59 3 lines from the bottom", "en": "‘Just as if any of us would want to waste half the morning trailing round with a crowd of strange grown-ups!’", "instr": "最初の部分（just as ifの前）に省略された語を補いましょう",
+   "sections": [
+    ["補う語", ["(She talks / She said that) just as if any of us would want to …", "直前のマクレディ夫人の言いつけ「私がお客様を案内しているときは、邪魔にならないところにいること」を受けて、エドマンドが「（あの人の言い方ときたら）まるで〜みたいじゃないか」と文句を言っている。"]],
+    ["訳", ["「（あの人の言い方ときたら、）まるで僕たちの誰かが、知らない大人の集団のあとにぞろぞろついて回って、午前中の半分をむだにしたがるとでもいうみたいだ！」"]],
+    ["注意点", [
+      "as if ＋仮定法（would want）：「まるで〜であるかのように」。実際には「誰もそんなことをしたくない」ので仮定法になっている。just は as if を強める。",
+      "waste 時間 -ing：「〜して時間をむだにする」。trail round：「（人のあとに）だらだらついて回る」。a crowd of 〜：「大勢の〜」。"]]]},
+  {"loc": "p. 60 l. 4", "en": "wondering if they could __take it to bits__",
+   "sections": [
+    ["訳", ["それ（甲冑）をばらばらに分解できないだろうかと考えながら"]],
+    ["注意点", [
+      "take 〜 to bits：「〜をばらばらに分解する」（bit＝小片。take 〜 to pieces も同じ）。it は直前の the suit of armour（ひとそろいの甲冑）。",
+      "wonder if 〜：「〜だろうかと思う」。if は「〜かどうか」（名詞節）。",
+      "全体：Peter and Edmund were looking at the suit of armour and wondering if they could take it to bits when the two girls rushed into the room …（〜していると、そのとき…）。"]]]},
+  {"loc": "p. 60 l. 6", "en": "‘Look out! Here comes the Macready and a whole gang with her.’",
+   "sections": [
+    ["訳", ["「気をつけて！ あのマクレディさんが、大勢の人を引き連れてやって来るわ」"]],
+    ["注意点", [
+      "Look out!：「気をつけて！、危ない！」。",
+      "Here comes 〜：「〜がやって来る」（倒置。主語は the Macready and a whole gang）。",
+      "the Macready：人名に the を付けて「あの（おっかない）マクレディ」と、からかい・反感をこめた言い方。",
+      "a whole gang：「（見学者の）一団、大勢」。gang は本来「一味、ギャング」で、ここでもくだけた、やや悪口っぽい言い方。with her＝彼女と一緒に。"]]]},
+  {"loc": "p. 60 l. 6", "en": "‘Sharp’s the word,’",
+   "sections": [
+    ["訳", ["「急げ！」（ピーターのことば）"]],
+    ["注意点", [
+      "Sharp's the word：「急げ、ぐずぐずするな」という決まり文句（口語・イギリス英語）。sharp は「すばやい、機敏な」。直訳は「合言葉は『すばやく』だ」。",
+      "このあと all four made off through the door …（四人とも奥のドアから急いで逃げ出した）。make off＝急いで逃げる。"]]]},
+  {"loc": "p. 60 9 lines from the bottom", "en": "they seemed to find themselves being followed everywhere.", "instr": "この理由として考えられるものを挙げなさい",
+   "sections": [
+    ["訳", ["四人は、どこへ行っても後をつけられているような気がした。"]],
+    ["考えられる理由", [
+      "① 四人があわてて冷静さを失ったから（whether it was that they lost their heads,）",
+      "② マクレディ夫人が四人を捕まえようとしていたから（or that Mrs Macready was trying to catch them,）",
+      "③ この家の何かの魔法が目を覚まし、四人をナルニアへ追い立てていたから（or that some magic in the house had come to life and was chasing them into Narnia）",
+      "直前のダッシュの間（whether it was that A, or that B, or that C）に、語り手が三つの可能性を挙げている。"]],
+    ["注意点", [
+      "find oneself -ing / 過去分詞：「気がつくと〜している（されている）」。being followed は受け身の進行形「後をつけられている」。",
+      "whether it was that A or that B：「Aだったのか、それともBだったのか」。lose one's head「冷静さを失う、あわてる」。come to life「生き返る、活動し始める」。"]]]},
+  {"loc": "p. 60 8 lines from the bottom", "en": "at last Susan said, ‘Oh bother those trippers!’",
+   "sections": [
+    ["訳", ["とうとうスーザンが言った。「もう、あの見物の人たちったら、うっとうしい！」"]],
+    ["注意点", [
+      "bother 〜!：「〜なんていまいましい、うるさいなあ」といらだちを表す言い方（Bother it! ＝ちぇっ）。",
+      "tripper：「（日帰りの）観光客、行楽客」。ここではやや見下した言い方で、マクレディ夫人が案内している見学者たち（sightseers）のこと。",
+      "at last：「とうとう、ついに」（逃げ回ったあげく）。このあとスーザンは洋服だんすの部屋に隠れようと言い出す。"]]]},
+  {"loc": "p. 62 l. 8", "en": "‘Now that you mention it, it is cold,’ said Peter, ‘and hang it all, it’s wet too.’",
+   "sections": [
+    ["訳", ["「言われてみると、確かに寒いね」とピーターは言った。「それに、ちくしょう、濡れてもいるぞ」"]],
+    ["注意点", [
+      "now that 〜：「今や〜なので、〜した以上は」。Now that you mention it＝「あなたがそう言ったので（言われてみると）」。it は直前のスーザンの \"And isn't it cold?\"（寒くない？）という発言。",
+      "it is cold の is は強く読み、「（言われてみると）確かに寒い」と強調している。",
+      "hang it all：「ちくしょう、くそっ」といういらだちの間投詞（古風な口語）。",
+      "洋服だんすの中なのに寒くて濡れている → もうナルニアの雪の上にいる、という伏線。"]]]},
+  {"loc": "p. 62 6 lines from the bottom", "en": "He struggled to his feet.",
+   "sections": [
+    ["訳", ["ピーターはやっとのことで立ち上がった。"]],
+    ["注意点", [
+      "struggle to one's feet：「苦労して（やっとのことで）立ち上がる」。struggle は「もがく」、to one's feet は「立った状態へ」（get to one's feet＝立ち上がる）。",
+      "狭い洋服だんすの中で四人が押し合っていて、しかも座っている所がどんどん濡れてきたので、もがくようにして立ち上がった。"]]]},
+  {"loc": "p. 63 l. 5", "en": "And now there was no mistaking it.", "instr": "itの内容を明らかにして訳しましょう。",
+   "sections": [
+    ["it の内容", ["四人がルーシーの言っていた森（ナルニア）に入ってしまったということ。直前でピーターが「周りは木ばかりで、この濡れたものは雪だ。やっぱりルーシーの森に来たんだ」と言い、その後で四人は冬の昼の光の中に立っている。"]],
+    ["訳", ["そして今や、自分たちがルーシーの森に来てしまったということは、もう間違えようがなかった。"]],
+    ["注意点", ["There is no -ing：「〜することはできない」（＝It is impossible to do）。mistake は「取り違える、見誤る」。"]]]},
+  {"loc": "p. 63 l. 12", "en": "‘Of course,’ said Lucy, and __did__.",
+   "sections": [
+    ["訳", ["「もちろんよ」とルーシーは言って、握手をした。"]],
+    ["注意点", [
+      "did は代動詞で、直前のピーターの \"Will you shake hands?\"（握手してくれるかい？）を受けて shook hands の代わり。",
+      "ピーターは「信じなくてごめん」とルーシーに謝り、仲直りの握手を求めた。ルーシーはそれに快く応じた。"]]]},
+  {"loc": "p. 63 5 lines from the bottom", "en": "Of course, now __you put it that way,__ I see.", "instr": "下線部の具体的な内容を説明しましょう",
+   "sections": [
+    ["下線部の内容", ["直前のスーザンの言い分：「コートを家の外に持ち出すわけではないし、洋服だんすの外にさえ持ち出さないのだから、（寒いので）コートを着ても誰も気にしないだろう」ということ。"]],
+    ["訳", ["「もちろん、君にそう言われてみると、なるほどと思うよ。」"]],
+    ["注意点", [
+      "now (that) 〜：「〜した今となっては」。put：「言い表す、表現する」。put it that way＝「そういうふうに言う」。",
+      "I see.：「なるほど、分かった」。",
+      "ピーターは最初「僕たちのコートじゃない（They're not ours）」とためらっていたが、スーザンの理屈に納得した。続けて「見つけた洋服だんすの中に置いておく限り、コートを盗んだとは誰も言えない」と言っている。"]]]}
+ ],
+ "writing": {"jp": "あなたがそこまで言うなら（そんな風に言うなら）、私はもうあなたとは一緒にいられないわ。",
+  "en": ["If you put it that way, I can't stay with you any longer.",
+         "（別解）Now that you put it that way, I can't be with you anymore.",
+         "（別解）If that's how you feel, I can't stay with you any more."],
+  "points": [
+    "「そんな風に言う」は本文の put it that way（put＝言い表す）を使う。",
+    "「〜なら」は if、「（そう言われた）以上は」なら now that（本文 p.62 の Now that you mention it と同じ形）。",
+    "「もう〜ない」は not … any longer / not … anymore（any more）。no longer を使って I can no longer stay with you. でもよい。",
+    "「一緒にいる」は stay with 〜 / be with 〜。"]}
+}
