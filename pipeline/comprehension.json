@@ -401,5 +401,109 @@
     "explain": "\"was so old and famous that people from all over England used to come and ask permission to see over it.\" so … that 〜「とても…なので〜」。",
     "chapter": 5,
     "round": "第4回"
+  },
+  {
+    "q": "見学者が来たとき、家の中を案内したのは誰か？",
+    "choices": [
+      "家政婦のマクレディ夫人",
+      "教授",
+      "ピーター",
+      "見学者が自分たちで見て回った"
+    ],
+    "answer": "家政婦のマクレディ夫人",
+    "explain": "\"the Professor always gave them permission, and Mrs Macready, the housekeeper, showed them round\"。教授は許可を与えただけ。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "マクレディ夫人が嫌がったことは？",
+    "choices": [
+      "見学者に説明しているときに邪魔をされること",
+      "教授が見学を許可すること",
+      "子どもたちが図書室で本を読むこと",
+      "見学者が質問をすること"
+    ],
+    "answer": "見学者に説明しているときに邪魔をされること",
+    "explain": "\"did not like to be interrupted when she was telling visitors all the things she knew.\" 夫人は子ども好きでもなかった（not fond of children）。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "マクレディ夫人が最初の朝に子どもたちに言いつけたことは？",
+    "choices": [
+      "見学者を案内しているときは、邪魔にならないところにいること",
+      "見学者の案内を手伝うこと",
+      "図書室には入らないこと",
+      "甲冑に触らないこと"
+    ],
+    "answer": "見学者を案内しているときは、邪魔にならないところにいること",
+    "explain": "\"you're to keep out of the way whenever I'm taking a party over the house.\"",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "冒険が三度目に始まった日の朝、ピーターとエドマンドは何をしていたか？",
+    "choices": [
+      "甲冑を眺めて、分解できないかと考えていた",
+      "図書室で本を読んでいた",
+      "洋服だんすを調べていた",
+      "庭で遊んでいた"
+    ],
+    "answer": "甲冑を眺めて、分解できないかと考えていた",
+    "explain": "\"Peter and Edmund were looking at the suit of armour and wondering if they could take it to bits\"",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "四人が図書室まで逃げたところで、困ったことになったのはなぜか？",
+    "choices": [
+      "マクレディ夫人が、予想と違って裏階段から一行を連れて上がってきたから",
+      "図書室のドアに鍵がかかっていたから",
+      "教授に見つかったから",
+      "エドマンドが迷子になったから"
+    ],
+    "answer": "マクレディ夫人が、予想と違って裏階段から一行を連れて上がってきたから",
+    "explain": "\"Mrs Macready must be bringing her party of sightseers up the back stairs - instead of up the front stairs as they had expected.\"",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "スーザンが洋服だんすの部屋に入ろうと言ったのはなぜか？",
+    "choices": [
+      "あそこなら誰もついてこないと思ったから",
+      "ナルニアに行きたかったから",
+      "コートを着たかったから",
+      "教授がそこにいると思ったから"
+    ],
+    "answer": "あそこなら誰もついてこないと思ったから",
+    "explain": "\"let's go into the Wardrobe Room till they've passed. No one will follow us in there.\"",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "洋服だんすの部屋に入ったあと、四人が洋服だんすに隠れることになったのはなぜか？",
+    "choices": [
+      "誰かがドアを手探りして、取っ手が回るのが見えたから",
+      "マクレディ夫人に命令されたから",
+      "ルーシーがナルニアを見せたがったから",
+      "部屋がとても寒かったから"
+    ],
+    "answer": "誰かがドアを手探りして、取っ手が回るのが見えたから",
+    "explain": "\"someone fumbling at the door - and then they saw the handle turning.\" ピーターが \"There's nowhere else\" と言って洋服だんすを開けた。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "q": "ピーターが洋服だんすの扉をぴったり閉めなかったのはなぜか？",
+    "choices": [
+      "洋服だんすの中に自分を閉じ込めてはいけないと覚えていたから",
+      "外の様子を見たかったから",
+      "扉が壊れていたから",
+      "ルーシーに頼まれたから"
+    ],
+    "answer": "洋服だんすの中に自分を閉じ込めてはいけないと覚えていたから",
+    "explain": "\"he remembered, as every sensible person does, that you should never, never shut yourself up in a wardrobe.\"",
+    "chapter": 5,
+    "round": "第5回"
   }
 ]

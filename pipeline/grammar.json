@@ -516,5 +516,145 @@
     "explain": "it looks as if 〜「まるで〜のように見える」。as though も同じ意味。",
     "chapter": 5,
     "round": "第4回"
+  },
+  {
+    "point": "be fond of（〜が好きだ）",
+    "en": "Mrs Macready was not fond ___ children.",
+    "choices": [
+      "of",
+      "with",
+      "for",
+      "to"
+    ],
+    "answer": "of",
+    "explain": "be fond of 〜「〜が好きだ」。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "受け身の不定詞（to be＋過去分詞）",
+    "en": "… and did not like to be ___ when she was telling visitors all the things she knew.",
+    "choices": [
+      "interrupted",
+      "interrupt",
+      "interrupting",
+      "to interrupt"
+    ],
+    "answer": "interrupted",
+    "explain": "to be＋過去分詞「〜されること」。like to be interrupted＝邪魔されるのを好む（ここでは did not なので嫌う）。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "be to 不定詞（義務）",
+    "en": "\"And please remember you're ___ keep out of the way whenever I'm taking a party over the house.\"",
+    "choices": [
+      "to",
+      "for",
+      "going",
+      "able"
+    ],
+    "answer": "to",
+    "explain": "be to do「〜すること（になっている）」と指示・義務を表す。keep out of the way「邪魔にならないところにいる」。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "as if＋仮定法",
+    "en": "\"Just as if any of us ___ want to waste half the morning trailing round with a crowd of strange grown-ups!\"",
+    "choices": [
+      "would",
+      "will",
+      "can",
+      "shall"
+    ],
+    "answer": "would",
+    "explain": "as if の後は仮定法（過去形）。実際には誰もそうしたくないので would want。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "That is how 〜（こうして〜した）",
+    "en": "That was ___ the adventures began for the third time.",
+    "choices": [
+      "how",
+      "what",
+      "which",
+      "why"
+    ],
+    "answer": "how",
+    "explain": "That is how 〜「そのようにして〜」。関係副詞 how（先行詞 the way と同時には使わない）。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "wonder if 〜（〜だろうかと思う）",
+    "en": "… Peter and Edmund were looking at the suit of armour and wondering ___ they could take it to bits.",
+    "choices": [
+      "if",
+      "that",
+      "what",
+      "so"
+    ],
+    "answer": "if",
+    "explain": "wonder if 〜「〜だろうかと思う」。if は「〜かどうか」の名詞節。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "must be（〜にちがいない）",
+    "en": "… and realized that Mrs Macready ___ be bringing her party of sightseers up the back stairs.",
+    "choices": [
+      "must",
+      "should",
+      "would",
+      "need"
+    ],
+    "answer": "must",
+    "explain": "must be 〜「〜にちがいない」（推量）。must be bringing は進行形「連れて上がってきているにちがいない」。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "find oneself＋受け身の進行形",
+    "en": "… they seemed to find themselves ___ followed everywhere.",
+    "choices": [
+      "being",
+      "been",
+      "be",
+      "to be"
+    ],
+    "answer": "being",
+    "explain": "find oneself＋-ing「気がつくと〜している」。受け身の進行形 being followed で「後をつけられている」。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "知覚動詞＋O＋-ing",
+    "en": "… and then they saw the handle ___.",
+    "choices": [
+      "turning",
+      "turned",
+      "to turn",
+      "turns"
+    ],
+    "answer": "turning",
+    "explain": "see O -ing「Oが〜しているのを見る」。取っ手が回っている最中を見た。",
+    "chapter": 5,
+    "round": "第5回"
+  },
+  {
+    "point": "hold O C（OをCの状態に保つ）",
+    "en": "Peter held the door ___ but did not shut it.",
+    "choices": [
+      "closed",
+      "closing",
+      "close",
+      "to close"
+    ],
+    "answer": "closed",
+    "explain": "hold O C「OをCの状態に保つ」。ドアは「閉じられた」状態なので過去分詞 closed。shut は「ぴったり閉め切る」。",
+    "chapter": 5,
+    "round": "第5回"
   }
 ]
