@@ -2,7 +2,8 @@
 """ナルニア国物語の Word 教材（~/英語/）を編集するための道具。
 
   python3 narnia_docx.py dump  FILE.docx            本文を表示（下線=[U]…[/U]、赤太字=[R]…[/R]、マーカー=[M]…[/M]）
-  python3 narnia_docx.py yaku-add  PAGES.json       対訳に新しいページを追記
+  python3 narnia_docx.py yaku-add  PAGES.json       対訳に新しいページを追記（"file" で章ごとの別ファイルも指定可）
+  python3 narnia_docx.py yaku-new  PAGES.json       章ごとの新しい対訳ファイルを作る（書式は既存の対訳と同じ）
   python3 narnia_docx.py kadai-add SECTION.json     課題ファイルに授業ワーク（解答）を追記
   python3 narnia_docx.py mark  MARKS.json           対訳の課題の文に黄色マーカー（＋下線）を引く
 
@@ -43,11 +44,12 @@ def read_xml(path):
         return z.read('word/document.xml').decode('utf-8')
 
 
-def write_xml(path, xml_text):
+def write_xml(path, xml_text, backup=True):
     xml.dom.minidom.parseString(xml_text.encode('utf-8'))   # validity check
-    os.makedirs(BACKUP_DIR, exist_ok=True)
-    stamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')[:-3]
-    shutil.copy2(path, os.path.join(BACKUP_DIR, f'{stamp}_{os.path.basename(path)}'))
+    if backup:
+        os.makedirs(BACKUP_DIR, exist_ok=True)
+        stamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')[:-3]
+        shutil.copy2(path, os.path.join(BACKUP_DIR, f'{stamp}_{os.path.basename(path)}'))
     fd, tmp = tempfile.mkstemp(suffix='.docx'); os.close(fd)
     with zipfile.ZipFile(path) as zin, zipfile.ZipFile(tmp, 'w', zipfile.ZIP_DEFLATED) as zout:
         for item in zin.infolist():
@@ -55,7 +57,7 @@ def write_xml(path, xml_text):
             zout.writestr(item, data)
     shutil.copymode(path, tmp)   # keep the original file permissions
     shutil.move(tmp, path)
-    print(f'保存しました: {path}（バックアップ: {BACKUP_DIR}）')
+    print(f'保存しました: {path}' + (f'（バックアップ: {BACKUP_DIR}）' if backup else ''))
 
 
 PARA_RE = re.compile(r'<w:p[ >](?:(?!</w:p>).)*?</w:p>', re.S)
@@ -135,13 +137,46 @@ def cmd_dump(path):
         if out: print(out)
 
 
+def yaku_path(spec):
+    """spec の "file"（~/英語/ の中のファイル名）。省略時は Chapter 5 の対訳。"""
+    return os.path.join(EIGO, spec['file']) if isinstance(spec, dict) and spec.get('file') else YAKU
+
+
+def pages_xml(pages):
+    out = []
+    for page, pairs in pages.items():
+        out.append(heading1(page))
+        for en, jp in pairs:
+            out += [yaku_en(en), yaku_jp(jp)]
+    return ''.join(out)
+
+
+def cmd_yaku_new(spec_path):
+    """PAGES.json: {"file": "ナルニア国物語_対訳_Chapter6.docx", "title": "ナルニア国物語 対訳 Chapter 6 (62〜64)",
+                    "pages": {"62": [["英文", "和訳"], ...], ...}}
+    既存の対訳（Chapter 5）をひな形に、スタイル・余白はそのままで本文だけ入れ替えた新しいファイルを作る。"""
+    spec = json.load(open(spec_path, encoding='utf-8'))
+    path = yaku_path(spec)
+    if path == YAKU or os.path.exists(path): sys.exit(f'すでにあるファイルには作れません: {os.path.basename(path)}')
+    d = read_xml(YAKU)
+    b = d.index('<w:body>') + len('<w:body>')
+    k = d.index('<w:sectPr')
+    title = para([run(spec['title'])], '<w:pStyle w:val="a3"/>')   # a3 = 既存ファイルの表題スタイル
+    shutil.copy2(YAKU, path)
+    try:
+        write_xml(path, d[:b] + title + pages_xml(spec['pages']) + d[k:], backup=False)
+    except BaseException:
+        os.remove(path); raise
+
+
 def cmd_yaku_add(spec_path):
-    """PAGES.json: {"title": "ナルニア国物語 対訳 (52〜61)"(任意),
+    """PAGES.json: {"file": "…docx"(任意: 省略時は Chapter 5 の対訳), "title": "ナルニア国物語 対訳 (52〜61)"(任意),
                     "replace": [["旧訳の文字列", "新訳の文字列"], ...](任意: 前ページの「続く」の訳を直すなど),
                     "pages": {"59": [["英文", "和訳"], ...], ...}}"""
     spec = json.load(open(spec_path, encoding='utf-8'))
-    ensure_closed(YAKU)
-    d = read_xml(YAKU)
+    YAKU_ = yaku_path(spec)
+    ensure_closed(YAKU_)
+    d = read_xml(YAKU_)
     for page in spec['pages']:
         if f'>{page}</w:t>' in d:
             sys.exit(f'p.{page} はすでにあります')
@@ -149,14 +184,9 @@ def cmd_yaku_add(spec_path):
         if d.count(escape(old)) != 1: sys.exit(f'置き換え対象が1か所に特定できません: {old}')
         d = d.replace(escape(old), escape(new))
     if spec.get('title'):
-        d = re.sub(r'(<w:t[^>]*>)ナルニア国物語 対訳 \([^<]*\)(</w:t>)', lambda m: m.group(1) + escape(spec['title']) + m.group(2), d, count=1)
-    out = []
-    for page, pairs in spec['pages'].items():
-        out.append(heading1(page))
-        for en, jp in pairs:
-            out += [yaku_en(en), yaku_jp(jp)]
+        d = re.sub(r'(<w:t[^>]*>)ナルニア国物語 対訳 [^<]*\([^<]*\)(</w:t>)', lambda m: m.group(1) + escape(spec['title']) + m.group(2), d, count=1)
     k = d.index('<w:sectPr')
-    write_xml(YAKU, d[:k] + ''.join(out) + d[k:])
+    write_xml(YAKU_, d[:k] + pages_xml(spec['pages']) + d[k:])
 
 
 def cmd_kadai_add(spec_path):
@@ -245,8 +275,10 @@ def cmd_mark(spec_path):
                      "underline": "下線を引く語句" または ["語句1", "語句2"](出てくる順。任意)}, ...]
     対象は英文の段落（字下げのない段落）だけ。page の見出しから次のページ見出しまでの範囲で探す。"""
     spec = json.load(open(spec_path, encoding='utf-8'))
-    ensure_closed(YAKU)
-    d = read_xml(YAKU)
+    YAKU_ = yaku_path(spec)   # {"file": "…docx", "marks": [...]} の形なら別ファイル
+    if isinstance(spec, dict): spec = spec['marks']
+    ensure_closed(YAKU_)
+    d = read_xml(YAKU_)
     for m in spec:
         page = m['page']
         k = d.index(f'>{page}</w:t>')
@@ -261,14 +293,14 @@ def cmd_mark(spec_path):
         newp = _mark_paragraph(p, hl, [ul] if isinstance(ul, str) else ul)
         region = region.replace(p, newp, 1)
         d = d[:k] + region + d[end:]
-    before = re.sub(r'\s+', '', ''.join(para_text(p) for p in PARA_RE.findall(read_xml(YAKU))))
+    before = re.sub(r'\s+', '', ''.join(para_text(p) for p in PARA_RE.findall(read_xml(YAKU_))))
     after = re.sub(r'\s+', '', ''.join(para_text(p) for p in PARA_RE.findall(d)))
     if before != after: sys.exit('本文の文字が変わってしまうため中止しました')
-    write_xml(YAKU, d)
+    write_xml(YAKU_, d)
 
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print(__doc__); sys.exit(1)
     cmd, arg = sys.argv[1], sys.argv[2]
-    {'dump': cmd_dump, 'yaku-add': cmd_yaku_add, 'kadai-add': cmd_kadai_add, 'mark': cmd_mark}[cmd](arg)
+    {'dump': cmd_dump, 'yaku-add': cmd_yaku_add, 'yaku-new': cmd_yaku_new, 'kadai-add': cmd_kadai_add, 'mark': cmd_mark}[cmd](arg)

@@ -13,6 +13,7 @@
 cd tools/docx
 python3 narnia_docx.py dump ~/英語/第3回課題.docx          # 課題を下線つきで読む（[U]下線 [R]赤太字 [M]マーカー）
 python3 narnia_docx.py yaku-add pages.json                 # 対訳にページを追記
+python3 narnia_docx.py yaku-new pages.json                 # 章ごとの新しい対訳ファイルを作る（"file" 必須）
 python3 narnia_docx.py kadai-add section.json              # 課題ファイルに解答を追記
 python3 narnia_docx.py mark marks.json                     # 対訳の課題の文にマーカー
 ```
@@ -32,6 +33,8 @@ python3 narnia_docx.py mark marks.json                     # 対訳の課題の�
 ```
 - 1文ごとに英文と和訳のペア。ページをまたぐ文は前ページに「……（p.60へ続く）」、次ページに「（p.59から続く）」と注記する。
 - `replace` は任意（前ページの「続く」の訳を完成させるときなど）。
+- **Chapter 6 からは章ごとに別ファイル**：`"file": "ナルニア国物語_対訳_Chapter6.docx"` を付ける（`yaku-add`・`mark` 共通。`mark` は `{"file": …, "marks": [...]}` の形）。`file` を省くと Chapter 5 の `ナルニア国物語_対訳.docx`。
+- 新しい章のファイルは `yaku-new`（既存の対訳をひな形に、同じ書式で作る。例：`examples/yaku_ch6_pages_62-64.json`）。
 
 ### section.json（kadai-add）
 ```json
