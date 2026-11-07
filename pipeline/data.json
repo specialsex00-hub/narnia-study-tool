@@ -1071,6 +1071,230 @@
       "chapter": 5,
       "gloss": "〜に閉じこもる",
       "round": "第5回"
+    },
+    {
+      "term": "cramped",
+      "enHtml": "\"I'm getting horribly <mark>cramped</mark>.\"",
+      "jp": "「ひどく窮屈になってきたわ」",
+      "chapter": 6,
+      "gloss": "窮屈な、（狭くて）身動きがとれない",
+      "round": "第6回"
+    },
+    {
+      "term": "keep away 〜",
+      "enHtml": "\"I expect the pockets of these coats are full of it,\" said Susan, \"to <mark>keep away</mark> the moths.\"",
+      "jp": "「きっと、このコートのポケットに樟脳がいっぱい入っているのよ」とスーザンは言った。「虫よけにね」",
+      "chapter": 6,
+      "gloss": "〜を寄せつけない（keep away the moths＝虫よけにする）",
+      "round": "第6回"
+    },
+    {
+      "term": "stick into 〜",
+      "enHtml": "\"There's something <mark>sticking into</mark> my back,\" said Peter.",
+      "jp": "「何かが背中に刺さってるぞ」とピーターが言った。",
+      "chapter": 6,
+      "gloss": "〜に突き刺さる",
+      "round": "第6回"
+    },
+    {
+      "term": "now that 〜",
+      "enHtml": "\"<mark>Now that</mark> you mention it, it is cold,\" said Peter, \"and hang it all, it's wet too.",
+      "jp": "「言われてみると、確かに寒いね」とピーターは言った。「それに、ちくしょう、濡れてもいるぞ。",
+      "chapter": 6,
+      "gloss": "今や〜なので、〜した以上は（Now that you mention it＝言われてみると）",
+      "round": "第6回"
+    },
+    {
+      "term": "hang it all",
+      "enHtml": "\"Now that you mention it, it is cold,\" said Peter, \"and <mark>hang it all</mark>, it's wet too.",
+      "jp": "「言われてみると、確かに寒いね」とピーターは言った。「それに、ちくしょう、濡れてもいるぞ。",
+      "chapter": 6,
+      "gloss": "ちくしょう、くそっ（いらだちの間投詞）",
+      "round": "第6回"
+    },
+    {
+      "term": "What's the matter with 〜?",
+      "enHtml": "<mark>What's the matter with</mark> this place?",
+      "jp": "ここはいったいどうなってるんだ？",
+      "chapter": 6,
+      "gloss": "〜はどうなっているのか、〜はどうしたのか",
+      "round": "第6回"
+    },
+    {
+      "term": "比較級＋every minute",
+      "enHtml": "It's getting <mark>wetter every minute</mark>.\"",
+      "jp": "どんどん濡れてくるぞ」",
+      "chapter": 6,
+      "gloss": "刻一刻と〜、どんどん〜（getting wetter every minute＝どんどん濡れてくる）",
+      "round": "第6回"
+    },
+    {
+      "term": "struggle to one's feet",
+      "enHtml": "He <mark>struggled to his feet</mark>.",
+      "jp": "ピーターはやっとのことで立ち上がった。",
+      "chapter": 6,
+      "gloss": "やっとのことで立ち上がる",
+      "round": "第6回"
+    },
+    {
+      "term": "after all",
+      "enHtml": "Why, I do believe we've got into Lucy's wood <mark>after all</mark>.\"",
+      "jp": "なんだ、やっぱり僕たち、ルーシーの森に入ってきたんだ」",
+      "chapter": 6,
+      "gloss": "やっぱり、結局（予想に反して）",
+      "round": "第6回"
+    },
+    {
+      "term": "there is no -ing",
+      "enHtml": "And now <mark>there was no mistaking</mark> it and all four children stood blinking in the daylight of a winter day.",
+      "jp": "そして今や、それはもう間違えようがなかった。四人の子どもたちはみな、冬の日の昼の光の中で目をぱちぱちさせながら立っていた。",
+      "chapter": 6,
+      "gloss": "〜することはできない（there was no mistaking it＝間違えようがなかった）",
+      "round": "第6回"
+    },
+    {
+      "term": "apologize for 〜",
+      "enHtml": "\"I <mark>apologize for</mark> not believing you,\" he said.",
+      "jp": "「信じなくてごめん」とピーターは言った。",
+      "chapter": 6,
+      "gloss": "〜のことで謝る（apologize for not believing you＝信じなかったことを謝る）",
+      "round": "第6回"
+    },
+    {
+      "term": "shake hands",
+      "enHtml": "Will you <mark>shake hands</mark>?\"",
+      "jp": "握手してくれるかい？」",
+      "chapter": 6,
+      "gloss": "握手する",
+      "round": "第6回"
+    },
+    {
+      "term": "What about -ing?",
+      "enHtml": "<mark>What about putting</mark> on some of these coats?\"",
+      "jp": "ここのコートを何着か着たらどうかしら？」",
+      "chapter": 6,
+      "gloss": "〜するのはどうですか（提案）",
+      "round": "第6回"
+    },
+    {
+      "term": "doubtfully",
+      "enHtml": "\"They're not ours,\" said Peter <mark>doubtfully</mark>.",
+      "jp": "「僕たちのじゃないよ」とピーターはためらいがちに言った。",
+      "chapter": 6,
+      "gloss": "ためらいがちに、疑わしそうに",
+      "round": "第6回"
+    },
+    {
+      "term": "it isn't as if 〜",
+      "enHtml": "\"I am sure nobody would mind,\" said Susan; \"<mark>it isn't as if</mark> we wanted to take them out of the house; we shan't take them even out of the wardrobe.\"",
+      "jp": "「誰も気にしないに決まってるわ」とスーザンは言った。「家の外に持ち出そうっていうわけじゃないんだし。洋服だんすの外にさえ持ち出さないんだから」",
+      "chapter": 6,
+      "gloss": "〜というわけではない",
+      "round": "第6回"
+    },
+    {
+      "term": "put it that way",
+      "enHtml": "\"Of course, now you <mark>put it that way</mark>, I see.",
+      "jp": "「もちろん、そう言われてみると、なるほどと思うよ。",
+      "chapter": 6,
+      "gloss": "そういうふうに言う（put＝言い表す）",
+      "round": "第6回"
+    },
+    {
+      "term": "bag",
+      "enHtml": "No one could say you had <mark>bagged</mark> a coat as long as you leave it in the wardrobe where you found it.",
+      "jp": "見つけた洋服だんすの中に置いておく限り、コートを盗んだなんて誰にも言えないものね。",
+      "chapter": 6,
+      "gloss": "（口語）くすねる、自分のものにする",
+      "round": "第6回"
+    },
+    {
+      "term": "as long as 〜",
+      "enHtml": "No one could say you had bagged a coat <mark>as long as</mark> you leave it in the wardrobe where you found it.",
+      "jp": "見つけた洋服だんすの中に置いておく限り、コートを盗んだなんて誰にも言えないものね。",
+      "chapter": 6,
+      "gloss": "〜する限りは、〜しさえすれば（条件）",
+      "round": "第6回"
+    },
+    {
+      "term": "carry out",
+      "enHtml": "They immediately <mark>carried out</mark> Susan's very sensible plan.",
+      "jp": "四人はすぐに、スーザンのとても賢明な案を実行に移した。",
+      "chapter": 6,
+      "gloss": "実行する",
+      "round": "第6回"
+    },
+    {
+      "term": "sensible",
+      "enHtml": "They immediately carried out Susan's very <mark>sensible</mark> plan.",
+      "jp": "四人はすぐに、スーザンのとても賢明な案を実行に移した。",
+      "chapter": 6,
+      "gloss": "賢明な、分別のある",
+      "round": "第6回"
+    },
+    {
+      "term": "more like A than B",
+      "enHtml": "The coats were rather too big for them so that they came down to their heels and looked <mark>more like royal robes than coats</mark> when they had put them on.",
+      "jp": "コートは四人には少し大きすぎたので、着てみるとかかとまで届き、コートというよりは王様の衣装のように見えた。",
+      "chapter": 6,
+      "gloss": "BというよりはむしろAのような",
+      "round": "第6回"
+    },
+    {
+      "term": "get-up",
+      "enHtml": "But they all felt a good deal warmer and each thought the others looked better in their new <mark>get-up</mark> and more suitable to the landscape.",
+      "jp": "それでも、みんなずっと暖かくなったし、それぞれが、ほかのみんなは新しい身なりのほうが似合っていて、この景色にもふさわしいと思った。",
+      "chapter": 6,
+      "gloss": "（口語）身なり、服装",
+      "round": "第6回"
+    },
+    {
+      "term": "lead the way",
+      "enHtml": "\"This is going to be exciting enough without pretending,\" said Peter, as he began <mark>leading the way</mark> forward into the forest.",
+      "jp": "「つもりにならなくても、これから十分わくわくすることになるさ」とピーターは言い、先に立って森の中へと進み始めた。",
+      "chapter": 6,
+      "gloss": "先に立って進む、案内する",
+      "round": "第6回"
+    },
+    {
+      "term": "bear (to the left)",
+      "enHtml": "\"I say,\" began Edmund presently, \"oughtn't we to be <mark>bearing a bit more to the left</mark>, that is, if we are aiming for the lamp-post?\"",
+      "jp": "「ねえ」としばらくしてエドマンドが言い出した。「もう少し左のほうへ進んだほうがいいんじゃないかな。つまり、街灯を目指しているならだけど」",
+      "chapter": 6,
+      "gloss": "（左へ）進む、曲がる",
+      "round": "第6回"
+    },
+    {
+      "term": "aim for 〜",
+      "enHtml": "\"I say,\" began Edmund presently, \"oughtn't we to be bearing a bit more to the left, that is, if we are <mark>aiming for</mark> the lamp-post?\"",
+      "jp": "「ねえ」としばらくしてエドマンドが言い出した。「もう少し左のほうへ進んだほうがいいんじゃないかな。つまり、街灯を目指しているならだけど」",
+      "chapter": 6,
+      "gloss": "〜を目指す",
+      "round": "第6回"
+    },
+    {
+      "term": "give oneself away",
+      "enHtml": "The moment the words were out of his mouth he realized that he had <mark>given himself away</mark>.",
+      "jp": "その言葉が口から出たとたん、エドマンドは自分で秘密をばらしてしまったことに気づいた。",
+      "chapter": 6,
+      "gloss": "（うっかり）正体・秘密をばらす、ぼろを出す",
+      "round": "第6回"
+    },
+    {
+      "term": "make out (that) 〜",
+      "enHtml": "\"So you really were here,\" he said, \"that time Lu said she'd met you in here - and you <mark>made out</mark> she was telling lies.\"",
+      "jp": "「じゃあ、お前は本当にここに来ていたんだな」とピーターは言った。「ルーがここでお前に会ったと言った、あの時に――それなのに、お前はルーが嘘をついていることにしたんだ」",
+      "chapter": 6,
+      "gloss": "〜だと（事実でないのに）言い張る、見せかける",
+      "round": "第6回"
+    },
+    {
+      "term": "of all the＋複数名詞",
+      "enHtml": "\"Well, <mark>of all the</mark> poisonous little beasts—\" said Peter, and shrugged his shoulders and said no more.",
+      "jp": "「まったく、ありとあらゆる意地の悪いちびのけだものの中でも――」とピーターは言いかけて、肩をすくめ、それ以上は何も言わなかった。",
+      "chapter": 6,
+      "gloss": "あらゆる〜の中で（後ろに最上級が続く）",
+      "round": "第6回"
     }
   ],
   "underline": [
@@ -1348,6 +1572,74 @@
       "note": "bother 〜!「〜なんていまいましい、うるさいなあ」。tripper「（日帰りの）観光客」で、やや見下した言い方（マクレディ夫人が案内している見学者たちのこと）。at last「とうとう」。",
       "chapter": 5,
       "round": "第5回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "'Now that you mention it, it is cold,' said Peter, 'and hang it all, it's wet too.'",
+      "jp": "「言われてみると、確かに寒いね」とピーターは言った。「それに、ちくしょう、濡れてもいるぞ」",
+      "note": "now that 〜：「今や〜なので、〜した以上は」。Now that you mention it＝「あなたがそう言ったので（言われてみると）」。it は直前のスーザンの \"And isn't it cold?\"（寒くない？）という発言。 it is cold の is は強く読み、「（言われてみると）確かに寒い」と強調している。 hang it all：「ちくしょう、くそっ」といういらだちの間投詞（古風な口語）。 洋服だんすの中なのに寒くて濡れている → もうナルニアの雪の上にいる、という伏線。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "He struggled to his feet.",
+      "jp": "ピーターはやっとのことで立ち上がった。",
+      "note": "struggle to one's feet：「苦労して（やっとのことで）立ち上がる」。struggle は「もがく」、to one's feet は「立った状態へ」（get to one's feet＝立ち上がる）。 狭い洋服だんすの中で四人が押し合っていて、しかも座っている所がどんどん濡れてきたので、もがくようにして立ち上がった。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "itの内容を明らかにして訳しましょう。",
+      "enHtml": "And now there was no mistaking it.",
+      "jp": "そして今や、自分たちがルーシーの森に入ってしまったということは、もう間違えようがなかった（四人の子どもたちはみな、冬の日の昼の光の中で目をぱちぱちさせながら立っていた）。",
+      "note": "it の内容：四人がルーシーの言っていた森（ナルニア）に入ってしまったということ。直前でピーターが \"It's trees all round. And this wet stuff is snow. Why, I do believe we've got into Lucy's wood after all.\"（周りじゅう木だらけだ。この濡れたものは雪だ。やっぱりルーシーの森に来たんだ）と言っている。 There is no -ing：「〜することはできない」（＝It is impossible to do）。mistake は「取り違える、見誤る」。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "did",
+      "enHtml": "'Of course,' said Lucy, and <u>did</u>.",
+      "jp": "「もちろんよ」とルーシーは言って、握手をした。",
+      "note": "did は代動詞で、直前のピーターの \"Will you shake hands?\"（握手してくれるかい？）を受けて shook hands の代わり。 ピーターは「信じなくてごめん」とルーシーに謝り、仲直りの握手を求めた。ルーシーはそれに快く応じた。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "you put it that way,",
+      "task": "下線部の具体的な内容を説明しましょう",
+      "enHtml": "Of course, now <u>you put it that way,</u> I see.",
+      "jp": "「もちろん、君にそう言われてみると、なるほどと思うよ。」",
+      "note": "下線部の内容：直前のスーザンの言い分：「コートを家の外に持ち出すわけではないし、洋服だんすの外にさえ持ち出さないのだから、（寒いので）コートを着ても誰も気にしないだろう」ということ。 now (that) 〜：「〜した今となっては」。put：「言い表す、表現する」。put it that way＝「そういうふうに言う」。 I see.：「なるほど、分かった」。 ピーターは最初「僕たちのコートじゃない（They're not ours）」とためらっていたが、スーザンの理屈に納得した。続けて「見つけた洋服だんすの中に置いておく限り、コートを盗んだとは誰も言えない」と言っている。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "（全文）",
+      "enHtml": "This is going to be exciting enough without pretending.",
+      "jp": "「（北極探検家の）つもりにならなくても、これから十分わくわくすることになるさ。」",
+      "note": "直前のルーシーの \"We can pretend we are Arctic explorers.\"（北極探検家になったつもりになれるわね）を受けたピーターのことば。without pretending＝without pretending (that we are Arctic explorers)。 be going to do：ここでは「（今の状況から見て）〜することになる」という予測。This＝これから始まる森の探検。 形容詞＋enough：「十分に〜」。enough は形容詞・副詞の後ろに置く（exciting enough）。名詞に付くときは前（enough time）。 without -ing：「〜しなくても、〜せずに」。本物のナルニアにいるのだから、ごっこ遊び（pretend）は必要ない、ということ。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "the words / he had given himself away",
+      "task": "1. the wordsの内容を説明しなさい　2. he had given himself awayとは具体的にどういうことか？",
+      "enHtml": "The moment <u>the words</u> were out of his mouth he realized that <u>he had given himself away</u>.",
+      "jp": "その言葉が口から出たとたん、エドマンドは自分で秘密をばらしてしまったことに気づいた。",
+      "note": "1. the words の内容：直前のエドマンドの発言 \"oughtn't we to be bearing a bit more to the left, that is, if we are aiming for the lamp-post?\"（街灯を目指しているなら、もう少し左のほうへ進んだほうがいいんじゃないか）ということ。 2. he had given himself away の内容：街灯の場所を知っているということは、前にこの森（ナルニア）に来たことがあるということ。それを自分の口でばらしてしまった、ということ。 つまり、以前ルーシーと一緒にナルニアに来ていたのに、「ルーシーと二人でふりをしていただけ」と嘘をついていたことがばれた。直前の He had forgotten for the moment that he must pretend never to have been in the wood before. がその説明。 the moment S V：「〜するとすぐに、〜したとたん」（接続詞のように使う。第5回単語の the moment 〜 と同じ）。 give oneself away：「（うっかり）正体・秘密をばらす、ぼろを出す」。 このあとピーターが \"So you really were here\"（じゃあ本当にここに来ていたんだな）と言う。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "underline": "（全文）",
+      "task": "beastsの後に続く文章はどのようなものでしょうか？自分で作ってみましょう",
+      "enHtml": "'Well, of all the poisonous little beasts—' said Peter.",
+      "jp": "「まったく、ありとあらゆる意地の悪いちびのけだものの中でも――」とピーターは言った。",
+      "note": "作文例：Well, of all the poisonous little beasts (I have ever known), you are the worst!（今まで会ったありとあらゆる意地の悪いちびのけだものの中でも、お前が最悪だ！） （別解）Well, of all the poisonous little beasts in the world, you are the most poisonous! of all the＋複数名詞：「あらゆる〜の中で」。後ろに最上級（the worst / the most 〜）を続けて「〜の中でいちばん…だ」と言う形になる。 poisonous は「毒のある」→ ここでは「意地の悪い、たちの悪い」。little beast は「ちびのけだもの」で、弟エドマンドをののしることば。 本文では、ピーターはあまりの腹立たしさにここで言葉を切り、shrugged his shoulders and said no more（肩をすくめて、それ以上何も言わなかった）。だから文が最後まで書かれていない。",
+      "chapter": 6,
+      "round": "第6回"
     }
   ],
   "quiz": [
@@ -1728,6 +2020,90 @@
       "jp": "ピーターは扉を押さえて閉じておいたが、ぴったり閉め切りはしなかった。というのも、もちろんピーターは、分別のある人なら誰でもそうであるように、洋服だんすの中に自分を閉じ込めるようなことは絶対に、絶対にしてはいけないと覚えていたからだ。",
       "chapter": 5,
       "round": "第5回"
+    },
+    {
+      "en": "\"I wish the Macready would hurry up and take all these people away,\" said Susan presently.",
+      "jp": "「マクレディさん、早くあの人たちをみんな連れて行ってくれないかしら」と、しばらくしてスーザンが言った。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"I expect the pockets of these coats are full of it,\" said Susan, \"to keep away the moths.\"",
+      "jp": "「きっと、このコートのポケットに樟脳がいっぱい入っているのよ」とスーザンは言った。「虫よけにね」",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"I'm sitting against a tree,\" said Susan, \"and look!",
+      "jp": "「私、木に寄りかかって座ってるわ」とスーザンは言った。「それに見て！",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "Behind them were coats hanging on pegs, in front of them were snow-covered trees.",
+      "jp": "後ろには掛けくぎに掛かったコートがあり、前には雪をかぶった木々があった。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"I apologize for not believing you,\" he said.",
+      "jp": "「信じなくてごめん」とピーターは言った。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"I am sure nobody would mind,\" said Susan; \"it isn't as if we wanted to take them out of the house; we shan't take them even out of the wardrobe.\"",
+      "jp": "「誰も気にしないに決まってるわ」とスーザンは言った。「家の外に持ち出そうっていうわけじゃないんだし。洋服だんすの外にさえ持ち出さないんだから」",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "No one could say you had bagged a coat as long as you leave it in the wardrobe where you found it.",
+      "jp": "見つけた洋服だんすの中に置いておく限り、コートを盗んだなんて誰にも言えないものね。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "The coats were rather too big for them so that they came down to their heels and looked more like royal robes than coats when they had put them on.",
+      "jp": "コートは四人には少し大きすぎたので、着てみるとかかとまで届き、コートというよりは王様の衣装のように見えた。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "But they all felt a good deal warmer and each thought the others looked better in their new get-up and more suitable to the landscape.",
+      "jp": "それでも、みんなずっと暖かくなったし、それぞれが、ほかのみんなは新しい身なりのほうが似合っていて、この景色にもふさわしいと思った。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "There were heavy, darkish clouds overhead and it looked as if there might be more snow before night.",
+      "jp": "頭上には重く黒っぽい雲が垂れこめていて、夜になる前にまた雪が降りそうだった。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"I say,\" began Edmund presently, \"oughtn't we to be bearing a bit more to the left, that is, if we are aiming for the lamp-post?\"",
+      "jp": "「ねえ」としばらくしてエドマンドが言い出した。「もう少し左のほうへ進んだほうがいいんじゃないかな。つまり、街灯を目指しているならだけど」",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "He had forgotten for the moment that he must pretend never to have been in the wood before.",
+      "jp": "エドマンドは、前にこの森に来たことなど一度もないふりをしなければならないことを、その時はうっかり忘れていたのだ。",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"So you really were here,\" he said, \"that time Lu said she'd met you in here - and you made out she was telling lies.\"",
+      "jp": "「じゃあ、お前は本当にここに来ていたんだな」とピーターは言った。「ルーがここでお前に会ったと言った、あの時に――それなのに、お前はルーが嘘をついていることにしたんだ」",
+      "chapter": 6,
+      "round": "第6回"
+    },
+    {
+      "en": "\"Well, of all the poisonous little beasts—\" said Peter, and shrugged his shoulders and said no more.",
+      "jp": "「まったく、ありとあらゆる意地の悪いちびのけだものの中でも――」とピーターは言いかけて、肩をすくめ、それ以上は何も言わなかった。",
+      "chapter": 6,
+      "round": "第6回"
     }
   ],
   "yellow_sentences": []

@@ -505,5 +505,109 @@
     "explain": "\"he remembered, as every sensible person does, that you should never, never shut yourself up in a wardrobe.\"",
     "chapter": 5,
     "round": "第5回"
+  },
+  {
+    "q": "洋服だんすの中でエドマンドが文句を言ったのは何について？",
+    "choices": [
+      "樟脳（防虫剤）のひどいにおい",
+      "暗さ",
+      "スーザンが押してくること",
+      "コートが重いこと"
+    ],
+    "answer": "樟脳（防虫剤）のひどいにおい",
+    "explain": "\"And what a filthy smell of camphor!\" スーザンは、虫よけにコートのポケットに入っているのだろうと言う。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "ピーターが「ここはどうなってるんだ」と言ったのはなぜか？",
+    "choices": [
+      "寒いうえに、座っている所がどんどん濡れてきたから",
+      "背中に何かが刺さったから",
+      "外から誰かの声が聞こえたから",
+      "扉が開かなくなったから"
+    ],
+    "answer": "寒いうえに、座っている所がどんどん濡れてきたから",
+    "explain": "\"it's wet too. … I'm sitting on something wet. It's getting wetter every minute.\" 実はもうナルニアの雪の上にいた。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "スーザンが「きゃあっ」と声を上げたとき、気づいたことは？",
+    "choices": [
+      "木に寄りかかって座っていて、向こうが明るくなってきていること",
+      "コートが消えていること",
+      "ルーシーがいなくなったこと",
+      "マクレディ夫人が扉を開けたこと"
+    ],
+    "answer": "木に寄りかかって座っていて、向こうが明るくなってきていること",
+    "explain": "\"I'm sitting against a tree … and look! It's getting light - over there.\"",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "自分たちがルーシーの森に来たと分かったとき、ピーターが最初にしたことは？",
+    "choices": [
+      "ルーシーに、信じなかったことを謝って握手を求めた",
+      "すぐに洋服だんすに戻ろうと言った",
+      "エドマンドを叱った",
+      "森の探検に一人で出かけた"
+    ],
+    "answer": "ルーシーに、信じなかったことを謝って握手を求めた",
+    "explain": "\"Peter turned at once to Lucy. 'I apologize for not believing you … Will you shake hands?'\"",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "コートを着ることについて、スーザンが「誰も気にしない」と考えた理由は？",
+    "choices": [
+      "家の外どころか、洋服だんすの外にさえ持ち出さないから",
+      "コートはもともと自分たちのものだから",
+      "教授が着てもいいと言ったから",
+      "あとで洗って返すから"
+    ],
+    "answer": "家の外どころか、洋服だんすの外にさえ持ち出さないから",
+    "explain": "\"it isn't as if we wanted to take them out of the house; we shan't take them even out of the wardrobe.\" ピーターも \"now you put it that way, I see\" と納得する。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "コートを着た四人の姿はどう見えたか？",
+    "choices": [
+      "大きすぎてかかとまで届き、コートというより王様の衣装のようだった",
+      "小さすぎて腕が出てしまった",
+      "北極探検家そのものだった",
+      "おかしくてみんなで笑った"
+    ],
+    "answer": "大きすぎてかかとまで届き、コートというより王様の衣装のようだった",
+    "explain": "\"they came down to their heels and looked more like royal robes than coats\"",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "エドマンドが「自分で秘密をばらしてしまった」のは、何を言ったからか？",
+    "choices": [
+      "街灯を目指すなら、もう少し左へ進むべきだと言った",
+      "前にフォーンに会ったことがあると言った",
+      "白い魔女を知っていると言った",
+      "家に帰りたいと言った"
+    ],
+    "answer": "街灯を目指すなら、もう少し左へ進むべきだと言った",
+    "explain": "\"oughtn't we to be bearing a bit more to the left, that is, if we are aiming for the lamp-post?\" 街灯の場所を知っている＝前に来たことがある、とばれた。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "q": "ピーターがエドマンドを責めたのは、どんなことについてか？",
+    "choices": [
+      "本当はナルニアに来ていたのに、ルーシーが嘘をついていることにしたこと",
+      "コートを勝手に着たこと",
+      "道を間違えたこと",
+      "マクレディ夫人に見つかったこと"
+    ],
+    "answer": "本当はナルニアに来ていたのに、ルーシーが嘘をついていることにしたこと",
+    "explain": "\"So you really were here … that time Lu said she'd met you in here - and you made out she was telling lies.\" make out＝（事実でないのに）言い張る。",
+    "chapter": 6,
+    "round": "第6回"
   }
 ]

@@ -656,5 +656,145 @@
     "explain": "hold O C「OをCの状態に保つ」。ドアは「閉じられた」状態なので過去分詞 closed。shut は「ぴったり閉め切る」。",
     "chapter": 5,
     "round": "第5回"
+  },
+  {
+    "point": "I wish＋S would（〜してくれればいいのに）",
+    "en": "\"I wish the Macready ___ hurry up and take all these people away,\" said Susan presently.",
+    "choices": [
+      "would",
+      "will",
+      "shall",
+      "can"
+    ],
+    "answer": "would",
+    "explain": "I wish S would 〜「Sが〜してくれればいいのに」（相手の行動への不満・願望）。I wish の後は仮定法なので will ではなく would。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "now that 〜（今や〜なので）",
+    "en": "\"Now ___ you mention it, it is cold,\" said Peter.",
+    "choices": [
+      "that",
+      "when",
+      "if",
+      "as"
+    ],
+    "answer": "that",
+    "explain": "now that 〜「今や〜なので、〜した以上は」。Now that you mention it＝言われてみると。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "比較級＋every minute",
+    "en": "I'm sitting on something wet. It's getting ___ every minute.",
+    "choices": [
+      "wetter",
+      "wet",
+      "wettest",
+      "more wet"
+    ],
+    "answer": "wetter",
+    "explain": "get＋比較級「ますます〜になる」。every minute を付けて「刻一刻と、どんどん」。wet の比較級は t を重ねて wetter。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "there is no -ing（〜できない）",
+    "en": "And now there was no ___ it.",
+    "choices": [
+      "mistaking",
+      "mistake",
+      "to mistake",
+      "mistaken"
+    ],
+    "answer": "mistaking",
+    "explain": "There is no -ing「〜することはできない」（＝It is impossible to do）。no の後なので動名詞。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "前置詞＋動名詞の否定（not -ing）",
+    "en": "\"I apologize for ___ believing you,\" he said.",
+    "choices": [
+      "not",
+      "no",
+      "don't",
+      "never to"
+    ],
+    "answer": "not",
+    "explain": "動名詞の否定は not＋-ing。apologize for not believing you＝君を信じなかったことを謝る。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "What about -ing?（〜するのはどう？）",
+    "en": "\"It's pretty cold. What about ___ on some of these coats?\"",
+    "choices": [
+      "putting",
+      "put",
+      "to put",
+      "puts"
+    ],
+    "answer": "putting",
+    "explain": "What about -ing?「〜するのはどうですか」。about は前置詞なので後ろは動名詞。How about -ing? も同じ。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "as long as 〜（〜する限りは）",
+    "en": "No one could say you had bagged a coat as ___ as you leave it in the wardrobe where you found it.",
+    "choices": [
+      "long",
+      "far",
+      "soon",
+      "well"
+    ],
+    "answer": "long",
+    "explain": "as long as 〜「〜する限りは、〜しさえすれば」（条件）。as far as は「〜の範囲では」で意味が違う。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "more A than B（BというよりA）",
+    "en": "… they came down to their heels and looked more like royal robes ___ coats.",
+    "choices": [
+      "than",
+      "as",
+      "that",
+      "to"
+    ],
+    "answer": "than",
+    "explain": "more A than B「BというよりはむしろA」。ここでは look like の like を使って more like royal robes than coats。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "完了不定詞（to have＋過去分詞）",
+    "en": "He had forgotten for the moment that he must pretend never to ___ been in the wood before.",
+    "choices": [
+      "have",
+      "be",
+      "has",
+      "having"
+    ],
+    "answer": "have",
+    "explain": "pretend never to have been 〜「一度も〜に来たことがないふりをする」。完了不定詞で、pretend する時より前のことを表す。never は不定詞の前に置く。",
+    "chapter": 6,
+    "round": "第6回"
+  },
+  {
+    "point": "再帰代名詞（give oneself away）",
+    "en": "The moment the words were out of his mouth he realized that he had given ___ away.",
+    "choices": [
+      "himself",
+      "him",
+      "his",
+      "he"
+    ],
+    "answer": "himself",
+    "explain": "give oneself away「（うっかり）正体・秘密をばらす」。主語 he と同じ人なので himself。",
+    "chapter": 6,
+    "round": "第6回"
   }
 ]
