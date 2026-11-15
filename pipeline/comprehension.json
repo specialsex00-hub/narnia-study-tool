@@ -609,5 +609,122 @@
     "explain": "\"So you really were here … that time Lu said she'd met you in here - and you made out she was telling lies.\" make out＝（事実でないのに）言い張る。",
     "chapter": 6,
     "round": "第6回"
+  },
+  {
+    "q": "嘘がばれたあと、エドマンドが心の中で思っていたことは？",
+    "choices": [
+      "みんなに仕返しをしてやる",
+      "ルーシーに謝りたい",
+      "家に帰りたい",
+      "フォーンに会いたい"
+    ],
+    "answer": "みんなに仕返しをしてやる",
+    "explain": "\"I'll pay you all out for this, you pack of stuck-up, self-satisfied prigs.\" 自分が悪いのに逆恨みしている。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "スーザンが「どこへ行くの？」と尋ねたのはなぜか？",
+    "choices": [
+      "主に話題を変えるため",
+      "道に迷ったから",
+      "家に帰りたかったから",
+      "ルーシーを試すため"
+    ],
+    "answer": "主に話題を変えるため",
+    "explain": "\"chiefly for the sake of changing the subject.\" エドマンドの件で気まずくなった空気を変えたかった。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "ピーターがリーダーにしようと言ったのは誰か？",
+    "choices": [
+      "ルーシー",
+      "スーザン",
+      "エドマンド",
+      "ピーター自身"
+    ],
+    "answer": "ルーシー",
+    "explain": "\"I think Lu ought to be the leader … goodness knows she deserves it.\"",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "ルーシーはどうやってタムナスさんのほら穴までの道を見つけたか？",
+    "choices": [
+      "変わった形の木や切り株に見覚えがあった",
+      "地図を持っていた",
+      "足跡をたどった",
+      "フォーンが迎えに来た"
+    ],
+    "answer": "変わった形の木や切り株に見覚えがあった",
+    "explain": "\"she recognized an odd-looking tree in one place and a stump in another\"",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "ほら穴の扉はどうなっていたか？",
+    "choices": [
+      "ちょうつがいからもぎ取られ、こなごなに壊されていた",
+      "鍵がかかっていた",
+      "開け放しになっていた",
+      "新しい扉に替わっていた"
+    ],
+    "answer": "ちょうつがいからもぎ取られ、こなごなに壊されていた",
+    "explain": "\"The door had been wrenched off its hinges and broken to bits.\"",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "ほら穴の床に雪と混じっていた黒いものは何だったか？",
+    "choices": [
+      "暖炉の焦げた薪と灰",
+      "泥",
+      "焼けた本",
+      "割れた瀬戸物"
+    ],
+    "answer": "暖炉の焦げた薪と灰",
+    "explain": "\"something black, which turned out to be the charred sticks and ashes from the fire.\"",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "ピーターが見つけた紙はどこにあったか？",
+    "choices": [
+      "じゅうたんの上から床にくぎで打ちつけられていた",
+      "扉に貼られていた",
+      "暖炉の中に落ちていた",
+      "肖像画の裏に隠されていた"
+    ],
+    "answer": "じゅうたんの上から床にくぎで打ちつけられていた",
+    "explain": "\"a piece of paper which had been nailed through the carpet to the floor.\"",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "告示によると、タムナスさんはどうなっているか？",
+    "choices": [
+      "逮捕されて、裁判を待っている",
+      "国外に追放された",
+      "すでに処刑された",
+      "どこかへ逃げた"
+    ],
+    "answer": "逮捕されて、裁判を待っている",
+    "explain": "\"is under arrest and awaiting his trial on a charge of High Treason\"",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "q": "ルーシーによると、白い魔女はナルニアをどうしてしまったか？",
+    "choices": [
+      "いつも冬なのに、クリスマスが決して来ないようにした",
+      "いつも夜のままにした",
+      "動物が話せないようにした",
+      "森を全部焼いてしまった"
+    ],
+    "answer": "いつも冬なのに、クリスマスが決して来ないようにした",
+    "explain": "\"She has made an enchantment over the whole country so that it is always winter here and never Christmas.\"",
+    "chapter": 6,
+    "round": "第7回"
   }
 ]

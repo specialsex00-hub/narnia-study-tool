@@ -796,5 +796,145 @@
     "explain": "give oneself away「（うっかり）正体・秘密をばらす」。主語 he と同じ人なので himself。",
     "chapter": 6,
     "round": "第6回"
+  },
+  {
+    "point": "pay 人 out（人に仕返しをする）",
+    "en": "\"I'll pay you all ___ for this, you pack of stuck-up, self-satisfied prigs.\"",
+    "choices": [
+      "out",
+      "off",
+      "back",
+      "up"
+    ],
+    "answer": "out",
+    "explain": "pay 人 out (for 〜)「人に（〜の）仕返しをする」（イギリス英語の口語）。pay 人 back も「仕返しをする」の意味で使うが、本文は out。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "for the sake of -ing（〜するために）",
+    "en": "\"Where are we going anyway?\" said Susan, chiefly for the sake of ___ the subject.",
+    "choices": [
+      "changing",
+      "change",
+      "to change",
+      "changed"
+    ],
+    "answer": "changing",
+    "explain": "for the sake of 〜「〜のために」。of は前置詞なので後ろは動名詞。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "prove＋C（〜であると分かる）",
+    "en": "Lucy ___ a good leader.",
+    "choices": [
+      "proved",
+      "approved",
+      "provided",
+      "improved"
+    ],
+    "answer": "proved",
+    "explain": "prove (to be) C「Cであると分かる、結果的にCになる」。proved a good leader＝よいリーダーぶりを見せた。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "wonder whether 〜（〜かどうか）",
+    "en": "At first she wondered ___ she would be able to find the way.",
+    "choices": [
+      "whether",
+      "that",
+      "what",
+      "which"
+    ],
+    "answer": "whether",
+    "explain": "wonder whether / if 〜「〜かどうかと思う」。that は wonder の後には使わない。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "過去完了の受け身（had been＋過去分詞）",
+    "en": "The door had been ___ off its hinges and broken to bits.",
+    "choices": [
+      "wrenched",
+      "wrenching",
+      "wrench",
+      "to wrench"
+    ],
+    "answer": "wrenched",
+    "explain": "had been＋過去分詞「（それより前に）〜されていた」。子どもたちが着く前に扉はもぎ取られていた。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "関係代名詞 which（非制限用法）",
+    "en": "… mixed with something black, ___ turned out to be the charred sticks and ashes from the fire.",
+    "choices": [
+      "which",
+      "what",
+      "that",
+      "who"
+    ],
+    "answer": "which",
+    "explain": "コンマの後で先行詞 something black に説明を加える非制限用法。that は非制限用法では使えない。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "代名詞の位置（stamp it out）",
+    "en": "Someone had apparently flung it about the room and then stamped ___.",
+    "choices": [
+      "it out",
+      "out it",
+      "out",
+      "it"
+    ],
+    "answer": "it out",
+    "explain": "動詞＋副詞の句動詞で目的語が代名詞のときは、stamp it out のように動詞と副詞の間に置く。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "lie＋C（〜の状態で横たわっている）",
+    "en": "The crockery lay ___ on the floor.",
+    "choices": [
+      "smashed",
+      "smashing",
+      "smash",
+      "to smash"
+    ],
+    "answer": "smashed",
+    "explain": "lie C「Cの状態である」（lie-lay-lain）。瀬戸物は割られた状態なので過去分詞 smashed。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "so that（結果：それで〜）",
+    "en": "She has made an enchantment over the whole country ___ that it is always winter here and never Christmas.",
+    "choices": [
+      "so",
+      "such",
+      "as",
+      "in"
+    ],
+    "answer": "so",
+    "explain": "so that 〜「その結果〜、〜するように」。魔法をかけた結果、いつも冬でクリスマスが来ない。",
+    "chapter": 6,
+    "round": "第7回"
+  },
+  {
+    "point": "there is any point in -ing",
+    "en": "\"I- I wonder if there's any point in ___ on,\" said Susan.",
+    "choices": [
+      "going",
+      "go",
+      "to go",
+      "gone"
+    ],
+    "answer": "going",
+    "explain": "there is (no) point in -ing「〜することに意味がある（ない）」。in は前置詞なので動名詞。",
+    "chapter": 6,
+    "round": "第7回"
   }
 ]
