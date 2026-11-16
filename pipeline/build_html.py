@@ -9,6 +9,9 @@ import sys
 # アップデート履歴。新しい版を公開するときは先頭に1件足す（APP_VERSION も自動で変わる）。
 # ツールを開いたとき、前回から増えた分が「アップデートしました」として表示される。
 CHANGELOG = [
+    ("2026.11.16-2", [
+        "⭐️をタップしたときに、⭐️が消えて見えることがあったのを直しました",
+    ]),
     ("2026.11.16", [
         "単語に⭐️マークを付けられるようになりました：カード・一覧・学習・テスト・マッチの結果で☆をタップ（もう一度タップで外せます）",
         "⭐️だけで復習：「すべて表示」の切り替えで「⭐️だけ」を選ぶか、セット一覧のいちばん上の「⭐️をつけた単語」から、全部の回の⭐️をまとめて学習できます",
@@ -300,12 +303,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   .vlistTools{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between; margin-bottom:12px;}
   @media (min-width:720px){ .vlistGloss.hid{min-width:8em;} }
   /* ⭐️ marks */
-  .starBtn{flex:0 0 auto; width:32px; height:32px; padding:0; display:inline-flex; align-items:center; justify-content:center; border:none; background:transparent; box-shadow:none; border-radius:50%; color:var(--line); cursor:pointer;}
-  .starBtn svg{width:22px; height:22px; fill:transparent; stroke:#C9A227; stroke-width:1.8; stroke-linejoin:round;}
-  .starBtn.on svg{fill:#F5B400; stroke:#E0A000;}
-  .starBtn:active{transform:scale(0.9);}
-  .starBtn.pop svg{animation:starPop 0.35s ease-out;}
-  @keyframes starPop{ 40%{transform:scale(1.35);} }
+  /* ⭐️ button. Don't give it generic class names: ".pop" is the theme popover (display:none),
+     and adding it here once made the star vanish after a tap. */
+  .starBtn{flex:0 0 auto; width:34px; height:34px; padding:0; display:inline-flex; align-items:center; justify-content:center; border:none; background:transparent; box-shadow:none; border-radius:50%; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .starBtn svg{width:22px; height:22px; display:block; pointer-events:none;}
+  .starBtn:active{transform:none; box-shadow:none; opacity:0.6;}
   @media (hover: hover){ .starBtn:hover{background:var(--accent-bg);} }
   .cardStar, .learnStar, .examStar{position:absolute; top:8px; right:8px; z-index:2;}
   .learnCard, .examCard{position:relative;}
@@ -1248,12 +1250,15 @@ let vocabFilterMode = 'all';
 const VOCAB_ROUNDS = [...new Set(VOCAB.map(v=>v.round).filter(Boolean))];
 
 // ⭐️ marks (kept per item id like the rest of the progress)
-const STAR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.9l2.75 5.75 6.3.78-4.62 4.35 1.17 6.27L12 16.97l-5.6 3.08 1.17-6.27L2.95 9.43l6.3-.78z"/></svg>';
+// Colors are written into the SVG itself, so the icon never depends on outside CSS.
+function starSvg(on){
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.9l2.75 5.75 6.3.78-4.62 4.35 1.17 6.27L12 16.97l-5.6 3.08 1.17-6.27L2.95 9.43l6.3-.78z" fill="${on ? '#F5B400' : 'none'}" stroke="${on ? '#E0A000' : '#C9A227'}" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
+}
 function isStarred(i){ return !!store.data.starred[i]; }
 function starCount(){ return VOCAB.reduce((n,_,i)=> n + (isStarred(i) ? 1 : 0), 0); }
 function starBtn(i, cls){
   const on = isStarred(i);
-  return `<button type="button" class="starBtn ${cls||''} ${on?'on':''}" data-vi="${i}" aria-pressed="${on}" aria-label="⭐️マーク" title="⭐️マーク（もう一度タップで外す）">${STAR_SVG}</button>`;
+  return `<button type="button" class="starBtn ${cls||''} ${on?'on':''}" data-vi="${i}" aria-pressed="${on}" aria-label="⭐️マーク" title="⭐️マーク（もう一度タップで外す）">${starSvg(on)}</button>`;
 }
 // Capture phase so a star inside a flashcard doesn't also flip the card.
 document.addEventListener('click', (e)=>{
@@ -1263,8 +1268,8 @@ document.addEventListener('click', (e)=>{
   const i = Number(b.dataset.vi);
   if(isStarred(i)) delete store.data.starred[i]; else store.data.starred[i] = true;
   store.save(true);
-  document.querySelectorAll(`.starBtn[data-vi="${i}"]`).forEach(x=>{ x.classList.toggle('on', isStarred(i)); x.setAttribute('aria-pressed', isStarred(i)); });
-  b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
+  const on = isStarred(i);
+  document.querySelectorAll(`.starBtn[data-vi="${i}"]`).forEach(x=>{ x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); x.innerHTML = starSvg(on); });
   if(vocabSet === 'star') showVocabSetView();
 }, true);
 
