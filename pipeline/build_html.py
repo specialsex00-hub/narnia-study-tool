@@ -9,6 +9,9 @@ import sys
 # アップデート履歴。新しい版を公開するときは先頭に1件足す（APP_VERSION も自動で変わる）。
 # ツールを開いたとき、前回から増えた分が「アップデートしました」として表示される。
 CHANGELOG = [
+    ("2026.11.16-3", [
+        "単語カードの⭐️が2つ表示されることがあったのを直しました",
+    ]),
     ("2026.11.16-2", [
         "⭐️をタップしたときに、⭐️が消えて見えることがあったのを直しました",
     ]),
@@ -607,7 +610,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   .flip-face{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:270px; padding:30px 22px; background:var(--card); border:2px solid var(--line); border-radius:22px; box-shadow:0 4px 0 var(--line);}
   .flip-face.back{text-align:center; padding:30px 22px; background:linear-gradient(180deg, var(--accent-bg), var(--card) 65%);}
   .flip-face.front .term{font-size:28px; font-weight:800;}
-  .flip-face{position:relative;}
+  .flip-outer{position:relative;}
+  .cardStar{z-index:3;}
   #cardDir{flex:0 0 auto;}
   .flip-face.front .term.jpTerm{font-size:24px; line-height:1.45;}
   .backTerm{font-size:14px; font-weight:700; color:var(--sub); margin-bottom:6px;}
@@ -1365,15 +1369,14 @@ function renderVocabCard(){
   const backBig = jpFirst ? item.term : (item.gloss || '');
   area.innerHTML = `
     <div class="card flip-outer flip-3d" id="flipOuter">
+      ${starBtn(gi, 'cardStar')}
       <div class="flip-inner" id="flipInner">
         <div class="flip-face front">
-          ${starBtn(gi, 'cardStar')}
           <div class="term${jpFirst ? ' jpTerm' : ''}">${frontText}</div>
           <div class="flipHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg>${jpFirst ? 'タップして英語を確認' : 'タップして意味を確認'}</div>
           <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
         </div>
         <div class="flip-face back">
-          ${starBtn(gi, 'cardStar')}
           <div class="backTerm">${backSmall}</div>
           <div class="gloss-big">${backBig}</div>
           <div class="srsbadge">${item.round ? item.round+'・' : ''}第${item.chapter}章・${boxLabel}${item.exam ? ' <span class="badge">小テスト</span>' : ''}</div>
