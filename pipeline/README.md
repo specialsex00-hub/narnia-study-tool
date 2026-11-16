@@ -135,10 +135,13 @@ ID ⇔ index を変換する。今のデータに存在しない問題の記録�
   testSettings: {count, types:{tf,mc,written,matching}, dir},  // テストの設定
   testHistory: [{ts, round, chapter, correct, total, pct, retake}], // テスト結果（最新50件）
   days: { ["YYYY-MM-DD"]: true },         // 学習した日（連続学習日数の計算用）
+  cardDir: 'en' | 'jp',                  // カードの向き
+  starred: { [語彙配列のindex]: true },    // ⭐️マーク（保存時は ID キー。ID_KEYED に含む）
+  listHide: 'none' | 'en' | 'jp',        // 一覧で隠す側
 }
 ```
 
-`learn` / `learnWritten` / `matchBest` / `testSettings` / `testHistory` / `days` は
+`learn` / `learnWritten` / `matchBest` / `testSettings` / `testHistory` / `days`（と、のちに足した `cardDir` / `starred` / `listHide`）は
 version 5 の途中で追加したフィールドで、
 読み込み時に `defaultData()` とマージしているので、古い保存データでもリセット
 されずにそのまま使える。
